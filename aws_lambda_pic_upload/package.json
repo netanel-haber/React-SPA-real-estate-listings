@@ -1,0 +1,12 @@
+{
+  "name": "lambda-sanitize-images",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "mmmagic": "^0.5.3",
+    "piexifjs": "^1.0.4"
+  }
+}
