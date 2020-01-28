@@ -19,7 +19,10 @@ exports.handler = async (event) => {
         else {
             await markObjectSafe(srcBucket, srcKey);
         }
-        return await Promise.all(getObsoleteKeys.map(key => {
+        let splitKey = srcKey.split('/');
+        let quoteFolderUnquote = splitKey[0]+'/'+splitKey[1];
+        let keys = await getObsoleteKeys(srcBucket,quoteFolderUnquote);
+        return await Promise.all((keys).map(key => {
             console.log(`Deleting ${key}`);
             return delObj(srcBucket, key)
         }));

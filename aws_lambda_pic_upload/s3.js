@@ -22,9 +22,9 @@ module.exports = {
             Key
         }).promise();
     },
-    delObj: (Buckey, Key) => {
+    delObj: (Bucket, Key) => {
         return s3.deleteObject({
-            Buckey,
+            Bucket,
             Key
         }).promise()
     },
@@ -33,7 +33,6 @@ module.exports = {
             Bucket,
             Prefix
         }).promise().then(({ Contents }) => {
-            console.log("got here at least.")
             let sortedByDate = (Contents.sort((sorter)));
             let sizeCounter = 0;
             let i;
@@ -51,7 +50,7 @@ module.exports = {
             Bucket,
             Key,
             Tagging: {
-                TagSet: [{ Key: 'isSafe', Value: true }]
+                TagSet: [{ Key: 'isSafe', Value: "true" }]
             }
         }).promise();
     }
