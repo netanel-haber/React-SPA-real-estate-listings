@@ -3,6 +3,7 @@ Magic = mmm.Magic;
 var magic = new Magic(mmm.MAGIC_MIME_TYPE);
 
 const detectIfImage = (buffer) => {
+    console.log(buffer);
     return new Promise((res, rej) => {
         magic.detect(buffer, (err, result) => {
             if (err) rej(err);
