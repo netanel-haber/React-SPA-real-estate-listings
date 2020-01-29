@@ -4,6 +4,7 @@
         ".md": true,
         "*lock*": true,
         "node_modules": true,
-        "*.md": true
+        "*.md": true,
+        "*lambda*":true,
     }
 }
