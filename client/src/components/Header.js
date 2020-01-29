@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Router } from 'react-router-dom';
 
 const { sell, rent, partners, nonResi } = {
     sell: "מכירה",
@@ -10,9 +10,10 @@ const { sell, rent, partners, nonResi } = {
 
 const Header = () => {
     return (
-        <div>
-            <Link>{sell}</Link>
-            {sell} {rent} {partners} {nonResi}
+        <div> ----header----                  
+                   <nav>
+                       <Link to="/forsale">{sell}</Link>
+                   </nav>                                                       
         </div>
     );
 }
