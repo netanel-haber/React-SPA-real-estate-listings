@@ -1,15 +1,14 @@
 require('dotenv').config();
 const express = require('express');
-console.log(process.env);
 
 const { DEV_SERVER_NODEMON_PORT: port } = process.env;
 
 const app = express();
 
 
-app.use('/a', (req, res) => {
-    console.log('here');
-    res.status(200).json({ ok: "ok" });
+app.use('/api/test', (req, res) => {
+    console.log('test ok');
+    res.status(200).send("---testing api---");
 });
 
 app.listen(port, () => {

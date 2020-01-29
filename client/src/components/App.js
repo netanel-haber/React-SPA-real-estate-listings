@@ -11,25 +11,23 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    fetch("/a")
-      .then(json => {
-        console.log(json);       
-        this.setState({ info: 8 })
-      });
+    fetch("/api/test")
+      .then(res =>res.text()).then(test=>{
+        console.log(test);
+      })   
   }
   render() {
     return (
       <div className="App">
         <Header></Header>
         ----      
-        {/* <Item></Item> */}
+        <Item></Item>
         ----
         {this.state.info}
     </div>
     );
   }
 }
-
 
 
 export default App;
