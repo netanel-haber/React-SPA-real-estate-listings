@@ -8,9 +8,15 @@ import Commercial from './pages/Commercial';
 import ForSale from './pages/ForSale';
 import Rent from './pages/Rent';
 import Roommates from './pages/Roommates';
+import HomePage from './pages/HomePage';
+
+
+const RouteShortHand = ({ path, page }) => (
+  <Route exact path={path}>{page}</Route>
+);
+
 
 class App extends React.Component {
-
 
   componentDidMount() {
     fetch("/api/test")
@@ -19,22 +25,16 @@ class App extends React.Component {
       })
   }
   render() {
+    console.log(HomePage);
     return (
       <div className="App">
         <BrowserRouter>
-        <Header></Header>
-          <Route exact path="/forsale">
-            <ForSale></ForSale>
-          </Route>
-          <Route exact path="/rent">
-            <Rent></Rent>
-          </Route>
-          <Route exact path="/roommates">
-            <Roommates></Roommates>
-          </Route>
-          <Route exact path="/commercial">
-            <Commercial></Commercial>
-          </Route>
+          <Header></Header>
+          <RouteShortHand path="/" page={<HomePage />} />
+          <RouteShortHand path="/forsale" page={<ForSale />} />
+          <RouteShortHand path="/rent" page={<Rent />} />
+          <RouteShortHand path="/commercial" page={<Commercial />} />
+          <RouteShortHand path="/roommates" page={<Roommates />} />
         </BrowserRouter>
       </div>
     );

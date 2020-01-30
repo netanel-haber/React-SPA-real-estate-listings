@@ -1,6 +1,6 @@
 import React from 'react';
 import '../styles/components/Header.scss';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 const { sell, rent, roommates, commercial } = {
     sell: "מכירה",
@@ -9,8 +9,12 @@ const { sell, rent, roommates, commercial } = {
     commercial: 'נדל"ן מסחרי'
 };
 
-const LinkCreater = (props) => (
-<Link className="Header__Link" to={props.to}>{props.children}</Link>
+const LinkShorthand = ({ to, text }) => (
+    <NavLink
+        activeClassName="Header__Link-Selected"
+        className="Header__Link"
+        to={to}>{text}
+    </NavLink>
 );
 
 
@@ -18,13 +22,19 @@ const LinkCreater = (props) => (
 const Header = () => {
     return (
         <div className="container">
-            <nav>
-                <LinkCreater to="/forsale">{sell}</LinkCreater>
-                <LinkCreater to="/rent">{rent}</LinkCreater>
-                <LinkCreater to="/roommates">{roommates}</LinkCreater>
-                <LinkCreater to="/commercial">{commercial}</LinkCreater>
-            </nav>
+            <div >
+                <nav>
+                    <LinkShorthand to="/forsale" text={sell} />
+                    <LinkShorthand to="/rent" text={rent} />
+                    <LinkShorthand to="/roommates" text={roommates} />
+                    <LinkShorthand to="/commercial" text={commercial} />
+                </nav>
+            </div>
+            <div>
+                
+            </div>
         </div>
+
     );
 }
 

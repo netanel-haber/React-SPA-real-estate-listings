@@ -4,6 +4,10 @@
     background-color: $grayish;   
 }
 
+.Header__Link-Selected {
+    color: blue;
+}
+
 .Header__Link {
     line-height: 100%;      
     padding: $m-size;
@@ -18,4 +22,3 @@
     align-items: center;
     height: $cont-height-m-size-padding;
 }
-
