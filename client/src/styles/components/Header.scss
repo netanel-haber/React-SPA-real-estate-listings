@@ -24,3 +24,12 @@
     height: $cont-height-m-size-padding;
 }
 
+.vendor {
+    background-color: $yad2-orange;
+    color: white;
+}
+
+.vendor:hover {
+    background-color: $grayish-on-yad2-orange;
+}
+
