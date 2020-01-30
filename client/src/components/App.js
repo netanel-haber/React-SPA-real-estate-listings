@@ -5,12 +5,16 @@ import {Commercial,
   HomePage, 
   Signup, 
   Login, 
-  AddListing} from './pages/pageIndex';
+  AddListing,
+  Personal
+} from './pages/pageIndex';
+
 import React from 'react';
 import '../styles/components/App.scss';
 import Item from './Item';
 import Header from './Header';
 import { BrowserRouter, Route } from 'react-router-dom';
+
 
 
 
