@@ -1,14 +1,11 @@
+import {Commercial, ForSale, Rent, Roommates, HomePage, Signup, Login, } from './pages/pageIndex';
 import React from 'react';
 import '../styles/components/App.scss';
 import Item from './Item';
 import Header from './Header';
 import { BrowserRouter, Route } from 'react-router-dom';
 
-import Commercial from './pages/Commercial';
-import ForSale from './pages/ForSale';
-import Rent from './pages/Rent';
-import Roommates from './pages/Roommates';
-import HomePage from './pages/HomePage';
+
 
 
 const RouteShortHand = ({ path, page }) => (
@@ -35,6 +32,7 @@ class App extends React.Component {
           <RouteShortHand path="/rent" page={<Rent />} />
           <RouteShortHand path="/commercial" page={<Commercial />} />
           <RouteShortHand path="/roommates" page={<Roommates />} />
+
         </BrowserRouter>
       </div>
     );

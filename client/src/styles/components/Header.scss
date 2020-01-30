@@ -17,8 +17,10 @@
 .container {
     display: flex;
     flex-direction: row-reverse;
+    justify-content: space-between;
     background-color: $whiter-than-body-white;
     box-shadow: 0 0 2px 0 rgba(0,0,0,.14), 0 2px 2px 0 rgba(0,0,0,.12), 0 1px 3px 0 rgba(0,0,0,.2);
     align-items: center;
     height: $cont-height-m-size-padding;
 }
+
