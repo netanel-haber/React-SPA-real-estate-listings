@@ -7,7 +7,7 @@ import AddListing from './AddListing';
 import HomePage from './HomePage';
 import ForSale from './ForSale';
 import Commercial from './Commercial';
+import Personal from './Personal';
 
 
-export { Roommates, Rent, Login, Signup, AddListing, HomePage, ForSale, Commercial };
-
+export { Roommates, Rent, Login, Signup, AddListing, HomePage, ForSale, Commercial, Personal };

@@ -1,10 +1,16 @@
-import {Commercial, ForSale, Rent, Roommates, HomePage, Signup, Login, } from './pages/pageIndex';
+import {Commercial, 
+  ForSale, 
+  Rent, 
+  Roommates, 
+  HomePage, 
+  Signup, 
+  Login, 
+  AddListing} from './pages/pageIndex';
 import React from 'react';
 import '../styles/components/App.scss';
 import Item from './Item';
 import Header from './Header';
 import { BrowserRouter, Route } from 'react-router-dom';
-
 
 
 
@@ -32,7 +38,9 @@ class App extends React.Component {
           <RouteShortHand path="/rent" page={<Rent />} />
           <RouteShortHand path="/commercial" page={<Commercial />} />
           <RouteShortHand path="/roommates" page={<Roommates />} />
-
+          <RouteShortHand path="/personal" page={<Personal />} />
+          <RouteShortHand path="/login" page={<Login />} />
+          <RouteShortHand path="/add-listing" page={<AddListing />} />
         </BrowserRouter>
       </div>
     );
