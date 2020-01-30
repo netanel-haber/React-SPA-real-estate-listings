@@ -16,5 +16,5 @@ app.listen(port, () => {
 });
 
 
-
+// prod:
 // app.use(express.static('build'));
