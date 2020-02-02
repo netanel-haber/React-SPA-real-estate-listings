@@ -1,8 +1,8 @@
 import React from 'react';
 
-const ForSale = () => (
+const ForSale = (props) => (
     <div>
-        ForSale
+        {props.date}
     </div>
 )
 

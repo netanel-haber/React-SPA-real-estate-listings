@@ -11,11 +11,8 @@ import {Commercial,
 
 import React from 'react';
 import '../styles/components/App.scss';
-import Item from './Item';
 import Header from './Header';
 import { BrowserRouter, Route } from 'react-router-dom';
-
-
 
 
 const RouteShortHand = ({ path, page }) => (
@@ -28,23 +25,38 @@ class App extends React.Component {
   componentDidMount() {
     fetch("/api/test")
       .then(res => res.text()).then(test => {
-        console.log(test);
+        console.log(`received api test (${test}) from back-end.`);
       })
   }
   render() {
-    console.log(HomePage);
     return (
       <div className="App">
         <BrowserRouter>
-          <Header></Header>
-          <RouteShortHand path="/" page={<HomePage />} />
-          <RouteShortHand path="/forsale" page={<ForSale />} />
-          <RouteShortHand path="/rent" page={<Rent />} />
-          <RouteShortHand path="/commercial" page={<Commercial />} />
-          <RouteShortHand path="/roommates" page={<Roommates />} />
-          <RouteShortHand path="/personal" page={<Personal />} />
-          <RouteShortHand path="/login" page={<Login />} />
-          <RouteShortHand path="/add-listing" page={<AddListing />} />
+          <Header />
+          <Route exact path="/forsale">
+                <ForSale/>
+          </Route>
+          <Route exact path="/rent">
+                <Rent/>
+          </Route>
+          <Route exact path="/commercial">
+                <Commercial/>
+          </Route>
+          <Route exact path="/roommates">
+                <Roommates/>
+          </Route>
+          <Route exact path="/personal">
+                <Personal/>
+          </Route>
+          <Route exact path="/login">
+                <Login/>
+          </Route>
+          <Route exact path="/add-listing">
+                <AddListing/>
+          </Route>
+          <Route exact path="/">
+              <HomePage/>
+          </Route>
         </BrowserRouter>
       </div>
     );

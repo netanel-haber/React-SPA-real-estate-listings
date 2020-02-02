@@ -7,8 +7,9 @@ const app = express();
 
 
 app.use('/api/test', (req, res) => {
-    console.log('test ok');
-    res.status(200).send("---testing api---");
+    const apiTestString = "---testing api---";
+    console.log(`sending (${apiTestString}) to front-end for api testing`);
+    res.status(200).send(apiTestString);
 });
 
 app.listen(port, () => {

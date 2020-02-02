@@ -1,11 +1,8 @@
 import React from 'react';
 
-const Item = ()=>{
+const Item = () => {
     return <div>klklklkl</div>
 };
-
-
-
 
 
 export default Item;
