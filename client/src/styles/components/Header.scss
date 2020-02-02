@@ -1,35 +1,33 @@
-@import '../base/settings';
+@import "../base/settings";
 
-.Header__Link:hover {  
-    background-color: $grayish;   
+.Header__container {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: space-between;
+  background-color: $whiter-than-body-white;
+  box-shadow: 0 0 2px 0 rgba(0, 0, 0, 0.14), 0 2px 2px 0 rgba(0, 0, 0, 0.12), 0 1px 3px 0 rgba(0, 0, 0, 0.2);
+  align-items: center;
+  height: $cont-height-m-size-padding;
 }
 
-.Header__Link-Selected {
-    color: blue;
+@mixin Link($bgColor: $whiter-than-body-white, $fontColor: $def-color) {
+  color: $fontColor;
+  background-color: $bgColor;
+  line-height: 100%;
+  padding: $m-size;
+  text-decoration: none;
+  &.active {
+    color: mix($fontColor, pink);
+  }
+  &:hover {
+    background-color: mix($bgColor, $grayish);
+  }
 }
 
-.Header__Link {
-    line-height: 100%;      
-    padding: $m-size;
-    text-decoration: none;
+.Header__left-Link {
+  @include Link($yad2-orange, white);
 }
 
-.container {
-    display: flex;
-    flex-direction: row-reverse;
-    justify-content: space-between;
-    background-color: $whiter-than-body-white;
-    box-shadow: 0 0 2px 0 rgba(0,0,0,.14), 0 2px 2px 0 rgba(0,0,0,.12), 0 1px 3px 0 rgba(0,0,0,.2);
-    align-items: center;
-    height: $cont-height-m-size-padding;
+.Header__right-Link {
+  @include Link();
 }
-
-.vendor {
-    background-color: $yad2-orange;
-    color: white;
-}
-
-.vendor:hover {
-    background-color: $grayish-on-yad2-orange;
-}
-

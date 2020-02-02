@@ -1,18 +1,20 @@
-import {Commercial, 
-  ForSale, 
-  Rent, 
-  Roommates, 
-  HomePage, 
-  Signup, 
-  Login, 
+import {
+  Commercial,
+  ForSale,
+  Rent,
+  Roommates,
+  HomePage,
+  Signup,
+  Login,
   AddListing,
-  Personal
+  Personal,
+  NotFound
 } from './pages/pageIndex';
 
 import React from 'react';
 import '../styles/components/App.scss';
 import Header from './Header';
-import { BrowserRouter, Route } from 'react-router-dom';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
 
 const RouteShortHand = ({ path, page }) => (
@@ -33,30 +35,35 @@ class App extends React.Component {
       <div className="App">
         <BrowserRouter>
           <Header />
-          <Route exact path="/forsale">
-                <ForSale/>
-          </Route>
-          <Route exact path="/rent">
-                <Rent/>
-          </Route>
-          <Route exact path="/commercial">
-                <Commercial/>
-          </Route>
-          <Route exact path="/roommates">
-                <Roommates/>
-          </Route>
-          <Route exact path="/personal">
-                <Personal/>
-          </Route>
-          <Route exact path="/login">
-                <Login/>
-          </Route>
-          <Route exact path="/add-listing">
-                <AddListing/>
-          </Route>
-          <Route exact path="/">
-              <HomePage/>
-          </Route>
+          <Switch>
+            <Route exact path="/">
+              <HomePage />
+            </Route>
+            <Route path="/forsale">
+              <ForSale date={Date.now()} />
+            </Route>
+            <Route path="/rent">
+              <Rent />
+            </Route>
+            <Route path="/commercial">
+              <Commercial />
+            </Route>
+            <Route path="/roommates">
+              <Roommates />
+            </Route>
+            <Route path="/personal">
+              <Personal />
+            </Route>
+            <Route path="/login">
+              <Login />
+            </Route>
+            <Route path="/add-listing">
+              <AddListing />
+            </Route>
+            <Route path="*">
+              <NotFound />
+            </Route>
+          </Switch>
         </BrowserRouter>
       </div>
     );

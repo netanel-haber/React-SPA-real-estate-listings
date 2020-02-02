@@ -8,6 +8,18 @@ import HomePage from './HomePage';
 import ForSale from './ForSale';
 import Commercial from './Commercial';
 import Personal from './Personal';
+import NotFound from './NotFound';
 
 
-export { Roommates, Rent, Login, Signup, AddListing, HomePage, ForSale, Commercial, Personal };
+export {
+    Roommates,
+    Rent,
+    Login,
+    Signup,
+    AddListing,
+    HomePage,
+    ForSale,
+    Commercial,
+    Personal,
+    NotFound
+};

@@ -12,35 +12,31 @@ const { sell, rent, roommates, commercial, personal, addListing } = {
     addListing: 'פרסם מודעה'
 };
 
-const LinkShorthand = ({ to, text, className}) => (
+const LinkShorthand = ({ to, text, className }) => (
     <NavLink
-        activeClassName="Header__Link-Selected"
-        className={`Header__Link ${className}`}
-        to={to}>{text}
+        activeClassName="active"
+        className={className}
+        to={to}>
+        {text}
     </NavLink>
 );
 
 
 
-const Header = () => {
-    return (
-        <div className="container">
-            <div className="child">
-                <nav>
-                    <LinkShorthand to="/forsale" text={sell} />
-                    <LinkShorthand to="/rent" text={rent} />
-                    <LinkShorthand to="/roommates" text={roommates} />
-                    <LinkShorthand to="/commercial" text={commercial} />
-                </nav>
-            </div>
-            <div className="child">
-                <LinkShorthand to="/personal" text={personal + " 👤"} className="vendor"/>
-                <LinkShorthand to="/add-listing" text={addListing} className="vendor"/>
-            </div>
-        </div>
-
-    );
-}
+const Header = () => (
+    <div className="Header__container">
+        <nav>
+            <NavLink to="/forsale" className="Header__right-Link" activeClassName="active" >{sell}</NavLink>
+            <NavLink to="/rent" className="Header__right-Link" activeClassName="active" >{rent}</NavLink>
+            <NavLink to="/roommates" className="Header__right-Link" activeClassName="active" >{roommates}</NavLink>
+            <NavLink to="/commercial" className="Header__right-Link" activeClassName="active" >{commercial}</NavLink>
+        </nav>
+        <nav>
+            <LinkShorthand to="/personal" text={personal + " 👤"} className="Header__left-Link" />
+            <LinkShorthand to="/add-listing" text={addListing} className="Header__left-Link" />
+        </nav>
+    </div>
+);
 
 
 export default Header;
