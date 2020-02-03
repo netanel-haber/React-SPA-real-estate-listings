@@ -1,9 +1,9 @@
 import React from 'react';
 
 const ColumnInnerChild = ({ title, subtitle }) => (
-    <div>
+    <div className="child">
         <div>{title}</div>
-        <div className="Column__inner-child-subtitle">{subtitle}</div>
+        <div className="overflow">{subtitle}</div>
     </div>
 );
 

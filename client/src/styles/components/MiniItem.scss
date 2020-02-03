@@ -2,50 +2,64 @@
 
 .MiniItem__container {
   display: flex;
-  flex-direction: row-reverse;
   background-color: $item-level-1-color;
   border-radius: 2px;
   border: 1px solid $lightest-gray;
   align-items: stretch;
-  overflow: hidden;
+  width: 100%;
 }
 
 @mixin column($textAlign: center, $childPadding: $s-size) {
   display: flex;
-  flex-direction: row-reverse;
   border-width: 0 0.5px;
   border-color: $lightest-gray;
   border-style: solid;
   align-items: center;
+  white-space: nowrap;
   & > div {
     padding: $childPadding;
-    display: table-cell;
     text-align: $textAlign;
+  }
+}
+
+@mixin child($subtitleColor: $pretty-gray) {
+  & div + div {
+    font-size: $s-size;
+    color: $subtitleColor;
   }
 }
 
 .RightColumn {
   @include column(right);
+  & .child {
+    @include child($def-color);
+  }
   flex-grow: 1;
+  overflow: hidden;
+  & .overflow-container {
+    overflow: hidden;
+    & .overflow {
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+    }
+  }
 }
 
 .MiddleColumn {
-  @include column();
+  @include column;
+  & .child {
+    @include child;
+  }
 }
 
 .LeftColumn {
   @include column(left);
+  & .child {
+    @include child;
+  }
   justify-content: flex-end;
   & > div {
     padding-right: $xl-size;
   }
 }
-
-.Column__inner-child-subtitle {
-  font-size: $s-size;
-  color: $pretty-gray;
-}
-
-// .thumbnail-container {
-//     height: 100px;
-// }
