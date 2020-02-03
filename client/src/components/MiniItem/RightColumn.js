@@ -13,7 +13,7 @@ const { defArea, defMunicipality, defType, defNumber, defStreet } = {
 const RightColumn = ({ municipality = defMunicipality, area = defArea, street = defStreet, number = defNumber, apt, type = defType, picke }) => (
     <div className="RightColumn">
         <div>
-            <img src="https://via.placeholder.com/60" ></img>
+            <img src="https://via.placeholder.com/150" ></img>
         </div>
         <div className="overflow-container">
             <ColumnInnerChild title={`${street} ${number}`} subtitle={`${type}, ${area}, ${municipality}`} />
