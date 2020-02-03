@@ -1,10 +1,16 @@
 // Colors
-$grayish: #e5e5e5;
 $body-white: #f9f9f9;
 $whiter-than-body-white: #ffffff;
-$yad2-orange: #FF7100;
-$grayish-on-yad2-orange: #E56500;
+$yad2-orange: #ff7100;
+
 $def-color: #363636;
+$item-level-1-color: #F4EFBE;
+
+$grayish: rgb(229,229,229);
+$pretty-gray: rgba(0,0,0,.5);
+$lightest-gray: rgba(0,0,0,.1);
+
+
 
 // Spacing
 $s-size: 1.2rem;
@@ -21,3 +27,10 @@ $cont-height-s-size-padding: $s-size * 2 + (9/8) * $body-font;
 $cont-height-m-size-padding: $m-size * 2 + (9/8) * $body-font;
 $cont-height-l-size-padding: $l-size * 2 + (9/8) * $body-font;
 $cont-height-xl-size-padding: $xl-size * 2 + (9/8) * $body-font;
+
+//Main component widths
+$item-list-container-width: 695px;
+
+
+//Main margins 
+$general-horizontal-margin: 20vw;

@@ -1,0 +1,53 @@
+@import "../base/settings";
+
+.MiniItem__container {
+  display: flex;
+  flex-direction: row-reverse;
+  width: 100%;
+  background-color: $item-level-1-color;
+  border-radius: 2px;
+  border: 1px solid $lightest-gray;
+  align-items: stretch;
+}
+
+@mixin column() {
+  flex-direction: row-reverse;
+  display: flex;
+  border-width: 0 1px;
+  border-color: $lightest-gray;
+  border-style: solid;
+  align-items: stretch;
+  border-collapse: collapse;
+}
+
+@mixin inner-child($textalign) {
+  padding: $m-size;
+  text-align: $textalign;
+}
+
+.RightColumn {
+  @include column();
+}
+
+.MiddleColumn {
+  @include column();
+}
+
+.LeftColumn {
+  @include column();
+  justify-content: flex-end;
+}
+
+.RightColumn__inner-child {
+  @include inner-child(center);
+}
+
+.LeftColumn__inner-child {
+  @include inner-child(left);
+  padding-right: $xl-size;
+}
+
+.Column__inner-child-subtitle {
+  font-size: $s-size;
+  color: $pretty-gray;
+}
