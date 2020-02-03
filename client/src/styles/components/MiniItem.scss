@@ -3,30 +3,30 @@
 .MiniItem__container {
   display: flex;
   flex-direction: row-reverse;
-  width: 100%;
   background-color: $item-level-1-color;
   border-radius: 2px;
   border: 1px solid $lightest-gray;
   align-items: stretch;
+  overflow: hidden;
 }
 
-@mixin column() {
-  flex-direction: row-reverse;
+@mixin column($textAlign: center, $childPadding: $s-size) {
   display: flex;
-  border-width: 0 1px;
+  flex-direction: row-reverse;
+  border-width: 0 0.5px;
   border-color: $lightest-gray;
   border-style: solid;
-  align-items: stretch;
-  border-collapse: collapse;
-}
-
-@mixin inner-child($textalign) {
-  padding: $m-size;
-  text-align: $textalign;
+  align-items: center;
+  & > div {
+    padding: $childPadding;
+    display: table-cell;
+    text-align: $textAlign;
+  }
 }
 
 .RightColumn {
-  @include column();
+  @include column(right);
+  flex-grow: 1;
 }
 
 .MiddleColumn {
@@ -34,20 +34,18 @@
 }
 
 .LeftColumn {
-  @include column();
+  @include column(left);
   justify-content: flex-end;
-}
-
-.RightColumn__inner-child {
-  @include inner-child(center);
-}
-
-.LeftColumn__inner-child {
-  @include inner-child(left);
-  padding-right: $xl-size;
+  & > div {
+    padding-right: $xl-size;
+  }
 }
 
 .Column__inner-child-subtitle {
   font-size: $s-size;
   color: $pretty-gray;
 }
+
+// .thumbnail-container {
+//     height: 100px;
+// }
