@@ -9,7 +9,8 @@
   width: 100%;
 }
 
-@mixin column($textAlign: center, $childPadding: $s-size) {
+
+@mixin column {
   display: flex;
   border-width: 0 0.5px;
   border-color: $lightest-gray;
@@ -17,49 +18,45 @@
   align-items: center;
   white-space: nowrap;
   & > div {
-    padding: $childPadding;
-    text-align: $textAlign;
+    padding: $s-size;
   }
 }
 
-@mixin child($subtitleColor: $pretty-gray) {
-  & div + div {
-    font-size: $s-size;
-    color: $subtitleColor;
-  }
-}
-
-.RightColumn {
-  @include column(right);
-  & .child {
-    @include child($def-color);
-  }
-  flex-grow: 1;
-  overflow: hidden;
-  & .overflow-container {
-    overflow: hidden;
-    & .overflow {
-      overflow: hidden;
-      white-space: nowrap;
-      text-overflow: ellipsis;
+@mixin text-child($text-align: center, $subtitle-color: $pretty-gray) {
+  & .text-child {
+    text-align: $text-align;
+    & > div + div {
+      font-size: $s-size;
+      color: $subtitle-color;
     }
   }
 }
 
+.RightColumn {
+  @include column;
+  @include text-child(right, $def-color);
+  flex-grow: 1;
+  overflow: hidden;
+}
+
 .MiddleColumn {
   @include column;
-  & .child {
-    @include child;
-  }
+  @include text-child;
 }
 
 .LeftColumn {
-  @include column(left);
-  & .child {
-    @include child;
-  }
-  justify-content: flex-end;
+  @include column;
+  @include text-child(left);
   & > div {
     padding-right: $xl-size;
+  }
+}
+
+.overflow-container {
+  overflow: hidden;
+  & .overflow {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
   }
 }
