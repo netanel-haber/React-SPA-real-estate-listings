@@ -1,7 +1,9 @@
 import React from 'react';
+import '../styles/components/Pill.scss';
 
-const Pill = ({ className, text })(
-    <div className={className}>
+
+const Pill = ({text}) => (
+    <div className="pill">
         <div className="pill-a">
             <div className="pill-b">
                 <span className="pill-text">{text}</span>
@@ -9,6 +11,5 @@ const Pill = ({ className, text })(
         </div>
     </div>
 );
-
 
 export default Pill;

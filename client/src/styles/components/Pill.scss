@@ -1,10 +1,13 @@
-$pillWidth: 3rem;
-$pillHeight: $pillWidth * (5/9);
+@import "../base/settings";
 
+
+$pillWidth: 5rem;
+$pillHeight: $pillWidth * (5/9);
 $recInPillHeight: $pillHeight * (2/3);
 $recInPillWidth: $recInPillHeight * (0.9);
 
-.pill-in-thumbnail-container {
+
+.pill {
   width: $pillWidth;
   height: $pillHeight;
   border-radius: 15px;
@@ -30,7 +33,6 @@ $recInPillWidth: $recInPillHeight * (0.9);
   position: relative;
   left: 4px;
   top: 4px;
-
   display: flex;
   align-items: center;
   justify-content: center;
@@ -38,5 +40,5 @@ $recInPillWidth: $recInPillHeight * (0.9);
 
 .pill-text {
   text-align: center;
-  font-size: 1.2rem;
+  font-size: 1.1rem;
 }

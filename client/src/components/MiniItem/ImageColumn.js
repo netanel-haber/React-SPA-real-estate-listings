@@ -1,5 +1,6 @@
 import React from 'react';
 import '../../styles/components/ImageColumn.scss';
+import Pill from './../Pill';
 
 
 function onClick(e) {
@@ -8,20 +9,13 @@ function onClick(e) {
 
 
 const ImageColumn = (props) => {
-
     return (
         <div className="ImageColumn" onClick={onClick}>
             <div>
                 <div className="MiniItem__thumbnail-container-parent">
                     <div className="MiniItem__thumbnail-container">
                         <div className="overlay">
-                            <div className="pill">
-                                <div className="pill-a">
-                                    <div className="pill-b">
-                                        <span className="pill-text">4+</span>
-                                    </div>
-                                </div>
-                            </div>
+                            <Pill text={"4+"} />
                         </div>
                     </div>
                 </div>
