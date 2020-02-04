@@ -1,6 +1,7 @@
 @import "../base/settings";
 
 .ItemList__container {
-  width: $item-list-container-width;
-  margin: auto $general-horizontal-margin;
+  width: 85vw;
+  max-width: 800px;
+  margin: 0 auto;
 }

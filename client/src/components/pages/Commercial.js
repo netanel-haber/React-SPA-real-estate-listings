@@ -1,8 +1,8 @@
 import React from 'react';
 
-const Commercial = () => (
+const Commercial = (props) => (
     <div>
-        Commercial
+        {props.children}
     </div>
 )
 

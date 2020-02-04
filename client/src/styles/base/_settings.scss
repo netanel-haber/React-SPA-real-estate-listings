@@ -4,19 +4,18 @@ $whiter-than-body-white: #ffffff;
 $yad2-orange: #ff7100;
 
 $def-color: #363636;
-$item-level-1-color: #F4EFBE;
+$item-level-1-color: #f4efbe;
 
-$grayish: rgb(229,229,229);
-$pretty-gray: rgba(0,0,0,.5);
-$lightest-gray: rgba(0,0,0,.1);
-
+$grayish: rgb(229, 229, 229);
+$pretty-gray: rgba(0, 0, 0, 0.5);
+$lightest-gray: rgba(0, 0, 0, 0.1);
 
 // Spacing
 $s-size: 1.2rem;
 $m-size: 1.6rem;
 $l-size: 3.2rem;
 $xl-size: 4.8rem;
-$desktop-breakpoint: 45rem;
+
 
 // Font size
 $body-font: $m-size;
@@ -27,12 +26,6 @@ $cont-height-m-size-padding: $m-size * 2 + (9/8) * $body-font;
 $cont-height-l-size-padding: $l-size * 2 + (9/8) * $body-font;
 $cont-height-xl-size-padding: $xl-size * 2 + (9/8) * $body-font;
 
-//Main component widths
-$item-list-container-width: 695px;
 
 
-//Component height
-// $mini-item-height:
 
-//Main margins 
-$general-horizontal-margin: 20vw;

@@ -8,6 +8,7 @@ const ItemList = () => (
         ItemList <br></br>
         ----
         <Item apt={prop} />
+        <Item apt={prop} />
     </div>
 );
 

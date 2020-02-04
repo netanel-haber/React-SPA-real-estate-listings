@@ -1,0 +1,71 @@
+@import "../base/settings";
+
+$thumbnailWidth: 8rem;
+$thumbnailHeight: ($thumbnailWidth * 5/8);
+
+$pillWidth: $thumbnailHeight;
+$pillHeight: $pillWidth*(5/9);
+
+$recInPillHeight: $pillHeight*(2/3);
+$recInPillWidth: $recInPillHeight*(0.9);
+
+
+
+.MiniItem__thumbnail-container-parent {
+  overflow: hidden;
+  border-radius: 3px;
+  & > .MiniItem__thumbnail-container {
+    width: $thumbnailWidth;
+    height: $thumbnailHeight;
+    background-image: url("../../download.png");
+    background-size: cover;
+    background-position: center;
+  }
+}
+
+.overlay {
+  border-radius: 3px;
+  height: $thumbnailHeight;
+  width: $thumbnailWidth;
+  visibility: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.pill {
+  width: $pillWidth;
+  height: $pillHeight;
+  border-radius: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(15, 14, 14, 0.68);
+}
+
+@mixin pill-recs($recOpacity: 0.5) {
+  width: $recInPillWidth;
+  height: $recInPillHeight;
+  background-color: rgba(246, 244, 241, $recOpacity);
+  border-radius: 4px;
+}
+
+.pill-a {
+  @include pill-recs;
+}
+
+.pill-b {
+  @include pill-recs(0.9);
+  position: relative;
+  left: 4px;
+  top: 4px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.pill-text {
+  text-align: center;
+  font-size: 1.2rem;
+}

@@ -1,5 +1,6 @@
 import React from 'react';
 import ColumnInnerChild from './ColumnInnerChild';
+import '../../styles/components/RightColumn.scss';
 
 const { defArea, defMunicipality, defType, defNumber, defStreet } = {
     defArea: "בימת תל חי / מורדות הרי נפתלי",
@@ -12,9 +13,6 @@ const { defArea, defMunicipality, defType, defNumber, defStreet } = {
 
 const RightColumn = ({ municipality = defMunicipality, area = defArea, street = defStreet, number = defNumber, apt, type = defType, picke }) => (
     <div className="RightColumn">
-        <div>
-            <img src="https://via.placeholder.com/150" ></img>
-        </div>
         <ColumnInnerChild title={`${street} ${number}`} subtitle={`${type}, ${area}, ${municipality}`} />
     </div>
 );

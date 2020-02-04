@@ -46,7 +46,7 @@ class App extends React.Component {
               <Rent />
             </Route>
             <Route path="/commercial">
-              <Commercial />
+              <Commercial/>
             </Route>
             <Route path="/roommates">
               <Roommates />
