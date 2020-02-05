@@ -13,7 +13,8 @@ class Item extends React.Component {
         this.state = {
             isOpen: false,
             data: props.apt,
-            classes: "Item__container"
+            classes: "Item__container",
+            urls: []
         };
     }
     onMouseEnter = () => {
