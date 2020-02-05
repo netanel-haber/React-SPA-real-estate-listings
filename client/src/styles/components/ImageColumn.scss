@@ -3,27 +3,23 @@
 $thumbnailWidth: 8rem;
 $thumbnailHeight: ($thumbnailWidth * 5/8);
 
-
 .MiniItem__thumbnail-container-parent {
   overflow: hidden;
   border-radius: 3px;
-  & > .MiniItem__thumbnail-container {
+  & > .thumbnail-container {
     width: $thumbnailWidth;
     height: $thumbnailHeight;
     background-image: url("../../download.png");
     background-size: cover;
     background-position: center;
+    & > .overlay {
+      border-radius: 3px;
+      height: $thumbnailHeight;
+      width: $thumbnailWidth;
+      visibility: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
   }
 }
-
-.overlay {
-  border-radius: 3px;
-  height: $thumbnailHeight;
-  width: $thumbnailWidth;
-  visibility: hidden;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-

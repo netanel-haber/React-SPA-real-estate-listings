@@ -23,7 +23,6 @@
   }
 }
 
-
 @mixin text-child($text-align: center, $subtitle-color: $pretty-gray) {
   & .text-child {
     text-align: $text-align;
@@ -39,7 +38,7 @@
   border: 0;
 }
 
-.RightColumn {
+.AddressColumn {
   @include column;
   border-right: 0;
   @include text-child(right, $def-color);
@@ -47,12 +46,12 @@
   overflow: hidden;
 }
 
-.MiddleColumn {
+.StatsColumn {
   @include column;
   @include text-child;
 }
 
-.LeftColumn {
+.PriceColumn {
   @include column;
   @include text-child(left);
   & > div {
@@ -60,7 +59,11 @@
   }
 }
 
-
-
-
-
+.overflow-container {
+  overflow: hidden;
+  .overflow {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+}

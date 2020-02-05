@@ -1,44 +1,26 @@
 @import "../base/settings";
 
-
-$pillWidth: 5rem;
-$pillHeight: $pillWidth * (5/9);
-$recInPillHeight: $pillHeight * (2/3);
-$recInPillWidth: $recInPillHeight * (0.9);
-
-
-.pill {
-  width: $pillWidth;
-  height: $pillHeight;
-  border-radius: 15px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: rgba(15, 14, 14, 0.68);
-}
-
 @mixin pill-recs($recOpacity: 0.5) {
-  width: $recInPillWidth;
-  height: $recInPillHeight;
   background-color: rgba(246, 244, 241, $recOpacity);
-  border-radius: 4px;
+  border-radius: 2px;
 }
 
-.pill-a {
-  @include pill-recs;
-}
-
-.pill-b {
-  @include pill-recs(0.9);
-  position: relative;
-  left: 4px;
-  top: 4px;
+.Pill {
+  border-radius: 10px;
   display: flex;
   align-items: center;
   justify-content: center;
-}
-
-.pill-text {
-  text-align: center;
-  font-size: 1.1rem;
+  background-color: rgba(14, 15, 14, 0.5);
+  > .Pill__child {
+    @include pill-recs;
+    > .Pill__child-overlay {
+      @include pill-recs(0.9);
+      position: relative;
+      left: 4px;
+      top: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
 }

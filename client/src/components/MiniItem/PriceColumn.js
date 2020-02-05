@@ -6,14 +6,14 @@ const { HEB_PRICE_NOT_SET, HEB_NIS } = {
     HEB_NIS: "₪"
 };
 
-const LeftColumn = ({ price, mitigator, updatedAt }) => {
+const PriceColumn = ({ price, mitigator, updatedAt }) => {
     const title = price ? `${price} ${HEB_NIS}` : HEB_PRICE_NOT_SET,
         subtitle = mitigator || updatedAt;
     return (
-        <div className="LeftColumn">
+        <div className="PriceColumn">
             <ColumnInnerChild title={title} subtitle={subtitle} />
         </div>
     )
 };
 
-export default LeftColumn;
+export default PriceColumn;

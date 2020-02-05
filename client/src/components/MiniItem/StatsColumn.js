@@ -8,10 +8,9 @@ const {HEB_ROOMS, HEB_FLOOR, HEB_SQ_M} = {
 }
 
 
-
-const MiddleColumn = ({ rooms, floor, sqMeters }) => {
+const StatsColumn = ({ rooms, floor, sqMeters }) => {
     return (
-        <div className="MiddleColumn">
+        <div className="StatsColumn">
             <ColumnInnerChild title={rooms} subtitle={HEB_ROOMS} />
             <ColumnInnerChild title={floor} subtitle={HEB_FLOOR} />
             <ColumnInnerChild title={sqMeters} subtitle={HEB_SQ_M} />
@@ -19,4 +18,4 @@ const MiddleColumn = ({ rooms, floor, sqMeters }) => {
     );
 }
 
-export default MiddleColumn;
+export default StatsColumn;

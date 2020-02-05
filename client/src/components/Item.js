@@ -2,6 +2,9 @@ import React from 'react';
 import '../styles/components/Item.scss';
 import MiniItem from './MiniItem/MiniItem';
 import SpreadItem from './SpreadItem';
+import { appendClass, removeClass } from '../utilities';
+import '../styles/utility-classes/thumbnail-reactivity.scss';
+
 
 
 class Item extends React.Component {
@@ -9,16 +12,23 @@ class Item extends React.Component {
         super(props);
         this.state = {
             isOpen: false,
-            data: props.apt
+            data: props.apt,
+            classes: "Item__container"
         };
     }
-    toggleSize(e) {
+    onMouseEnter = () => {
+        this.setState((prevState) => ({ classes:appendClass(prevState.classes, 'thumbnail-effects') }))
+    }
+    onMouseLeave = () => {
+        this.setState((prevState) => ({ classes:removeClass(prevState.classes, 'thumbnail-effects') }))
+    }
+    toggleSize = () => {
         this.setState((prevState) => ({ isOpen: !prevState.isOpen }));
     }
     render() {
         const { isOpen, data } = this.state;
         return (
-            <div className="Item__container">
+            <div className={this.state.classes} onMouseEnter={this.onMouseEnter} onMouseLeave={this.onMouseLeave}>
                 {isOpen ?
                     (<SpreadItem {...data} />) :
                     (<MiniItem {...data.property.level_1} {...data.listing} />)

@@ -1,9 +1,9 @@
 import React from 'react';
 import '../../styles/components/MiniItem.scss';
-import LeftColumn from './LeftColumn';
-import RightColumn from './RightColumn';
-import MiddleColumn from './MiddleColumn';
 import ImageColumn from './ImageColumn';
+import StatsColumn from './StatsColumn';
+import PriceColumn from './PriceColumn';
+import AddressColumn from './AddressColumn';
 
 const MiniItem = (props) => {
     let {
@@ -15,9 +15,9 @@ const MiniItem = (props) => {
     return (
         <div className="MiniItem__container">
             <ImageColumn />
-            <RightColumn />
-            <MiddleColumn rooms={rooms} floor={floor} sqMeters={sqMeters} />
-            <LeftColumn price={price} mitigator={mitigator} updatedAt={updatedAt} />
+            <AddressColumn />
+            <StatsColumn rooms={rooms} floor={floor} sqMeters={sqMeters} />
+            <PriceColumn price={price} mitigator={mitigator} updatedAt={updatedAt} />
         </div>
     );
 }
