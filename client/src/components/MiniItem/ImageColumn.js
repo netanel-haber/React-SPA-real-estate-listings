@@ -1,22 +1,18 @@
 import React from 'react';
-import '../../styles/components/ImageColumn.scss';
 import Pill from './../Pill';
+import Thumbnail from './../Thumbnail';
 
 function onClick(e) {
     alert("hello!");
 }
 
-const ImageColumn = (props) => {
+const ImageColumn = ({ thumbData: { url, numPics } }) => {
     return (
         <div className="ImageColumn" onClick={onClick}>
             <div>
-                <div className="MiniItem__thumbnail-container-parent">
-                    <div className="thumbnail-container">
-                        <div className="overlay">
-                            <Pill rootWidth="5rem" fontSize="1rem" text="4+" />
-                        </div>
-                    </div>
-                </div>
+                <Thumbnail url={url}>
+                    <Pill rootWidth="4rem" fontSize="1rem" text={numPics+"+"} />
+                </Thumbnail>
             </div>
         </div>
     )

@@ -8,7 +8,7 @@ const { HEB_PRICE_NOT_SET, HEB_NIS } = {
 
 const PriceColumn = ({ price, mitigator, updatedAt }) => {
     const title = price ? `${price} ${HEB_NIS}` : HEB_PRICE_NOT_SET,
-        subtitle = mitigator || updatedAt;
+        subtitle = mitigator || (updatedAt);
     return (
         <div className="PriceColumn">
             <ColumnInnerChild title={title} subtitle={subtitle} />

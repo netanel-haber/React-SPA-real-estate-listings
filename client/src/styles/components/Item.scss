@@ -1,11 +1,18 @@
 @import "../base/settings";
 
-
 .Item__container {
   margin: 1px;
   &:hover {
     cursor: pointer;
     box-shadow: 0px 0px 14px 1px rgba(0, 0, 0, 0.15);
+    .thumbnail-container {
+      .thumbnail {
+        transform: scale(1.05);
+      }
+      .overlay {
+        visibility: visible;
+      }
+    }
   }
 }
 

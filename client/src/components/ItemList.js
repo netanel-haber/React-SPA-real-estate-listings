@@ -9,6 +9,8 @@ const ItemList = () => (
         ----
         <Item apt={prop} />
         <Item apt={prop} />
+        <Item apt={prop} />
+        <Item apt={prop} />
     </div>
 );
 

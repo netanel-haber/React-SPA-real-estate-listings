@@ -2,9 +2,6 @@ import React from 'react';
 import '../styles/components/Item.scss';
 import MiniItem from './MiniItem/MiniItem';
 import SpreadItem from './SpreadItem';
-import { appendClass, removeClass } from '../utilities';
-import '../styles/utility-classes/thumbnail-reactivity.scss';
-
 
 
 class Item extends React.Component {
@@ -13,15 +10,19 @@ class Item extends React.Component {
         this.state = {
             isOpen: false,
             data: props.apt,
-            classes: "Item__container",
-            urls: []
+            urls: [],
         };
     }
-    onMouseEnter = () => {
-        this.setState((prevState) => ({ classes:appendClass(prevState.classes, 'thumbnail-effects') }))
-    }
-    onMouseLeave = () => {
-        this.setState((prevState) => ({ classes:removeClass(prevState.classes, 'thumbnail-effects') }))
+    componentDidMount() {
+        fetch('/api/get-pic-urls', {
+            body: JSON.stringify(this.state.data.listing.picKeys),
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            method: 'POST'
+        })
+            .then(res => res.json())
+            .then(urls => { this.setState(() => ({ urls })) });
     }
     toggleSize = () => {
         this.setState((prevState) => ({ isOpen: !prevState.isOpen }));
@@ -29,10 +30,13 @@ class Item extends React.Component {
     render() {
         const { isOpen, data } = this.state;
         return (
-            <div className={this.state.classes} onMouseEnter={this.onMouseEnter} onMouseLeave={this.onMouseLeave}>
+            <div className="Item__container">
                 {isOpen ?
                     (<SpreadItem {...data} />) :
-                    (<MiniItem {...data.property.level_1} {...data.listing} />)
+                    (<MiniItem
+                        thumbData={{ url: this.state.urls[1], numPics: this.state.urls.length }}
+                        aptData={{ ...data.property.level_1 }}
+                        listData={{ ...data.listing }} />)
                 }
             </div>
         );
