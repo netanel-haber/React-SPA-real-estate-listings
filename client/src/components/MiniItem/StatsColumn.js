@@ -1,7 +1,8 @@
-import React  from 'react';
+import React from 'react';
 import ColumnInnerChild from './ColumnInnerChild';
 
-const {HEB_ROOMS, HEB_FLOOR, HEB_SQ_M} = {
+
+const { HEB_ROOMS, HEB_FLOOR, HEB_SQ_M } = {
     HEB_ROOMS: "חדרים",
     HEB_FLOOR: "קומה",
     HEB_SQ_M: "מ\"ר",

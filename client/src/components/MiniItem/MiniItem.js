@@ -5,6 +5,7 @@ import StatsColumn from './StatsColumn';
 import PriceColumn from './PriceColumn';
 import AddressColumn from './AddressColumn';
 
+
 const MiniItem = ({ aptData, listData, thumbData }) => {
     const { updatedAt, listingId, listerId } = listData;
     const {
