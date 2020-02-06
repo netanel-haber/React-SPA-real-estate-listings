@@ -1,11 +1,6 @@
 import React from 'react';
 import '../styles/components/Thumbnail.scss';
-import ClipLoader from "react-spinners/PulseLoader";
-
-
-
-let loading = true;
-
+import PulseLoader from "react-spinners/PulseLoader";
 
 
 class Thumbnail extends React.Component {
@@ -17,20 +12,17 @@ class Thumbnail extends React.Component {
     }
     onLoad(e) {
         e.target.style.visibility = "visible";
-        debugger;
         this.setState(() => ({ loading: false }))
     }
-
     render() {
         return (
             <div className="thumbnail-container">
                 <div className="overlay">
                     {this.props.children}
                 </div>
-                <ClipLoader
+                <PulseLoader
                     loading={this.state.loading}
-                    size="0.5rem"
-                    css="loader"
+                    size="0.75rem"
                 />
                 <img className="thumbnail" onLoad={this.onLoad.bind(this)} style={{ visibility: "hidden" }} src={this.props.url}></img>
             </div>

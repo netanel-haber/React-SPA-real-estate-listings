@@ -10,28 +10,15 @@ $thumbnailHeight: ($thumbnailWidth * 5/8);
   width: $thumbnailWidth;
   height: $thumbnailHeight;
   position: relative;
-  & .overlay {
-    z-index: 10;
-    background-color: rgba(128, 128, 128, 0.3);
-    position: absolute;
-    height: 100%;
-    width: 100%;
-    visibility: hidden;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  .css-0 {
+    background-color: darken($item-level-1-color, 5%);
   }
-  & .thumbnail {
-    width: 100%;
-    height: 100%;
+  .overlay {
+    background-color: $lightest-gray;
+  }
+  .thumbnail {
     background-color: $def-color;
+    width: 100%;
+    height: 100%;
   }
-}
-
-
-
-.loader {
-  color:blue;
-  display: block;
-  margin: 0 auto;
 }

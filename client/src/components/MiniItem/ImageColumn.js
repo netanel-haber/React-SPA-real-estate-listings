@@ -14,6 +14,7 @@ const ImageColumn = ({ thumbData: { url, numPics } }) => {
                 <Thumbnail url={url}>
                     <Pill rootWidth="4rem" fontSize="1rem" text={numPics + "+"} />
                 </Thumbnail>
+                
             </div>
         </div>
     )
