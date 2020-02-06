@@ -14,12 +14,22 @@ const MiniItem = ({ aptData, listData, thumbData }) => {
         price, mitigator
     } = aptData;
     return (
-        <div className="MiniItem__container">
-            <ImageColumn thumbData={thumbData} />
-            <AddressColumn address={address} type={type} />
-            <StatsColumn rooms={rooms} floor={floor} sqMeters={sqMeters} />
-            <PriceColumn price={price} mitigator={mitigator} updatedAt={updatedAt} />
+        <div>
+            <div className="MiniItem__container">
+                <ImageColumn thumbData={thumbData} />
+                <AddressColumn address={address} type={type} />
+                <StatsColumn rooms={rooms} floor={floor} sqMeters={sqMeters} />
+                <PriceColumn price={price} mitigator={mitigator} updatedAt={updatedAt} />
+            </div>
+            <div>
+                adflgjkahdfkjghs
+                dfjhgskjdhfgkjh
+                kjdfhgkjshdfkjgh
+                kdjfhgkjdhfkjshdfkjg
+                kjdfhgkjahdfkjgshdkjfh
+            </div>
         </div>
+
     );
 }
 

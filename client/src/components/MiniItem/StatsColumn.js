@@ -1,5 +1,7 @@
 import React from 'react';
 import ColumnInnerChild from './ColumnInnerChild';
+import PulseLoader from "react-spinners/PulseLoader";
+
 
 
 const { HEB_ROOMS, HEB_FLOOR, HEB_SQ_M } = {

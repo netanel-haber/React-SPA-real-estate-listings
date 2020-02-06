@@ -27,10 +27,13 @@ class Item extends React.Component {
     toggleSize = () => {
         this.setState((prevState) => ({ isOpen: !prevState.isOpen }));
     }
+    unfold(e) {
+        this.setState((prevState) => ({ isOpen: !prevState.isOpen }));
+    }
     render() {
         const { isOpen, data } = this.state;
         return (
-            <div className="Item__container">
+            <div className="Item__container" onClick={this.unfold.bind(this)}>
                 {isOpen ?
                     (<SpreadItem {...data} />) :
                     (<MiniItem
