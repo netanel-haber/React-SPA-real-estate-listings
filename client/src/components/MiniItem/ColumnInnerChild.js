@@ -8,3 +8,5 @@ const ColumnInnerChild = ({ title, subtitle }) => (
 );
 
 export default ColumnInnerChild;
+
+

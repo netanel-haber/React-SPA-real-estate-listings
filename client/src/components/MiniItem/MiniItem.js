@@ -1,12 +1,14 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import '../../styles/components/MiniItem.scss';
 import ImageColumn from './ImageColumn';
 import StatsColumn from './StatsColumn';
 import PriceColumn from './PriceColumn';
 import AddressColumn from './AddressColumn';
+import Thumbnail from './../Thumbnail';
 
 
-const MiniItem = ({ aptData, listData, thumbData }) => {
+
+const MiniItem = ({ aptData, listData }) => {
     const { updatedAt, listingId, listerId } = listData;
     const {
         rooms, floor, sqMeters,
@@ -14,22 +16,12 @@ const MiniItem = ({ aptData, listData, thumbData }) => {
         price, mitigator
     } = aptData;
     return (
-        <div>
-            <div className="MiniItem__container">
-                <ImageColumn thumbData={thumbData} />
-                <AddressColumn address={address} type={type} />
-                <StatsColumn rooms={rooms} floor={floor} sqMeters={sqMeters} />
-                <PriceColumn price={price} mitigator={mitigator} updatedAt={updatedAt} />
-            </div>
-            <div>
-                adflgjkahdfkjghs
-                dfjhgskjdhfgkjh
-                kjdfhgkjshdfkjgh
-                kdjfhgkjdhfkjshdfkjg
-                kjdfhgkjahdfkjgshdkjfh
-            </div>
+        <div className="MiniItem__container">
+            <ImageColumn />
+            <AddressColumn address={address} type={type} />
+            <StatsColumn rooms={rooms} floor={floor} sqMeters={sqMeters} />
+            <PriceColumn price={price} mitigator={mitigator} updatedAt={updatedAt} />
         </div>
-
     );
 }
 
