@@ -1,13 +1,24 @@
 import React from 'react';
 import '../../styles/components/SpreadItem.scss';
-import StatsAddressAndPriceColumns from './StatsAddressPriceColumns';
-import ImageColumn from './ImageColumn';
+
+import Image from './Image';
+import Price from './Price';
+import Address from './Address';
+import Stats from './Stats';
+import PhoneNumber from './PhoneNumber';
+
+
 
 const SpreadItem = () => {
     return (
         <div className="SpreadItem">
-            <ImageColumn thumbHeight={10} />
-            <StatsAddressAndPriceColumns />
+            <Image thumbHeight={10} />
+            <div className="contain">
+                <Address />
+                <Price />
+                <Stats />
+                <PhoneNumber />
+            </div>
         </div>
     )
 };

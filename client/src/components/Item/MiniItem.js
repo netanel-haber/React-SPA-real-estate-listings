@@ -1,25 +1,19 @@
-import React, { useContext } from 'react';
 import '../../styles/components/MiniItem.scss';
-import ImageColumn from './ImageColumn';
-import StatsColumn from './StatsColumn';
-import PriceColumn from './PriceColumn';
-import AddressColumn from './AddressColumn';
+
+import React from 'react';
+import Image from './Image';
+import Stats from './Stats';
+import Price from './Price';
+import Address from './Address';
 
 
-
-const MiniItem = ({ aptData, listData }) => {
-    const { updatedAt, listingId, listerId } = listData;
-    const {
-        rooms, floor, sqMeters,
-        address, type,
-        price, mitigator
-    } = aptData;
+const MiniItem = (props) => {
     return (
-        <div className="MiniItem__container">
-            <ImageColumn thumbHeight={5}/>
-            <AddressColumn address={address} type={type} />
-            <StatsColumn rooms={rooms} floor={floor} sqMeters={sqMeters} />
-            <PriceColumn price={price} mitigator={mitigator} updatedAt={updatedAt} />
+        <div className="MiniItem">
+            <Image thumbHeight={5}/>
+            <Address/>
+            <Stats/>
+            <Price/>
         </div>
     );
 }

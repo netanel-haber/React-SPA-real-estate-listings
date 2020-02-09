@@ -1,5 +1,6 @@
-import React, { useContext } from 'react';
 import '../styles/components/Item.scss';
+
+import React from 'react';
 import MiniItem from './Item/MiniItem';
 import SpreadItem from './Item/SpreadItem';
 import ItemContext from '../contexts/ItemContext';
@@ -35,14 +36,13 @@ class Item extends React.Component {
         return (
             <ItemContext.Provider value={{
                 urls: this.state.urls,
-                data
+                listing: data.listing,
+                propertyLevel1: data.property.level_1
             }}>
                 <div className="Item__container" onClick={this.unfold.bind(this)}>
                     {isOpen ?
                         (<SpreadItem />) :
-                        (<MiniItem
-                            aptData={{ ...data.property.level_1 }}
-                            listData={{ ...data.listing }} />)
+                        (<MiniItem />)
                     }
                 </div>
             </ItemContext.Provider>
@@ -50,8 +50,6 @@ class Item extends React.Component {
         );
     }
 }
-
-
 
 
 export default Item;

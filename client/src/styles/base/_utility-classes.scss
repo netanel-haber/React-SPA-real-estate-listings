@@ -7,7 +7,6 @@
   width: 100%;
 }
 
-
 .overlay {
   position: absolute;
   height: 100%;
@@ -17,4 +16,13 @@
   align-items: center;
   justify-content: center;
   z-index: 10;
+}
+
+.overflow-container {
+  overflow: hidden;
+  .overflow {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
 }

@@ -19,7 +19,7 @@ export default {
             type: "דירה", // דירה/פרטי/פרטי קוטג' משרדים
             address: {
                 municipality: "נשר",
-                areaId: "רמות יצחק",
+                area: "רמות יצחק",
                 street: "רחובות הנהר",
                 number: 13,
                 apt: 8

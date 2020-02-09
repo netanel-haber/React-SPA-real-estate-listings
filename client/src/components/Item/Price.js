@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import ItemContext from '../../contexts/ItemContext';
 import ColumnInnerChild from './ColumnInnerChild';
 
 const { HEB_PRICE_NOT_SET, HEB_NIS } = {
@@ -6,7 +7,8 @@ const { HEB_PRICE_NOT_SET, HEB_NIS } = {
     HEB_NIS: "₪"
 };
 
-const PriceColumn = ({ price, mitigator, updatedAt }) => {
+const Price = () => {
+    const { propertyLevel1: { price, mitigator }, listing: { updatedAt } } = useContext(ItemContext);
     const title = price ? `${price} ${HEB_NIS}` : HEB_PRICE_NOT_SET,
         subtitle = mitigator || (updatedAt);
     return (
@@ -16,4 +18,4 @@ const PriceColumn = ({ price, mitigator, updatedAt }) => {
     )
 };
 
-export default PriceColumn;
+export default Price;

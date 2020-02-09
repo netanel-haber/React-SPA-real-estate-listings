@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import ItemContext from '../../contexts/ItemContext';
 import ColumnInnerChild from './ColumnInnerChild';
 
 
@@ -9,7 +10,8 @@ const { HEB_ROOMS, HEB_FLOOR, HEB_SQ_M } = {
 }
 
 
-const StatsColumn = ({ rooms, floor, sqMeters }) => {
+const Stats = (props) => {
+    const { propertyLevel1: {rooms, floor, sqMeters} } = useContext(ItemContext);
     return (
         <div className="StatsColumn">
             <ColumnInnerChild title={rooms} subtitle={HEB_ROOMS} />
@@ -19,4 +21,4 @@ const StatsColumn = ({ rooms, floor, sqMeters }) => {
     );
 }
 
-export default StatsColumn;
+export default Stats;

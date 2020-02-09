@@ -1,0 +1,62 @@
+@import "../base/settings";
+
+.TopTab {
+  display: flex;
+  background-color: $item-level-1-color;
+  border-radius: 2px;
+  border: 1px solid $lightest-gray;
+  justify-content: space-between;
+  width: 100%;
+}
+
+@mixin text-child($text-align: center, $subtitle-color: $pretty-gray) {
+  & .text-child {
+    text-align: $text-align;
+    & > div + div {
+      font-size: $s-size;
+      color: $subtitle-color;
+    }
+  }
+}
+
+.column {
+  width: auto;
+  height: auto;
+  display: flex;
+  border-width: 0 0.5px;
+  border-color: $lightest-gray;
+  border-style: solid;
+  align-items: center;
+  white-space: nowrap;
+  & > div {
+    padding: $s-size;
+  }
+}
+
+.ImageColumn {
+  @extend .column;
+  border: 0;
+}
+.AddressColumn {
+  @extend .column;
+  @include text-child(right, $def-color);
+  border-right: 0;
+  flex-grow: 1;
+  overflow: hidden;
+}
+.PriceColumn {
+  @extend .column;
+  @include text-child(left);
+  justify-content: flex-end;
+}
+.StatsColumn {
+  @extend .column;
+  @include text-child;
+}
+
+.PhoneNumberColumn {
+  @extend .column;
+  border: 0;
+  align-items: flex-end;
+  justify-content: flex-end;
+}

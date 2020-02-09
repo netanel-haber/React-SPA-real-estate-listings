@@ -7,7 +7,7 @@ function onClick(e) {
     alert("hello!");
 }
 
-const ImageColumn = ({ thumbHeight }) => {
+const Image = ({ thumbHeight }) => {
     const { urls } = useContext(ItemContext);
     return (
         <div className="ImageColumn" onClick={onClick}>
@@ -21,4 +21,4 @@ const ImageColumn = ({ thumbHeight }) => {
 };
 
 
-export default ImageColumn;
+export default Image;

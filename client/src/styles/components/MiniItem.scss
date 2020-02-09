@@ -1,69 +1,9 @@
 @import "../base/settings";
+@import '../base/utility-classes';
+@import './TopTab.scss';
 
-.MiniItem__container {
-  display: flex;
-  background-color: $item-level-1-color;
-  border-radius: 2px;
-  border: 1px solid $lightest-gray;
-  align-items: stretch;
-  width: 100%;
+
+.MiniItem {
+  @extend .TopTab;
 }
 
-.column {
-  width: auto;
-  height: auto;
-  display: flex;
-  border-width: 0 0.5px;
-  border-color: $lightest-gray;
-  border-style: solid;
-  align-items: center;
-  white-space: nowrap;
-  & > div {
-    padding: $s-size;
-  }
-}
-
-@mixin text-child($text-align: center, $subtitle-color: $pretty-gray) {
-  & .text-child {
-    text-align: $text-align;
-    & > div + div {
-      font-size: $s-size;
-      color: $subtitle-color;
-    }
-  }
-}
-
-.ImageColumn {
-  @extend .column;
-  border: 0;
-}
-
-.AddressColumn {
-  @extend .column;
-  border-right: 0;
-  @include text-child(right, $def-color);
-  flex-grow: 1;
-  overflow: hidden;
-}
-
-.StatsColumn {
-  @extend .column;
-  @include text-child;
-}
-
-.PriceColumn {
-  @extend .column;
-  @include text-child(left);
-  & > div {
-    padding-right: $xl-size;
-  }
-}
-
-.overflow-container {
-  overflow: hidden;
-  .overflow {
-    overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-  }
-}

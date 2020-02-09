@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
-import StatsColumn from './StatsColumn';
-import AddressColumn from './AddressColumn';
-import PriceColumn from './PriceColumn';
+import Stats from './Stats';
+import Address from './Address';
+import Price from './Price';
 import ItemContext from '../../contexts/ItemContext';
 import phone from '../../icons/phone';
 import '../../styles/components/SpreadItem.scss';
@@ -11,21 +11,20 @@ const { showPhone } = {
 };
 
 const StatsAddressAndPriceColumns = (props) => {
-    const { data } = useContext(ItemContext);
-    const { updatedAt } = data.listing;
+    const { propertyLevel1, listing: { updatedAt } } = useContext(ItemContext);
     const {
         rooms, floor, sqMeters,
         address, type,
         price, mitigator
-    } = data.property.level_1;
+    } = propertyLevel1;
     return (
         <div className="StatsAddressAndPriceColumns">
             <div className="upper">
-                <AddressColumn address={address} type={type} />
-                <PriceColumn price={price} mitigator={mitigator} updatedAt={updatedAt} />
+                <Address address={address} type={type} />
+                <Price price={price} mitigator={mitigator} updatedAt={updatedAt} />
             </div>
             <div className="lower">
-                <StatsColumn rooms={rooms} floor={floor} sqMeters={sqMeters} />
+                <Stats rooms={rooms} floor={floor} sqMeters={sqMeters} />
                 <button className="show-phone-number">
                     <img width="15px" height="15px" src={phone}></img>
                     <div>
