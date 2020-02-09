@@ -9,7 +9,7 @@
   width: 100%;
 }
 
-@mixin column {
+.column {
   width: auto;
   height: auto;
   display: flex;
@@ -34,12 +34,12 @@
 }
 
 .ImageColumn {
-  @include column;
+  @extend .column;
   border: 0;
 }
 
 .AddressColumn {
-  @include column;
+  @extend .column;
   border-right: 0;
   @include text-child(right, $def-color);
   flex-grow: 1;
@@ -47,12 +47,12 @@
 }
 
 .StatsColumn {
-  @include column;
+  @extend .column;
   @include text-child;
 }
 
 .PriceColumn {
-  @include column;
+  @extend .column;
   @include text-child(left);
   & > div {
     padding-right: $xl-size;

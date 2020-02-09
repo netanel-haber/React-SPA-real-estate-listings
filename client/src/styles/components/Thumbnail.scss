@@ -1,14 +1,9 @@
 @import "../base/settings";
 
-$thumbnailWidth: 8rem;
-$thumbnailHeight: ($thumbnailWidth * 5/8);
-
 .thumbnail-container {
   padding: 0;
   overflow: hidden;
   border-radius: 3px;
-  width: $thumbnailWidth;
-  height: $thumbnailHeight;
   position: relative;
   .css-0 {
     background-color: darken($item-level-1-color, 5%);

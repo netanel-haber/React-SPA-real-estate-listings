@@ -1,2 +1,53 @@
 @import "../base/settings";
+@import "./MiniItem.scss";
 
+.SpreadItem {
+  @extend .MiniItem__container;
+  .column {
+    > div {
+      padding: 7px;
+    }
+  }
+  div {
+    border: 0;
+  }
+  .PriceColumn {
+    justify-content: flex-end;
+  }
+  .AddressColumn {
+    > div {
+    }
+  }
+  .StatsAddressAndPriceColumns {
+    display: flex;
+    flex-grow: 1;
+    flex-direction: column;
+    justify-content: space-between;
+    > div {
+      display: flex;
+      justify-content: space-between;
+    }
+    > .lower {
+      flex-wrap: wrap;
+      > .show-phone-number {
+        font-size: $s-size;
+        color: white;
+        margin: 10px;
+        border: 0;
+        border-radius: 3px;
+        padding: 0 25px;
+        background-color: $button-green;
+        display: flex;
+        align-items: center;
+        img {
+          height: fit-content;
+          padding-left: 7px;
+          filter: invert(100%);
+        }
+        &:hover {
+          background-color: darken($button-green, 7%);
+        }
+      }
+    }
+  }
+}

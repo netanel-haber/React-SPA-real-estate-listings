@@ -1,14 +1,14 @@
 import React, { useContext } from 'react';
 import '../styles/components/Item.scss';
-import MiniItem from './MiniItem/MiniItem';
-import SpreadItem from './SpreadItem';
+import MiniItem from './Item/MiniItem';
+import SpreadItem from './Item/SpreadItem';
 import ItemContext from '../contexts/ItemContext';
 
 class Item extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            isOpen: false,
+            isOpen: true,
             data: props.apt,
             urls: [],
         };
@@ -33,10 +33,13 @@ class Item extends React.Component {
     render() {
         const { isOpen, data } = this.state;
         return (
-            <ItemContext.Provider value={{ data: this.state.data, urls: this.state.urls }}>
+            <ItemContext.Provider value={{
+                urls: this.state.urls,
+                data
+            }}>
                 <div className="Item__container" onClick={this.unfold.bind(this)}>
                     {isOpen ?
-                        (<SpreadItem {...data} />) :
+                        (<SpreadItem />) :
                         (<MiniItem
                             aptData={{ ...data.property.level_1 }}
                             listData={{ ...data.listing }} />)
