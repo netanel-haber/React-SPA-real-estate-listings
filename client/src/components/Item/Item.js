@@ -1,9 +1,10 @@
-import '../styles/components/Item.scss';
+import '../../styles/components/Item.scss';
 
 import React from 'react';
-import MiniItem from './Item/MiniItem';
-import SpreadItem from './Item/SpreadItem';
-import ItemContext from '../contexts/ItemContext';
+import MiniItem from './MiniItem';
+import SpreadItem from './SpreadItem';
+import ItemContext from '../../contexts/ItemContext';
+import { getPicUrls } from '../../s3';
 
 class Item extends React.Component {
     constructor(props) {
@@ -15,15 +16,8 @@ class Item extends React.Component {
         };
     }
     componentDidMount() {
-        fetch('/api/get-pic-urls', {
-            body: JSON.stringify(this.state.data.listing.picKeys),
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            method: 'POST'
-        })
-            .then(res => res.json())
-            .then(urls => { this.setState(() => ({ urls })) });
+        getPicUrls(this.state.data.listing.picKeys)
+            .then(urls => { this.setState(() => ({ urls })) })
     }
     toggleSize = () => {
         this.setState((prevState) => ({ isOpen: !prevState.isOpen }));

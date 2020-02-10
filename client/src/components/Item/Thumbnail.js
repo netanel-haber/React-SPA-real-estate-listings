@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import '../styles/components/Thumbnail.scss';
+import '../../styles/components/Thumbnail.scss';
 import PulseLoader from "react-spinners/PulseLoader";
 
 const rem = (val) => val + "rem";

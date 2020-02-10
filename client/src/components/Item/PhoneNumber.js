@@ -1,6 +1,4 @@
 import React, { useContext } from 'react';
-import ItemContext from '../../contexts/ItemContext';
-import phone from '../../icons/phone';
 
 const { showPhone } = {
     showPhone: "הצג מספר טלפון"
@@ -11,7 +9,7 @@ const PhoneNumber = () => {
         <div className="PhoneNumberColumn">
             <div>
                 <button className="show-phone-number-button">
-                    <img width="15px" height="15px" src={phone}></img>
+                    <img width="15px" height="15px" src="/icons/phone.png"></img>
                     <div>
                         {showPhone}
                     </div>
