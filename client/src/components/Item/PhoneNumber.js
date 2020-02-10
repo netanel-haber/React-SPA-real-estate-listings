@@ -1,19 +1,31 @@
-import React, { useContext } from 'react';
+import React, { useState, useEffect } from 'react';
+import PhoneNumberExpansion from './PhoneNumberExpansion';
 
-const { showPhone } = {
-    showPhone: "הצג מספר טלפון"
+
+const { heb_contact } = {
+    heb_contact: "פרטי איש קשר"
 };
 
+
 const PhoneNumber = () => {
+    const [isExpanded, expand] = useState(false);
+   
+    const onClick = (e) => {
+        e.stopPropagation();
+        expand(!isExpanded);
+    }
     return (
         <div className="PhoneNumberColumn">
-            <div>
-                <button className="show-phone-number-button">
-                    <img width="15px" height="15px" src="/icons/phone.png"></img>
-                    <div>
-                        {showPhone}
+            <div onClick={onClick}>
+                <div className="cont">
+                    <div className="show-phone-number-button">
+                        <img src="/icons/phone.png"></img>
+                        <div>
+                            {heb_contact}
+                        </div>
                     </div>
-                </button>
+                    <PhoneNumberExpansion isExpanded={isExpanded} />
+                </div>
             </div>
         </div>
     )

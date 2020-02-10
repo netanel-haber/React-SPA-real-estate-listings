@@ -20,20 +20,42 @@
   }
 }
 
+.cont {
+  position: relative;
+  font-size: $s-size*1.1;
+}
+
+
+.expansion {
+  position: absolute;
+  overflow: hidden;
+  height: fit-content;
+  transition: max-height 0.3s ease-out;
+  box-shadow: rgba(0, 0, 0, 0.3) 0px 2px 4px 0px;
+  width: 100%;
+  .child {
+    
+    text-align: center;
+    border-bottom: 1px solid #d6d6d6;
+    background-color: $whiter-than-body-white;
+    padding: $s-size*0.8;
+  }
+}
+
 .show-phone-number-button {
-  justify-content: flex-end;
-  font-size: $s-size;
-  color: white;
-  padding: $s-size * 0.75;
-  border: 0;
-  border-radius: 3px;
-  background-color: $button-green;
   display: flex;
   align-items: center;
-  height: fit-content;
+  justify-content: center;
+  border-radius: 2px;
+  padding: $s-size * 0.75;
+  color: white;
+  border: 0;
+  background-color: $button-green;
   img {
     padding-left: 7px;
     filter: invert(100%);
+    height: 1.35rem;
+    width: 1.35rem;
   }
   &:hover {
     background-color: darken($button-green, 7%);
