@@ -27,6 +27,16 @@ client.close();
 //         });
 // }
 
+// const nadlan = mongoose.createConnection(uri, {
+//     useNewUrlParser: true,
+//     useUnifiedTopology: true
+// });
+// nadlan.on('error', console.error.bind(console, 'connection error:'));
+// nadlan.once('open', function () {
+//     console.log("were connected");
+// });
+
+
 
 // module.exports = {
 //     find: connect
