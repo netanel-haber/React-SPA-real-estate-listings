@@ -22,7 +22,7 @@ module.exports = new Schema({
         ITRoom: Boolean,
         highCeiling: Boolean,
         loadingRamp: Boolean,
-        underGround: Boolean,
+        underground: Boolean,
         kitchenette: Boolean,
         alarm: Boolean,
     })

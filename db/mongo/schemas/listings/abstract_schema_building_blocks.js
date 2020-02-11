@@ -52,7 +52,6 @@ const level1SchemaFactory = (merge, types, isResidential = true) => {
 
 
 
-
 const level2SchemaFactory = (merge = {}, isResidential = true) => {
     let schema = {
         entrance: String,
@@ -77,10 +76,7 @@ const level3SchemaFactory = (merge = {}) => new Schema({
     handicappedAccessible: Boolean,
     mamad: Boolean,
     storage: Boolean,
-    furniture: {
-        furniture: Boolean,
-        desc: String,
-    },
+    furnitureDesc: String,
     ...merge
 })
 

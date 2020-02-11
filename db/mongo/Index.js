@@ -10,14 +10,14 @@ const connect = async () => {
             useUnifiedTopology: true
         });
         console.log("connected");
-        const
-            Forsale = nadlan.model('Forsale', require('./schemas/listings/Forsale')),
-            Rent = nadlan.model('Rent', require('./schemas/listings/Rent')),
-            Commercial = nadlan.model('Commercial', require('./schemas/listings/Commercial')),
-            Roommates = nadlan.model('Roommates', require('./schemas/listings/Roommates')),
-            Listers = nadlan.model('Listers', require('./schemas/users/Listers')),
-            Mitigators = nadlan.model('Mitigators', require('./schemas/users/Mitigators'));
-        return { Forsale, Rent, Commercial, Roommates, Listers, Mitigators }
+        return {
+            Forsale: nadlan.model('Forsale', require('./schemas/listings/Forsale')),
+            Rent: nadlan.model('Rent', require('./schemas/listings/Rent')),
+            Commercial: nadlan.model('Commercial', require('./schemas/listings/Commercial')),
+            Roommates: nadlan.model('Roommates', require('./schemas/listings/Roommates')),
+            Listers: nadlan.model('Listers', require('./schemas/users/Listers')),
+            Mitigators: nadlan.model('Mitigators', require('./schemas/users/MitigatingCompanies'))
+        }
     }
     catch (ex) {
         console.log(ex);
