@@ -1,18 +1,13 @@
-require('dotenv').config();
 const { nadlan } = require('./connection');
 
-const models =
-{
-    ForsaleListing: nadlan.model('ForsaleListing', require('./schemas/listings/Forsale')),
-    RentListing: nadlan.model('RentListing', require('./schemas/listings/Rent')),
-    CommercialListing: nadlan.model('CommercialListings', require('./schemas/listings/Commercial')),
-    RoommateListing: nadlan.model('RoommateListing', require('./schemas/listings/Roommates')),
-    Lister: nadlan.model('Lister', require('./schemas/users/Listers')),
-    MitigatingCompany: nadlan.model('MitigatingCompany', require('./schemas/users/MitigatingCompanies'))
+module.exports = {
+    ForsaleListing: nadlan.model('ForsaleListing', require('./schemas/listings/ForsaleListing')),
+    RentListing: nadlan.model('RentListing', require('./schemas/listings/RentListing')),
+    CommercialListing: nadlan.model('CommercialListings', require('./schemas/listings/CommercialListing')),
+    RoommateListing: nadlan.model('RoommateListing', require('./schemas/listings/RoommatesListing')),
+    Lister: nadlan.model('Lister', require('./schemas/users/Lister')),
+    MitigatingCompany: nadlan.model('MitigatingCompany', require('./schemas/users/MitigatingCompany'))
 }
-
-
-module.exports = models;
 
 
 
