@@ -10,13 +10,13 @@ class Item extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            isOpen: true,
+            isOpen: false,
             data: props.apt,
             urls: [],
         };
     }
     componentDidMount() {
-        getPicUrls(this.state.data.listing.picKeys)
+        getPicUrls(this.state.data.listing.pictureKeys)
             .then(urls => { this.setState(() => ({ urls })) })
     }
     toggleSize = () => {
@@ -31,7 +31,7 @@ class Item extends React.Component {
             <ItemContext.Provider value={{
                 urls: this.state.urls,
                 listing: data.listing,
-                propertyLevel1: data.property.level_1
+                propertyLevel1: data.level1
             }}>
                 <div className="Item__container" onClick={this.unfold.bind(this)}>
                     {isOpen ?
@@ -44,6 +44,13 @@ class Item extends React.Component {
         );
     }
 }
+
+
+// const Item = ()=>{
+//     return (
+
+//     )
+// }
 
 
 export default Item;

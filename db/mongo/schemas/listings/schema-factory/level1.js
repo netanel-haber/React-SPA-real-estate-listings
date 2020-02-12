@@ -14,7 +14,6 @@ const level1SchemaFactory = (merge, types, isResidential = true) => {
         floorsInBuilding: Number,
         sqMeters: Number,
         price: Number,
-        rooms: Number,
         type: {
             type: String,
             enum: types
