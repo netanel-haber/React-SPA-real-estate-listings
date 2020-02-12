@@ -1,11 +1,18 @@
 const Schema = require('mongoose').Schema;
 const { upkeep } = require('./validation');
+const { nadlan } = require('../../connection');
+
 
 const listingMetadata = {
-    mitigator: Boolean,
+    mitigator: {
+        type: Schema.Types.ObjectId,
+        ref: 'MitigatingCompanies'
+    },
     listerId: {
         type: Schema.Types.ObjectId,
-        ref: '',
+        ref: 'Listers',
+        validate: [(val) => nadlan.models.Lister.findById(val),
+            'lister id does not seem to exist'],
         required: true,
     },
     createdAt: {
@@ -19,7 +26,6 @@ const listingMetadata = {
     deletedAt: Date,
     pictureKeys: [String]
 };
-
 
 
 const addressSchema = new Schema({

@@ -1,3 +1,4 @@
+@import "./settings";
 //global PulseLoader class
 .css-0 {
   display: flex;
@@ -5,6 +6,9 @@
   justify-content: center;
   height: 100%;
   width: 100%;
+  > div {
+    background-color: lighten($yad2-orange, 10%);
+  }
 }
 
 .overlay {

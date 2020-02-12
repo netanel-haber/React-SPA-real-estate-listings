@@ -41,3 +41,19 @@ client.close();
 // module.exports = {
 //     find: connect
 // };
+
+
+
+const _id = mongoose.Types.ObjectId();
+const lister = { _id };
+new Lister(lister).save()
+    .then(heyo => {
+        console.log(heyo);
+    })
+    .then(() => {
+        const obj = require('./mockdata/forsale');
+        return new ForsaleListing({ ...obj, listerId: mongoose.Types.ObjectId() }).save()
+    })
+    .then((heyo) => {
+        console.log(heyo)
+    })
