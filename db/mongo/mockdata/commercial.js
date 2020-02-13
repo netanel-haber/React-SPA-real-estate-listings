@@ -6,7 +6,7 @@ module.exports = {
             'property-images/6/46609425-8720-42d3-8907-4d0a2a4fea24.1580839529483.jpeg'],
     },
     level1: {
-        type: "דירה",
+        type: "אולמות",
         floor: 3,
         floorsInBuilding: 5,
         sqMeters: 100,

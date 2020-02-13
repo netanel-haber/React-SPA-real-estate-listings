@@ -1,8 +1,10 @@
 import React from 'react';
+import ItemList from '../ItemList';
 
 const ForSale = (props) => (
     <div>
-        {props.date}
+       ForSale
+       <ItemList type="forsale"/>
     </div>
 )
 

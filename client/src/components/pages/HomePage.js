@@ -4,7 +4,6 @@ import ItemList from '../ItemList';
 const HomePage = (props) => (
     <div>
         HomePage
-        <ItemList />
     </div>
 );
 

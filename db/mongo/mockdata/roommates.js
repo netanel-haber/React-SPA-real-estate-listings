@@ -10,6 +10,7 @@ module.exports = {
         floor: 3,
         floorsInBuilding: 5,
         sqMeters: 100,
+        roommates: 4,
         price: 250000,
         rooms: 34,
         address: {

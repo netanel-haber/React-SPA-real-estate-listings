@@ -5,8 +5,8 @@ module.exports = {
     MitigatingCompany: nadlan.model('MitigatingCompany', require('./schemas/users/MitigatingCompany')),
     ForsaleListing: nadlan.model('ForsaleListing', require('./schemas/listings/ForsaleListing')),
     RentListing: nadlan.model('RentListing', require('./schemas/listings/RentListing')),
-    CommercialListing: nadlan.model('CommercialListings', require('./schemas/listings/CommercialListing')),
-    RoommateListing: nadlan.model('RoommateListing', require('./schemas/listings/RoommatesListing'))
+    CommercialListing: nadlan.model('CommercialListing', require('./schemas/listings/CommercialListing')),
+    RoommatesListing: nadlan.model('RoommatesListing', require('./schemas/listings/RoommatesListing'))
 }
 
 

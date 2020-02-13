@@ -1,12 +1,24 @@
-const { ForsaleListing, RentListing, CommercialListing, RoommateListing, Lister, MitigatingCompany } = require('../db/mongo/Index');
-const mongoose = require('mongoose');
-const fs = require('../db/mongo/mockdata/forsale');
+const
+    forsale = require('../db/mongo/mockdata/forsale'),
+    rent = require('../db/mongo/mockdata/rent'),
+    commercial = require('../db/mongo/mockdata/commercial'),
+    roommmates = require('../db/mongo/mockdata/roommates');
+
+const {
+    ForsaleListing,
+    RentListing,
+    CommercialListing,
+    RoommatesListing
+} = require('../db/mongo/index');
 
 for (let i = 0; i < 10; i++) {
-    new ForsaleListing(fs).save()
-        .then(console.log)
-        .catch(console.error)
+    new ForsaleListing(forsale).save().then(console.log).catch(console.error);
+    new RentListing(rent).save().then(console.log).catch(console.error);
+    new CommercialListing(commercial).save().then(console.log).catch(console.error);
+    new RoommatesListing(roommmates).save().then(console.log).catch(console.error);
 }
+
+
 
 
 

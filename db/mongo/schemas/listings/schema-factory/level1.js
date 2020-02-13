@@ -1,12 +1,6 @@
 const { Schema } = require('mongoose');
 
-const addressSchema = new Schema({
-    municipality: String,
-    areaId: Number,
-    street: String,
-    number: Number,
-    apt: Number,
-});
+const addressSchema = require('../../addressSchema');
 const level1SchemaFactory = (merge, types, isResidential = true) => {
     let schema = {
         address: addressSchema,
