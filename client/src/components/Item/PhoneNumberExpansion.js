@@ -5,7 +5,7 @@ const PhoneNumberExpansion = ({ isExpanded = false }) => {
     const { listing } = useContext(ItemContext);
     
     return (
-        <div className="expansion" style={{ maxHeight: isExpanded ? "200px" : "0" }}>
+        <div className="PhoneNumberExpansion" style={{ maxHeight: isExpanded ? "200px" : "0" }}>
             <div className="child">
                 אתי
             </div >

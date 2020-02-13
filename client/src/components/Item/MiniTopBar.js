@@ -7,13 +7,13 @@ import Price from './Price';
 import Address from './Address';
 
 
-const MiniItem = (props) => {
+const MiniItem = ({ display }) => {
     return (
         <div className="MiniItem">
-            <Image thumbHeight={5}/>
-            <Address/>
-            <Stats/>
-            <Price/>
+            <Image thumbHeight={5} />
+            <Address />
+            <Stats />
+            <Price />
         </div>
     );
 }

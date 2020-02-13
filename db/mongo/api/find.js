@@ -8,7 +8,7 @@ module.exports = {
         let Model = modelOf(type);
         return await Model.find({}, topLevel, { sort: { date: 1 } })
     },
-    async getRest(type, id) {
+    async getBottomLevel(type, id) {
         let Model = modelOf(type);
         return await Model.findById(id, bottomLevel, { sort: { date: 1 } })
     }

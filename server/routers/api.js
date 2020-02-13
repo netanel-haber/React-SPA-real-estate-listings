@@ -6,9 +6,9 @@ apiRouter.get('/test', (req, res) => {
     res.send("testing api complete");
 });
 
-apiRouter.use('/s3', s3Router);
+apiRouter.use('/pics', s3Router);
 
-apiRouter.use('/mongo', mongoRouter);
+apiRouter.use('/data', mongoRouter);
 
 
 module.exports = apiRouter;

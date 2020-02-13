@@ -26,7 +26,8 @@
 }
 
 
-.expansion {
+.PhoneNumberExpansion {
+  z-index: 100;
   position: absolute;
   overflow: hidden;
   height: fit-content;

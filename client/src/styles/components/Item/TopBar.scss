@@ -3,8 +3,6 @@
 .TopTab {
   display: flex;
   background-color: $item-level-1-color;
-  border-radius: 2px;
-  border: 1px solid $lightest-gray;
   justify-content: space-between;
   width: 100%;
 }
@@ -22,7 +20,7 @@
 .column {
   width: auto;
   height: auto;
-  display: flex;
+  display: flex; 
   border-width: 0 0.5px;
   border-color: $lightest-gray;
   border-style: solid;
@@ -48,6 +46,7 @@
   @extend .column;
   @include text-child(left);
   justify-content: flex-end;
+  border-left: 0;
 }
 .StatsColumn {
   @extend .column;

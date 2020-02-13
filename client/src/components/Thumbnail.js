@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import '../styles/components/Thumbnail.scss';
 import PulseLoader from "react-spinners/PulseLoader";
 

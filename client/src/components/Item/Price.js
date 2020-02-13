@@ -12,7 +12,7 @@ const toShekel = x => x.toLocaleString() + " ₪";
 
 
 const Price = () => {
-    const { propertyLevel1: { price, mitigator }, listing: { updatedAt } } = useContext(ItemContext);
+    const { level1: { price, mitigator }, listing: { updatedAt } } = useContext(ItemContext);
     const title = price ? toShekel(price) : HEB_PRICE_NOT_SET;
     const subtitle = mitigator || (isToday(updatedAt) || HEB_UPDATED_TODAY);
     return (

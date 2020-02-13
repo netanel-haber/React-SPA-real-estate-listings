@@ -1,6 +1,6 @@
 function getPicUrls(keys) {
     const keyArr = JSON.stringify(keys);
-    return fetch('/api/s3/get-pic-urls', {
+    return fetch('/api/pics/get-pic-urls', {
         body: keyArr,
         headers: {
             'Content-Type': 'application/json',

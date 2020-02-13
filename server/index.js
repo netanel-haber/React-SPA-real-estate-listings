@@ -1,5 +1,5 @@
 require('dotenv').config();
-const log = require('./chalk');
+const c = require('chalk');
 const express = require('express');
 const app = express();
 
@@ -13,7 +13,7 @@ app.use('/icons', express.static(__dirname + '/icons'));
 
 const { PORT } = process.env;
 app.listen(PORT, () => {
-    log(`The server is running on port ${PORT}`);
+    console.log(c.bgGreen.gray(`The server is running on port ${PORT}`));
 });
 
 

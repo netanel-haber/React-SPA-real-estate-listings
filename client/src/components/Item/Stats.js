@@ -11,7 +11,7 @@ const { HEB_ROOMS, HEB_FLOOR, HEB_SQ_M, HEB_ROOMMATES } = {
 }
 
 const Stats = (props) => {
-    const { propertyLevel1: { rooms, floor, floorsInBuilding, sqMeters, roommates } } = useContext(ItemContext);
+    const { level1: { rooms, floor, floorsInBuilding, sqMeters, roommates } } = useContext(ItemContext);
     return (
         <div className="StatsColumn">
             {rooms && <ColumnInnerChild title={rooms} subtitle={HEB_ROOMS} />}

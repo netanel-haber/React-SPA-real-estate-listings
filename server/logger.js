@@ -1,6 +1,16 @@
-const log = require('./chalk');
+const { get, post } = require('../chalks');
+
 
 module.exports = (req, res, next) => {
-    log(`url:${req.originalUrl}. method:${req.method}`,"blue","bgWhite");
+    let presentation;
+    switch (req.method) {
+        case "GET":
+            presentation = get
+            break;
+        case "POST":
+            presentation = post
+            break;
+    }
+    console.log(presentation(`${req.method} ${req.originalUrl}`));
     next();
 };
