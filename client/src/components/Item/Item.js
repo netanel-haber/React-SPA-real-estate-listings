@@ -1,56 +1,38 @@
-import '../../styles/components/Item.scss';
+import '../../styles/components/Item/Item.scss';
 
-import React from 'react';
-import MiniItem from './MiniItem';
-import SpreadItem from './SpreadItem';
+import React, { useState, useEffect } from 'react';
+import MiniItem from './MiniTopBar';
+import SpreadItem from './SpreadTopBar';
+import Rest from './Rest'
 import ItemContext from '../../contexts/ItemContext';
 import { getPicUrls } from '../../s3';
 
-class Item extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            isOpen: false,
-            data: props.apt,
-            urls: [],
-        };
-    }
-    componentDidMount() {
-        getPicUrls(this.state.data.listing.pictureKeys)
-            .then(urls => { this.setState(() => ({ urls })) })
-    }
-    toggleSize = () => {
-        this.setState((prevState) => ({ isOpen: !prevState.isOpen }));
-    }
-    unfold(e) {
-        this.setState((prevState) => ({ isOpen: !prevState.isOpen }));
-    }
-    render() {
-        const { isOpen, data } = this.state;
-        return (
-            <ItemContext.Provider value={{
-                urls: this.state.urls,
-                listing: data.listing,
-                propertyLevel1: data.level1
-            }}>
-                <div className="Item__container" onClick={this.unfold.bind(this)}>
-                    {isOpen ?
-                        (<SpreadItem />) :
-                        (<MiniItem />)
-                    }
-                </div>
-            </ItemContext.Provider>
+const Item = ({ topLevel: { listing, level1, } }) => {
+    const [isExpanded, toggleExpansion] = useState(false);
+    const [urls, updateUrls] = useState([]);
 
-        );
-    }
+    useEffect(() => {
+        getPicUrls(listing.pictureKeys).then(updateUrls).catch(console.error)
+    }, []);
+
+    return (
+        <ItemContext.Provider value={{
+            urls,
+            propertyLevel1: level1,
+            listing: listing
+        }}>
+            <div className="Item__container" onClick={() => { toggleExpansion(!isExpanded) }}>
+                {isExpanded ?
+                    (<>
+                        <SpreadItem />
+                        <Rest />
+                    </>) :
+                    (<MiniItem />)
+                }
+            </div>
+        </ItemContext.Provider>
+    );
 }
-
-
-// const Item = ()=>{
-//     return (
-
-//     )
-// }
 
 
 export default Item;

@@ -1,0 +1,9 @@
+@import "../../base/settings";
+@import '../../base/utility-classes';
+@import './TopBar.scss';
+
+
+.MiniItem {
+  @extend .TopTab;
+}
+

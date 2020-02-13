@@ -1,10 +1,14 @@
 const { ForsaleListing, RentListing, CommercialListing, RoommatesListing: RoommateListing, Lister, MitigatingCompany } = require('../../db/mongo');
 const mongoRouter = require('express').Router();
-const { getItems } = require('../../db/mongo/api/find');
+const { getTopLevel, getBottomLevel } = require('../../db/mongo/api/find');
 
 
 mongoRouter.get('/:type', async (req, res) => {
-    res.json(await getItems(req.params.type));
+    res.json(await getTopLevel(req.params.type, ''));
+})
+
+mongoRouter.get('/:type/:id/rest', async (req, res) => {
+    res.json(await getBottomLevel(req.params.type, ''));
 })
 
 

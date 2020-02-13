@@ -11,7 +11,7 @@ const ItemList = ({ type }) => {
     }, []);
     return (
         <div className="ItemList__container">
-            {list.map(itm => <Item apt={itm} key={itm._id} />)}
+            {list.map(itm => <Item topLevel={itm} key={itm._id} />)}
         </div>
     )
 }

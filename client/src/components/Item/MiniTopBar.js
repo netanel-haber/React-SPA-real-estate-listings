@@ -1,4 +1,4 @@
-import '../../styles/components/MiniItem.scss';
+import '../../styles/components/Item/MiniTopBar.scss';
 
 import React from 'react';
 import Image from './Image';

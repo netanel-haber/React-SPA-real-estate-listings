@@ -1,6 +1,6 @@
-@import "../base/settings";
-@import "./TopTab.scss";
-@import "../base//utility-classes";
+@import "../../base/settings";
+@import "./TopBar.scss";
+@import "../../base/utility-classes";
 
 .SpreadItem {
   @extend .TopTab;

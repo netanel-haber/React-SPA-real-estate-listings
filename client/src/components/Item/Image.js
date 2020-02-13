@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import ItemContext from '../../contexts/ItemContext';
-import Pill from './Pill';
-import Thumbnail from './Thumbnail';
+import Pill from '../Pill';
+import Thumbnail from '../Thumbnail';
 
 function onClick(e) {
     alert("hello!");
