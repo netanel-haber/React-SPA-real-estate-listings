@@ -13,7 +13,7 @@ const Image = ({ thumbHeight }) => {
         <div className="ImageColumn" onClick={onClick}>
             <div className="ColumnChild">
                 <Thumbnail height={thumbHeight} url={urls[0]}>
-                    <Pill rootWidth="4rem" fontSize="1rem" text={urls.length + "+"} />
+                    <Pill rootWidth="4rem" fontSize="1rem" text={urls.length-1 + "+"} />
                 </Thumbnail>
             </div>
         </div>

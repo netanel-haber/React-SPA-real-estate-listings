@@ -1,3 +1,5 @@
+const { isEmail, isMobilePhone } = require('validator');
+
 module.exports = {
     email: {
         type: String,
