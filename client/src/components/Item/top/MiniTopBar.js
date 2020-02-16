@@ -1,4 +1,4 @@
-import '../../styles/components/Item/MiniTopBar.scss';
+import '../../../styles/components/Item/MiniTopBar.scss';
 
 import React from 'react';
 import Image from './Image';
@@ -7,9 +7,9 @@ import Price from './Price';
 import Address from './Address';
 
 
-const MiniItem = ({ display }) => {
+const MiniTopBar = ({ display }) => {
     return (
-        <div className="MiniItem">
+        <div className="MiniItem" style={{display}}>
             <Image thumbHeight={5} />
             <Address />
             <Stats />
@@ -18,7 +18,7 @@ const MiniItem = ({ display }) => {
     );
 }
 
-export default MiniItem;
+export default MiniTopBar;
 
 
 
