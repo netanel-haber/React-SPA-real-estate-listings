@@ -1,0 +1,10 @@
+@import '../../base/settings';
+
+.Item__Footer {
+    display: flex;
+    font-size: $s-size*0.9;
+    padding: $s-size;
+    align-items: center;
+    // flex-direction: reverse;
+    justify-content: flex-end;
+}

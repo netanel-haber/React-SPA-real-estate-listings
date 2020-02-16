@@ -1,0 +1,16 @@
+@import '../../base/settings';
+
+.Item-level2-3 {
+  display: flex;
+  flex-direction: row-reverse;
+}
+
+.Item-level2-3-data {
+  overflow: hidden;
+  flex: 0 0 70%;
+}
+
+.Item-level2-3-ads {
+  background-color: $grayish;
+  flex: 0 0 30%;
+}

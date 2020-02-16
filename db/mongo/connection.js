@@ -1,5 +1,6 @@
 require('dotenv').config();
 const { success } = require('../../chalks');
+
 const mongoose = require('mongoose');
 const uri = `mongodb+srv://masterNetanel:${process.env.MONGODB_PASSWORD}@nadlan-msbha.mongodb.net/nadlan`;
 const nadlan = mongoose.createConnection(uri, {

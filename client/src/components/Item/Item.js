@@ -1,8 +1,7 @@
 import '../../styles/components/Item/Item.scss';
-
 import React, { useState, useEffect } from 'react';
 import MiniTopBar from './top/MiniTopBar';
-import Rest from './Rest'
+import Rest from './rest/Rest'
 import ItemContext from '../../contexts/ItemContext';
 import { getPicUrls } from '../../picturesAPI';
 
@@ -25,9 +24,8 @@ const Item = ({ topLevel: { listing, level1, _id }, type }) => {
         <ItemContext.Provider value={{ _id, urls, level1, listing, type }}>
             <div className="Item__container" onClick={onClick}>
                 <MiniTopBar display={isExpanded ? "none" : "flex"} />
-                {wasExpanded ?
-                    <Rest display={isExpanded ? "flex" : "none"} /> :
-                    <div></div>
+                {wasExpanded &&
+                    <Rest display={isExpanded ? "flex" : "none"} />
                 }
             </div>
         </ItemContext.Provider >

@@ -1,7 +1,15 @@
-@import '../../base/settings';
+@import "../../base/settings";
 
-.rest {
-    background-color: red;
-    display: flex;
-    flex-direction: column;
+.Rest {
+  // background-color: red;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
 }
+
+.Rest-child {
+  border: 1px solid $lightest-gray;
+}
+
+
+
