@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import RestContext from '../../../contexts/RestContext';
-import translator from './level2_hebrew_map';
+import translator from './Level2_translator';
 import '../../../styles/components/Item/Level2.scss';
 
 const { HEB_DESC } = {

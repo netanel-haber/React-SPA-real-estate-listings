@@ -11,6 +11,9 @@ const {
     RoommatesListing
 } = require('../db/mongo/index');
 
+// new ForsaleListing(forsale).save().then(console.log).catch(console.error);
+
+
 for (let i = 0; i < 10; i++) {
     new ForsaleListing(forsale).save().then(console.log).catch(console.error);
     new RentListing(rent).save().then(console.log).catch(console.error);

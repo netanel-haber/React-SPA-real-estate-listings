@@ -1,6 +1,6 @@
 module.exports = {
     listing: {
-        listerId: "5e451f44ebf20b42f0b05e2d",
+        listerId: "5e4aaf370658b515246ee8f1",
         pictureKeys: ['property-images/6/12b0a93b-b3f5-454b-8a1b-80f7b7efb27a.1580838564327.jpeg',
             'property-images/6/2c43ffc8-d78a-4b0f-808f-22fa7d07bc1a.1580903874863.jpeg',
             'property-images/6/46609425-8720-42d3-8907-4d0a2a4fea24.1580839529483.jpeg'],
@@ -29,8 +29,8 @@ module.exports = {
     },
     level3: {
         AC: true,
-        grates: true,
+        grates: false,
         elevator: true,
-        handicappedAccesible: true
+        handicappedAccesible: false
     }
 };

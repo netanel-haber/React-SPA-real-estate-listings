@@ -51,14 +51,5 @@
     @include text-child;
   }
 
-  .PhoneNumberColumn {
-    @extend .column;
-    border: 0;
-    align-items: flex-end;
-    justify-content: flex-end;
-    .phone-number-button-and-expansion-positioner-and-column-child {
-      position: relative;
-      font-size: $s-size * 1.1;
-    }
-  }
 }
+

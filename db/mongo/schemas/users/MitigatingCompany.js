@@ -2,15 +2,18 @@ const { Schema } = require('mongoose');
 const address = require('../addressSchema');
 const { email, phone } = require('./validation');
 
-module.exports = new Schema({
+let schema = new Schema({
     name: {
         type: String,
-        required: true
+        // required: true
     },
     address: {
-        type:address,
-        required:true
+        type: address,
+        // required:true
     },
-    email,
+    // email,
     phone
 });
+
+
+module.exports = schema;

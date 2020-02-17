@@ -8,7 +8,6 @@ const { HEB_CONTACT } = {
 
 const PhoneNumber = () => {
     const [isExpanded, expand] = useState(false);
-
     const onClick = (e) => {
         e.stopPropagation();
         expand(!isExpanded);
@@ -16,7 +15,7 @@ const PhoneNumber = () => {
     return (
         <div className="PhoneNumberColumn">
             <div onClick={onClick}>
-                <div className="column-child-and-phone-number-button-and-expansion-positioner">
+                <div className="phone-number-button-and-expansion-positioner-and-column-child">
                     <div className="show-phone-number-button">
                         <img src="/icons/phone.png"></img>
                         <div>

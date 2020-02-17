@@ -5,26 +5,26 @@ const { email, phone } = require('./validation');
 module.exports = new Schema({
     name: {
         type: String,
-        required: true
+        // required: true
     },
     lastName: {
         type: String,
-        required: true
+        // required: true
     },   
     phoneNumbers: [String],
     birthday: Date,
     address,
-    email,
+    // email,
     phone,
     hash: {
         type: String,
-        required: true,
-        unique: true
+        // required: true,
+        // unique: true
     },
     salt: {
         type: String,
-        required: true,
-        unique: true
+        // required: true,
+        // unique: true
     },
     mitigatingCompanyId: Schema.Types.ObjectId
 });

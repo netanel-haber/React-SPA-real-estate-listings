@@ -3,7 +3,7 @@ const { nadlan } = require('../../../connection');
 const mitigatingCompany = require('../../users/MitigatingCompany');
 
 const listingMetadataSchema = new Schema({
-    mitigatingCompany: mitigatingCompany,
+    mitigatingCompany,
     listerId: {
         type: Schema.Types.ObjectId,
         validate: [(val) => nadlan.models.Lister.findById(val),

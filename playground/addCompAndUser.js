@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 
 
 const _id = mongoose.Types.ObjectId();
-const mitigatingCompany = { _id, h: "fsdfsd" };
+const mitigatingCompany = { _id };//, email:"a@g.com" };
 
 const listerId = mongoose.Types.ObjectId();
 const lister = { _id: listerId, mitigatingCompanyId: _id }
