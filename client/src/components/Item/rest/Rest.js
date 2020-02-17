@@ -11,10 +11,9 @@ import RestOfData from './RestOfData';
 const Rest = ({ display }) => {
     const { type, _id } = useContext(ItemContext);
     const [restOfData, updateRest] = useState({});
-    useEffect(() => { getRest(type, _id).then(updateRest) }, [])
-    const { level2, level3 } = restOfData;
+    useEffect(() => { getRest(type, _id).then(updateRest) }, []); 
     return (
-        <RestContext.Provider value={{ level2, level3 }}>
+        <RestContext.Provider value={restOfData}>
             <div className="Rest" style={{ display }}>
                 <SpreadTopBar />
                 <RestOfData />

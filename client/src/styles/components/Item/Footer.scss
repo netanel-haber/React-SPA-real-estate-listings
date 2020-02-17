@@ -5,6 +5,6 @@
     font-size: $s-size*0.9;
     padding: $s-size;
     align-items: center;
-    // flex-direction: reverse;
     justify-content: flex-end;
+    border-top: 1px solid $lightest-gray;
 }

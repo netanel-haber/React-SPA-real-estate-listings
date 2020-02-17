@@ -1,5 +1,6 @@
 import React, { useContext, useEffect } from 'react';
 import ItemContext from '../../../contexts/ItemContext';
+import '../../../styles/components/Item/PhoneNumberExpansion.scss';
 
 const PhoneNumberExpansion = ({ isExpanded = false }) => {
     const { listing } = useContext(ItemContext);

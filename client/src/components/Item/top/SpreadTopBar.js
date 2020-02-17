@@ -10,7 +10,7 @@ import PhoneNumber from './PhoneNumber';
 const SpreadTopBar = ({display}) => (
     <div className="SpreadItem"> 
         <Image thumbHeight={10} />
-        <div className="contain">
+        <div className="container-of-all-columns-bar-image-column">
             <Address />
             <Price />
             <Stats />

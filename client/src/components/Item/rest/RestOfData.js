@@ -9,11 +9,8 @@ const RestOfData = () => {
             <div className="Item-level2-3-data">
                 <Level2 />
                 <Level3 />
-                <div>
-                    {/* {JSON.stringify(restOfData)} */}
-                </div>
             </div>
-            <div className="Item-level2-3-ads">njnjnjn</div>
+            <div className="Item-level2-3-ads"></div>
         </div>
     )
 }

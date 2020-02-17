@@ -1,15 +1,14 @@
 import React, { useState } from 'react';
 import PhoneNumberExpansion from './PhoneNumberExpansion';
+import '../../../styles/components/Item/PhoneNumberButton.scss';
 
-
-const { heb_contact } = {
-    heb_contact: "פרטי איש קשר"
+const { HEB_CONTACT } = {
+    HEB_CONTACT: "פרטי איש קשר"
 };
-
 
 const PhoneNumber = () => {
     const [isExpanded, expand] = useState(false);
-   
+
     const onClick = (e) => {
         e.stopPropagation();
         expand(!isExpanded);
@@ -17,11 +16,11 @@ const PhoneNumber = () => {
     return (
         <div className="PhoneNumberColumn">
             <div onClick={onClick}>
-                <div className="cont">
+                <div className="column-child-and-phone-number-button-and-expansion-positioner">
                     <div className="show-phone-number-button">
                         <img src="/icons/phone.png"></img>
                         <div>
-                            {heb_contact}
+                            {HEB_CONTACT}
                         </div>
                     </div>
                     <PhoneNumberExpansion isExpanded={isExpanded} />

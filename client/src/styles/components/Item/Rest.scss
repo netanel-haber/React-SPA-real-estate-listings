@@ -1,14 +1,8 @@
 @import "../../base/settings";
 
 .Rest {
-  // background-color: red;
-  overflow: hidden;
   display: flex;
   flex-direction: column;
-}
-
-.Rest-child {
-  border: 1px solid $lightest-gray;
 }
 
 

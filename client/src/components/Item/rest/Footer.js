@@ -11,7 +11,7 @@ const { HEB_LISTING_ID } = {
 const Footer = () => {
     const { _id } = useContext(ItemContext);
     return (
-        <div className="Item__Footer Rest-child">
+        <div className="Item__Footer">
             {`${HEB_LISTING_ID} ${_id}`}
         </div>
     )
