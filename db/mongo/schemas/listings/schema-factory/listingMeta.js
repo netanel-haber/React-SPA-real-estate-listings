@@ -1,6 +1,7 @@
 const { Schema } = require('mongoose');
 const { nadlan } = require('../../../connection');
 const mitigatingCompany = require('../../users/MitigatingCompany');
+const contact = require('../../contact');
 
 const listingMetadataSchema = new Schema({
     mitigatingCompany,

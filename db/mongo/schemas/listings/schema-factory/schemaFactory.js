@@ -18,7 +18,6 @@ const schemaFactory = (mergeLevel1, mergeLevel2, mergeLevel3) => {
         try {
             const { Lister, MitigatingCompany } = nadlan.models;
             let { mitigatingCompanyId } = await Lister.findById(doc.listing.listerId);
-
             doc.listing.mitigatingCompany = await MitigatingCompany.findById(mitigatingCompanyId);
             doc.markModified('listing.mitigatingCompany');
             await doc.save({ suppressWarning: true });

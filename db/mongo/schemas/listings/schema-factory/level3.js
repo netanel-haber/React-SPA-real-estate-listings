@@ -7,6 +7,7 @@ const level3SchemaFactory = (merge = {}) => new Schema({
     handicappedAccessible: Boolean,
     mamad: Boolean,
     storage: Boolean,
+    furniture: Boolean,
     furnitureDesc: String,
     ...merge
 })

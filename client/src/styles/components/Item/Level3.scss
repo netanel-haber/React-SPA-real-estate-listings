@@ -2,7 +2,7 @@
 
 .Level3 {
   .Level3__attributes {
-    padding-top: $s-size/2;
+    padding: $s-size/2 0;
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
@@ -13,16 +13,16 @@
       > div {
           padding-right: $s-size/2;
       }
-    }
-    .faded-pic {
-      filter: grayscale(60%);
-    }
-    .faded-text {
-      color: $pretty-gray;
-    }
+    }  
     .Level3__attribute {
         display: flex;
         align-items: center;
+        .faded-pic {
+          opacity: 0.5;
+        }
+        .faded-text {
+          color: $faded-attr-gray;
+        }
     }
   }
 }

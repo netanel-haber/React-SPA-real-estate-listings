@@ -16,11 +16,13 @@ const map = {
 }
 
 
-const translator = (key, value = true) => ({
-    picUrl: `/icons/level3/${key}.png`,
-    translation: map[key],
-    faded: !Boolean(value)
-});
+const translator = ([key, value]) => {
+    return {
+        picUrl: `/icons/level3/${key}.png`,
+        translation: map[key],
+        faded: !Boolean(value)
+    }
+};
 
 
 export default translator;

@@ -31,6 +31,7 @@ module.exports = {
         AC: true,
         grates: false,
         elevator: true,
-        handicappedAccesible: false
+        handicappedAccesible: false,
+        furnitureDesc: "אני לא חושב שהעיצוב הזה כזה מוצלח. יד2 די פישלו"
     }
 };

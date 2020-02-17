@@ -74,10 +74,10 @@ let map = {
 };
 
 
-const trans = (key, value) => {
+const trans = ([key, value]) => {
     let k = map[key];
     return {
-        get key() {
+        get name() {
             return k?.translation || k;
         },
         get value() {
@@ -91,7 +91,7 @@ const trans = (key, value) => {
                     finalVal += ` ${units}`;
             }
             else {
-                finalVal = def||'לא צויין';
+                finalVal = def || 'לא צויין';
             }
             return finalVal;
         },
