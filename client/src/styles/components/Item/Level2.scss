@@ -1,0 +1,14 @@
+@import '../../base/settings';
+
+.Level2 {
+    .Level2__attributes {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        > div {
+        display: inline;
+          flex: 0 49%;
+          padding: $s-size/3 0;
+        }
+    }
+}

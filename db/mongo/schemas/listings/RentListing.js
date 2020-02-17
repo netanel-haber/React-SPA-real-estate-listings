@@ -3,6 +3,6 @@ const schemaFactory = require('./schema-factory/schemaFactory');
 
 module.exports = schemaFactory(
     [{}, rent],
-    [{ homeOwnerAssociationMonthly: Number, numChecks: Number, taxesIncluded: Boolean }],
+    [{ homeOwnerAssociationMonthly: Number, numChecks: Number, biMonthlyArnona: Number, taxesIncluded: Boolean }],
     [{ longTerm: Boolean, forPartenrs: Boolean, petsAllowed: Boolean }]
 );
