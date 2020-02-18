@@ -12,6 +12,7 @@ const toShekel = x => x.toLocaleString() + " ₪";
 
 
 const Price = () => {
+    
     const { level1, listing } = useContext(ItemContext);
     const { price } = level1;
     const { updatedAt, mitigatingCompany } = listing;
