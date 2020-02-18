@@ -22,7 +22,7 @@ new MitigatingCompany(mitigatingCompany).save()
     .then(() => new Lister(listerMit).save())
     .then(() => new Lister(listerNonMit).save())
     .then(() => {
-        for (let i = 0; i < 10; i++) {
+        for (let i = 0; i < 100; i++) {
             new ForsaleListing(forsale(Boolean(Math.round(Math.random())) ? otherListerId : listerId)).save().then(console.log).catch(console.error);
             new RentListing(rent).save().then(console.log).catch(console.error);
             new CommercialListing(commercial).save().then(console.log).catch(console.error);

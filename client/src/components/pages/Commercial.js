@@ -1,10 +1,10 @@
 import React from 'react';
-import ItemList from '../ItemList';
+import ListContainer from '../ListContainer';
 
 const Commercial = (props) => (
     <div>
         Commercial
-        <ItemList type="commercial"/>
+        <ListContainer type="commercial"/>
     </div>
 )
 

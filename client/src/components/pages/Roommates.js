@@ -1,10 +1,10 @@
 import React from 'react';
-import ItemList from '../ItemList';
+import ListContainer from '../ListContainer';
 
 const Roommates = () => (
     <div>
         Roommates
-        <ItemList type="roommates"/>
+        <ListContainer type="roommates"/>
     </div>
 )
 
