@@ -24,9 +24,7 @@ const Item = ({ topLevel: { listing, level1, _id }, type }) => {
         <ItemContext.Provider value={{ _id, urls, level1, listing, type }}>
             <div className="Item__container" onClick={onClick}>
                 <MiniTopBar display={isExpanded ? "none" : "flex"} />
-                {wasExpanded &&
-                    <Rest display={isExpanded ? "flex" : "none"} />
-                }
+                {wasExpanded && <Rest display={isExpanded ? "flex" : "none"} />}
             </div>
         </ItemContext.Provider >
     );

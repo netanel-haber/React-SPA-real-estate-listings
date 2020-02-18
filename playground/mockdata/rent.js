@@ -26,7 +26,8 @@ module.exports = {
         desc: "דירה חמודה ומקסימה במזרח ירושלים",
         entryDate: 0,
         parkingSpots: 23,
-        upkeep: "חדש (גרו בנכס)"
+        upkeep: "חדש (גרו בנכס)",
+        biMonthlyArnona:2500
     },
     level3: {
         AC: true,

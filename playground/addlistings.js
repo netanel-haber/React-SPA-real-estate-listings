@@ -1,10 +1,12 @@
-const
+const { listerId, otherListerId } = require('./ids');
+
+let
     forsale = require('./mockdata/forsale'),
     rent = require('./mockdata/rent'),
     commercial = require('./mockdata/commercial'),
     roommmates = require('./mockdata/roommates'),
     mitigatingCompany = require('./mockdata/mitigatingCompany'),
-    lister = require('./mockdata/lister');
+    [listerMit, listerNonMit] = require('./mockdata/lister');
 const {
     ForsaleListing,
     RentListing,
@@ -17,10 +19,11 @@ const {
 
 
 new MitigatingCompany(mitigatingCompany).save()
-    .then(() => new Lister(lister).save())
+    .then(() => new Lister(listerMit).save())
+    .then(() => new Lister(listerNonMit).save())
     .then(() => {
         for (let i = 0; i < 10; i++) {
-            new ForsaleListing(forsale).save().then(console.log).catch(console.error);
+            new ForsaleListing(forsale(Boolean(Math.round(Math.random())) ? otherListerId : listerId)).save().then(console.log).catch(console.error);
             new RentListing(rent).save().then(console.log).catch(console.error);
             new CommercialListing(commercial).save().then(console.log).catch(console.error);
             new RoommatesListing(roommmates).save().then(console.log).catch(console.error);

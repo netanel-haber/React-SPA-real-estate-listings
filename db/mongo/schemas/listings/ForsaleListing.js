@@ -3,7 +3,7 @@ const schemaFactory = require('./schema-factory/schemaFactory');
 
 module.exports = schemaFactory(
     [{}, forsale],
-    [{ sqMGarden: Number, sqMbuilt: Number, numBalconies: Number }],
+    [{ sqMGarden: Number, sqMBuilt: Number, numBalconies: Number }],
     [{}]
 );
 
