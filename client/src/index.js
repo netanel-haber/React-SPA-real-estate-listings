@@ -7,5 +7,5 @@ import App from './components/App';
 
 const root = document.getElementById('root');
 
-ReactDOM.render(<App />, root);
+ReactDOM.render(<div><App /></div>, root);
 

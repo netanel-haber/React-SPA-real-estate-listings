@@ -74,7 +74,9 @@ let map = {
 };
 
 
-const trans = ([key, value]) => {
+
+
+const translator = ([key, value]) => {
     let k = map[key];
     return {
         get name() {
@@ -99,6 +101,6 @@ const trans = ([key, value]) => {
 };
 
 
-export default trans;
+export default translator;
 
 

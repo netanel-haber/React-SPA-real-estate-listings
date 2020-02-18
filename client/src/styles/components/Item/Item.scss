@@ -15,5 +15,18 @@
         visibility: visible;
       }
     }
+    .SpreadItem .PriceColumn .text-child > div + div {
+      opacity: 0;
+      transition: opacity 150ms;
+    }
+    .MiniItem .PriceColumn .text-child > div + div {
+      & span {
+        display: none;
+      }
+      &:before {
+        content: "לחצו לפרטים";
+        color: $yad2-orange;
+      }
+    }
   }
 }

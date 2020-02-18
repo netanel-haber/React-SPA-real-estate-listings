@@ -28,7 +28,6 @@
   background-color: $item-level-1-color;
   justify-content: space-between;
   width: 100%;
-
   .ImageColumn {
     @extend .column;
     border: 0;
@@ -50,6 +49,4 @@
     @extend .column;
     @include text-child;
   }
-
 }
-

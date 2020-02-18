@@ -1,16 +1,16 @@
 import React from 'react';
+const classNames = require('classnames');
 
 const Level3Attribute = ({ picUrl, translation, faded }) =>
     translation ? (
-        <div className="Level3__attribute">
+        <div className={classNames("Level3__attribute", { faded })}>
             <img
                 alt=""
-                className={faded && "faded-pic"}
                 height="20px"
                 width="20px"
                 src={picUrl}>
             </img>
-            <div className={faded && "faded-text"}>{translation}</div>
+            <div>{translation}</div>
         </div>
     ) : undefined;
 

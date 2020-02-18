@@ -11,18 +11,15 @@
       flex: 0 24%;
       padding: $s-size/3 0;
       > div {
-          padding-right: $s-size/2;
+        padding-right: $s-size/2;
       }
-    }  
+    }
     .Level3__attribute {
-        display: flex;
-        align-items: center;
-        .faded-pic {
-          opacity: 0.5;
-        }
-        .faded-text {
-          color: $faded-attr-gray;
-        }
+      display: flex;
+      align-items: center;
+      &.faded {
+        opacity: 0.5;
+      }
     }
   }
 }

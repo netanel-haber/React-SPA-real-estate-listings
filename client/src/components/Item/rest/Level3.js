@@ -18,8 +18,7 @@ const Level3 = () => {
             <div><strong>{HEB_DESC}</strong></div>
             <div className="Level3__attributes">
                 {Object.entries((({ _id, furnitureDesc, ...rest }) => rest)(level3))
-                    .map(entry => <Level3Attribute {...translate(entry)} />)
-                }
+                    .map((entry, index) => <Level3Attribute key={index} {...translate(entry)} />)}
             </div>
             {furnitureDesc && (
                 <>
