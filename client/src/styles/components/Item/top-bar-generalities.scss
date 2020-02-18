@@ -6,6 +6,7 @@
     & > div + div {
       font-size: $s-size;
       color: $subtitle-color;
+      overflow: ellipse;
     }
   }
 }

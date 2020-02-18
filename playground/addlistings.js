@@ -1,25 +1,34 @@
 const
-    forsale = require('../db/mongo/mockdata/forsale'),
-    rent = require('../db/mongo/mockdata/rent'),
-    commercial = require('../db/mongo/mockdata/commercial'),
-    roommmates = require('../db/mongo/mockdata/roommates');
-
+    forsale = require('./mockdata/forsale'),
+    rent = require('./mockdata/rent'),
+    commercial = require('./mockdata/commercial'),
+    roommmates = require('./mockdata/roommates'),
+    mitigatingCompany = require('./mockdata/mitigatingCompany'),
+    lister = require('./mockdata/lister');
 const {
     ForsaleListing,
     RentListing,
     CommercialListing,
-    RoommatesListing
+    RoommatesListing,
+    Lister,
+    MitigatingCompany
 } = require('../db/mongo/index');
 
-// new ForsaleListing(forsale).save().then(console.log).catch(console.error);
 
 
-for (let i = 0; i < 10; i++) {
-    new ForsaleListing(forsale).save().then(console.log).catch(console.error);
-    new RentListing(rent).save().then(console.log).catch(console.error);
-    new CommercialListing(commercial).save().then(console.log).catch(console.error);
-    new RoommatesListing(roommmates).save().then(console.log).catch(console.error);
-}
+new MitigatingCompany(mitigatingCompany).save()
+    .then(() => new Lister(lister).save())
+    .then(() => {
+        for (let i = 0; i < 10; i++) {
+            new ForsaleListing(forsale).save().then(console.log).catch(console.error);
+            new RentListing(rent).save().then(console.log).catch(console.error);
+            new CommercialListing(commercial).save().then(console.log).catch(console.error);
+            new RoommatesListing(roommmates).save().then(console.log).catch(console.error);
+        }
+    })
+    .catch(console.error);
+
+
 
 
 

@@ -1,12 +1,10 @@
 const { Lister, MitigatingCompany } = require('../db/mongo/Index');
+const { listerId, mitigatingCompanyId } = require('./ids');
 const mongoose = require('mongoose');
 
 
-const _id = mongoose.Types.ObjectId();
-const mitigatingCompany = { _id, name:"יוסי תיווך בע\"מ" };//, email:"a@g.com" };
-
-const listerId = mongoose.Types.ObjectId();
-const lister = { _id: listerId, mitigatingCompanyId: _id }
+const mitigatingCompany = { _id: mitigatingCompanyId, name: "יוסי תיווך בע\"מ" };//, email:"a@g.com" };
+const lister = { _id: listerId, mitigatingCompanyId }
 
 new MitigatingCompany(mitigatingCompany).save()
     .then(() => new Lister(lister).save())
