@@ -1,5 +1,5 @@
 const getListings = (type, filters) =>
-    fetch(`/api/data/${type}`, {
+    fetch(`api/data/listings/${type}`, {
         method: 'POST',
         body: JSON.stringify(filters),
         headers: {
@@ -9,11 +9,17 @@ const getListings = (type, filters) =>
         .then(res => res.json())
 
 
-const getRest = (type, id) => fetch(`/api/data/${type}/spec/${id}`)
+const getRest = (type, id) => fetch(`api/data/listings/${type}/${id}`)
     .then(res => res.json());
 
 
-const countDocs = (type) => fetch(`/api/data/${type}/count`)
+const countDocs = (type) => fetch(`api/data/listings/${type}/count`)
     .then(res => res.json());
 
-export { getListings, getRest, countDocs };
+
+const getLister = (id) => fetch(`api/data/listers/${id}`)
+    .then(res => res.json());
+
+
+
+export { getListings, getRest, countDocs, getLister };

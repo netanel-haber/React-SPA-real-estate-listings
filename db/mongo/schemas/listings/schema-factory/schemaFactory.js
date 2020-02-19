@@ -14,14 +14,11 @@ const schemaFactory = (mergeLevel1, mergeLevel2, mergeLevel3) => {
         level2: level2SchemaFactory(...mergeLevel2),
         level3: level3SchemaFactory(...mergeLevel3)
     });
-    schema.pre('save', function (next) {
+    schema.pre('save', async function () {
         const { Lister, MitigatingCompany } = nadlan.models;
-        Lister.findById(this.listing.listerId)
-            .then(({ mitigatingCompanyId }) => MitigatingCompany.findById(mitigatingCompanyId))
-            .then(MC => {
-                this.listing.mitigatingCompany = MC;
-                next();
-            })
+        const { mitigatingCompanyId } = await Lister.findById(this.listing.listerId);
+        const mc = await MitigatingCompany.findById(mitigatingCompanyId);
+        this.listing.mitigatingCompany = mc;
     })
     return schema;
 };

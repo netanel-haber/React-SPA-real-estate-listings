@@ -17,20 +17,25 @@ const {
 } = require('../db/mongo/index');
 
 
-let promises = [];
+
+const numOfDocsEach = 50;
+let label = `${numOfDocsEach} docs`;
 new MitigatingCompany(mitigatingCompany).save()
     .then(() => new Lister(listerMit).save())
     .then(() => new Lister(listerNonMit).save())
     .then(() => {
-        for (let i = 0; i < 5; i++) {
+        console.time(label)
+        let promises = [];
+        for (let i = 0; i < numOfDocsEach; i++) {
             promises = [...promises,
             new ForsaleListing(forsale(Math.round(Math.random()) ? otherListerId : listerId)).save(),
             new RentListing(rent).save(),
             new CommercialListing(commercial).save(),
             new RoommatesListing(roommmates).save()];
         }
-        Promise.all(promises).then(() => { console.log("all data safetly in database") })
-    });
+        return Promise.all(promises);
+    })
+    .then(() => { console.timeEnd(label) })
 
 
 

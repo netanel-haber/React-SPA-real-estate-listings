@@ -9,7 +9,7 @@ let exportFuncs = {
         type: String,
         validate: [isEmail, 'invalid email']
     },
-    phone: {
+    phoneNumber: {
         type: String,
         validate: [isMP, "not a valid phone number!"]
     },

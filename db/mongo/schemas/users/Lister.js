@@ -1,6 +1,6 @@
 const { Schema } = require('mongoose');
 const address = require('../addressSchema');
-const { email, phone } = require('./validation');
+const { email, phoneNumber } = require('./validation');
 
 module.exports = new Schema({
     name: String,
@@ -8,7 +8,7 @@ module.exports = new Schema({
     birthday: Date,
     email,
     address,
-    phone,
+    phoneNumber,
     hash: String,
     salt: String,
     mitigatingCompanyId: Schema.Types.ObjectId
