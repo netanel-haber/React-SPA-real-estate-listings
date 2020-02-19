@@ -6,6 +6,7 @@ const {
 } = require('../index');
 
 
+
 module.exports = function modelOf(path) {
     switch (path) {
         case "forsale":
