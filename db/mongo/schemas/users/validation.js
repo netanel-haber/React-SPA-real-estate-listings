@@ -1,17 +1,27 @@
-const { isEmail, isMobilePhone } = require('validator');
+let { isEmail, isMobilePhone, isURL } = require('validator');
 
-module.exports = {
+const isMP = (pNumber) => isMobilePhone(pNumber, 'he-IL');
+const PNValidator = (arr) => arr.every(isMP);
+
+
+let exportFuncs = {
     email: {
         type: String,
-        validate: [isEmail, 'invalid email'],
-        trim: true,
-        lowercase: true,
-        default:""
-        // unique: true
+        validate: [isEmail, 'invalid email']
     },
     phone: {
+        type: String,
+        validate: [isMP, "not a valid phone number!"]
+    },
+    phoneNumbers: {
         type: [String],
-        validate: [arr => arr.length === 0 || arr.some(phone => !isMobilePhone(phone, 'he-IL')),
-            "One or more phone numbers aren't valid!"]
+        validate: [PNValidator, "One or more phone numbers aren't valid!"]
+    },
+    website: {
+        type: String,
+        validate: [isURL, "not a valid url"]
     }
 }
+
+
+module.exports = exportFuncs;

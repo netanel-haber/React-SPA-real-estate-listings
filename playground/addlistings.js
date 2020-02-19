@@ -17,19 +17,20 @@ const {
 } = require('../db/mongo/index');
 
 
-
+let promises = [];
 new MitigatingCompany(mitigatingCompany).save()
     .then(() => new Lister(listerMit).save())
     .then(() => new Lister(listerNonMit).save())
     .then(() => {
-        for (let i = 0; i < 100; i++) {
-            new ForsaleListing(forsale(Boolean(Math.round(Math.random())) ? otherListerId : listerId)).save().then(console.log).catch(console.error);
-            new RentListing(rent).save().then(console.log).catch(console.error);
-            new CommercialListing(commercial).save().then(console.log).catch(console.error);
-            new RoommatesListing(roommmates).save().then(console.log).catch(console.error);
+        for (let i = 0; i < 5; i++) {
+            promises = [...promises,
+            new ForsaleListing(forsale(Math.round(Math.random()) ? otherListerId : listerId)).save(),
+            new RentListing(rent).save(),
+            new CommercialListing(commercial).save(),
+            new RoommatesListing(roommmates).save()];
         }
-    })
-    .catch(console.error);
+        Promise.all(promises).then(() => { console.log("all data safetly in database") })
+    });
 
 
 

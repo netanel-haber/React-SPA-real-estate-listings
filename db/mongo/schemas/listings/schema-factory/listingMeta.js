@@ -4,7 +4,10 @@ const mitigatingCompany = require('../../users/MitigatingCompany');
 const contact = require('../../contact');
 
 const listingMetadataSchema = new Schema({
-    mitigatingCompany,
+    mitigatingCompany:{
+        type: mitigatingCompany,
+        default: null
+    },
     listerId: {
         type: Schema.Types.ObjectId,
         validate: [(val) => nadlan.models.Lister.findById(val),

@@ -3,29 +3,14 @@ const address = require('../addressSchema');
 const { email, phone } = require('./validation');
 
 module.exports = new Schema({
-    name: {
-        type: String,
-        // required: true
-    },
-    lastName: {
-        type: String,
-        // required: true
-    },   
-    phoneNumbers: [String],
+    name: String,
+    lastName: String,
     birthday: Date,
+    email,
     address,
-    // email,
     phone,
-    hash: {
-        type: String,
-        // required: true,
-        // unique: true
-    },
-    salt: {
-        type: String,
-        // required: true,
-        // unique: true
-    },
+    hash: String,
+    salt: String,
     mitigatingCompanyId: Schema.Types.ObjectId
 });
 

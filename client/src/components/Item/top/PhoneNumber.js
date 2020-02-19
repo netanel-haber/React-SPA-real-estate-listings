@@ -1,16 +1,22 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
+import ItemContext from '../../../contexts/ItemContext';
 import PhoneNumberExpansion from './PhoneNumberExpansion';
 import '../../../styles/components/Item/PhoneNumberButton.scss';
 
-const { HEB_CONTACT } = {
-    HEB_CONTACT: "פרטי איש קשר"
+const { HEB_CONTACT, HEB_MITIGATING_COMPANY } = {
+    HEB_CONTACT: "פרטי איש קשר",
+    HEB_MITIGATING_COMPANY: "פרטי משרד תיווך"
 };
 
 const PhoneNumber = () => {
-    const [isExpanded, expand] = useState(false);
+    const [isExpanded, toggleExpansion] = useState(false);
+    const [wasExpanded, loadExpandedData] = useState(false);
+    const { listing: { mitigatingCompany } } = useContext(ItemContext);
+
     const onClick = (e) => {
         e.stopPropagation();
-        expand(!isExpanded);
+        if (!wasExpanded) loadExpandedData(true);
+        toggleExpansion(!isExpanded);
     }
     return (
         <div className="PhoneNumberColumn">
@@ -19,10 +25,10 @@ const PhoneNumber = () => {
                     <div className="show-phone-number-button">
                         <img src="/icons/phone.png"></img>
                         <div>
-                            {HEB_CONTACT}
+                            {mitigatingCompany ? HEB_MITIGATING_COMPANY : HEB_CONTACT}
                         </div>
                     </div>
-                    <PhoneNumberExpansion isExpanded={isExpanded} />
+                    {wasExpanded && (<PhoneNumberExpansion isExpanded={isExpanded} />)}
                 </div>
             </div>
         </div>

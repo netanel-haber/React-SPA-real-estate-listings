@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import MiniTopBar from './top/MiniTopBar';
 import Rest from './rest/Rest'
 import ItemContext from '../../contexts/ItemContext';
-import { getPicUrls } from '../../picturesAPI';
+import { getPicUrls } from '../../fetch/pictureUrls';
 
 
 const Item = ({ topLevel: { listing, level1, _id }, type }) => {

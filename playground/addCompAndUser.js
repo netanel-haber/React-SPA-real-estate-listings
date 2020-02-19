@@ -1,13 +1,14 @@
-const { Lister, MitigatingCompany } = require('../db/mongo/Index');
-const { listerId, mitigatingCompanyId } = require('./ids');
-const mongoose = require('mongoose');
+const { MitigatingCompany } = require('../db/mongo/Index');
+const { mitigatingCompanyId } = require('./ids');
+
+const mitigatingCompany = {
+    _id: mitigatingCompanyId,
+    phoneNumbers: ["0548391043", "0548976321"],
+    name: "יוסי תיווך בע\"מ"
+};
+
+new MitigatingCompany(mitigatingCompany).save().then(console.log);
 
 
-const mitigatingCompany = { _id: mitigatingCompanyId, name: "יוסי תיווך בע\"מ" };//, email:"a@g.com" };
-const lister = { _id: listerId, mitigatingCompanyId }
 
-new MitigatingCompany(mitigatingCompany).save()
-    .then(() => new Lister(lister).save())
-    .then(console.log)
-    .catch(console.error)
 

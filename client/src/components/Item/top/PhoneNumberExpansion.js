@@ -1,20 +1,20 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import ItemContext from '../../../contexts/ItemContext';
 import '../../../styles/components/Item/PhoneNumberExpansion.scss';
 
+
 const PhoneNumberExpansion = ({ isExpanded = false }) => {
-    const { listing } = useContext(ItemContext);
+    const { listing: { mitigatingCompany } } = useContext(ItemContext);
+    const [details, updateDetails] = useState([]);
+    useEffect(() => {
+        updateDetails(mitigatingCompany ? [
+            mitigatingCompany?.name,
+            mitigatingCompany?.phonesNumbers?.join('\n'),
+            mitigatingCompany?.url || (<a href={mitigatingCompany.url}>klk</a>)]:7);
+    }, [])
     return (
-        <div className="PhoneNumberExpansion" style={{ maxHeight: isExpanded ? "200px" : "0" }}>
-            <div className="child">
-                אתי
-            </div >
-            <div className="child">
-                0542391003
-            </div>
-            <div className="child">
-                a@c.com
-            </div>
+        <div className="PhoneNumberExpansion" style={{ maxHeight: isExpanded ? "100px" : "0" }}>
+            {details.filter(deet => Boolean(deet)).map(deet => <div className="child">{deet}</div>)}
         </div>
     );
 };

@@ -1,18 +1,13 @@
 const { Schema } = require('mongoose');
 const address = require('../addressSchema');
-const { email, phone } = require('./validation');
+const { phoneNumbers, website, email } = require('./validation');
 
 let schema = new Schema({
-    name: {
-        type: String,
-        // required: true
-    },
-    address: {
-        type: address,
-        // required:true
-    },
-    // email,
-    phone
+    name: String,
+    address,
+    email,
+    phoneNumbers,
+    website
 });
 
 
