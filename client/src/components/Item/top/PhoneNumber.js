@@ -28,7 +28,7 @@ const PhoneNumber = () => {
                             {mitigatingCompany ? HEB_MITIGATING_COMPANY : HEB_CONTACT}
                         </div>
                     </div>
-                    {wasExpanded && (<PhoneNumberExpansion isExpanded={isExpanded} />)}
+                    {wasExpanded && (<PhoneNumberExpansion  isExpanded={isExpanded} />)}
                 </div>
             </div>
         </div>

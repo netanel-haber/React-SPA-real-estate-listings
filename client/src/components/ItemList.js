@@ -10,7 +10,7 @@ const ItemList = ({ type, predicate }) => {
     return (
         <div>
             {list.map(itm => <Item type={type} topLevel={itm} key={itm._id} />)}
-            <ListingPaging updatelistCallback={updateList} type={type} />
+            {/* <ListingPaging updatelistCallback={updateList} type={type} /> */}
         </div>
     );
 };

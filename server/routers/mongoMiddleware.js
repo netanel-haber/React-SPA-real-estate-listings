@@ -4,6 +4,7 @@ const translator = (req, res, next) => {
         req.filters = translateFilters(req.body);
     }
     catch (ex) {
+        console.log('here');
         res.status(500).send(ex.toString())
     }
     next();

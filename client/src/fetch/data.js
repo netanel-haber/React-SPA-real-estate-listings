@@ -18,7 +18,7 @@ const countDocs = (type) => fetch(`api/data/listings/${type}/count`)
 
 
 const getLister = (id) => fetch(`api/data/listers/${id}`)
-    .then(res => res.json());
+    .then(res =>res.json());
 
 
 
