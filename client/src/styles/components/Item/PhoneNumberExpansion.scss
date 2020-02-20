@@ -9,6 +9,9 @@
   box-shadow: rgba(0, 0, 0, 0.3) 0px 2px 4px 0px;
   width: 100%;
   .child {
+    &.css-0 {
+      background-color: $whiter-than-body-white;
+    }
     text-align: center;
     border-bottom: 1px solid #d6d6d6;
     white-space: normal;
