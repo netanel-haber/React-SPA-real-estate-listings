@@ -1,14 +1,14 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import useSpinnerBeforeImageLoad from '../../../hooks/useSpinnerBeforeImageLoad';
 import PulseLoader from "react-spinners/PulseLoader";
 
 const ImageWithLoader = ({ url, loaderSize = "5rem" }) => {
-    const [loading, visibility, done] = useSpinnerBeforeImageLoad();
+    const [loading, display, done] = useSpinnerBeforeImageLoad(url);
     return (
         <>
             <PulseLoader loading={loading} size={loaderSize} />
             <img
-                style={{ visibility }}
+                style={{ display }}
                 onLoad={done}
                 className="image"
                 src={url}>

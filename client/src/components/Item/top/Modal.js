@@ -16,13 +16,13 @@ const Modal = () => {
         <div className="Modal">
             <div className="Modal-ads">
                 <div>
-                   <img height="150px" width="150px" src="https://via.placeholder.com/150"></img>
+                    <img height="150px" width="150px" src="https://via.placeholder.com/150"></img>
                 </div>
                 <div>
-                   <img height="150px" width="150px" src="https://via.placeholder.com/150"></img>
+                    <img height="150px" width="150px" src="https://via.placeholder.com/150"></img>
                 </div>
                 <div>
-                   <img height="150px" width="150px" src="https://via.placeholder.com/150"></img>
+                    <img height="150px" width="150px" src="https://via.placeholder.com/150"></img>
                 </div>
             </div>
             <div className="content-container">

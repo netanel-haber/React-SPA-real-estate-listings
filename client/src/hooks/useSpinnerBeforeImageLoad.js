@@ -1,11 +1,17 @@
 import { useState } from 'react';
+import useTrackState from './useTrackState';
 
-
-const useLoadOnceThenToggle = () => {
+const useSpinnerBeforeImageLoad = (url) => {
     const [loading, done] = useState(true);
-    return [loading, loading ? "hidden" : "visible", () => {
+    let nevermind = false;
+    useTrackState(url, () => {
+        if (!nevermind)
+            done(true)
+    });
+    return [loading, loading ? "none" : "inline", () => {
         done(false);
+        nevermind = true;
     }]
 }
 
-export default useLoadOnceThenToggle;
+export default useSpinnerBeforeImageLoad;
