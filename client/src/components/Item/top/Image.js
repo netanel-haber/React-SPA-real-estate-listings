@@ -1,7 +1,7 @@
 import React, { useContext, useState } from 'react';
 import ItemContext from '../../../contexts/ItemContext';
 import Pill from '../../Pill';
-import ImageContainer from '../../ImageContainer';
+import Thumbnail from '../../Thumbnail';
 import Modal from './Modal';
 
 
@@ -11,9 +11,9 @@ const Image = ({ thumbHeight }) => {
     return (
         <div className="ImageColumn" onClick={(e) => { e.stopPropagation(); toggle(!isOpen); }}>
             <div className="ColumnChild">
-                <ImageContainer height={thumbHeight} url={urls[0]}>
+                <Thumbnail height={thumbHeight} url={urls[0]}>
                     <Pill rootWidth="4rem" fontSize="1rem" text={urls.length - 1 + "+"} />
-                </ImageContainer>
+                </Thumbnail>
             </div>
             {isOpen && <Modal/>}
         </div>

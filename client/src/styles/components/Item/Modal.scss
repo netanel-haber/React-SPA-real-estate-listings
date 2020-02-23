@@ -1,7 +1,7 @@
 @import "../../base/settings";
 
-.modal {
-  background-color: $pretty-gray;
+.Modal {
+  background-color: $dark-gray;
   color: $whiter-than-body-white;
   width: 100%;
   height: 100%;
@@ -13,50 +13,59 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-direction: row-reverse;
   > .content-container {
-    width: 90%;
-    height: 90%;
     max-width: 650px;
-    max-height: 500px;
-    background-color: darken($lightest-gray, 50%);
+    width: 100%;
+    height: 90%;
+    background-color: darken($lightest-gray, 65%);
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    > .image-child {
+    .image-child {
       display: flex;
       align-items: center;
-      justify-content: center;
+      justify-content: space-around;
       flex-direction: row-reverse;
       width: 90%;
-      height: 90%;
+      height: 100%;
       max-width: 650px;
       max-height: 500px;
-      .image-container {
-        position: relative;
-        background-color: darken($lightest-gray, 60%);
-        width: 90%;
-        height: 90%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        margin: 0 $s-size;
-        > .image {
-          max-width: 100%;
-          height: auto;
-        }
-      }
-      > .toggle-pics {
-        font-size: $xl-size;
-        padding: 10px 20px;
-        border-radius: 4px;
-        &:hover {
-          background-color: $def-color;
-        }
-      }
     }
     .number-child {
       font-size: $m-size;
     }
+  }
+}
+
+.Modal__image-container {
+  flex-grow: 2;
+  display: flex;
+  justify-content: center;
+  margin: 0 $s-size;
+  > .image {
+    max-width: 100%;
+    min-width: 200px;
+    height: auto;
+  }
+}
+
+.Modal-ads {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: darken($lightest-gray, 65%);
+  > div {
+    padding: $m-size;
+  }
+}
+
+.toggle-pics {
+  font-size: $xl-size;
+  padding: 10px 20px;
+  border-radius: 4px;
+  &:hover {
+    background-color: $def-color;
   }
 }
