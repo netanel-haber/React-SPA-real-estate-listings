@@ -4,7 +4,7 @@ const { ForsaleListing, RentListing, CommercialListing, RoommatesListing, Lister
 const topLevel = '_id listing level1';
 async function getTopLevel(type, filters = {}) {
     let Model = modelOf(type);
-    return await Model.find(filters, topLevel, { sort: { date: 1 }, limit: 10 })
+    return await Model.find(filters, topLevel, { sort: { date: 1 }, limit: 3 })
 }
 
 const bottomLevel = 'level2 level3';

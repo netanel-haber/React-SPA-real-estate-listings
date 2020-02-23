@@ -4,6 +4,9 @@ import '../styles/components/ItemList.scss';
 import ListingPaging from './ListingPaging';
 import Item from './Item/Item';
 
+
+
+
 const ItemList = ({ type, predicate }) => {
     const [list, updateList] = useState([]);
     useEffect(() => { getListings(type, predicate).then(updateList) }, []);

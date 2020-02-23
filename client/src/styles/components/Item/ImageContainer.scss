@@ -1,0 +1,21 @@
+@import "../../base/settings";
+
+.ColumnChild {
+  .image-container {
+    padding: 0;
+    overflow: hidden;
+    border-radius: 3px;
+    position: relative;
+    .css-0 {
+      background-color: darken($item-level-1-color, 5%);
+    }
+    .overlay {
+      background-color: $lightest-gray;
+    }
+    .image {
+      background-color: $def-color;
+      width: 100%;
+      height: 100%;
+    }
+  }
+}
