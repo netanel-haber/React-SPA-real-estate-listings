@@ -1,41 +1,59 @@
 import React, { useState, useEffect } from 'react';
 import { countDocs } from '../fetch/data';
 import '../styles/components/ListingPaging.scss';
+import classNames from 'classnames';
+import splitArr from '../utilities/splitArrToThreeByVal';
 
-const PageLink = (text, dispatch) => {
-
+const { HEB_BEFORE, HEB_AFTER } = {
+    HEB_BEFORE: "הקודם",
+    HEB_AFTER: "הבא"
 }
+const noop = () => { };
 
-
-
-const getPagesString = (count, listingsInPage, pagesToListAtOnce = 8) => {
+const getPagesString = (count, listingsInPage, pagesToListAtOnce, page) => {
     let pages = [];
-    let max = Math.ceil(count / listingsInPage);
-    let i = 1;
-    for (; (i <= pagesToListAtOnce) && (i <= max); pages.push(i++)) { }
-    if (i <= max)
-        pages.push('...', max);
+    let last = getNumberOfPages(count, listingsInPage);
+    let pagesBeforeAndAfter = Math.floor(pagesToListAtOnce / 2);
+    for (let i = page - pagesBeforeAndAfter; i < page + pagesBeforeAndAfter + 1; i++) {
+        pages.push(i);
+    }
+    pages = pages.filter(page => ((page > 0) && (page <= last)));
+    if (pages[0] > 1)
+        pages.unshift(1, '...');
+    if (pages[pages.length - 1] !== last)
+        pages.push('...', last);
+
     return pages;
 }
 
+const getNumberOfPages = (count, listingsInPage) => Math.ceil(count / listingsInPage);
 
 
-const ListingPaging = ({ type, listingsInPage = 10, dispatchPage }) => {
+const ListingPaging = ({ type, filters = {}, listingsInPage = 10, updatePage: dispatchPage }) => {
     const [count, updateCount] = useState(0);
+    const [page, updatePage] = useState(1);
     useEffect(() => {
-        countDocs(type).then(updateCount);
+        countDocs(type, filters).then(updateCount);
     }, []);
+    useEffect(() => {
+        dispatchPage(page);
+    }, [page])
+
     return (
         <div className="ListingPaging">
-            {getPagesString(count, listingsInPage).map((page, index) => (
-                <a
-                    key={index}
-                    className="ListingPaging__page"
-                >
-                    {page}
-                </a>
-            ))}
-        </div>
+            <button disabled={page + 1 > getNumberOfPages(count, listingsInPage)} onClick={() => { updatePage(page + 1) }}>{HEB_AFTER}</button>
+            <div className="page-container">
+                {getPagesString(count, listingsInPage, 7, page)
+                    .map((pg, index) =>
+                        (<a
+                            key={index}
+                            className={classNames({ theOne: pg === page, notTodayMyFriend: !Boolean(Number(pg)) })}
+                            onClick={Boolean(Number(pg)) ? (() => { updatePage(pg) }) : noop} >
+                            {pg}
+                        </a>))}
+            </div>
+            <button disabled={page === 1} onClick={() => { updatePage(page - 1) }}>{HEB_BEFORE}</button>
+        </div >
     );
 };
 

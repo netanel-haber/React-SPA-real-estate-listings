@@ -1,12 +1,39 @@
 @import "../base/settings";
 
 .ListingPaging {
+  display: flex;
   direction: ltr;
+  width: 65%;
+  margin: $s-size auto;
+  flex-direction: row-reverse;
   padding: $s-size/2;
-  text-align: center;
-}
-
-.ListingPaging__page {
-  color: lighten(blue, 15%);
-  padding: $s-size;
+  justify-content: space-between;
+  background-color: $whiter-than-body-white;
+  border-radius: 20px;
+  .page-container {
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    a {
+      padding: $s-size/2;
+    }
+    :not(.notTodayMyFriend):hover {
+      cursor: pointer;
+    }
+    .theOne {
+      background-color: lighten($yad2-orange, 15%);
+      border-radius: 4px;
+      color: $whiter-than-body-white;
+    }
+  }
+  button {
+    border: none;
+    border-radius: 10px;
+    padding: $s-size;
+    background-color: $yad2-orange;
+    color: $whiter-than-body-white;
+    &:disabled {
+      background-color: $lightest-gray;
+    }
+  }
 }

@@ -4,7 +4,7 @@ const translationSwitch = {
 }
 
 module.exports = (userFilters) => {
-    let filters = {}
+    let filters = {};
     Object.entries(userFilters).forEach(([filter, path]) => {
         if (translationSwitch.hasOwnProperty(filter)) {
             filters[path] = translationSwitch[filter];

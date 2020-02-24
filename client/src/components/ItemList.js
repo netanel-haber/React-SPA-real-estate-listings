@@ -1,27 +1,37 @@
 import React, { useEffect, useState } from 'react';
-import ItemListContext from '../contexts/ItemListContext';
+import PulseLoader from "react-spinners/PulseLoader";
 import { getListings } from '../fetch/data';
 import '../styles/components/ItemList.scss';
 import Item from './Item/Item';
 import ListingPaging from './ListingPaging';
 
 
-const listingsInPage = 10;
+const listingsInPage = 1;
+const skipBy = (page) => (page - 1) * listingsInPage;
+const limit = listingsInPage;
+
 
 const ItemList = ({ type, filters }) => {
-    const [skipValue, updateSkip] = useState(0);
     const [list, updateList] = useState([]);
+    const [skip, updateSkip] = useState(0);
+    const [sort, updateSort] = useState({ 'listing.updatedAt': -1 })
+    const [filter, updateFilters] = useState(filters);
+
     useEffect(() => {
-        getListings(
-            type,
-            filters,
-            { limit: listingsInPage, sort: { date: 1 }, skip: skipValue })
-            .then(updateList)
-    }, []);
+        getListings(type, filter, { limit, sort, skip }).then(updateList)
+    }, [sort, skip, filter])
+
     return (
         <div>
-            {list.map(itm => <Item type={type} topLevel={itm} key={itm._id} />)}
-            <ListingPaging type={type} listingsInPage={listingsInPage} />
+            <PulseLoader size="3rem" loading={!list.length}></PulseLoader>
+            <span style={{ visibility: list.length ? "visible" : "hidden" }}>
+                {list.map(itm => <Item type={type} topLevel={itm} key={itm._id} />)}
+                <ListingPaging
+                    filters={filters}
+                    updatePage={(page) => { updateSkip(skipBy(page)) }}
+                    type={type}
+                    listingsInPage={listingsInPage} />
+            </span>
         </div>
     );
 };

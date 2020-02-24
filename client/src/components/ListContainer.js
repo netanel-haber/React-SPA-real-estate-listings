@@ -9,6 +9,7 @@ const { HEB_MITIGATED_LISTINGS } = {
 
 
 const ListContainer = ({ type }) => {
+
     return (
         <div className="ItemList__container">
             <ItemList className="ItemList" type={type} filters={{ attributeIsNull: 'listing.mitigatingCompany' }} />

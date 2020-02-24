@@ -5,16 +5,17 @@ const { translator } = require('./mongoMiddleware');
 
 mongoRouter.use(translator);
 
-mongoRouter.get('/listings/count/:type', async (req, res) => {
-    res.json(await countDocs(req.params.type));
-})
-
-mongoRouter.get('/listings/:type/:id', async (req, res) => {
-    res.json(await getBottomLevel(req.params.type, req.params.id));
+mongoRouter.post('/listings/count/:type', async (req, res) => {
+    res.json(await countDocs(req.params.type, req.filters));
 })
 
 mongoRouter.post('/listings/:type', async (req, res) => {
     res.json(await getTopLevel(req.params.type, req.filters, req.options));
+})
+
+
+mongoRouter.get('/listings/:type/:id', async (req, res) => {
+    res.json(await getBottomLevel(req.params.type, req.params.id));
 })
 
 mongoRouter.get('/listers/:id', async (req, res) => {
