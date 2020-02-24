@@ -16,6 +16,10 @@
     align-items: center;
     a {
       padding: $s-size/2;
+      width: $m-size;
+      text-align: center;
+      display: flex;
+      justify-content: center;
     }
     :not(.notTodayMyFriend):hover {
       cursor: pointer;
