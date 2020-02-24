@@ -6,7 +6,7 @@ import Item from './Item/Item';
 import ListingPaging from './ListingPaging';
 
 
-const listingsInPage = 1;
+const listingsInPage = 10;
 const skipBy = (page) => (page - 1) * listingsInPage;
 const limit = listingsInPage;
 

@@ -11,6 +11,7 @@
   background-color: $whiter-than-body-white;
   border-radius: 20px;
   .page-container {
+    padding: 0 $s-size;
     overflow: hidden;
     display: flex;
     align-items: center;
@@ -25,7 +26,7 @@
       cursor: pointer;
     }
     .theOne {
-      background-color: lighten($yad2-orange, 15%);
+      background-color: $yad2-orange;
       border-radius: 4px;
       color: $whiter-than-body-white;
     }
