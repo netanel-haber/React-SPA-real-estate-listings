@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react';
-import useSpinnerBeforeImageLoad from '../../../hooks/useSpinnerBeforeImageLoad';
+import React from 'react';
 import PulseLoader from "react-spinners/PulseLoader";
+import useSpinnerBeforeImageLoad from '../../../hooks/useSpinnerBeforeImageLoad';
 
 const ImageWithLoader = ({ url, loaderSize = "5rem" }) => {
     const [loading, done] = useSpinnerBeforeImageLoad(url);
@@ -11,6 +11,7 @@ const ImageWithLoader = ({ url, loaderSize = "5rem" }) => {
                 style={{ display: loading ? "none" : "inline" }}
                 onLoad={done}
                 className="image"
+                alt="תמונה של הנכס"
                 src={url}>
             </img>
         </>

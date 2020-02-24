@@ -1,0 +1,12 @@
+@import "../base/settings";
+
+.ListingPaging {
+  direction: ltr;
+  padding: $s-size/2;
+  text-align: center;
+}
+
+.ListingPaging__page {
+  color: lighten(blue, 15%);
+  padding: $s-size;
+}

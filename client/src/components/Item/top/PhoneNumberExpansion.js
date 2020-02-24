@@ -12,7 +12,7 @@ const { HEB_WEBSITE, HEB_COPY_EMAIL } = {
 }
 
 const extractMitDetails = ({ name, phoneNumbers, website }) =>
-    ([name, phoneNumbers.join?.(', '), website && (<a target="_blank" href={website}>{HEB_WEBSITE}</a>)]);
+    ([name, phoneNumbers.join?.(', '), website && (<a rel="noopener noreferrer" target="_blank" href={website}>{HEB_WEBSITE}</a>)]);
 const extractRegListerDetails = ({ name, phoneNumber, email }) =>
     ([name, phoneNumber, email && (<span onClick={(e) => { e.stopPropagation(); copyToClipBoard(email); }}>{HEB_COPY_EMAIL}</span>)])
 

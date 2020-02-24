@@ -1,7 +1,8 @@
 const translateFilters = require('../utilities/mongoFilters');
 const translator = (req, res, next) => {
     try {
-        req.filters = translateFilters(req.body);
+        if (req.filters)
+            req.filters = translateFilters(req.body.filters);
     }
     catch (ex) {
         console.log('here');

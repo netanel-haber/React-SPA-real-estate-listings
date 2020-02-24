@@ -11,9 +11,9 @@ const { HEB_MITIGATED_LISTINGS } = {
 const ListContainer = ({ type }) => {
     return (
         <div className="ItemList__container">
-            <ItemList className="ItemList" type={type} predicate={{ attributeIsNull: 'listing.mitigatingCompany' }} />
+            <ItemList className="ItemList" type={type} filters={{ attributeIsNull: 'listing.mitigatingCompany' }} />
             <h5>{HEB_MITIGATED_LISTINGS}</h5>
-            <ItemList type={type} predicate={{ attributeIsntNull: 'listing.mitigatingCompany' }} />
+            <ItemList type={type} filters={{ attributeIsntNull: 'listing.mitigatingCompany' }} />
         </div>
     )
 }

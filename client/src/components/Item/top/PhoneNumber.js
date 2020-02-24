@@ -1,8 +1,8 @@
-import React, { useState, useContext } from 'react';
+import React, { useContext } from 'react';
 import ItemContext from '../../../contexts/ItemContext';
-import PhoneNumberExpansion from './PhoneNumberExpansion';
-import '../../../styles/components/Item/PhoneNumberButton.scss';
 import useLoadOnceThenToggle from '../../../hooks/useLoadOnceThenToggle';
+import '../../../styles/components/Item/PhoneNumberButton.scss';
+import PhoneNumberExpansion from './PhoneNumberExpansion';
 
 const { HEB_CONTACT, HEB_MITIGATING_COMPANY } = {
     HEB_CONTACT: "פרטי איש קשר",
@@ -17,7 +17,7 @@ const PhoneNumber = () => {
             <div onClick={(e) => { e.stopPropagation(); toggle(); }}>
                 <div className="phone-number-button-and-expansion-positioner-and-column-child">
                     <div className="show-phone-number-button">
-                        <img src="/icons/phone.png"></img>
+                        <img alt="" src="/icons/phone.png"></img>
                         <div>
                             {mitigatingCompany ? HEB_MITIGATING_COMPANY : HEB_CONTACT}
                         </div>

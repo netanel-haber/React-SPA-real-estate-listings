@@ -1,7 +1,7 @@
-const getListings = (type, filters) =>
+const getListings = (type, filters = {}, options = {}) =>
     fetch(`api/data/listings/${type}`, {
         method: 'POST',
-        body: JSON.stringify(filters),
+        body: JSON.stringify({ filters, options }),
         headers: {
             'Content-Type': 'application/json',
         }

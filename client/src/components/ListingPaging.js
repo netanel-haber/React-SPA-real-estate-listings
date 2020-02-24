@@ -1,19 +1,40 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useState, useEffect } from 'react';
 import { countDocs } from '../fetch/data';
-import '../styles/components/ListingPaging';
+import '../styles/components/ListingPaging.scss';
+
+const PageLink = (text, dispatch) => {
+
+}
 
 
 
+const getPagesString = (count, listingsInPage, pagesToListAtOnce = 8) => {
+    let pages = [];
+    let max = Math.ceil(count / listingsInPage);
+    let i = 1;
+    for (; (i <= pagesToListAtOnce) && (i <= max); pages.push(i++)) { }
+    if (i <= max)
+        pages.push('...', max);
+    return pages;
+}
 
 
-const ListingPaging = ({ type, listingsInPage = 10 }) => {
+
+const ListingPaging = ({ type, listingsInPage = 10, dispatchPage }) => {
     const [count, updateCount] = useState(0);
     useEffect(() => {
         countDocs(type).then(updateCount);
     }, []);
     return (
         <div className="ListingPaging">
-            1 2 3 4 5 6 7 8 ...{Math.ceil(count / listingsInPage)}
+            {getPagesString(count, listingsInPage).map((page, index) => (
+                <a
+                    key={index}
+                    className="ListingPaging__page"
+                >
+                    {page}
+                </a>
+            ))}
         </div>
     );
 };

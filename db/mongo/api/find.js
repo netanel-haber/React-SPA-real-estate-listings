@@ -1,27 +1,15 @@
 const modelOf = require('./switch-model');
-const { ForsaleListing, RentListing, CommercialListing, RoommatesListing, Lister, MitigatingCompany } = require('../index');
-
-const topLevel = '_id listing level1';
-async function getTopLevel(type, filters = {}) {
-    let Model = modelOf(type);
-    return await Model.find(filters, topLevel, { sort: { date: 1 }, limit: 3 })
-}
-
-const bottomLevel = 'level2 level3';
-async function getBottomLevel(type, id) {
-    let Model = modelOf(type);
-    return await Model.findById(id, bottomLevel, { sort: { date: 1 } })
-}
+const { Lister } = require('../index');
 
 
-async function countDocs(type) {
-    let Model = modelOf(type);
-    return await Model.countDocuments();
-}
+const getTopLevel = async (type, filts = {}, opts = {}) =>
+    await modelOf(type).find(filts, '_id listing level1', opts);
 
-async function getLister(id) {
-    return await Lister.findById(id);
-}
+const getBottomLevel = async (type, id) => await modelOf(type).findById(id, 'level2 level3');
+
+const countDocs = async (type) => await modelOf(type).countDocuments();
+
+const getLister = async (id) => await Lister.findById(id);
 
 
 

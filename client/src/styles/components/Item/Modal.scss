@@ -14,8 +14,9 @@
   align-items: center;
   justify-content: center;
   flex-direction: row-reverse;
-  > .content-container {
-    max-width: 650px;
+  .content-container {
+    max-width: 800px;
+    border-radius: 0 10px 10px 0;
     width: 100%;
     height: 90%;
     background-color: darken($lightest-gray, 65%);
@@ -23,6 +24,14 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    .toggle-pics {
+      font-size: $xl-size;
+      padding: 10px 20px;
+      border-radius: 4px;
+      &:hover {
+        background-color: $def-color;
+      }
+    }
     .image-child {
       display: flex;
       align-items: center;
@@ -30,42 +39,37 @@
       flex-direction: row-reverse;
       width: 90%;
       height: 100%;
-      max-width: 650px;
+      max-width: 750px;
       max-height: 500px;
+      .Modal__image-container {
+        flex-grow: 2;
+        display: flex;
+        justify-content: center;
+        margin: 0 $s-size;
+        > .image {
+          max-width: 100%;
+          min-width: 200px;
+          height: auto;
+        }
+      }
     }
     .number-child {
       font-size: $m-size;
     }
   }
-}
-
-.Modal__image-container {
-  flex-grow: 2;
-  display: flex;
-  justify-content: center;
-  margin: 0 $s-size;
-  > .image {
-    max-width: 100%;
-    min-width: 200px;
-    height: auto;
-  }
-}
-
-.Modal-ads {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  background-color: darken($lightest-gray, 65%);
-  > div {
-    padding: $m-size;
-  }
-}
-
-.toggle-pics {
-  font-size: $xl-size;
-  padding: 10px 20px;
-  border-radius: 4px;
-  &:hover {
-    background-color: $def-color;
+  .Modal-ads {
+    border-radius: 10px 0 0 10px;
+    &:before {
+      padding: $s-size;
+      text-align: center;
+      content: "תוכן שיווקי";
+    }
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: darken($lightest-gray, 65%);
+    > div {
+      padding: $m-size;
+    }
   }
 }
