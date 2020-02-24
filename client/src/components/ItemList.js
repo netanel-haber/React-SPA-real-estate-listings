@@ -4,6 +4,7 @@ import { getListings } from '../fetch/data';
 import '../styles/components/ItemList.scss';
 import Item from './Item/Item';
 import ListingPaging from './ListingPaging';
+import SortBy from './SortBy/SortBy';
 
 
 const listingsInPage = 10;
@@ -25,6 +26,7 @@ const ItemList = ({ type, filters }) => {
         <div>
             <PulseLoader size="3rem" loading={!list.length}></PulseLoader>
             <span style={{ visibility: list.length ? "visible" : "hidden" }}>
+                <SortBy />
                 {list.map(itm => <Item type={type} topLevel={itm} key={itm._id} />)}
                 <ListingPaging
                     filters={filters}
