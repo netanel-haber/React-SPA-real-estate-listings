@@ -13,12 +13,12 @@ const getRest = (type, id) => fetch(`api/data/listings/${type}/${id}`)
     .then(res => res.json());
 
 
-const countDocs = (type) => fetch(`api/data/listings/${type}/count`)
+const countDocs = (type) => fetch(`api/data/listings/count/${type}`)
     .then(res => res.json());
 
 
 const getLister = (id) => fetch(`api/data/listers/${id}`)
-    .then(res =>res.json());
+    .then(res => res.json());
 
 
 

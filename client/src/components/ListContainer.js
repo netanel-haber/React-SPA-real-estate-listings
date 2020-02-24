@@ -1,5 +1,4 @@
-import React, { useEffect, useState } from 'react';
-import { getListings } from '../fetch/data';
+import React from 'react';
 import '../styles/components/ItemList.scss';
 import ItemList from './ItemList';
 

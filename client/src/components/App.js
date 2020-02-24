@@ -4,7 +4,7 @@ import {
   Rent,
   Roommates,
   HomePage,
-  Signup,
+  // Signup,
   Login,
   AddListing,
   Personal,
@@ -15,11 +15,6 @@ import React from 'react';
 import '../styles/components/App.scss';
 import Header from './Header';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
-
-
-const RouteShortHand = ({ path, page }) => (
-  <Route exact path={path}>{page}</Route>
-);
 
 
 class App extends React.Component {

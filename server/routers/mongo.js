@@ -4,9 +4,9 @@ const { translator } = require('./mongoMiddleware');
 
 
 mongoRouter.use(translator);
-// mongoRouter.get('/listings/:type/count', async (req, res) => {
-//     res.json(await countDocs(req.params.type));
-// })
+mongoRouter.get('/listings/count/:type', async (req, res) => {
+    res.json(await countDocs(req.params.type));
+})
 
 mongoRouter.get('/listings/:type/:id', async (req, res) => {
     console.log('/listings/:type/:id');

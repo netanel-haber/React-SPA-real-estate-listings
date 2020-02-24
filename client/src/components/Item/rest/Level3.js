@@ -1,8 +1,8 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext } from 'react';
 import RestContext from '../../../contexts/RestContext';
 import '../../../styles/components/Item/Level3.scss';
-import translate from './Level3_translator';
 import Level3Attribute from './Level3Attribute';
+import translate from './Level3_translator';
 
 const { HEB_DESC, HEB_FURN_DESC } = {
     HEB_DESC: "מה יש בנכס?",

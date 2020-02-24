@@ -1,19 +1,19 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { countDocs } from '../fetch/data';
+import '../styles/components/ListingPaging';
 
-const ListingPaging = ({ updatelistCallback: cb, type }) => {
-    const [count, updateCount] = useState();
-    countDocs(type).then(val => {
-    })
+
+
+
+
+const ListingPaging = ({ type, listingsInPage = 10 }) => {
+    const [count, updateCount] = useState(0);
     useEffect(() => {
         countDocs(type).then(updateCount);
-    }, [])
-
+    }, []);
     return (
         <div className="ListingPaging">
-            -
-            {count}
-            -
+            1 2 3 4 5 6 7 8 ...{Math.ceil(count / listingsInPage)}
         </div>
     );
 };
