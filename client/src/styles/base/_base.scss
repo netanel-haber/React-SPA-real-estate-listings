@@ -23,14 +23,14 @@ button:disabled {
 
 
 
-// @media only screen and (max-width: 630px) {
-//   html {
-//     font-size: 50%;
-//   }
-// }
+@media only screen and (max-width: 630px) {
+  html {
+    font-size: 50%;
+  }
+}
 
-// @media only screen and (min-width: 800px) {
-//   html {
-//     font-size: 75%;
-//   }
-// }
+@media only screen and (min-width: 800px) {
+  html {
+    font-size: 75%;
+  }
+}
