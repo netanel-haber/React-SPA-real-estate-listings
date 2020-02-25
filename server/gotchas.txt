@@ -1,0 +1,31 @@
+
+#git
+1. git is case insesitive for filenames and will not detect changes of case in file names.
+- use 'git mv' to rename file and have git detect the change. 
+
+
+#heroku
+1. use 'heroku plugins' to see two plugins added to heroku:
+    1. heroku-builds 0.0.29 - use 'heroku builds:cancel APP_NAME' to cancel build in progress.
+    2. heroku-config 1.5.4 - use 'heroku config:push -f PATH' to push envars from file. see github.
+2. use 'heroku open' to open app from console.
+3. add heroku remote to workspace folder to add remote to git. 
+4. 'git push heroku master'
+5. gitignored files will not be pushed to heroku - therefore envars will need to be configed
+manually - see #heroku.1.2.
+heroku will automatically provide PORT and NODE_ENV=production under process.env.
+6. if a subfolder must be built as well - in this instance the 'client' subfolder - the command
+must be in the root pckg.json 'build' scripts - for example:
+"build": "cd client/ && npm install && npm run build".
+see https://github.com/mars/heroku-cra-node#user-content-deploy-to-heroku 
+for similar deployment pattern.
+
+#mongo
+1. you must configure network availability to any ip under 'network' in website if production.
+
+#node&express
+1. if NODE_ENV=production, serve *client* build folder. optionally dont require 'dotenv'
+although this is optional as .env files will not be present and therefore this a 
+non-performant-heavy no-op in production.  
+
+
