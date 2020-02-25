@@ -7,7 +7,7 @@ import ListingPaging from './ListingPaging';
 import SortBy from './SortBy/SortBy';
 
 
-const listingsInPage = 10;
+const listingsInPage = 3;
 const skipBy = (page) => (page - 1) * listingsInPage;
 const limit = listingsInPage;
 
