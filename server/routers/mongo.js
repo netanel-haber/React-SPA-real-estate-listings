@@ -14,7 +14,6 @@ mongoRouter.get('/listings/:type/:id', async (req, res) => {
     res.json(await getBottomLevel(req.params.type, req.params.id));
 })
 
-
 mongoRouter.use('/listings/:type', async (req, res) => {
     res.json(await getTopLevel(req.params.type, req.filters, req.options));
 })
