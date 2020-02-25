@@ -1,17 +1,23 @@
-if (!process.env.NODE_ENV) {
-    require('dotenv').config();
-}
+require('dotenv').config(); //in production (at least in heroku) this will not register any .env files, since they are gitignored
 
 const c = require('chalk');
 const express = require('express');
+const path = require('path');
 const app = express();
+
 app.use(require('./logger'));
 app.use(require('body-parser').json());
 app.use('/api', require('./routers/api'));
-if (process.env.NODE_ENV === "production") {
-    app.use(express.static(__dirname + '/client/build'));
-}
 app.use('/icons', express.static(__dirname + '/icons'));
+
+
+if (process.env.NODE_ENV === "production") {
+    const clientPath = path.join(__dirname, '../client', 'build');
+    app.use(express.static(clientPath));
+    app.get('/', function (req, res) {
+        res.sendFile(path.join(clientPath, 'index.html'));
+    });
+}
 
 
 

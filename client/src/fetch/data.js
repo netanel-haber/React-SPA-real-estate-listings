@@ -16,8 +16,6 @@ const countDocs = (type, filters = {}) => {
     return fetchPost(`api/data/listings/count/${type}`, { filters }).then(res => res.json());
 };
 
-
-
 const getRest = (type, id) => fetch(`api/data/listings/${type}/${id}`)
     .then(res => res.json());
 

@@ -9,7 +9,7 @@ mongoRouter.post('/listings/count/:type', async (req, res) => {
     res.json(await countDocs(req.params.type, req.filters));
 })
 
-mongoRouter.post('/listings/:type', async (req, res) => {
+mongoRouter.use('/listings/:type', async (req, res) => {
     res.json(await getTopLevel(req.params.type, req.filters, req.options));
 })
 
