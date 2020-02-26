@@ -24,7 +24,11 @@ for similar deployment pattern.
 1. you must configure network availability to any ip under 'network' in website if production.
 
 #node&express
-1. if NODE_ENV=production, serve *client* build folder. optionally dont require 'dotenv'
+1. in package.json scripts, & denotes asynchronous and parallelized processes, and therefore cannot be used if 
+said processes depend on synchronous execution of the previous processes. && should be use for sync execution -
+for example, see #heroku.6, where cd must finish execution before npm scripts on client may execute, for obvious reasons:
+otherwise, the root projects npm scripts will execute. this caused recursion, as the build script kept rerunning itself.
+2. if NODE_ENV=production, serve *client* build folder. optionally dont require 'dotenv'
 although this is optional as .env files will not be present and therefore this a 
 non-performant-heavy no-op in production.  
 
