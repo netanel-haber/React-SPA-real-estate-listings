@@ -14,17 +14,6 @@ const Modal = () => {
     let actualCurrentIndex = Math.abs(currentIndex) % urls.length;
     return (
         <div className="Modal">
-            <div className="Modal-ads">
-                <div>
-                    <img alt="ad" height="150px" width="150px" src="https://via.placeholder.com/150"></img>
-                </div>
-                <div>
-                    <img alt="ad" height="150px" width="150px" src="https://via.placeholder.com/150"></img>
-                </div>
-                <div>
-                    <img alt="ad" height="150px" width="150px" src="https://via.placeholder.com/150"></img>
-                </div>
-            </div>
             <div className="content-container">
                 <div className="image-child">
                     <div className="toggle-pics" onClick={(e) => { e.stopPropagation(); inc(currentIndex + 1) }}>❯</div>

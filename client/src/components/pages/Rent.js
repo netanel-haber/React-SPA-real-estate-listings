@@ -1,10 +1,10 @@
 import React from 'react';
-import ListContainer from '../ListContainer';
+import ListsContainer from '../ListsContainer';
 
 const Rent = () => (
     <div>
         Rent
-        <ListContainer type="rent"/>
+        <ListsContainer type="rent"/>
     </div>
 )
 

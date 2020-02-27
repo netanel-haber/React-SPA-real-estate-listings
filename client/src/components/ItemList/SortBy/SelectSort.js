@@ -1,5 +1,5 @@
 import React from 'react';
-import '../../styles/components/SortBy/SelectSort.scss';
+import '../../../styles/components/SortBy/SelectSort.scss';
 const { HEB_BY_DATE, HEB_SORT_BY: HEB_SORY_BY, HEB_CHEAP_FIRST, HEB_EXPENSIVE_FIRST } =
 {
     HEB_SORT_BY: "מיין לפי",

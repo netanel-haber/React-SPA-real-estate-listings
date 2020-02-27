@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
-import PulseLoader from "react-spinners/PulseLoader";
+import Loader from "react-spinners/PulseLoader";
 import ItemContext from '../../../contexts/ItemContext';
 import { getLister } from '../../../fetch/data';
 import '../../../styles/components/Item/PhoneNumberExpansion.scss';
@@ -31,11 +31,11 @@ const PhoneNumberExpansion = ({ isExpanded }) => {
     return (
         <div className="PhoneNumberExpansion" style={{ maxHeight: isExpanded ? "200px" : "0" }}>
             {(mitigatingCompany
-                ? (extractMitDetails(mitigatingCompany))
-                : (regListerDetails.length===0
-                    ? ([<PulseLoader loading={true} size="1rem" />])
-                    : (extractRegListerDetails(regListerDetails))))
-                .map((deet,index) => <div key={index} className="child">{deet}</div>)
+                ? extractMitDetails(mitigatingCompany)
+                : (regListerDetails.length!==0
+                    ? extractRegListerDetails(regListerDetails)
+                    : [<Loader loading size="1rem" />]))
+                .map((deet, index) => <div key={index} className="child">{deet}</div>)
             }
         </div>
     );

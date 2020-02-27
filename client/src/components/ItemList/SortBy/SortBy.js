@@ -1,5 +1,5 @@
 import React from 'react';
-import '../../styles/components/SortBy/SortBy.scss';
+import '../../../styles/components/SortBy/SortBy.scss';
 import SelectSort from './SelectSort';
 
 const { HEB_ONLY_WITH_PIC, HEB_ONLY_WITH_PRICE, HEB_FILTER } = {

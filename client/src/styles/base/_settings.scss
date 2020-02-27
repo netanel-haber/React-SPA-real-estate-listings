@@ -28,3 +28,8 @@ $cont-height-s-size-padding: $s-size * 2 + (9/8) * $body-font;
 $cont-height-m-size-padding: $m-size * 2 + (9/8) * $body-font;
 $cont-height-l-size-padding: $l-size * 2 + (9/8) * $body-font;
 $cont-height-xl-size-padding: $xl-size * 2 + (9/8) * $body-font;
+
+
+:export {
+    yad2Orange: $yad2-orange;
+}
