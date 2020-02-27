@@ -4,7 +4,7 @@ const mitigatingCompany = require('../../users/MitigatingCompany');
 const contact = require('../../contact');
 
 const listingMetadataSchema = new Schema({
-    mitigatingCompany:{
+    mitigatingCompany: {
         type: mitigatingCompany,
         default: null
     },
@@ -14,16 +14,10 @@ const listingMetadataSchema = new Schema({
             'lister id does not seem to exist'],
         required: true,
     },
-    createdAt: {
-        type: Date,
-        default: Date.now
-    },
-    updatedAt: {
-        type: Date,
-        default: Date.now
-    },
     deletedAt: Date,
     pictureKeys: [String]
+}, {
+    timestamps: true
 });
 
 

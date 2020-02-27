@@ -8,7 +8,7 @@ let schema = new Schema({
     email,
     phoneNumbers,
     website
-});
+}, { timestamps: true });
 
 
 module.exports = schema;

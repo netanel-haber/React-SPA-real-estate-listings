@@ -12,6 +12,6 @@ module.exports = new Schema({
     hash: String,
     salt: String,
     mitigatingCompanyId: Schema.Types.ObjectId
-});
+}, { timestamps: true });
 
 

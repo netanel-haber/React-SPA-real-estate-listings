@@ -5,12 +5,13 @@ const mongoose = require('mongoose');
 const uri = `mongodb+srv://masterNetanel:${process.env.MONGODB_PASSWORD}@nadlan-msbha.mongodb.net/nadlan`;
 const nadlan = mongoose.createConnection(uri, {
     useNewUrlParser: true,
-    useUnifiedTopology: true
+    useUnifiedTopology: true,
+    useCreateIndex: true
 });
-mongoose.set('useCreateIndex', true);
 
-
-nadlan.on('error', console.error.bind(console, 'connection error:'));
+nadlan.on('error', function () {
+    console.log('mongo connection error');
+});
 nadlan.once('open', function () {
     console.log(success("mongo: were connected"));
 });
