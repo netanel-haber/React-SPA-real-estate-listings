@@ -10,7 +10,7 @@ const Image = ({ thumbHeight }) => {
     const [isOpen, toggle] = useState(false);
     return (
         <div className="ImageColumn" onClick={(e) => { e.stopPropagation(); toggle(!isOpen); }}>
-            <div className="ColumnChild">
+            <div className="ColumnChild">              
                 <Thumbnail height={thumbHeight} url={urls[0]}>
                     <Pill rootWidth="4rem" fontSize="1rem" text={urls.length - 1 + "+"} />
                 </Thumbnail>

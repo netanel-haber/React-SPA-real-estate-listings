@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import ItemListContext from '../../contexts/ItemListContext';
 import { countDocs, getListings } from '../../fetch/data';
-import WithLoader from './../WithLoader';
+import WithLoader from '../LoaderBeforeData';
 import ItemList from './ItemList';
 import ListingPaging from './ListingPaging';
 import SortBy from './SortBy/SortBy';
@@ -30,11 +30,10 @@ const ListContainer = (props) => {
     useEffect(() => {
         countDocs(type, filterBy).then(updateCount);
     }, [type, filterBy]);
-
     return (
         <ItemListContext.Provider value={{ count, listingsInPage, list, type }}>
             <SortBy />
-            <WithLoader loading={listUpdating} loaderProps={{ size: "1rem" }}>
+            <WithLoader loading={listUpdating} loaderProps={{ size: "2rem" }}>
                 <ItemList />
             </WithLoader>
             <ListingPaging dispatchPageUpdate={(page) => { updateSkip(skipBy(page)) }} />

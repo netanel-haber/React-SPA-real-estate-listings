@@ -1,17 +1,15 @@
 @import "./settings";
+
 //global PulseLoader class
 .css-0 {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 100%;
-  width: 100%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   > div {
-    background-color: lighten($yad2-orange, 10%);
+    background-color: $yad2-orange;
   }
 }
-
-
 
 .overlay {
   position: absolute;
