@@ -1,6 +1,5 @@
 @import "./settings";
 
-//global PulseLoader class
 .css-0 {
   position: absolute;
   top: 50%;
@@ -8,6 +7,12 @@
   transform: translate(-50%, -50%);
   > div {
     background-color: $yad2-orange;
+  }
+}
+
+.Loader {
+  > div {
+    @extend .css-0;
   }
 }
 

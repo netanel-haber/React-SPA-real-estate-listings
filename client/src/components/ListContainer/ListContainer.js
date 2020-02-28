@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import ItemListContext from '../../contexts/ItemListContext';
 import { countDocs, getListings } from '../../fetch/data';
-import WithLoader from '../LoaderBeforeData';
+import LoaderBeforeData from '../LoaderBeforeData';
 import ItemList from './ItemList';
 import ListingPaging from './ListingPaging';
 import SortBy from './SortBy/SortBy';
+import BarLoader from "react-spinners/BarLoader";
+import colors from '../../styles/base/_settings.scss';
 
 
 const listingsInPage = 3;
@@ -33,10 +35,13 @@ const ListContainer = (props) => {
     return (
         <ItemListContext.Provider value={{ count, listingsInPage, list, type }}>
             <SortBy />
-            <WithLoader loading={listUpdating} loaderProps={{ size: "2rem" }}>
+            <LoaderBeforeData loading={listUpdating} loaderProps={{ size: "2rem" }}>
                 <ItemList />
-            </WithLoader>
-            <ListingPaging dispatchPageUpdate={(page) => { updateSkip(skipBy(page)) }} />
+            </LoaderBeforeData>
+            <LoaderBeforeData loading={listUpdating} loaderProps={{ height: "0.75rem", width: "50%" }}
+                type={BarLoader}>
+                <ListingPaging dispatchPageUpdate={(page) => { updateSkip(skipBy(page)) }} />
+            </LoaderBeforeData>
         </ItemListContext.Provider>
     );
 };

@@ -1,8 +1,8 @@
 @import "../base/settings";
 
 .ListingPaging {
+  position: relative;
   display: flex;
-  direction: ltr;
   width: 65%;
   margin: $s-size auto;
   flex-direction: row-reverse;
@@ -11,10 +11,12 @@
   background-color: $whiter-than-body-white;
   border-radius: 20px;
   .page-container {
+    flex-grow: 2;
     padding: 0 $s-size;
     overflow: hidden;
     display: flex;
     align-items: center;
+    justify-content: center;
     a {
       padding: $s-size/2;
       width: $m-size;
