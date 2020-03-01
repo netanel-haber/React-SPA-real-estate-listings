@@ -1,7 +1,7 @@
 @import "../../base/settings";
 
 .Item__container {
-  margin: 3px;
+  margin: 3px 0;
   border-radius: 3px;
   border: 1px solid $lightest-gray;
   &:hover {

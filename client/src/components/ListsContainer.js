@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { useReducer } from 'react';
 import '../styles/components/ListsContainer.scss';
 import ListContainer from './ListContainer/ListContainer';
-
+import SelectSort from './ListContainer/SortBy/SelectSort';
 
 const { HEB_MITIGATED_LISTINGS } = {
     HEB_MITIGATED_LISTINGS: "דירות מתיווך:"

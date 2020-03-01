@@ -1,5 +1,4 @@
 import React, { useState, useContext } from 'react';
-import '../../../styles/components/SortBy/SelectSort.scss';
 import Bullet from './../../Bullet';
 import ItemListContext from '../../../contexts/ItemListContext';
 

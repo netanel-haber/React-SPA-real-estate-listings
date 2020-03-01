@@ -3,13 +3,22 @@
 
 .SortBy {
   @include basic-flex(flex-start);
-  font-size: $s-size;
-  margin: $s-size;
-  label {
-    padding: 0 $s-size;
+  margin: $s-size 0;
+  font-size: $m-size;
+  > * {
+    margin: 0 $s-size;
+    border-radius: 2px;
   }
-  > div {
-    margin: 0 $s-size/2;
+}
+
+.SortBy__button {
+  border-style: solid;
+  border-width: 1px;
+  padding: $s-size/2;
+  margin-left: $s-size/4;
+  &.active {
+    color: $yad2-orange;
+    border-color: 1px solid $yad2-orange;
   }
 }
 

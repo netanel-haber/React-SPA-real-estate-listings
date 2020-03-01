@@ -53,6 +53,7 @@ const ListContainer = (props) => {
             list,
             type,
             listUpdating,
+            optionState,
             dispatchSorts: (payload) => { dispatchOptions({ type: "UPDATE_SORTS", payload }) },
             dispatchFilters: (payload) => { dispatchOptions({ type: "UPDATE_FILTERS", payload }) },
             dispatchSkip: (payload) => { dispatchOptions({ type: "UPDATE_SKIP", payload }) }
