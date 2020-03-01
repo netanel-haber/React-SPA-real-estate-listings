@@ -28,7 +28,9 @@ new MitigatingCompany(mitigatingCompany).save()
         let promises = [];
         for (let i = 0; i < numOfDocsEach; i++) {
             promises = [...promises,
-            new ForsaleListing(forsale(Math.round(Math.random()) ? otherListerId : listerId)).save(),
+            new ForsaleListing(forsale(Math.round(Math.random()) ? otherListerId : listerId,
+                Math.floor(Math.random() * (200000 - 100000 + 1) + 100000)
+            )).save(),
             new RentListing(rent).save(),
             new CommercialListing(commercial).save(),
             new RoommatesListing(roommmates).save()];

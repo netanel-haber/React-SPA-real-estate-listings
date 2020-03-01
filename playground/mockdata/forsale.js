@@ -1,6 +1,6 @@
 const { listerId, otherListerId } = require('../ids');
 
-module.exports = (lis = listerId) => {
+module.exports = (lis = listerId, price) => {
     return {
         listing: {
             listerId: lis,
@@ -16,7 +16,7 @@ module.exports = (lis = listerId) => {
             floor: 3,
             floorsInBuilding: 5,
             sqMeters: 100,
-            price: 250000,
+            price,
             rooms: 34,
             address: {
                 municipality: "נשר",

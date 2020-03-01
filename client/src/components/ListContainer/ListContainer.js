@@ -1,5 +1,4 @@
-import React, { useEffect, useState } from 'react';
-import BarLoader from "react-spinners/BarLoader";
+import React, { useEffect, useReducer, useState } from 'react';
 import GridLoader from "react-spinners/GridLoader";
 import ItemListContext from '../../contexts/ItemListContext';
 import { countDocs, getListings } from '../../fetch/data';
@@ -9,35 +8,60 @@ import ListingPaging from './ListingPaging';
 import SortBy from './SortBy/SortBy';
 
 
-const skipBy = (page, listingsInPage) => (page - 1) * listingsInPage;
-
+const listingsInPage = 3;
+const optionsReducer = (prevState, { type, payload }) => {
+    switch (type) {
+        case "UPDATE_SORTS":
+            return { ...prevState, skip: 0, sorts: payload }
+        case "UPDATE_FILTERS":
+            return { ...prevState, skip: 0, filters: payload }
+        case "UPDATE_SKIP":
+            return { ...prevState, skip: (payload - 1) * listingsInPage }
+        default:
+            return prevState;
+    }
+}
 
 const ListContainer = (props) => {
-    const { type, initialFilter, listingsInPage = 3, limit = listingsInPage } = props;
-    const [listUpdating, toggleUpdating] = useState(true);
+    const { type, initialFilter } = props;
+
     const [list, updateList] = useState([]);
-    const [skip, updateSkip] = useState(0);
-    const [sortBy, updateSort] = useState({ 'listing.updatedAt': -1 })
-    const [filterBy, updateFilters] = useState(initialFilter);
+    const [listUpdating, toggleUpdating] = useState(true);
     const [count, updateCount] = useState(0);
+
+    const [optionState, dispatchOptions] = useReducer(optionsReducer, {
+        sorts: { updatedAt: -1 },
+        filters: initialFilter,
+        skip: 0,
+        limit: listingsInPage
+    });
 
     useEffect(() => {
         toggleUpdating(true);
-        getListings(type, filterBy, { limit, sort: sortBy, skip })
+        getListings(type, optionState)
             .then(updateList).then(() => { toggleUpdating(false) })
-    }, [type, sortBy, skip, filterBy])
+    }, [type, optionState])
 
     useEffect(() => {
-        countDocs(type, filterBy).then(updateCount);
-    }, [type, filterBy]);
+        countDocs(type, optionState.filters).then(updateCount);
+    }, [type, optionState]);
+
     return (
-        <ItemListContext.Provider value={{ count, listingsInPage, list, type, listUpdating }}>
+        <ItemListContext.Provider value={{
+            count,
+            listingsInPage,
+            list,
+            type,
+            listUpdating,
+            dispatchSorts: (payload) => { dispatchOptions({ type: "UPDATE_SORTS", payload }) },
+            dispatchFilters: (payload) => { dispatchOptions({ type: "UPDATE_FILTERS", payload }) },
+            dispatchSkip: (payload) => { dispatchOptions({ type: "UPDATE_SKIP", payload }) }
+        }}>
             <SortBy />
-            <LoaderBeforeData loading={listUpdating} loaderProps={{ size: "1rem" }}
-                type={GridLoader}>
+            <LoaderBeforeData loading={listUpdating} loaderProps={{ size: "1rem" }} type={GridLoader}>
                 <ItemList />
             </LoaderBeforeData>
-            <ListingPaging dispatchPageUpdate={(page) => { updateSkip(skipBy(page, listingsInPage)) }} />
+            <ListingPaging page={optionState.skip / listingsInPage + 1} />
         </ItemListContext.Provider>
     );
 };

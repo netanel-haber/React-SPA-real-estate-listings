@@ -50,3 +50,39 @@
     text-overflow: ellipsis;
   }
 }
+
+.chevron-down {
+  border-style: solid;
+  border-width: 0.1em 0.1em 0 0;
+  height: 0.45em;
+  width: 0.45em;
+  left: 2px;
+  position: relative;
+  top: -1.5px;
+  transform: rotate(135deg);
+}
+
+.dropdown-container {
+  position: relative;
+  cursor: pointer;
+  > div:first-of-type {
+    @include basic-flex;
+    padding: $s-size/2;
+    border: 1px solid #dbdbdb;
+    span {
+      @extend .chevron-down;
+    }
+  }
+  > div + div {
+    position: absolute;
+    width: 100%;
+    overflow: hidden;
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 2px 4px 0px;
+    background-color: $whiter-than-body-white;
+    z-index: 3;
+    > div {
+      border-bottom: 1px solid $lightest-gray;
+      padding: $s-size/2;
+    }
+  }
+}

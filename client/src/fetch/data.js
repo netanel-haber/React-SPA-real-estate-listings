@@ -8,9 +8,9 @@ const fetchPost = (path, body) => {
     })
 }
 
-
-const getListings = (type, filters = {}, options = {}) =>
-    fetchPost(`api/data/listings/${type}`, { filters, options }).then(res => res.json())
+const getListings = (type, options = {}) => {
+    return fetchPost(`api/data/listings/${type}`, options).then(res => res.json())
+}
 
 const countDocs = (type, filters = {}) => {
     return fetchPost(`api/data/listings/count/${type}`, { filters }).then(res => res.json());

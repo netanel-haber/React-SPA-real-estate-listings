@@ -2,8 +2,8 @@ const modelOf = require('./switch-model');
 const { Lister } = require('../index');
 
 
-const getTopLevel = async (type, filts = {}, opts = {}) =>
-    await modelOf(type).find(filts, '_id listing level1', opts)
+const getTopLevel = async (type, filters = {}, sorts = {}, skip, limit) =>
+    await modelOf(type).find(filters, '_id listing level1', { sort: sorts, skip, limit })
 
 const getBottomLevel = async (type, id) =>
     await modelOf(type).findById(id, 'level2 level3');

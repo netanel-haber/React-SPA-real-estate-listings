@@ -1,23 +1,40 @@
-import React from 'react';
+import React, { useState, useContext } from 'react';
 import '../../../styles/components/SortBy/SelectSort.scss';
-const { HEB_BY_DATE, HEB_SORT_BY: HEB_SORY_BY, HEB_CHEAP_FIRST, HEB_EXPENSIVE_FIRST } =
-{
-    HEB_SORT_BY: "מיין לפי",
-    HEB_BY_DATE: "לפי תאריך",
-    HEB_CHEAP_FIRST: "מחיר - מהזול ליקר",
-    HEB_EXPENSIVE_FIRST: "מחיר - מהיקר לזול"
-}
+import Bullet from './../../Bullet';
+import ItemListContext from '../../../contexts/ItemListContext';
+
+const Option = ({ onClick, text, selected }) => (
+    <div onClick={onClick}>
+        <Bullet {...{ selected }}></Bullet>
+        <div>{text}</div>
+    </div>
+);
 
 
-const SelectSort = ({ textsAndValues }) => {
+const SelectSort = ({ sortByOptions }) => {
+    const options = Object.entries(sortByOptions);
+    const [[text, value], changeOption] = useState(options[0]);
+    const [isOpen, toggleOpen] = useState(false);
+    const { dispatchSorts } = useContext(ItemListContext);
+    function onSelectClick(e) {
+        e.preventDefault();
+        toggleOpen(!isOpen)
+    }
+    function onOptionClick(e, index) {
+        changeOption(options[index]);
+        dispatchSorts(options[index][1])
+        toggleOpen(false);
+    };
     return (
-        <div className="SelectSort">
-            {HEB_SORY_BY}
-            <select className="SortBy-select">
-                <option value={JSON.stringify({ 'listing.updatedAt': 'descending' })} > {HEB_BY_DATE}</option>
-                <option value={JSON.stringify({ price: 'ascending' })}>{HEB_CHEAP_FIRST}</option>
-                <option value={JSON.stringify({ price: 'descending' })}>{HEB_EXPENSIVE_FIRST}</option>
-            </select>
+        <div className="SortBy__select-sort-container">
+            <div className="actual-select" onClick={onSelectClick}>
+                <div>{text}</div>
+                <span />
+            </div>
+            {isOpen && <div className="actual-dropdown">
+                {options.map(([text, childValue], index) =>
+                    <Option key={text} text={text} onClick={(e) => onOptionClick(e, index)} selected={childValue === value} />)}
+            </div>}
         </div>
     )
 }

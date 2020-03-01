@@ -6,7 +6,7 @@ import classNames from 'classnames';
 function getNumberOfPages(count, listingsInPage) { return Math.ceil(count / listingsInPage) };
 
 
-const PagesContainer = ({ page, pageClick }) => {
+const PagesContainer = ({ page, dispatchSkip }) => {
     const { count, listingsInPage } = useContext(ItemListContext);
     return (
         <div className="page-container">
@@ -15,7 +15,7 @@ const PagesContainer = ({ page, pageClick }) => {
                     (<a
                         key={index}
                         className={classNames({ theOne: pg === page, notTodayMyFriend: !Boolean(Number(pg)) })}
-                        onClick={() => { if (Number(pg)) pageClick(pg) }} >
+                        onClick={() => { if (Number(pg)) dispatchSkip(pg) }} >
                         {pg}
                     </a>))}
         </div>

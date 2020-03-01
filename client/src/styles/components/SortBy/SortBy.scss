@@ -1,6 +1,30 @@
 @import "../../base/settings";
+@import "../../base/utility-classes";
+
 .SortBy {
-  background-color: red;
-  display: flex;
-  justify-content: center;
+  @include basic-flex(flex-start);
+  font-size: $s-size;
+  margin: $s-size;
+  label {
+    padding: 0 $s-size;
+  }
+  > div {
+    margin: 0 $s-size/2;
+  }
+}
+
+.SortBy__select-sort-container {
+  @extend .dropdown-container;
+  flex-basis: 30%;
+  .actual-select {
+    background-color: white;
+  }
+  .actual-dropdown {
+    > div {
+      @include basic-flex(flex-start);
+      > div {
+        padding: $s-size/3;
+      }
+    }
+  }
 }
