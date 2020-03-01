@@ -1,4 +1,5 @@
 @import "../base/settings";
+@import "../base/utility-classes";
 
 @mixin pill-recs($recOpacity: 0.5) {
   background-color: rgba(246, 244, 241, $recOpacity);
@@ -6,21 +7,17 @@
 }
 
 .Pill {
+  @include basic-flex(center);
   border-radius: 15px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   background-color: rgba(14, 15, 14, 0.5);
   > .Pill__child {
     @include pill-recs;
     > .Pill__child-overlay {
+      @include basic-flex(center);
       @include pill-recs(0.9);
       position: relative;
       left: 4px;
       top: 4px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
     }
   }
 }

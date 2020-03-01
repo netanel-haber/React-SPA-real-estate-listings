@@ -1,21 +1,19 @@
 import React, { useEffect, useState } from 'react';
+import BarLoader from "react-spinners/BarLoader";
+import GridLoader from "react-spinners/GridLoader";
 import ItemListContext from '../../contexts/ItemListContext';
 import { countDocs, getListings } from '../../fetch/data';
 import LoaderBeforeData from '../LoaderBeforeData';
 import ItemList from './ItemList';
 import ListingPaging from './ListingPaging';
 import SortBy from './SortBy/SortBy';
-import BarLoader from "react-spinners/BarLoader";
-import colors from '../../styles/base/_settings.scss';
 
 
-const listingsInPage = 3;
-const skipBy = (page) => (page - 1) * listingsInPage;
-const limit = listingsInPage;
+const skipBy = (page, listingsInPage) => (page - 1) * listingsInPage;
 
 
 const ListContainer = (props) => {
-    const { type, initialFilter } = props;
+    const { type, initialFilter, listingsInPage = 3, limit = listingsInPage } = props;
     const [listUpdating, toggleUpdating] = useState(true);
     const [list, updateList] = useState([]);
     const [skip, updateSkip] = useState(0);
@@ -33,15 +31,13 @@ const ListContainer = (props) => {
         countDocs(type, filterBy).then(updateCount);
     }, [type, filterBy]);
     return (
-        <ItemListContext.Provider value={{ count, listingsInPage, list, type }}>
+        <ItemListContext.Provider value={{ count, listingsInPage, list, type, listUpdating }}>
             <SortBy />
-            <LoaderBeforeData loading={listUpdating} loaderProps={{ size: "2rem" }}>
+            <LoaderBeforeData loading={listUpdating} loaderProps={{ size: "1rem" }}
+                type={GridLoader}>
                 <ItemList />
             </LoaderBeforeData>
-            <LoaderBeforeData loading={listUpdating} loaderProps={{ height: "0.75rem", width: "50%" }}
-                type={BarLoader}>
-                <ListingPaging dispatchPageUpdate={(page) => { updateSkip(skipBy(page)) }} />
-            </LoaderBeforeData>
+            <ListingPaging dispatchPageUpdate={(page) => { updateSkip(skipBy(page, listingsInPage)) }} />
         </ItemListContext.Provider>
     );
 };

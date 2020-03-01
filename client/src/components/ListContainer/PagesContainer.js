@@ -32,7 +32,9 @@ function getPagesString(count, listingsInPage, page, pagesToListAtOnce = 7) {
         pages.push(i);
     }
     pages = pages.filter(page => ((page > 0) && (page <= last)));
-    if (pages[0] > 1)
+    if (pages[0] === 2)
+        pages.unshift(1);
+    else if (pages[0] > 2)
         pages.unshift(1, '...');
     if (pages[pages.length - 1] !== last)
         pages.push('...', last);

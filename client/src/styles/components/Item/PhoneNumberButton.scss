@@ -1,9 +1,8 @@
 @import "../../base/settings";
+@import "../../base/utility-classes";
 
 .show-phone-number-button {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  @include basic-flex(center);
   border-radius: 2px;
   padding: $s-size * 0.75;
   color: white;

@@ -12,14 +12,15 @@ const LoaderBeforeData = ({ loaderProps, children, loading, type = PulseLoader }
             {React.cloneElement(
                 children,
                 {
-                    style: loading
-                        ? loadingStyling
-                        : doneLoadingStyling
+                    style: {
+                        ...loading
+                            ? loadingStyling
+                            : doneLoadingStyling,
+                        ...children.style
+                    }
                 },
-                (
-                    <span className="Loader">{React.createElement(type,
-                        { loading, margin: mSize, ...loaderProps })}</span>
-                ))
+                <span className="Loader">{React.createElement(type,
+                    { loading, margin: mSize, ...loaderProps })}</span>)
             }
         </>
     )

@@ -1,28 +1,21 @@
 @import "../base/settings";
+@import "../base/utility-classes";
 
 .ListingPaging {
+  @include basic-flex(space-between, row-reverse, 2);
   position: relative;
-  display: flex;
-  width: 65%;
   margin: $s-size auto;
-  flex-direction: row-reverse;
   padding: $s-size/2;
-  justify-content: space-between;
   background-color: $whiter-than-body-white;
   border-radius: 20px;
   .page-container {
-    flex-grow: 2;
+    @include basic-flex(center);
     padding: 0 $s-size;
     overflow: hidden;
-    display: flex;
-    align-items: center;
-    justify-content: center;
     a {
+      @include basic-flex(center);
       padding: $s-size/2;
-      width: $m-size;
-      text-align: center;
-      display: flex;
-      justify-content: center;
+      width: $m-size;    
     }
     :not(.notTodayMyFriend):hover {
       cursor: pointer;
@@ -36,7 +29,8 @@
   button {
     border: none;
     border-radius: 10px;
-    padding: $s-size;
+    padding: $s-size/2;
+    margin: 0 $s-size;
     background-color: $yad2-orange;
     color: $whiter-than-body-white;
     &:disabled {
@@ -44,4 +38,3 @@
     }
   }
 }
-

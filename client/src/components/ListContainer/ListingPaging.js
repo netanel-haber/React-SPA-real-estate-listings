@@ -2,6 +2,7 @@ import React, { useContext, useState } from 'react';
 import ItemListContext from '../../contexts/ItemListContext';
 import '../../styles/components/ListingPaging.scss';
 import PagesContainer from './PagesContainer';
+import classnames from 'classnames';
 
 const { HEB_PREVIOUS, HEB_NEXT } = {
     HEB_PREVIOUS: "הקודם",
@@ -12,17 +13,17 @@ const getNumberOfPages = (count, listingsInPage) => Math.ceil(count / listingsIn
 
 const ListingPaging = ({ dispatchPageUpdate, style, children }) => {
     const [page, updatePage] = useState(1);
-    const { count, listingsInPage } = useContext(ItemListContext);
+    const { count, listingsInPage, listUpdating } = useContext(ItemListContext);
     const pageClick = (page) => {
         dispatchPageUpdate(page);
         updatePage(page);
     }
     const PrevPage = () =>
-        <button disabled={page === 1} onClick={() => { pageClick(page - 1) }}>{HEB_PREVIOUS}</button>
+        <button disabled={!count || page === 1} onClick={() => { pageClick(page - 1) }}>{HEB_PREVIOUS}</button>
     const NextPage = () =>
-        <button disabled={page + 1 > getNumberOfPages(count, listingsInPage)} onClick={() => { pageClick(page + 1) }}>{HEB_NEXT}</button>;
+        <button disabled={!count || page + 1 > getNumberOfPages(count, listingsInPage)} onClick={() => { pageClick(page + 1) }}>{HEB_NEXT}</button>;
     return (
-        <div className="ListingPaging" style={{ ...style }} >
+        <div className={classnames("ListingPaging", { "inactive-style": listUpdating })} style={{ ...style, visibility: count ? "visible" : "hidden" }} >
             <NextPage />
             <PagesContainer {...{ page, pageClick }} />
             <PrevPage />

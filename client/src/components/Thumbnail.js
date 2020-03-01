@@ -9,7 +9,7 @@ const Thumbnail = ({ height, width = height * (5 / 3), url, children }) => {
             <div className="overlay">
                 {children}
             </div>
-            <ImageWithLoader loaderSize="0.75rem" url={url} />
+            <ImageWithLoader loaderSize="0.4rem" url={url} />
         </div>
     )
 }

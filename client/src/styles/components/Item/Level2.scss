@@ -1,9 +1,9 @@
 @import '../../base/settings';
+@import '../../base/utility-classes';
 
 .Level2 {
     .Level2__attributes {
-        display: flex;
-        justify-content: space-between;
+        @include basic-flex;
         flex-wrap: wrap;
         > .Level2Attribute {
         display: inline;

@@ -16,6 +16,21 @@
   }
 }
 
+.inactive-style {
+  pointer-events: none;
+  opacity: 0.5;
+}
+
+@mixin basic-flex($justify: space-between, $direction: row, $which-child-to-stretch: -1) {
+  display: flex;
+  align-items: center;
+  justify-content: $justify;
+  flex-direction: $direction;
+  > div:nth-child(#{$which-child-to-stretch}) {
+    flex-grow: 2;
+  }
+}
+
 .overlay {
   position: absolute;
   height: 100%;
