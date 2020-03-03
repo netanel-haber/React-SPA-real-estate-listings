@@ -1,6 +1,5 @@
 module.exports = (userSort) => {
     const [key, value] = Object.entries(userSort)[0];
-    console.log(Object.entries(userSort)[0]);
     const transKey = ({
         "updatedAt": 'listing.updatedAt',
         "price": 'level1.price',

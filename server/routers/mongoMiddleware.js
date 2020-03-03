@@ -7,7 +7,6 @@ const translator = (req, res, next) => {
         req.sorts = req.body.sorts ? translateSorts(req.body.sorts) : {};
         req.skip = req.body.skip || 0;
         req.limit = req.body.limit || 50;
-        console.log(req.sorts);
         next();
     }
     catch (ex) {
