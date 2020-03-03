@@ -3,11 +3,11 @@ import ItemListContext from '../../contexts/ItemListContext';
 import classNames from 'classnames';
 
 
-const PagesContainer = ({ page, dispatchSkip }) => {
-    const { count, limit } = useContext(ItemListContext);
+const PageLinks = () => {
+    const { numberOfPages, dispatchSkip, page } = useContext(ItemListContext);
     return (
         <div className="page-container">
-            {getPagesString(count, limit, page)
+            {getPages(numberOfPages, page)
                 .map((pg, index) =>
                     (<a
                         key={index}
@@ -19,11 +19,9 @@ const PagesContainer = ({ page, dispatchSkip }) => {
     )
 }
 
-
-function getPagesString(count, listingsInPage, currentPage, pageOffset = 2) {
+const pageOffset = 4;
+function getPages(lastPage, currentPage) {
     let pages = [];
-    let lastPage = Math.ceil(count / listingsInPage);
-
     for (let i = currentPage - pageOffset; i <= currentPage + pageOffset; i++) {
         if ((i > 0) && (i <= lastPage))
             pages.push(i);
@@ -37,6 +35,6 @@ function getPagesString(count, listingsInPage, currentPage, pageOffset = 2) {
     ]
 }
 
-export default PagesContainer;
+export default PageLinks;
 
 

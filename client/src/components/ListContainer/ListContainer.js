@@ -1,10 +1,9 @@
-import React, { useEffect, useReducer, useState } from 'react';
-import GridLoader from "react-spinners/GridLoader";
+import React, { useEffect, useReducer, useState, useContext } from 'react';
+import OptionsContext from '../../contexts/OptionsContext';
 import ItemListContext from '../../contexts/ItemListContext';
 import { countDocs, getListings } from '../../fetch/data';
-import LoaderBeforeData from '../LoaderBeforeData';
-import ItemList from './ItemList';
-import ListingPaging from './ListingPaging';
+import { ItemListWithLoader } from './ItemList';
+import Paging from './Paging';
 import SortBy from './SortBy/SortBy';
 
 const limit = 3;
@@ -23,6 +22,8 @@ const optionsReducer = (prevState, { type, payload }) => {
 
 const ListContainer = (props) => {
     const { type, initialFilter } = props;
+    const { state } = useContext(OptionsContext);
+    const mergedState = { ...state, filters: { ...state.filters, ...initialFilter } }
 
     const [list, updateList] = useState([]);
     const [listUpdating, toggleUpdating] = useState(true);
@@ -39,29 +40,24 @@ const ListContainer = (props) => {
         toggleUpdating(true);
         getListings(type, optionState)
             .then(updateList).then(() => { toggleUpdating(false) })
-    }, [type, optionState])
-
-    useEffect(() => {
         countDocs(type, optionState.filters).then(updateCount);
-    }, [type, optionState]);
+    }, [type, optionState])
 
     return (
         <ItemListContext.Provider value={{
             count,
-            limit,
             list,
             type,
             listUpdating,
-            optionState,
+            numberOfPages: Math.ceil(count / limit),
+            page: optionState.skip / limit + 1,
             dispatchSorts: (payload) => { dispatchOptions({ type: "UPDATE_SORTS", payload }) },
             dispatchFilters: (payload) => { dispatchOptions({ type: "UPDATE_FILTERS", payload }) },
             dispatchSkip: (payload) => { dispatchOptions({ type: "UPDATE_SKIP", payload }) }
         }}>
             <SortBy />
-            <LoaderBeforeData loading={listUpdating} loaderProps={{ size: "1rem" }} type={GridLoader}>
-                <ItemList />
-            </LoaderBeforeData>
-            <ListingPaging page={optionState.skip / limit + 1} />
+            <ItemListWithLoader loading={listUpdating} />
+            <Paging />
         </ItemListContext.Provider>
     );
 };
