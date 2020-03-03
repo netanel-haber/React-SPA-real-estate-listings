@@ -7,8 +7,7 @@ import ItemList from './ItemList';
 import ListingPaging from './ListingPaging';
 import SortBy from './SortBy/SortBy';
 
-
-const listingsInPage = 3;
+const limit = 3;
 const optionsReducer = (prevState, { type, payload }) => {
     switch (type) {
         case "UPDATE_SORTS":
@@ -16,7 +15,7 @@ const optionsReducer = (prevState, { type, payload }) => {
         case "UPDATE_FILTERS":
             return { ...prevState, skip: 0, filters: payload }
         case "UPDATE_SKIP":
-            return { ...prevState, skip: (payload - 1) * listingsInPage }
+            return { ...prevState, skip: (payload - 1) * limit }
         default:
             return prevState;
     }
@@ -33,7 +32,7 @@ const ListContainer = (props) => {
         sorts: { updatedAt: -1 },
         filters: initialFilter,
         skip: 0,
-        limit: listingsInPage
+        limit
     });
 
     useEffect(() => {
@@ -49,7 +48,7 @@ const ListContainer = (props) => {
     return (
         <ItemListContext.Provider value={{
             count,
-            listingsInPage,
+            limit,
             list,
             type,
             listUpdating,
@@ -62,7 +61,7 @@ const ListContainer = (props) => {
             <LoaderBeforeData loading={listUpdating} loaderProps={{ size: "1rem" }} type={GridLoader}>
                 <ItemList />
             </LoaderBeforeData>
-            <ListingPaging page={optionState.skip / listingsInPage + 1} />
+            <ListingPaging page={optionState.skip / limit + 1} />
         </ItemListContext.Provider>
     );
 };

@@ -13,11 +13,11 @@ const getNumberOfPages = (count, listingsInPage) => Math.ceil(count / listingsIn
 
 const ListingPaging = ({ style, children, page }) => {
     const { dispatchSkip } = useContext(ItemListContext);
-    const { count, listingsInPage, listUpdating } = useContext(ItemListContext);
+    const { count, limit, listUpdating } = useContext(ItemListContext);
     const PrevPage = () =>
         <button disabled={!count || page === 1} onClick={() => { dispatchSkip(page - 1) }}>{HEB_PREVIOUS}</button>
     const NextPage = () =>
-        <button disabled={!count || page + 1 > getNumberOfPages(count, listingsInPage)} onClick={() => { dispatchSkip(page + 1) }}>{HEB_NEXT}</button>;
+        <button disabled={!count || page + 1 > getNumberOfPages(count, limit)} onClick={() => { dispatchSkip(page + 1) }}>{HEB_NEXT}</button>;
     return (
         <div className={classnames("ListingPaging", { "inactive-style": listUpdating })} style={{ ...style, visibility: count ? "visible" : "hidden" }} >
             <NextPage />

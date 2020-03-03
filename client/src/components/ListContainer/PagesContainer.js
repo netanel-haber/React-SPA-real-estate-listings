@@ -3,14 +3,11 @@ import ItemListContext from '../../contexts/ItemListContext';
 import classNames from 'classnames';
 
 
-function getNumberOfPages(count, listingsInPage) { return Math.ceil(count / listingsInPage) };
-
-
 const PagesContainer = ({ page, dispatchSkip }) => {
-    const { count, listingsInPage } = useContext(ItemListContext);
+    const { count, limit } = useContext(ItemListContext);
     return (
         <div className="page-container">
-            {getPagesString(count, listingsInPage, page)
+            {getPagesString(count, limit, page)
                 .map((pg, index) =>
                     (<a
                         key={index}
@@ -23,22 +20,21 @@ const PagesContainer = ({ page, dispatchSkip }) => {
 }
 
 
-
-function getPagesString(count, listingsInPage, page, pagesToListAtOnce = 7) {
+function getPagesString(count, listingsInPage, currentPage, pageOffset = 2) {
     let pages = [];
-    let last = getNumberOfPages(count, listingsInPage);
-    let pagesBeforeAndAfter = Math.floor(pagesToListAtOnce / 2);
-    for (let i = page - pagesBeforeAndAfter; i < page + pagesBeforeAndAfter + 1; i++) {
-        pages.push(i);
+    let lastPage = Math.ceil(count / listingsInPage);
+
+    for (let i = currentPage - pageOffset; i <= currentPage + pageOffset; i++) {
+        if ((i > 0) && (i <= lastPage))
+            pages.push(i);
     }
-    pages = pages.filter(page => ((page > 0) && (page <= last)));
-    if (pages[0] === 2)
-        pages.unshift(1);
-    else if (pages[0] > 2)
-        pages.unshift(1, '...');
-    if (pages[pages.length - 1] !== last)
-        pages.push('...', last);
-    return pages;
+    const firstInRange = pages[0], lastInRange = pages[pages.length - 1];
+
+    return [
+        ...(firstInRange >= 2 ? (firstInRange === 2 ? [1] : [1, '...']) : []),
+        ...pages,
+        ...(lastInRange < lastPage ? (lastInRange + 1 < lastPage ? ['...', lastPage] : [lastPage]) : [])
+    ]
 }
 
 export default PagesContainer;
