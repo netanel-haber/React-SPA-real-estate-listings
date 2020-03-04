@@ -1,6 +1,6 @@
 const mongoRouter = require('express').Router();
 const { getTopLevel, getBottomLevel, getLister, countDocs } = require('../../db/mongo/api/find');
-const { translator } = require('./mongoMiddleware');
+const { translator } = require('../middleware/mongoM');
 
 
 mongoRouter.use(translator);
