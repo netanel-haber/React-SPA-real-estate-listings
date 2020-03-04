@@ -1,3 +1,5 @@
-.ListContainer{
-    
+@import "../base/settings";
+.ListContainer {
+    padding: $s-size;
+    border: 1px solid $lightest-gray;
 }

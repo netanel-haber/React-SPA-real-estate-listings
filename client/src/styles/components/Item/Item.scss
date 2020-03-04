@@ -2,8 +2,9 @@
 
 .Item__container {
   margin: 3px 0;
-  border-radius: 3px;
-  border: 1px solid $lightest-gray;
+  > div {
+    border-radius: 5px;
+  }
   &:hover {
     cursor: pointer;
     box-shadow: 0px 0px 14px 1px rgba(0, 0, 0, 0.15);

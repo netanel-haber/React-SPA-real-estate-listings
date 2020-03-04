@@ -2,12 +2,14 @@
 @import "../../base/utility-classes";
 
 .SortBy {
-  @include basic-flex(flex-start);
-  margin: $s-size 0;
+  @include basic-flex;
   > * {
-    margin: 0 $s-size;
-    border-radius: 2px;
+    @include basic-flex;
+    > * {
+      padding: $s-size/2;
+    }
   }
+  margin: $s-size 0;
 }
 
 .SortBy__button {
@@ -24,7 +26,7 @@
 
 .SortBy__select-sort-container {
   @extend .dropdown-container;
-  flex-basis: 30%;
+  flex-grow: 2;
   .actual-select {
     background-color: white;
   }
@@ -35,5 +37,14 @@
         padding: $s-size/3;
       }
     }
+  }
+}
+
+.SortBy__limit {
+  padding: $s-size/2 $s-size/4;
+  width: $l-size;
+  border: 1px solid $grayish;
+  form{
+    @include basic-flex(undefined,column)
   }
 }

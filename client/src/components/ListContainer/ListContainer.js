@@ -3,7 +3,7 @@ import ItemListContext from '../../contexts/ItemListContext';
 import { countDocs, getListings } from '../../fetch/data';
 import { ItemListWithLoader } from './ItemList';
 import Paging from './Paging';
-import '../../styles/components/ListContainer';
+import '../../styles/components/ListContainer.scss';
 
 
 

@@ -2,7 +2,7 @@
 
 .ItemLists {
   width: 85vw;
-  max-width: 800px;
+  max-width: 900px;
   margin: $l-size auto;
 }
 
@@ -16,7 +16,7 @@
 }
 
 .ItemLists__lists {
-  padding: $s-size;
+  padding: 0 $l-size;
   background-color: lighten($body-white, 30%);
   border: 1px solid $lightest-gray;
 }

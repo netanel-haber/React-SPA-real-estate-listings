@@ -1,54 +1,34 @@
 import React, { useReducer } from 'react';
 import '../styles/components/ListsContainer.scss';
-import initialOptionsState from '../utilities/initialOptionsState';
 import ListContainer from './ListContainer/ListContainer';
 import SortBy from './ListContainer/SortBy/SortBy';
-import dispatchOptionsContext from '../contexts/dispatchOptionsContext';
+import { initialOptions, optionsReducer } from '../reducers/optionsReducer';
 
-const { HEB_MITIGATED_LISTINGS } = {
+
+const { HEB_MITIGATED_LISTINGS, HEB_NON_MITIGATED_LISTINGS } = {
+    HEB_NON_MITIGATED_LISTINGS: "ללא תיווך:",
     HEB_MITIGATED_LISTINGS: "דירות מתיווך:"
 }
 
-const optionsReducer = (state, { type, payload }) => {
-    switch (type) {
-        case "SORTS":
-            return { ...state, sorts: payload }
-        case "FILTERS":
-            console.log(payload)
-            let filters = { ...state.filters };
-            Object.entries(payload).forEach(([key, value]) => {
-                if (value === false)
-                    delete filters[key];
-                else
-                    filters[key] = value;
-            })
-            console.log(filters);
-            return { ...state, filters };
-        default:
-            return state;
-    }
-}
-
-
 const ListsContainer = ({ type }) => {
-    const [options, dispatch] = useReducer(optionsReducer, initialOptionsState);
-    const dispatchSorts = (sorts) => { dispatch({ type: "SORTS", payload: sorts }) };
-    const dispatchFilters = (filters) => { dispatch({ type: "FILTERS", payload: filters }) }
+    const [options, dispatch] = useReducer(optionsReducer, initialOptions);
     const nonMitOptions = { ...options, filters: { ...options.filters, mitigatingCompany: "$null" } };
     const mitOptions = { ...options, filters: { ...options.filters, mitigatingCompany: "$exists" } };
+    const dispatchSorts = (sorts) => { dispatch({ type: "SORTS", payload: sorts }) };
+    const dispatchFilters = (filters) => { dispatch({ type: "FILTERS", payload: filters }) }
+    const dispatchLimit = (limit) => { dispatch({ type: "LIMIT", payload: limit }) }
     return (
-        // <dispatchOptionsContext.Provider>
         <div className="ItemLists">
             <div className="ItemLists__sorts-and-filters">
-                <SortBy {...{ dispatchSorts, dispatchFilters }}></SortBy>
+                <SortBy {...{ dispatchSorts, dispatchFilters, dispatchLimit }}></SortBy>
             </div>
             <div className="ItemLists__lists">
+                <h5>{HEB_NON_MITIGATED_LISTINGS}</h5>
                 <ListContainer className="ItemList" {...{ type, options: nonMitOptions }} />
-                <h4>{HEB_MITIGATED_LISTINGS}</h4>
+                <h5>{HEB_MITIGATED_LISTINGS}</h5>
                 <ListContainer className="ItemList" {...{ type, options: mitOptions }} />
             </div>
         </div>
-        // </dispatchOptionsContext.Provider>
     )
 }
 

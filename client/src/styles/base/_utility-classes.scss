@@ -66,11 +66,13 @@
   position: relative;
   cursor: pointer;
   > div:first-of-type {
+    width: 100%;
     @include basic-flex;
     padding: $s-size/2;
     border: 1px solid #dbdbdb;
     span {
       @extend .chevron-down;
+      margin: 0 $s-size 0 0;
     }
   }
   > div + div {

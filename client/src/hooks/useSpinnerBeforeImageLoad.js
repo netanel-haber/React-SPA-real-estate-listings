@@ -1,26 +1,8 @@
 import { useReducer } from 'react';
-
-
-function reducer(state, { type, url }) {
-    switch (type) {
-        case "restart":
-            return {
-                loading: (state.url !== url) && (state.loading === false),
-                url
-            }
-        case "loaded":
-            return {
-                loading: false,
-                url
-            }
-        default:
-            return state;
-    }
-}
-
+import spinnerReducer from '../reducers/spinnerReducer';
 
 const useSpinnerBeforeImageLoad = (url) => {
-    const [state, dispatch] = useReducer(reducer, { loading: true, url });
+    const [state, dispatch] = useReducer(spinnerReducer, { loading: true, url });
     if (state.url !== url && state.loading === false)
         dispatch({ type: "restart", url })
     return [state.loading, () => {
