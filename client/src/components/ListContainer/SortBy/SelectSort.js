@@ -1,6 +1,5 @@
-import React, { useState, useContext } from 'react';
+import React, { useState } from 'react';
 import Bullet from './../../Bullet';
-import ItemListContext from '../../../contexts/ItemListContext';
 
 const Option = ({ onClick, text, selected }) => (
     <div onClick={onClick}>
@@ -10,11 +9,10 @@ const Option = ({ onClick, text, selected }) => (
 );
 
 
-const SelectSort = ({ sortByOptions }) => {
+const SelectSort = ({ sortByOptions, dispatchSorts }) => {
     const options = Object.entries(sortByOptions);
     const [[text, value], changeOption] = useState(options[0]);
     const [isOpen, toggleOpen] = useState(false);
-    const { dispatchSorts } = useContext(ItemListContext);
     function onSelectClick(e) {
         e.preventDefault();
         toggleOpen(!isOpen)
@@ -30,10 +28,11 @@ const SelectSort = ({ sortByOptions }) => {
                 <div>{text}</div>
                 <span />
             </div>
-            {isOpen && <div className="actual-dropdown">
-                {options.map(([text, childValue], index) =>
-                    <Option key={text} text={text} onClick={(e) => onOptionClick(e, index)} selected={childValue === value} />)}
-            </div>}
+            {isOpen &&
+                <div className="actual-dropdown">
+                    {options.map(([text, childValue], index) =>
+                        <Option key={text} text={text} onClick={(e) => onOptionClick(e, index)} selected={childValue === value} />)}
+                </div>}
         </div>
     )
 }

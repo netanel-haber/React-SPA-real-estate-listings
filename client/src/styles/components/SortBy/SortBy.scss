@@ -4,7 +4,6 @@
 .SortBy {
   @include basic-flex(flex-start);
   margin: $s-size 0;
-  font-size: $m-size;
   > * {
     margin: 0 $s-size;
     border-radius: 2px;

@@ -3,7 +3,8 @@ import '../../../styles/components/SortBy/SortBy.scss';
 import heb from './hebrew';
 import SelectSort from './SelectSort';
 
-const { HEB_BY_DATE, HEB_SORT_BY, HEB_CHEAP_FIRST, HEB_EXPENSIVE_FIRST } = heb;
+const { HEB_BY_DATE, HEB_SORT_BY, HEB_CHEAP_FIRST, HEB_EXPENSIVE_FIRST, HEB_FILTER,
+    HEB_ONLY_WITH_PRICE, HEB_ONLY_WITH_PIC } = heb;
 
 const sortByOptions = {
     [HEB_BY_DATE]: { updatedAt: 'desc' },
@@ -11,15 +12,15 @@ const sortByOptions = {
     [HEB_EXPENSIVE_FIRST]: { price: 'desc' }
 };
 
-const SortBy = () => {
+const SortBy = ({ dispatchSorts, dispatchFilters }) => {
     return (
         <form className="SortBy">
             {HEB_SORT_BY}
-            <SelectSort sortByOptions={sortByOptions} />
+            <SelectSort {...{ dispatchSorts, sortByOptions }} />
 
-            {/* {HEB_FILTER}
-            <div className="SortBy__button">{HEB_ONLY_WITH_PRICE}</div>
-            <div className="SortBy__button">{HEB_ONLY_WITH_PIC}</div> */}
+            {HEB_FILTER}
+            <div onClick={()=>{}} className="SortBy__button">{HEB_ONLY_WITH_PRICE}</div>
+            <div className="SortBy__button">{HEB_ONLY_WITH_PIC}</div>
         </form>
     )
 }

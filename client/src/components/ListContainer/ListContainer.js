@@ -1,50 +1,47 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import ItemListContext from '../../contexts/ItemListContext';
-import OptionsContext from '../../contexts/OptionsContext';
 import { countDocs, getListings } from '../../fetch/data';
 import { ItemListWithLoader } from './ItemList';
 import Paging from './Paging';
-import SortBy from './SortBy/SortBy';
 
-const ListContainer = (props) => {
-    const { type, initialFilter } = props;
-    const { state, dispatchFilters, dispatchSorts } = useContext(OptionsContext);
-    const [skip, dispatchSkip] = useState(0);
-    const mergedOptions = { ...state, filters: { ...state.filters, ...initialFilter }, skip }
+
+
+const ListContainer = ({ type, options }) => {
+    const [skip, updateSkip] = useState(0);
+    const [count, updateCount] = useState(0);
 
     const [list, updateList] = useState([]);
     const [listUpdating, toggleUpdating] = useState(true);
-    const [count, updateCount] = useState(0);
 
-    console.log(mergedOptions);
+    const updateProcedure = (options) => {
+        toggleUpdating(true);
+        getListings(type, options)
+            .then(updateList)
+            .catch(ex => alert("אירעה בעיית תקשורת. בדקו את חיבור האינטרנט."))
+            .then(() => { toggleUpdating(false) })
+    }
 
     useEffect(() => {
-        toggleUpdating(true);
-        getListings(type, mergedOptions)
-            .then(updateList).then(() => { toggleUpdating(false) })
-        dispatchSkip(0);
-        countDocs(type, mergedOptions.filters).then(updateCount);
-    }, [state.filters])
+        updateSkip(0);
+        updateProcedure({ ...options, skip: 0 })
+    }, [options])
 
     useEffect(() => {
-        toggleUpdating(true);
-        getListings(type, mergedOptions)
-            .then(updateList).then(() => { toggleUpdating(false) })
+        if (skip !== 0) updateProcedure({ ...options, skip })
     }, [skip])
+
+    useEffect(() => {
+        countDocs(type, options.filters).then(updateCount);
+    }, [options.filters])
+
 
     return (
         <ItemListContext.Provider value={{
-            count,
-            list,
-            type,
-            listUpdating,
-            numberOfPages: Math.ceil(count / mergedOptions.limit),
-            page: mergedOptions.skip / mergedOptions.limit + 1,
-            dispatchSorts,
-            dispatchFilters,
-            dispatchSkip: (skipBy) => { dispatchSkip((skipBy - 1) * mergedOptions.limit) }
+            count, list, type, listUpdating,
+            numberOfPages: Math.ceil(count / options.limit),
+            page: skip / options.limit + 1,
+            dispatchSkip: (skipBy) => { updateSkip(((skipBy - 1) * options.limit)) }
         }}>
-            <SortBy />
             <ItemListWithLoader loading={listUpdating} />
             <Paging />
         </ItemListContext.Provider>

@@ -1,17 +1,20 @@
-const translationSwitch = {
-    attributeIsNull: null,
-    attributeIsntNull: { $exists: true, $ne: null }
+const transVal = {
+    $null: null,
+    $exists: { $exists: true, $ne: null },
+    $isntEmptyArray: { $exists: true, $ne: [] }
 }
+
+const transKey = {
+    "updatedAt": 'listing.updatedAt',
+    "price": 'level1.price',
+    "mitigatingCompany": 'listing.mitigatingCompany'
+}
+
 
 module.exports = (userFilters) => {
     let filters = {};
-    Object.entries(userFilters).forEach(([filter, path]) => {
-        if (translationSwitch.hasOwnProperty(filter)) {
-            filters[path] = translationSwitch[filter];
-        }
-        else {
-            throw new Error("cannot discern filter. crashing.")
-        }
+    Object.entries(userFilters).forEach(([path, filter]) => {
+        filters[transKey[path]] = transVal[filter]
     })
     return filters;
 }

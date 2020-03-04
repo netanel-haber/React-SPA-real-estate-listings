@@ -17,7 +17,7 @@ const ItemList = ({ style, children }) => {
 
 
 const ItemListWithLoader = ({ loading }) => (
-    <LoaderBeforeData loading={loading} type={GridLoader} loaderProps={{size:"1rem"}}>
+    <LoaderBeforeData loading={loading} type={GridLoader} loaderProps={{ size: "1rem" }}>
         <ItemList />
     </LoaderBeforeData>
 );
