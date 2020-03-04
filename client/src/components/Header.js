@@ -23,20 +23,22 @@ const LinkShorthand = ({ to, text, className }) => (
 
 
 
-const Header = () => (
-    <div className="Header__container">
-        <nav>
-            <NavLink to="/forsale" className="Header__right-Link" activeClassName="active" >{sell}</NavLink>
-            <NavLink to="/rent" className="Header__right-Link" activeClassName="active" >{rent}</NavLink>
-            <NavLink to="/roommates" className="Header__right-Link" activeClassName="active" >{roommates}</NavLink>
-            <NavLink to="/commercial" className="Header__right-Link" activeClassName="active" >{commercial}</NavLink>
-        </nav>
-        <nav>
-            <LinkShorthand to="/personal" text={personal + " 👤"} className="Header__left-Link" />
-            <LinkShorthand to="/add-listing" text={addListing} className="Header__left-Link" />
-        </nav>
-    </div>
-);
+const Header = () => {
+    return (
+        <div className="Header__container">
+            <nav>
+                <NavLink to="/forsale" className="Header__right-Link" activeClassName="active" >{sell}</NavLink>
+                <NavLink to="/rent" className="Header__right-Link" activeClassName="active" >{rent}</NavLink>
+                <NavLink to="/roommates" className="Header__right-Link" activeClassName="active" >{roommates}</NavLink>
+                <NavLink to="/commercial" className="Header__right-Link" activeClassName="active" >{commercial}</NavLink>
+            </nav>
+            <nav>
+                <LinkShorthand to="/personal" text={personal + " 👤"} className="Header__left-Link" />
+                <LinkShorthand to="/add-listing" text={addListing} className="Header__left-Link" />
+            </nav>
+        </div>
+    );
+}
 
 
 export default Header;

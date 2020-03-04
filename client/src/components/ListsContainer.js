@@ -1,8 +1,8 @@
-import React, { useReducer } from 'react';
+import React, { useEffect, useReducer } from 'react';
+import { initialOptions, optionsReducer } from '../reducers/optionsReducer';
 import '../styles/components/ListsContainer.scss';
 import ListContainer from './ListContainer/ListContainer';
 import SortBy from './ListContainer/SortBy/SortBy';
-import { initialOptions, optionsReducer } from '../reducers/optionsReducer';
 
 
 const { HEB_MITIGATED_LISTINGS, HEB_NON_MITIGATED_LISTINGS } = {
@@ -14,9 +14,11 @@ const ListsContainer = ({ type }) => {
     const [options, dispatch] = useReducer(optionsReducer, initialOptions);
     const nonMitOptions = { ...options, filters: { ...options.filters, mitigatingCompany: "$null" } };
     const mitOptions = { ...options, filters: { ...options.filters, mitigatingCompany: "$exists" } };
-    const dispatchSorts = (sorts) => { dispatch({ type: "SORTS", payload: sorts }) };
+    const dispatchSorts = (sorts) => { dispatch({ type: "SORTS", payload: sorts }); };
     const dispatchFilters = (filters) => { dispatch({ type: "FILTERS", payload: filters }) }
     const dispatchLimit = (limit) => { dispatch({ type: "LIMIT", payload: limit }) }
+
+
     return (
         <div className="ItemLists">
             <div className="ItemLists__sorts-and-filters">

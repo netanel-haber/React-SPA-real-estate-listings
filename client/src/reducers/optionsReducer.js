@@ -1,7 +1,7 @@
 const initialOptions = {
     sorts: { updatedAt: -1 },
     filters: {},
-    limit: 7
+    limit: 3
 };
 
 

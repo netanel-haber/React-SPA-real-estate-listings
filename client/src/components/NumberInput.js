@@ -3,7 +3,9 @@ import React from 'react';
 const NumberInput = ({ max, min, className, callback = (() => { }) }) => (
     <form onSubmit={function (e) {
         e.preventDefault();
-        callback(Number(e.target.elements.input.value));
+        const input = e.target.elements.input;
+        callback(Number(input.value));
+        input.blur();
     }}>
         <input
             className={className}
