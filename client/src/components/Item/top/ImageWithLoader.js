@@ -12,7 +12,7 @@ const ImageWithLoader = ({ url, loaderSize = "5rem" }) => {
                 onLoad={done}
                 className="image"
                 alt="תמונה של הנכס"
-                // src={url}
+                src={url}
                 >
             </img>
         </>

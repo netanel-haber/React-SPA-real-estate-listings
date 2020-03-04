@@ -3,6 +3,7 @@ import ItemListContext from '../../contexts/ItemListContext';
 import { countDocs, getListings } from '../../fetch/data';
 import { ItemListWithLoader } from './ItemList';
 import Paging from './Paging';
+import '../../styles/components/ListContainer';
 
 
 
@@ -27,7 +28,7 @@ const ListContainer = ({ type, options }) => {
     }, [options])
 
     useEffect(() => {
-        if (skip !== 0) updateProcedure({ ...options, skip })
+        updateProcedure({ ...options, skip })
     }, [skip])
 
     useEffect(() => {
@@ -42,8 +43,10 @@ const ListContainer = ({ type, options }) => {
             page: skip / options.limit + 1,
             dispatchSkip: (skipBy) => { updateSkip(((skipBy - 1) * options.limit)) }
         }}>
-            <ItemListWithLoader loading={listUpdating} />
-            <Paging />
+            <div className="ListContainer">
+                <ItemListWithLoader loading={listUpdating} />
+                <Paging />
+            </div>
         </ItemListContext.Provider>
     );
 };

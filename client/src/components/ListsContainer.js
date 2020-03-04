@@ -14,10 +14,16 @@ const optionsReducer = (state, { type, payload }) => {
         case "SORTS":
             return { ...state, sorts: payload }
         case "FILTERS":
-            return ({
-                ...state.filters.filter(filt => !(payload[filt] === "-")),
-                ...payload
-            });
+            console.log(payload)
+            let filters = { ...state.filters };
+            Object.entries(payload).forEach(([key, value]) => {
+                if (value === false)
+                    delete filters[key];
+                else
+                    filters[key] = value;
+            })
+            console.log(filters);
+            return { ...state, filters };
         default:
             return state;
     }
@@ -36,7 +42,6 @@ const ListsContainer = ({ type }) => {
             <div className="ItemLists__sorts-and-filters">
                 <SortBy {...{ dispatchSorts, dispatchFilters }}></SortBy>
             </div>
-
             <div className="ItemLists__lists">
                 <ListContainer className="ItemList" {...{ type, options: nonMitOptions }} />
                 <h4>{HEB_MITIGATED_LISTINGS}</h4>

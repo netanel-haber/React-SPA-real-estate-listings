@@ -15,7 +15,7 @@
     a {
       @include basic-flex(center);
       padding: $s-size/2;
-      width: $m-size;    
+      width: $m-size;
     }
     :not(.notTodayMyFriend):hover {
       cursor: pointer;
@@ -28,7 +28,7 @@
   }
   button {
     border: none;
-    border-radius: 10px;
+    border-radius: 5px;
     padding: $s-size/2;
     margin: 0 $s-size;
     background-color: $yad2-orange;
@@ -37,4 +37,12 @@
       background-color: $lightest-gray;
     }
   }
+}
+
+.ListingPaging__count {
+  text-align: center;
+  font-size: $s-size;
+  margin: 0;
+  padding: 0;
+  color: darken($grayish,20%);
 }

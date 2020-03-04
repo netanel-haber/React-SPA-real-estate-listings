@@ -1,6 +1,6 @@
 const heb = {
     HEB_ONLY_WITH_PRICE: "מחיר",
-    HEB_FILTER: "סנן מודעות בלי:",
+    HEB_FILTER: "הראה מודעות רק עם:",
     HEB_ONLY_WITH_PIC: "תמונה",
     HEB_SORT_BY: "מיין לפי",
     HEB_BY_DATE: "לפי תאריך",

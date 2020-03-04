@@ -7,7 +7,8 @@ const transVal = {
 const transKey = {
     "updatedAt": 'listing.updatedAt',
     "price": 'level1.price',
-    "mitigatingCompany": 'listing.mitigatingCompany'
+    "mitigatingCompany": 'listing.mitigatingCompany',
+    "pictureKeys": 'listing.pictureKeys'
 }
 
 

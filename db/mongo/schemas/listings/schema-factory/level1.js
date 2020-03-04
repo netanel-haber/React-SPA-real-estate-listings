@@ -7,7 +7,10 @@ const level1SchemaFactory = (merge, types, isResidential = true) => {
         floor: Number,
         floorsInBuilding: Number,
         sqMeters: Number,
-        price: Number,
+        price: {
+            type: Number,
+            default: null
+        },
         type: {
             type: String,
             enum: types
