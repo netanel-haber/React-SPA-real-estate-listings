@@ -1,7 +1,8 @@
 import React from 'react';
 import PulseLoader from "react-spinners/PulseLoader";
-
 import { mSize } from '../styles/base/_settings.scss';
+import GridLoader from 'react-spinners/GridLoader';
+
 
 
 const LoaderBeforeData = ({ loaderProps, children, loading, type = PulseLoader }) => {

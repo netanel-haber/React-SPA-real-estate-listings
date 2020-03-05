@@ -12,13 +12,14 @@
     @include basic-flex(center);
     padding: 0 $s-size;
     overflow: hidden;
-    a {
+    span {
       @include basic-flex(center);
       padding: $s-size/2;
       width: $m-size;
     }
-    :not(.notTodayMyFriend):hover {
+    :not(.notTodayMyFriend):not(.theOne):hover {
       cursor: pointer;
+      color: blue;
     }
     .theOne {
       background-color: $yad2-orange;

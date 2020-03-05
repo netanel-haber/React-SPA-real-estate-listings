@@ -17,8 +17,8 @@ const toastConfig = {
 const useApiCallEffect = (apiCall, endCallbacks, dependencies = []) => {
     useEffect(() => {
         const abortController = new AbortController();
-        apiCall(abortController.signal).then(endCallbacks).catch(() => {
-            if (!abortController.signal.aborted) {
+        apiCall(abortController.signal).then(endCallbacks).catch((ex) => {
+            if (!abortController.signal.aborted && ex.toString() !== "-") {
                 toast.error(HEB_TOAST_ERROR, toastConfig)
             }
         });
@@ -26,19 +26,16 @@ const useApiCallEffect = (apiCall, endCallbacks, dependencies = []) => {
     }, dependencies)
 };
 
-const useApiCallEffectDeepCompare = (apiCall, endCallbacks, dependencies, loadingState = () => { }) => {
+const noop = () => { }
+const useApiCallEffectDeepCompare = (apiCall, endCallbacks, dependencies, loadingState = noop) => {
     useDeepCompareEffect(() => {
         loadingState(true);
         const abortController = new AbortController();
         apiCall(abortController.signal)
-            .then(endCallbacks)
-            .catch(() => {
-                if (!abortController.signal.aborted) {
-                    toast.error(HEB_TOAST_ERROR, toastConfig)
-                }
-            })
-            .then(() => { if (!abortController.signal.aborted) loadingState(false) })
-        return () => { abortController.abort() }
+            .then(res => res && endCallbacks(res))
+            .then(() => { loadingState(false) })
+            .catch(() => !abortController.signal.aborted && toast.error(HEB_TOAST_ERROR, toastConfig))
+        return () => abortController.abort();
     }, [...dependencies])
 };
 

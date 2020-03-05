@@ -9,12 +9,12 @@ const PageLinks = () => {
         <div className="page-container">
             {getPages(numberOfPages, page)
                 .map((pg, index) =>
-                    (<a
+                    (<span
                         key={index}
                         className={classNames({ theOne: pg === page, notTodayMyFriend: !Boolean(Number(pg)) })}
                         onClick={() => { if (Number(pg)) dispatchSkip(pg) }} >
                         {pg}
-                    </a>))}
+                    </span>))}
         </div>
     )
 }
