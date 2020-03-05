@@ -1,22 +1,12 @@
 @import "../base/settings";
 
-.ItemLists {
-  width: 85vw;
-  max-width: 900px;
-  margin: $l-size auto;
-}
 
 .ItemLists__sorts-and-filters {
   font-size: $s-size;
-  background-color: lighten($body-white, 30%);
   border-radius: 5px;
-  border: 1px solid $lightest-gray;
   padding: $s-size/2;
-  margin: $l-size 0;
 }
 
 .ItemLists__lists {
   padding: 0 $l-size;
-  background-color: lighten($body-white, 30%);
-  border: 1px solid $lightest-gray;
 }

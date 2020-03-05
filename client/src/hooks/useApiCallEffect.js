@@ -18,9 +18,9 @@ const useApiCallEffect = (apiCall, endCallbacks, dependencies = []) => {
     useEffect(() => {
         const abortController = new AbortController();
         apiCall(abortController.signal).then(endCallbacks).catch(() => {
-            if (!abortController.signal.aborted){
+            if (!abortController.signal.aborted) {
                 toast.error(HEB_TOAST_ERROR, toastConfig)
-            }             
+            }
         });
         return () => { abortController.abort() }
     }, dependencies)
@@ -30,12 +30,14 @@ const useApiCallEffectDeepCompare = (apiCall, endCallbacks, dependencies, loadin
     useDeepCompareEffect(() => {
         loadingState(true);
         const abortController = new AbortController();
-        apiCall(abortController.signal).then(endCallbacks).then(() => { loadingState(false) }).catch(() => {
-            if (!abortController.signal.aborted) {
-                toast.error(HEB_TOAST_ERROR, toastConfig)
-                loadingState(false)
-            }             
-        })
+        apiCall(abortController.signal)
+            .then(endCallbacks)
+            .catch(() => {
+                if (!abortController.signal.aborted) {
+                    toast.error(HEB_TOAST_ERROR, toastConfig)
+                }
+            })
+            .then(() => { if (!abortController.signal.aborted) loadingState(false) })
         return () => { abortController.abort() }
     }, [...dependencies])
 };

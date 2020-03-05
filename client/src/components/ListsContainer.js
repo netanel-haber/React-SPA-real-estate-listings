@@ -20,7 +20,7 @@ const ListsContainer = ({ type }) => {
 
 
     return (
-        <div className="ItemLists">
+        <div className="ItemLists body__content">
             <div className="ItemLists__sorts-and-filters">
                 <SortBy {...{ dispatchSorts, dispatchFilters, dispatchLimit }}></SortBy>
             </div>

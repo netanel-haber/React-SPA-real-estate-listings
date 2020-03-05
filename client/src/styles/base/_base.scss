@@ -1,16 +1,26 @@
-@import '../fonts/rubik.scss';
+@import "../fonts/rubik.scss";
 
 html {
   font-size: 62.5%;
 }
 
 body {
-  font-family: 'rubik-heb', Helvetica, sans-serif;
+  font-family: "rubik-heb", Helvetica, sans-serif;
   font-size: $body-font;
   font-weight: 500;
   background-color: $body-white;
   color: #363636;
   direction: rtl;
+  .body__content {
+    width: 85vw;
+    max-width: 900px;
+    margin: $l-size auto;
+    > div {
+      margin: $l-size 0;
+      background-color:  lighten($body-white, 30%);
+      border: 1px solid $lightest-gray;
+    }
+  }
 }
 
 button {
@@ -20,7 +30,6 @@ button {
 button:disabled {
   cursor: default;
 }
-
 
 @media only screen and (max-width: 630px) {
   html {

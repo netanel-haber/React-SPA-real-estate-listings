@@ -37,7 +37,7 @@
     @extend .column;
     @include text-child(right, $def-color);
     border-right: 0;
-    flex-grow: 1;
+    flex-grow: 2;
     overflow: hidden;
   }
   .PriceColumn {
