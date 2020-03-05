@@ -1,24 +1,11 @@
 import React, { useReducer, useState } from 'react';
-import useDeepCompareEffect from 'use-deep-compare-effect';
 import ItemListContext from '../../contexts/ItemListContext';
 import { countDocs, getListings } from '../../fetch/data';
+import useApiCallEffect from '../../hooks/useApiCallEffect';
 import '../../styles/components/ListContainer.scss';
-import toast from '../../utilities/toast';
 import skipReducer from './../../reducers/skipReducer';
 import { ItemListWithLoader } from './ItemList';
 import Paging from './Paging';
-
-const useApiCallEffect = (call, callback, toggleLoading, dependencies, predicate = true) => {
-    useDeepCompareEffect(() => {
-        if (!predicate)
-            return;
-        toggleLoading(true);
-        call().then((res) => {
-            callback(res);
-            toggleLoading(false);
-        }).catch(() => { toast(); toggleLoading(false) })
-    }, dependencies)
-}
 
 
 const ListContainer = ({ options, type }) => {

@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import toast from '../utilities/toast';
+import useDeepCompareEffect from 'use-deep-compare-effect';
 
 const useApiCallEffect = (apiCall, endCallbacks, dependencies = []) => {
     useEffect(() => {
@@ -13,8 +14,18 @@ const useApiCallEffect = (apiCall, endCallbacks, dependencies = []) => {
     }, dependencies)
 };
 
-
-
-
 export { useApiCallEffect };
+
+
+export default (call, callback, toggleLoading, dependencies, predicate = true) => {
+    useDeepCompareEffect(() => {
+        if (!predicate)
+            return;
+        toggleLoading(true);
+        call().then((res) => {
+            callback(res);
+            toggleLoading(false);
+        }).catch(() => { toast(); toggleLoading(false) })
+    }, dependencies)
+}
 
