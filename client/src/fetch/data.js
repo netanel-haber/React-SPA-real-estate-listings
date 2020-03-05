@@ -6,7 +6,8 @@ const getListings = (type, options = {}, signal) => {
 }
 
 const countDocs = (type, filters = {}, signal) => {
-    return fetchPost(`/api/data/listings/count/${type}`, { filters }, signal).then(res => res.json());
+    return fetchPost(`/api/data/listings/count/${type}`, { filters }, signal)
+        .then(res => res.json())
 };
 
 const getRest = (type, id) => fetch(`/api/data/listings/${type}/${id}`)

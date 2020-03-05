@@ -1,11 +1,24 @@
-import React, { useState, useReducer, useEffect } from 'react';
+import React, { useReducer, useState } from 'react';
+import useDeepCompareEffect from 'use-deep-compare-effect';
 import ItemListContext from '../../contexts/ItemListContext';
 import { countDocs, getListings } from '../../fetch/data';
-import { useApiCallEffectDeepCompare } from '../../hooks/useApiCallEffect';
 import '../../styles/components/ListContainer.scss';
+import toast from '../../utilities/toast';
+import skipReducer from './../../reducers/skipReducer';
 import { ItemListWithLoader } from './ItemList';
 import Paging from './Paging';
-import skipReducer from './../../reducers/skipReducer';
+
+const useApiCallEffect = (call, callback, toggleLoading, dependencies, predicate = true) => {
+    useDeepCompareEffect(() => {
+        if (!predicate)
+            return;
+        toggleLoading(true);
+        call().then((res) => {
+            callback(res);
+            toggleLoading(false);
+        }).catch(() => { toast(); toggleLoading(false) })
+    }, dependencies)
+}
 
 
 const ListContainer = ({ options, type }) => {
@@ -15,18 +28,24 @@ const ListContainer = ({ options, type }) => {
     const [list, updateList] = useState([]);
     const [listUpdating, toggleUpdating] = useState(true);
 
+    useApiCallEffect(
+        () => getListings(type, { ...options, skip: 0 }),
+        (res) => { updateList(res); updateSkip({ type: "DONT_TRIGGER_UPDATE" }) },
+        toggleUpdating,
+        [options, type]);
 
-    useApiCallEffectDeepCompare(
-        (sig) => getListings(type, { ...options, skip: 0 }, sig),
-        (res) => { updateList(res).then(updateSkip({ type: "DONT_TRIGGER_UPDATE" }))  },
-        [options, type],
-        toggleUpdating);
-    useApiCallEffectDeepCompare(
-        async (sig) => skipState.should && getListings(type, { ...options, skip: skipState.value }, sig),
+    useApiCallEffect(
+        () => getListings(type, { ...options, skip: skipState.value }),
         updateList,
-        [skipState, options],
-        toggleUpdating);
-    useApiCallEffectDeepCompare((sig) => countDocs(type, filters, sig), updateCount, [filters, type]);
+        toggleUpdating,
+        [skipState, type],
+        skipState.should);
+
+    useApiCallEffect(
+        () => countDocs(type, filters),
+        updateCount,
+        toggleUpdating,
+        [filters, type]);
 
     return (
         <ItemListContext.Provider value={{
