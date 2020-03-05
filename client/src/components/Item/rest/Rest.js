@@ -1,8 +1,8 @@
-import '../../../styles/components/Item/Rest.scss';
-import React, { useEffect, useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import ItemContext from '../../../contexts/ItemContext';
 import RestContext from '../../../contexts/RestContext';
 import { getRest } from '../../../fetch/data';
+import '../../../styles/components/Item/Rest.scss';
 import SpreadTopBar from '../top/SpreadTopBar';
 import Footer from './Footer';
 import RestOfData from './RestOfData';

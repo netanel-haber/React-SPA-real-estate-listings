@@ -1,4 +1,4 @@
-import React, { useEffect, useReducer } from 'react';
+import React, { useReducer } from 'react';
 import { initialOptions, optionsReducer } from '../reducers/optionsReducer';
 import '../styles/components/ListsContainer.scss';
 import ListContainer from './ListContainer/ListContainer';

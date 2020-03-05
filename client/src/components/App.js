@@ -3,12 +3,14 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import '../styles/components/App.scss';
 import Header from './Header';
 import {
-AddListing, Commercial, ForSale, HomePage,
+  AddListing, Commercial, ForSale, HomePage,
   // Signup,
   Login, NotFound, Personal, Rent, Roommates
 } from './pages/pageIndex';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.min.css';
 
-
+toast.configure();
 
 
 const App = () => {
@@ -18,8 +20,6 @@ const App = () => {
         console.log(`received api test (${test}) from back-end.`);
       })
   }, [])
-
-
   return (
     <div className="App">
       <BrowserRouter>

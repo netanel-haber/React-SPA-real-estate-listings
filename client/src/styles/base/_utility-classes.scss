@@ -88,3 +88,10 @@
     }
   }
 }
+
+
+.toast {
+  direction: rtl !important;
+  text-align: right;
+  font-size: $s-size;
+}

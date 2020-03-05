@@ -7,8 +7,7 @@ import SelectSort from './SelectSort';
 
 const { HEB_BY_DATE, HEB_SORT_BY, HEB_CHEAP_FIRST, HEB_EXPENSIVE_FIRST, HEB_FILTER,
     HEB_ONLY_WITH_PRICE, HEB_ONLY_WITH_PIC } = heb;
-const { HEB_INVALID_NUMBER, HEB_LIMIT } = {
-    HEB_INVALID_NUMBER: (min, max) => `מספר הנכסים ברשימה צריך להיות בין ${min} ל-${max}.`,
+const { HEB_LIMIT } = {
     HEB_LIMIT: "מספר הנכסים בכל עמוד:"
 }
 

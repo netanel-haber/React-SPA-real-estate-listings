@@ -1,19 +1,12 @@
-const fetchPost = (path, body) => {
-    return fetch(path, {
-        method: 'POST',
-        body: JSON.stringify(body),
-        headers: {
-            'Content-Type': 'application/json',
-        }
-    })
+import fetchPost from './fetchPost';
+
+
+const getListings = (type, options = {}, signal) => {
+    return fetchPost(`api/data/listings/${type}`, options, signal).then(res => res.json())
 }
 
-const getListings = (type, options = {}) => {
-    return fetchPost(`api/data/listings/${type}`, options).then(res => res.json())
-}
-
-const countDocs = (type, filters = {}) => {
-    return fetchPost(`api/data/listings/count/${type}`, { filters }).then(res => res.json());
+const countDocs = (type, filters = {}, signal) => {
+    return fetchPost(`api/data/listings/count/${type}`, { filters }, signal).then(res => res.json());
 };
 
 const getRest = (type, id) => fetch(`api/data/listings/${type}/${id}`)
