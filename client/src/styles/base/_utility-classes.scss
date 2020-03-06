@@ -89,9 +89,19 @@
   }
 }
 
-
 .toast {
   direction: rtl !important;
   text-align: right;
   font-size: $s-size;
+}
+
+.body__content {
+  width: 85vw;
+  max-width: 900px;
+  margin: $l-size auto;
+  > * {
+    margin: $l-size 0;
+    background-color: lighten($body-white, 30%);
+    border: 1px solid $lightest-gray;
+  }
 }

@@ -23,7 +23,7 @@ const App = () => {
         <Header />
         <Switch>
           <Route exact path="/">
-            <HomePage />
+            <Signup />
           </Route>
           <Route path="/listings/:type">
             <ListingTypeRouter />

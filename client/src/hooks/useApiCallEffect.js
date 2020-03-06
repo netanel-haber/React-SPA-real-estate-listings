@@ -22,10 +22,12 @@ export default (call, callback, toggleLoading, dependencies, predicate = true) =
         if (!predicate)
             return;
         toggleLoading(true);
-        call().then((res) => {
+        call()
+        .then((res) => {
             callback(res);
             toggleLoading(false);
-        }).catch(() => { toast(); toggleLoading(false) })
+        })
+        .catch(() => { toast(); toggleLoading(false) })
     }, dependencies)
 }
 

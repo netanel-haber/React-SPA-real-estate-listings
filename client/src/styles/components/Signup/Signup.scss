@@ -2,4 +2,31 @@
 @import "../../base/utility-classes";
 
 .Signup__container {
+  @extend .body__content;
+  > div {
+      @include basic-flex(center);
+  }
+}
+
+.Signup__form {
+    margin: $m-size;
+    @include basic-flex(undefined, column);
+    > div {
+        @include basic-flex(flex-end);
+        align-self: flex-end;
+        width: 500px;
+        margin: $s-size;
+        > * {
+            margin: $s-size;
+        }
+    }
+    input {
+        padding: $s-size;
+        border: 1px solid $lightest-gray;
+        &[type="submit"]{
+            background-color: $yad2-orange;
+            color: $whiter-than-body-white;
+            width: ;
+        }
+    }
 }

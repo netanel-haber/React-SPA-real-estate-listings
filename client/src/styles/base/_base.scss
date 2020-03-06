@@ -12,17 +12,7 @@ body {
   font-weight: 500;
   background-color: $body-white;
   color: #363636;
-  direction: rtl;
-  .body__content {
-    width: 85vw;
-    max-width: 900px;
-    margin: $l-size auto;
-    > div {
-      margin: $l-size 0;
-      background-color: lighten($body-white, 30%);
-      border: 1px solid $lightest-gray;
-    }
-  }
+  direction: rtl;  
 }
 
 button {
