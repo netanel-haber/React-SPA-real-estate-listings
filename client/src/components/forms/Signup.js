@@ -1,42 +1,49 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
 import '../../styles/components/forms/Signup.scss';
+import isEmail from 'validator/es/lib/isEmail';
+import isMobilePhone from 'validator/es/lib/isMobilePhone';
 
-const { HEB_FAMILY_NAME, HEB_EMAIL, HEB_NAME, HEB_SEND } = {
+
+const { HEB_FAMILY_NAME, HEB_EMAIL, HEB_NAME, HEB_SEND, HEB_PHONE_NUMBER } = {
     HEB_NAME: "שם פרטי",
     HEB_FAMILY_NAME: "שם משפחה",
     HEB_EMAIL: "כתובת דוא\"ל",
+    HEB_PHONE_NUMBER: "מספר טלפון",
     HEB_SEND: "שלח"
 }
 
-const withDivAndLabel = (el, text, ) => {
+const withDivAndLabel = (el, text, errors, errorText) => {
     return (
-        <div>
+        <div className="pure-control-group">
             <label htmlFor={el.props.name}>
                 {text}
             </label>
             {el}
+            {errors[el.props.name] && errorText}
         </div>
     )
 }
 
+const emailValidConfig = {
+    required:true,
+    vali
+}
+
+
 
 const SignupForm = () => {
-    const { register, handleSubmit, watch, errors } = useForm()
-    const onSubmit = data => { console.log(data) }
-    console.log(watch('example')) // watch input value by passing the name of it
+    const { register, handleSubmit, errors } = useForm()
+    const onSubmit = data => {
+        console.log(data)
+    }
     return (
         <div>
-            < form className="Signup__form" onSubmit={handleSubmit(onSubmit)} >
-                {withDivAndLabel(< input name="firstName" ref={register} />, HEB_NAME)}
-                {withDivAndLabel(< input name="familyName" ref={register} />, HEB_FAMILY_NAME)}
-                {withDivAndLabel(< input type="email" name="email" ref={register} />, HEB_EMAIL)}
-
-                {/* include validation with required or other standard HTML validation rules */}
-                {/* < input name="exampleRequired" ref={register({ required: true })} /> */}
-                {/* errors will return when field validation fails  */}
-                {/* {errors.exampleRequired && <span>This field is required</span>} */}
-                <div><input type="submit" ref={register} value={HEB_SEND} /></div>
+            < form className="Signup__form pure-form pure-form-aligned" onSubmit={handleSubmit(onSubmit)} >
+                {withDivAndLabel(< input className="pure-input-rounded" name="email" ref={register(emailValidConfig)} />, HEB_EMAIL, errors)}
+                <div className="Signup__submit">
+                    <button className="pure-button pure-button-primary" type="submit" ref={register}>{HEB_SEND}</button>
+                </div>
             </form >
         </div>
         // // {/* "handleSubmit" will validate your inputs before invoking "onSubmit" */ }

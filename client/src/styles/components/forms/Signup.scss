@@ -1,34 +1,27 @@
 @import "../../base/settings";
 @import "../../base/utility-classes";
+@import url(https://unpkg.com/purecss@1.0.1/build/forms-min.css);
 
 .Signup__form {
+  padding: $s-size;
   margin: $m-size;
-  font-size: $s-size * 1.2;
-  border: 1px solid $lightest-gray;
-  @include basic-flex(undefined, column);
-  > div {
-    @include basic-flex(flex-end);
-    align-self: flex-start;
-    width: 500px;
-    margin: $s-size;
-    > * {
-      margin: $s-size;
-    }
-  }
   input {
-    padding: $s-size;
-    border: 1px solid $lightest-gray;
-    border-radius: 5px;
-    cursor: pointer;
+    border: none;
     &[type="email"] {
       direction: ltr;
     }
-    &[type="submit"] {
-      background-color: $yad2-orange;
-      color: $whiter-than-body-white;
-      width: 30%;
-    }
   }
-  label {
+}
+
+.Signup__submit {    
+  button {
+    border-radius: 15px; 
+    border: none;
+    padding: $s-size/2;
+    display: block;
+    margin: $l-size auto;
+    background-color: $yad2-orange;
+    color: $whiter-than-body-white;
+    width: 100px;
   }
 }

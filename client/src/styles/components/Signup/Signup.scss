@@ -5,5 +5,6 @@
   @extend .body__content;
   > div {
     @include basic-flex(center);
+    max-width: 100%;
   }
 }
