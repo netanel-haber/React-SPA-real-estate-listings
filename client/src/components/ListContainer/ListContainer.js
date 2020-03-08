@@ -16,20 +16,20 @@ const ListContainer = ({ options, type }) => {
     const [listUpdating, toggleUpdating] = useState(true);
 
     useApiCallEffect(
-        () => getListings(type, { ...options, skip: 0 }),
+        (sig) => getListings(type, { ...options, skip: 0 }, sig),
         (res) => { updateList(res); updateSkip({ type: "DONT_TRIGGER_UPDATE" }) },
         toggleUpdating,
         [options, type]);
 
     useApiCallEffect(
-        () => getListings(type, { ...options, skip: skipState.value }),
+        (sig) => getListings(type, { ...options, skip: skipState.value }, sig),
         updateList,
         toggleUpdating,
         [skipState, type],
         skipState.should);
 
     useApiCallEffect(
-        () => countDocs(type, filters),
+        (sig) => countDocs(type, filters, sig),
         updateCount,
         toggleUpdating,
         [filters, type]);

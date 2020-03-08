@@ -1,5 +1,4 @@
 import React from 'react';
-import classnames from 'classnames';
 import '../styles/components/Bullet.scss';
 
 const Bullet = ({ selected }) =>

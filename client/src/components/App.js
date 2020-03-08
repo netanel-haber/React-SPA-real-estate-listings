@@ -1,13 +1,9 @@
 import React, { useEffect } from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
-import { toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.min.css';
 import '../styles/components/App.scss';
 import Header from './Header';
 import ListingTypeRouter from './ListingTypeRouter';
 import { AddListing, HomePage, Login, NotFound, Personal, Signup } from './pages/pageIndex';
-
-toast.configure();
 
 
 const App = () => {

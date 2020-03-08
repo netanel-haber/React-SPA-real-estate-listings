@@ -1,0 +1,34 @@
+@import "../../base/settings";
+@import "../../base/utility-classes";
+
+.Signup__form {
+  margin: $m-size;
+  font-size: $s-size * 1.2;
+  border: 1px solid $lightest-gray;
+  @include basic-flex(undefined, column);
+  > div {
+    @include basic-flex(flex-end);
+    align-self: flex-start;
+    width: 500px;
+    margin: $s-size;
+    > * {
+      margin: $s-size;
+    }
+  }
+  input {
+    padding: $s-size;
+    border: 1px solid $lightest-gray;
+    border-radius: 5px;
+    cursor: pointer;
+    &[type="email"] {
+      direction: ltr;
+    }
+    &[type="submit"] {
+      background-color: $yad2-orange;
+      color: $whiter-than-body-white;
+      width: 30%;
+    }
+  }
+  label {
+  }
+}

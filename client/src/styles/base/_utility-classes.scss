@@ -92,7 +92,7 @@
 .toast {
   direction: rtl !important;
   text-align: right;
-  font-size: $s-size;
+  margin: 0 $s-size;
 }
 
 .body__content {

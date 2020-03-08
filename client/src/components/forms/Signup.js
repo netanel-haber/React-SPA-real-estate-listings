@@ -1,5 +1,6 @@
 import React from 'react';
-import { useForm } from 'react-hook-form'
+import { useForm } from 'react-hook-form';
+import '../../styles/components/forms/Signup.scss';
 
 const { HEB_FAMILY_NAME, HEB_EMAIL, HEB_NAME, HEB_SEND } = {
     HEB_NAME: "שם פרטי",
