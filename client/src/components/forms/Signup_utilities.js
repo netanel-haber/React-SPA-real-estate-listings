@@ -1,14 +1,16 @@
 import isEmail from 'validator/es/lib/isEmail';
 
-const { HEB_INVALID_EMAIL, HEB_FIELD_IS_REQUIRED } = {
+const { HEB_INVALID_EMAIL, HEB_FIELD_IS_REQUIRED, HEB_PASS_DOESNT_MATCH } = {
     HEB_INVALID_EMAIL: "כתובת המייל אינה תקינה!",
-    HEB_FIELD_IS_REQUIRED: "שדה זה הינו שדה חובה"
+    HEB_FIELD_IS_REQUIRED: "שדה זה הינו שדה חובה",
+    HEB_PASS_DOESNT_MATCH: "הסיסמאות שהזנת אינן תואמות."
 }
-
 const emailValidConfig = {
     required: HEB_FIELD_IS_REQUIRED,
     validate: value => isEmail(value) || HEB_INVALID_EMAIL
 }
+
+
 
 const matchingErrMessages = ["להכיל אות אחת קטנה לפחות. ",
     "להכיל אות אחת גדולה לפחות. ",
@@ -30,4 +32,11 @@ const passwordValidConfig = {
 }
 
 
-export { emailValidConfig, passwordValidConfig }
+const reEnterValidConfig = (ref) => ({
+    required: HEB_FIELD_IS_REQUIRED,
+    validate: (val) => (val === ref.current) || HEB_PASS_DOESNT_MATCH
+});
+
+
+
+export { emailValidConfig, passwordValidConfig, reEnterValidConfig }

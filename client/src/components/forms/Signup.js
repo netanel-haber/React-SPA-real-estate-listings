@@ -1,7 +1,8 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { useForm } from 'react-hook-form';
 import '../../styles/components/forms/Signup.scss';
-import { emailValidConfig, passwordValidConfig } from './Signup_utilities';
+import { emailValidConfig, passwordValidConfig, reEnterValidConfig } from './Signup_utilities';
+import WithDivAndLabel from './WithDivAndLabel';
 
 const { HEB_EMAIL, HEB_SEND, HEB_PASSWORD, HEB_REENTER_PASSWORD } = {
     HEB_EMAIL: "כתובת דוא\"ל",
@@ -11,41 +12,11 @@ const { HEB_EMAIL, HEB_SEND, HEB_PASSWORD, HEB_REENTER_PASSWORD } = {
 }
 
 
-const WithErrorMessageContainer = ({ children: [el, error] }) => {
-    const [visibility, toggleVisi] = useState("visible");
-    useEffect(() => {
-        toggleVisi("visible");
-        setTimeout(() => { toggleVisi("hidden") }, 2000)
-    }, [error])
-    return (
-        <div className="error-message-container">
-            {el}
-            {error &&
-                <div className="error-message" style={{ visibility }} onMouseOver={() => { toggleVisi("hidden") }}>
-                    {error}
-                </div>
-            }
-        </div>
-    )
-}
-
-
-const WithDivAndLabel = ({ text, error, children: el, prefix }) => {
-    return (
-        <div className={`${prefix}__unit pure-control-group`}>
-            <label htmlFor={el.props.name}>{text}:</label>
-            <WithErrorMessageContainer>
-                {el}
-                {error}
-            </WithErrorMessageContainer>
-        </div>
-    )
-};
-
-
 const SignupForm = () => {
-    const { register, handleSubmit, errors } = useForm()
+    const { register, handleSubmit, errors, watch } = useForm()
     const onSubmit = data => console.log(data);
+    const curPassRef = useRef({});
+    curPassRef.current = watch("password", "");
     return (
         <div>
             < form className="Signup__form" onSubmit={handleSubmit(onSubmit)} >
@@ -56,7 +27,8 @@ const SignupForm = () => {
                     < input type="password" className="pure-input-rounded" autoComplete="off" name="password" ref={register(passwordValidConfig)} />
                 </WithDivAndLabel>
                 <WithDivAndLabel text={HEB_REENTER_PASSWORD} error={errors?.reEnterPassword?.message}>
-                    < input type="password" className="pure-input-rounded" autoComplete="off" name="reEnterPassword" ref={register(passwordValidConfig)} />
+                    < input type="password" className="pure-input-rounded" autoComplete="off" name="reEnterPassword"
+                        ref={register(reEnterValidConfig(curPassRef))} />
                 </WithDivAndLabel>
                 <div className="Signup__submit pure-control-group">
                     <button className="pure-button pure-button-primary" type="submit" ref={register}>{HEB_SEND}</button>

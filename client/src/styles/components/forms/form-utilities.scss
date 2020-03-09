@@ -18,8 +18,11 @@ form {
   margin: $m-size;
 }
 
+
+
 .error-message-container {
   position: relative;
+  display: inline-block;
   .error-message {
     background: adjust-color($color: #c51244, $alpha: -0.2);
     color: $body-white;

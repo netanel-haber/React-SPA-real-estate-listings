@@ -3,14 +3,12 @@
 @import './form-utilities.scss';
 
 
-// .Signup__form {
-//   padding: $s-size;
-//   margin: $m-size;
-//   input {
-//     border: none;
-//     direction: ltr;
-//   }
-// }
+.Signup__form {
+  input {
+    border: none;
+    direction: ltr;
+  }
+}
 
 .Signup__submit {
   button {
