@@ -3,26 +3,41 @@ import { useForm } from 'react-hook-form';
 import '../../styles/components/forms/Signup.scss';
 import { emailValidConfig, passwordValidConfig } from './Signup_utilities';
 
-const { HEB_EMAIL, HEB_SEND, HEB_PASSWORD } = {
+const { HEB_EMAIL, HEB_SEND, HEB_PASSWORD, HEB_REENTER_PASSWORD } = {
     HEB_EMAIL: "כתובת דוא\"ל",
     HEB_SEND: "שלח",
-    HEB_PASSWORD: "סיסמה"
+    HEB_PASSWORD: "סיסמה",
+    HEB_REENTER_PASSWORD: "הזן שנית"
 }
 
-const WithDivAndLabel = ({ text, errors, children }) => {
-    const el = children;
-    const [errVisi, toggleVisi] = useState("visible");
+
+const WithErrorMessageContainer = ({ children: [el, error] }) => {
+    const [visibility, toggleVisi] = useState("visible");
     useEffect(() => {
         toggleVisi("visible");
-        setTimeout(() => { toggleVisi("hidden") }, 1500)
-    }, [errors])
+        setTimeout(() => { toggleVisi("hidden") }, 2000)
+    }, [error])
     return (
-        <div className="Signup__unit pure-control-group">
-            <label>
-                {text}:
+        <div className="error-message-container">
             {el}
-                {errors[el.props.name] && <div style={{ visibility: errVisi }} className="Signup__error-message">{errors[el.props.name].message}</div>}
-            </label>
+            {error &&
+                <div className="error-message" style={{ visibility }} onMouseOver={() => { toggleVisi("hidden") }}>
+                    {error}
+                </div>
+            }
+        </div>
+    )
+}
+
+
+const WithDivAndLabel = ({ text, error, children: el, prefix }) => {
+    return (
+        <div className={`${prefix}__unit pure-control-group`}>
+            <label htmlFor={el.props.name}>{text}:</label>
+            <WithErrorMessageContainer>
+                {el}
+                {error}
+            </WithErrorMessageContainer>
         </div>
     )
 };
@@ -30,17 +45,20 @@ const WithDivAndLabel = ({ text, errors, children }) => {
 
 const SignupForm = () => {
     const { register, handleSubmit, errors } = useForm()
-    const onSubmit = data => console.log(data)
+    const onSubmit = data => console.log(data);
     return (
         <div>
-            < form className="Signup__form pure-form pure-form-aligned" onSubmit={handleSubmit(onSubmit)} >
-                <WithDivAndLabel text={HEB_EMAIL} errors={errors}>
+            < form className="Signup__form" onSubmit={handleSubmit(onSubmit)} >
+                <WithDivAndLabel text={HEB_EMAIL} error={errors?.email?.message}>
                     < input className="pure-input-rounded" name="email" ref={register(emailValidConfig)} />
                 </WithDivAndLabel>
-                <WithDivAndLabel text={HEB_PASSWORD} error={errors}>
-                    < input className="pure-input-rounded" name="password" ref={register(passwordValidConfig)} />
+                <WithDivAndLabel text={HEB_PASSWORD} error={errors?.password?.message}>
+                    < input type="password" className="pure-input-rounded" autoComplete="off" name="password" ref={register(passwordValidConfig)} />
                 </WithDivAndLabel>
-                <div className="Signup__submit">
+                <WithDivAndLabel text={HEB_REENTER_PASSWORD} error={errors?.reEnterPassword?.message}>
+                    < input type="password" className="pure-input-rounded" autoComplete="off" name="reEnterPassword" ref={register(passwordValidConfig)} />
+                </WithDivAndLabel>
+                <div className="Signup__submit pure-control-group">
                     <button className="pure-button pure-button-primary" type="submit" ref={register}>{HEB_SEND}</button>
                 </div>
             </form >

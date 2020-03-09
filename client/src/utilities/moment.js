@@ -1,5 +1,5 @@
-const moment = require('moment');
-moment.locale('en-il');
+import moment from 'moment';
+import 'moment/locale/en-il';
 
 
 const isToday = (d) => {

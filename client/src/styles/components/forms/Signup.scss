@@ -1,17 +1,16 @@
 @import "../../base/settings";
 @import "../../base/utility-classes";
-@import url(https://unpkg.com/purecss@1.0.1/build/forms-min.css);
+@import './form-utilities.scss';
 
-.Signup__form {
-  padding: $s-size;
-  margin: $m-size;
-  input {
-    border: none;
-    &[type="email"] {
-      direction: ltr;
-    }
-  }
-}
+
+// .Signup__form {
+//   padding: $s-size;
+//   margin: $m-size;
+//   input {
+//     border: none;
+//     direction: ltr;
+//   }
+// }
 
 .Signup__submit {
   button {
@@ -19,36 +18,9 @@
     border: none;
     padding: $s-size/2;
     display: block;
-    margin: $l-size auto;
+    margin: $m-size auto;
     background-color: $yad2-orange;
     color: $whiter-than-body-white;
     width: 100px;
   }
-}
-
-.Signup__error-message {
-  background: adjust-color($color: #c51244, $alpha: -0.2);
-  color: $body-white;
-  padding: 5px;
-  border-radius:3px;
-  position: absolute;
-  display: block;
-  box-shadow: 1px 1px 1px #aaaaaa;
-  margin-top: 10px;
-  text-align: center;
-  font-size: $s-size;
-  &:before {
-    content: "";
-    width: 0;
-    height: 0;
-    border-left: 10px solid transparent;
-    border-right: 10px solid transparent;
-    border-bottom: 10px solid adjust-color($color: #c51244, $alpha: -0.2);
-    position: absolute;
-    top: -10px;
-  }
-}
-
-.Signup__unit {
-  max-width: 600px;
 }

@@ -1,0 +1,46 @@
+@import "purecss-sass/vendor/assets/stylesheets/purecss/_forms.scss";
+
+@media only screen and (max-width: 480px) {
+  .pure-form button[type="submit"] {
+    margin: $m-size auto;
+  }
+  .pure-form-aligned .pure-control-group label {
+    margin: 3px;
+    margin-right: 5px;
+    text-align: right;
+  }
+}
+
+form {
+  @extend .pure-form;
+  @extend .pure-form-aligned;
+  padding: $s-size;
+  margin: $m-size;
+}
+
+.error-message-container {
+  position: relative;
+  .error-message {
+    background: adjust-color($color: #c51244, $alpha: -0.2);
+    color: $body-white;
+    padding: 5px;
+    border-radius: 3px;
+    position: absolute;
+    left: 0;
+    z-index: 2;
+    box-shadow: 1px 1px 1px #aaaaaa;
+    margin-top: 10px;
+    text-align: center;
+    font-size: $s-size;
+    &:before {
+      content: "";
+      width: 0;
+      height: 0;
+      border-left: 10px solid transparent;
+      border-right: 10px solid transparent;
+      border-bottom: 10px solid adjust-color($color: #c51244, $alpha: -0.2);
+      position: absolute;
+      top: -10px;
+    }
+  }
+}
