@@ -20,7 +20,8 @@ const LoaderBeforeData = ({ loaderProps, children, loading, type = PulseLoader }
                     }
                 },
                 <span className="Loader">{React.createElement(type,
-                    { loading, margin: mSize, ...loaderProps })}</span>)
+                    { loading, margin: mSize, ...loaderProps })}</span>
+                    )
             }
         </>
     )
