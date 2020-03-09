@@ -1,4 +1,3 @@
-
 #git
 1. git is case insesitive for filenames and will not detect changes of case in file names.
 - use 'git mv' to rename file and have git detect the change. 
@@ -20,8 +19,10 @@ must be in the root pckg.json 'build' scripts - for example:
 see https://github.com/mars/heroku-cra-node#user-content-deploy-to-heroku 
 for similar deployment pattern.
 
+
 #mongo
 1. you must configure network availability to any ip under 'network' in website if production.
+
 
 #node&express
 1. in package.json scripts, & denotes asynchronous and parallelized processes, and therefore cannot be used if 
@@ -31,5 +32,16 @@ otherwise, the root projects npm scripts will execute. this caused recursion, as
 2. if NODE_ENV=production, serve *client* build folder. optionally dont require 'dotenv'
 although this is optional as .env files will not be present and therefore this a 
 non-performant-heavy no-op in production.  
+
+
+
+#preact
+preact migration (shaved 35kb [from 85kb] off gzipped prod build):
+1. refactor webpack config without ejection using react-app-rewire.
+in root folder (/client) - follow steps here (https://github.com/timarney/react-app-rewired).
+2. aliases to be added to config.resolve.alias can be found here: (https://preactjs.com/guide/v10/getting-started#aliasing-react-to-preact).
+notice the use of "preact***/***compat" - this is what is needed for newest Preact-X(v10), 
+with full hook compatability and other necessities. older docs will use "preact***-***compat", a separate library to preact,
+but this will not contain all the features used in this project.
 
 
