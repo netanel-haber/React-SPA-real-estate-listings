@@ -18,7 +18,7 @@ const Modal = () => {
                 <div className="image-child">
                     <div className="toggle-pics" onClick={(e) => { e.stopPropagation(); inc(currentIndex + 1) }}>❯</div>
                     <div className="Modal__image-container">
-                        <ImageWithLoader url={urls[actualCurrentIndex]} />
+                        <ImageWithLoader scaleBy={3} url={{ url: urls[actualCurrentIndex] }} />
                     </div>
                     <div className="toggle-pics" onClick={(e) => { e.stopPropagation(); inc(currentIndex - 1) }}>❮</div>
                 </div>

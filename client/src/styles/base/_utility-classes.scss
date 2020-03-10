@@ -1,21 +1,5 @@
 @import "./settings";
 
-.css-0 {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  > div {
-    background-color: $yad2-orange;
-  }
-}
-
-.Loader {
-  > div {
-    @extend .css-0;
-  }
-}
-
 .inactive-style {
   pointer-events: none;
   opacity: 0.5;
@@ -104,4 +88,19 @@
     background-color: lighten($body-white, 30%);
     border: 1px solid $lightest-gray;
   }
+}
+
+
+@import "loaders.css/src/animations/ball-beat.scss";
+@import "loaders.css/src/animations/ball-spin-fade-loader.scss";
+.loader {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+}
+.loader-hidden {
+  display: none;
+}
+.loader-active {
+  display: block;
 }

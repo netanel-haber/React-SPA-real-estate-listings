@@ -1,22 +1,23 @@
 import React from 'react';
-import Loader from "react-spinners/PulseLoader";
 import useSpinnerBeforeImageLoad from '../../../hooks/useSpinnerBeforeImageLoad';
+import CustomLoader from '../../CustomLoader';
 
-const ImageWithLoader = ({ url, loaderSize = "5rem" }) => {
+
+const ImageWithLoader = ({ url: { url, error }, scaleBy }) => {
     const [loading, done] = useSpinnerBeforeImageLoad(url);
-    if(!url){
+    if (error) {
         return <img alt="לא נמצאו תמונות."></img>
     }
     return (
         <>
-            <Loader loading={loading} size={loaderSize} />
+            <CustomLoader scaleBy={scaleBy} active={loading} />
             <img
                 style={{ display: loading ? "none" : "inline" }}
                 onLoad={done}
                 className="image"
                 alt="תמונה של הנכס"
                 src={url}
-                >
+            >
             </img>
         </>
     );

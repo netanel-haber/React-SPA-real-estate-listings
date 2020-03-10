@@ -1,9 +1,9 @@
 import React, { useContext, useEffect, useState } from 'react';
-import Loader from "react-spinners/PulseLoader";
 import ItemContext from '../../../contexts/ItemContext';
 import { getLister } from '../../../fetch/data';
 import '../../../styles/components/Item/PhoneNumberExpansion.scss';
 import copyToClipBoard from '../../../utilities/copyToClipboard';
+import CustomLoader from './../../CustomLoader';
 
 
 const { HEB_WEBSITE, HEB_COPY_EMAIL } = {
@@ -34,7 +34,7 @@ const PhoneNumberExpansion = ({ isExpanded }) => {
                 ? extractMitDetails(mitigatingCompany)
                 : (regListerDetails.length!==0
                     ? extractRegListerDetails(regListerDetails)
-                    : [<Loader loading size="1rem" />]))
+                    : [<CustomLoader active />]))
                 .map((deet, index) => <div key={index} className="child">{deet}</div>)
             }
         </div>

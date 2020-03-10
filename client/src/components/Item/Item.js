@@ -10,11 +10,12 @@ import MiniTopBar from './top/MiniTopBar';
 
 const Item = ({ type, topLevel: { listing, level1, _id } }) => {
     const [wasExpanded, isExpanded, toggle] = useLoadOnceThenToggle();
-    const [urls, updateUrls] = useState([]);
+    const [{ urls, error }, updateUrls] = useState({ urls: [], error: false });
 
-    useApiCallEffect((sig) => getPicUrls(listing.pictureKeys, sig), updateUrls, []);
+    useApiCallEffect((sig) => getPicUrls(listing.pictureKeys, sig),
+        (urls) => { updateUrls({ urls, error: urls.length===0 }) }, []);
 
-    const contextValue = { _id, urls, level1, listing, type };
+    const contextValue = { _id, urls, error, level1, listing, type };
     return (
         <ItemContext.Provider value={contextValue}>
             <div className="Item__container" onClick={toggle}>
