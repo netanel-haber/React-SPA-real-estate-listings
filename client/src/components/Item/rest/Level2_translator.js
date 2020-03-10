@@ -1,4 +1,4 @@
-import { format } from '../../../utilities/moment';
+import { format } from '../../../utilities/datetime';
 
 const hebBoolean = (val) => Boolean(val) ? "כן" : "לא";
 const isrDate = (utc) => format(utc);

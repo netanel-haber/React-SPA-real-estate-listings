@@ -7,9 +7,15 @@
     @include basic-flex;
     > * {
       padding: $s-size/2;
+      margin: $s-size/2;
     }
   }
   margin: $s-size 0;
+  height: fit-content;
+}
+
+.SortBy__limit{
+ min-width: 45px; 
 }
 
 .SortBy__button {
