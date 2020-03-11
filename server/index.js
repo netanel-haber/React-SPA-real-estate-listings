@@ -5,11 +5,10 @@ const express = require('express');
 const path = require('path');
 const app = express();
 
-app.use(require('./logger'));
-app.use(require('body-parser').json());
+app.use(require('./logger'), require('body-parser').json());
 app.use('/api', require('./routers/api'));
+console.log(path.join(__dirname, 'icons'));
 app.use('/icons', require('./middleware/urlToLowerCase'), express.static(path.join(__dirname, 'icons')));
-
 
 if (process.env.NODE_ENV === "production")
     require('./serveReact')(app);
