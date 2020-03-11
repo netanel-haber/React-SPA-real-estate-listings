@@ -4,7 +4,7 @@ let
     forsale = require('./mockdata/forsale'),
     rent = require('./mockdata/rent'),
     commercial = require('./mockdata/commercial'),
-    roommmates = require('./mockdata/roommates'),
+    roommates = require('./mockdata/roommates'),
     mitigatingCompany = require('./mockdata/mitigatingCompany'),
     [listerMit, listerNonMit] = require('./mockdata/lister');
 const {
@@ -31,9 +31,15 @@ new MitigatingCompany(mitigatingCompany).save()
             new ForsaleListing(forsale(Math.round(Math.random()) ? otherListerId : listerId,
                 Math.random() >= 0.5 && Math.floor(Math.random() * (200000 - 100000 + 1) + 100000)
             )).save(),
-            new RentListing(rent).save(),
-            new CommercialListing(commercial).save(),
-            new RoommatesListing(roommmates).save()];
+            new RentListing(rent(Math.round(Math.random()) ? otherListerId : listerId,
+            Math.random() >= 0.5 && Math.floor(Math.random() * (200000 - 100000 + 1) + 100000)
+        )).save(),
+            new CommercialListing(commercial(Math.round(Math.random()) ? otherListerId : listerId,
+            Math.random() >= 0.5 && Math.floor(Math.random() * (200000 - 100000 + 1) + 100000)
+        )).save(),
+            new RoommatesListing(roommates(Math.round(Math.random()) ? otherListerId : listerId,
+            Math.random() >= 0.5 && Math.floor(Math.random() * (200000 - 100000 + 1) + 100000)
+        )).save()];
         }
         return Promise.all(promises);
     })

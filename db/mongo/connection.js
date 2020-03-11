@@ -2,7 +2,8 @@ require('dotenv').config();
 const { success } = require('../../chalks');
 
 const mongoose = require('mongoose');
-const uri = `mongodb+srv://masterNetanel:${process.env.MONGODB_PASSWORD}@nadlan-msbha.mongodb.net/nadlan`;
+const uri = `mongodb+srv://masterNetanel:${process.env.MONGODB_PASSWORD}@nadlan-msbha.mongodb.net/${process.env[process.env.NODE_ENV === "production" ? "MONGO_PROD_DB" : "MONGO_TEST_DB"]}`;
+
 const nadlan = mongoose.createConnection(uri, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
