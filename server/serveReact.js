@@ -6,7 +6,7 @@ module.exports = (app) => {
     const clientPath = path.join(__dirname, '../client', 'build');
     app.use('/', serveStaticScripts);
     app.use(express.static(clientPath));
-    app.get('/', function (req, res) {
+    app.get('/*', function (req, res) {
         res.sendFile(path.join(clientPath, 'index.html'));
     });
 }

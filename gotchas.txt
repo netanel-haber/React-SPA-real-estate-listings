@@ -4,9 +4,9 @@
 
 
 #heroku
-1. use 'heroku plugins' to see two plugins added to heroku:
+1. use 'heroku plugins' to see two plugins added to heroku:'heroku config:push -f PATH'
     1. heroku-builds 0.0.29 - use 'heroku builds:cancel APP_NAME' to cancel build in progress.
-    2. heroku-config 1.5.4 - use 'heroku config:push -f PATH' to push envars from file. see github.
+    2. heroku-config 1.5.4 - use  to push envars from file. see github.
 2. use 'heroku open' to open app from console.
 3. add heroku remote to workspace folder to add remote to git. 
 4. 'git push heroku master'
