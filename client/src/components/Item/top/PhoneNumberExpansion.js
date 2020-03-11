@@ -32,10 +32,10 @@ const PhoneNumberExpansion = ({ isExpanded }) => {
         <div className="PhoneNumberExpansion" style={{ maxHeight: isExpanded ? "200px" : "0" }}>
             {(mitigatingCompany
                 ? extractMitDetails(mitigatingCompany)
-                : (regListerDetails.length!==0
+                : (regListerDetails.length !== 0
                     ? extractRegListerDetails(regListerDetails)
                     : [<CustomLoader active />]))
-                .map((deet, index) => <div key={index} className="child">{deet}</div>)
+                .map((deet, index) => deet && <div key={index} className="child">{deet}</div>)
             }
         </div>
     );

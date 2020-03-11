@@ -1,10 +1,15 @@
 import isEmail from 'validator/es/lib/isEmail';
+import isMobilePhone from 'validator/es/lib/isMobilePhone';
+
 
 const { HEB_INVALID_EMAIL, HEB_FIELD_IS_REQUIRED, HEB_PASS_DOESNT_MATCH } = {
     HEB_INVALID_EMAIL: "כתובת המייל אינה תקינה!",
     HEB_FIELD_IS_REQUIRED: "שדה זה הינו שדה חובה",
     HEB_PASS_DOESNT_MATCH: "הסיסמאות שהזנת אינן תואמות."
 }
+
+
+
 const emailValidConfig = {
     required: HEB_FIELD_IS_REQUIRED,
     validate: value => isEmail(value) || HEB_INVALID_EMAIL

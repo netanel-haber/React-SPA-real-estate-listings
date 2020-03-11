@@ -4,11 +4,13 @@ import '../../styles/components/forms/Signup.scss';
 import { emailValidConfig, passwordValidConfig, reEnterValidConfig } from './Signup_utilities';
 import WithDivAndLabel from './WithDivAndLabel';
 
-const { HEB_EMAIL, HEB_SEND, HEB_PASSWORD, HEB_REENTER_PASSWORD } = {
+const { HEB_EMAIL, HEB_SEND, HEB_PASSWORD, HEB_REENTER_PASSWORD, HEB_PHONE_NUMBER } = {
     HEB_EMAIL: "כתובת דוא\"ל",
     HEB_SEND: "שלח",
     HEB_PASSWORD: "סיסמה",
-    HEB_REENTER_PASSWORD: "הזן שנית"
+    HEB_REENTER_PASSWORD: "הזן שנית",
+    HEB_PHONE_NUMBER: "מספר טלפון",
+    
 }
 
 
@@ -25,11 +27,14 @@ const SignupForm = () => {
                         < input className="pure-input-rounded" name="email" ref={register(emailValidConfig)} />
                     </WithDivAndLabel>
                     <WithDivAndLabel text={HEB_PASSWORD} error={errors?.password?.message}>
-                        < input type="password" className="pure-input-rounded" autoComplete="off" name="password" ref={register(passwordValidConfig)} />
+                        < input type="password" className="pure-input-rounded" autoComplete="new-password" name="password" ref={register(passwordValidConfig)} />
                     </WithDivAndLabel>
                     <WithDivAndLabel text={HEB_REENTER_PASSWORD} error={errors?.reEnterPassword?.message}>
                         < input type="password" className="pure-input-rounded" autoComplete="off" name="reEnterPassword"
                             ref={register(reEnterValidConfig(curPassRef))} />
+                    </WithDivAndLabel>
+                    <WithDivAndLabel text={HEB_PASSWORD} error={errors?.password?.message}>
+                        < input type="password" className="pure-input-rounded" autoComplete="new-password" name="password" ref={register(passwordValidConfig)} />
                     </WithDivAndLabel>
                     <div className="Signup__submit pure-control-group">
                         <button className="pure-button pure-button-primary" type="submit" ref={register}>{HEB_SEND}</button>
