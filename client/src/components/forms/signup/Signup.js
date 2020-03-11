@@ -1,19 +1,15 @@
 import React, { useRef } from 'react';
 import { FormContext, useForm } from 'react-hook-form';
 import '../../../styles/components/forms/Signup.scss';
-import {validationConfig} from './utilities';
+import { validationConfig } from './utilities';
+import onSubmit from './submit';
 
 import { formHebrew } from './heb';
 import WithDivAndLabel from '../WithDivAndLabel';
 
 
-
 const { HEB_EMAIL, HEB_SEND, HEB_PASSWORD, HEB_REENTER_PASSWORD, HEB_PHONE_NUMBER, HEB_NAME, HEB_LAST_NAME, HEB_EXPLANATION } = formHebrew;
 const { email, name, password, phoneNumber, reEnter } = validationConfig;
-const onSubmit = async (data) => {
-    const sanitized = Object.fromEntries(Object.entries(data).map(([key, value]) => ([key, value.trim()])));
-    debugger;
-}
 
 
 const SignupForm = () => {

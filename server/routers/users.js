@@ -1,12 +1,12 @@
 const usersRouter = require('express').Router();
 
 
-usersRouter.post('/login', (req, res, next) => {
+usersRouter.post('/login', function login (req, res) {
     res.send("hello");
 });
 
-usersRouter.post('/signup', (req, res, next) => {
-    res.send("hello");
+usersRouter.post('/signup', function signup (req, res) {
+    res.send(["hello"]);
 });
 
 

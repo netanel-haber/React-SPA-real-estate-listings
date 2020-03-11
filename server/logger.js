@@ -1,7 +1,6 @@
 const { get, post } = require('../chalks');
 
-
-module.exports = (req, res, next) => {
+const logger = (req, res, next) => {
     let presentation;
     switch (req.method) {
         case "GET":
@@ -14,3 +13,7 @@ module.exports = (req, res, next) => {
     console.log(presentation(`${req.method} ${req.originalUrl}`));
     next();
 };
+
+
+
+module.exports = logger;

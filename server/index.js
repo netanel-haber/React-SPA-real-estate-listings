@@ -7,7 +7,6 @@ const app = express();
 
 app.use(require('./logger'), require('body-parser').json());
 app.use('/api', require('./routers/api'));
-console.log(path.join(__dirname, 'icons'));
 app.use('/icons', require('./middleware/urlToLowerCase'), express.static(path.join(__dirname, 'icons')));
 
 if (process.env.NODE_ENV === "production")
@@ -16,6 +15,8 @@ if (process.env.NODE_ENV === "production")
 
 const PORT = process.env.PORT;
 app.listen(PORT, () => {
+    if (process.env.NODE_ENV !== "production")
+        require('express-print-routes')(app, path.join(__dirname, 'express.routes.generated.txt'));
     console.log(`The server is running on port ${PORT}`);
 });
 
