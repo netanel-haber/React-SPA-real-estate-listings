@@ -1,9 +1,17 @@
 @import "../../base/settings";
-@import '../../base/utility-classes';
+@import "../../base/utility-classes";
 @import "./top-bar-generalities.scss";
-
 
 .MiniItem {
   @extend .top-bar-factory;
+  .ImageColumn {
+    @extend .column;
+    border: 0;
+  }
+  .PriceColumn {
+    min-width: 20%;
+  }
+  .StatsColumn {
+    justify-content: center;
+  }
 }
-

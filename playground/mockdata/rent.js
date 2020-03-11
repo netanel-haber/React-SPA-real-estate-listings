@@ -1,5 +1,5 @@
 const { listerId } = require('../ids');
-module.exports = (lis = listerId, price = 250000) => ({
+module.exports = (lis = listerId, price) => ({
     listing: {
         listerId: lis,
         pictureKeys: Math.random() >= 0.5 ? ['property-images/6/1.png',
@@ -11,7 +11,7 @@ module.exports = (lis = listerId, price = 250000) => ({
         floor: 3,
         floorsInBuilding: 5,
         sqMeters: 100,
-        price,
+        price: price ? price : null,
         rooms: 34,
         address: {
             municipality: "נשר",

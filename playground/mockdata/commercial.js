@@ -11,7 +11,7 @@ module.exports = (lis = listerId, price) => ({
         floor: 3,
         floorsInBuilding: 5,
         sqMeters: 100,
-        price,
+        price: price ? price : null,
         rooms: 34,
         address: {
             municipality: "נשר",

@@ -15,7 +15,7 @@ const Price = () => {
     const { level1, listing } = useContext(ItemContext);
     const { price } = level1;
     const { updatedAt, mitigatingCompany } = listing;
-    const title = price ? toShekel(price) : HEB_PRICE_NOT_SET;
+    const title = price!=null ? toShekel(price) : HEB_PRICE_NOT_SET;
     const subtitle = mitigatingCompany?.name || (isToday(updatedAt) ? HEB_UPDATED_TODAY : format(updatedAt));
     return (
         <div className="PriceColumn">
