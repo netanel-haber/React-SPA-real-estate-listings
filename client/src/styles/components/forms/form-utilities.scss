@@ -11,52 +11,69 @@
   }
 }
 
+.pure-form-aligned .pure-control-group label {
+  width: 7em;
+  margin-right: 2px;
+}
+
 form {
   @extend .pure-form;
   @extend .pure-form-aligned;
   padding: $s-size;
   margin: $m-size;
-  span {
-    margin-right: 5px;
-    &:before {
-      content: "* ";
-      color: red;
+  div.message {
+    width: 100%;
+    .pure-form-message-inline {
+      margin-right: 5px;
+      word-wrap: break-word;
+      &:before {
+        content: "* ";
+        color: red;
+      }
+    }
+  }
+  input {
+    border: none;
+    &.eng {
+      direction: ltr;
     }
   }
   .required-fields label:after {
     content: "*";
     color: red;
   }
+  label {
+    width: 20px;
+  }
 }
 
 .error-message-container {
   position: relative;
   display: inline-block;
-}
-
-.error-message {
-  &:hover {
-    visibility: hidden;
-  }
-  background: adjust-color($color: #c51244, $alpha: -0.2);
-  color: $body-white;
-  padding: 5px;
-  border-radius: 3px;
-  position: absolute;
-  left: 0;
-  z-index: 2;
-  box-shadow: 1px 1px 1px #aaaaaa;
-  margin-top: 10px;
-  text-align: center;
-  font-size: $s-size;
-  &:before {
-    content: "";
-    width: 0;
-    height: 0;
-    border-left: 10px solid transparent;
-    border-right: 10px solid transparent;
-    border-bottom: 10px solid adjust-color($color: #c51244, $alpha: -0.2);
+  .error-message {
+    &:hover {
+      visibility: hidden;
+    }
+    background: adjust-color($color: #c51244, $alpha: -0.2);
+    color: $body-white;
+    padding: 5px;
+    border-radius: 3px;
     position: absolute;
-    top: -10px;
+    left: 0;
+    z-index: 2;
+    box-shadow: 1px 1px 1px #aaaaaa;
+    margin-top: 10px;
+    text-align: center;
+    font-size: $s-size;
+    &:before {
+      content: "";
+      width: 0;
+      height: 0;
+      border-left: 10px solid transparent;
+      border-right: 10px solid transparent;
+      border-bottom: 10px solid adjust-color($color: #c51244, $alpha: -0.2);
+      position: absolute;
+      top: -10px;
+    }
   }
 }

@@ -1,14 +1,10 @@
 @import "../../base/settings";
 @import "../../base/utility-classes";
-@import './form-utilities.scss';
-
+@import "./form-utilities.scss";
 
 .Signup__form {
-  max-width: 500px;
-  input {
-    border: none;
-    direction: ltr;
-  }
+  width: 400px;
+  @include basic-flex(center, column);
 }
 
 .Signup__submit {
