@@ -1,9 +1,12 @@
 import React, { useState, useEffect } from 'react';
-
 import { useFormContext } from 'react-hook-form';
-const WithErrorMessageContainer = ({ children: [el, error] }) => {
+
+
+const WithErrorMessageContainer = ({ children:el }) => {
     const [visibility, toggleVisi] = useState("visible");
-    const { submitCount } = useFormContext();
+    const { submitCount, errors } = useFormContext();
+
+    const error = errors?.[el.props.name]?.message;
 
     useEffect(() => {
         toggleVisi("visible");
