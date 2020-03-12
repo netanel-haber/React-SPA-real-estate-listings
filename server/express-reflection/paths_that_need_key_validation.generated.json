@@ -1,12 +1,22 @@
 {
     "/get-pic-urls": [
-        "gggg"
+        "pictureKeys"
     ],
-    "/listings/count/:type": [],
-    "/listings/:type/:id": [],
-    "/listings/:type": [],
-    "/listers/:id": [],
+    "/listings/count/:type": [
+        "filters"
+    ],
+    "/listings/:type": [
+        "sorts",
+        "filters",
+        "limit",
+        "skip"
+    ],
     "/login": [],
-    "/signup": [],
-    "/test": []
+    "/signup": [
+        "name",
+        "lastName",
+        "email",
+        "password",
+        "phoneNumber"
+    ]
 }

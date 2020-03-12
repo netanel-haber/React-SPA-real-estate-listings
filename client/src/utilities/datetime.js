@@ -7,7 +7,6 @@ const format = (d) => {
 }
 
 const isToday = (d) => {
-   
     return format(d) === format(dayjs());
 }
 

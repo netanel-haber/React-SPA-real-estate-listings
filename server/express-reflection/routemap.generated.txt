@@ -4,20 +4,41 @@ router
  ├── logger                                        *                                                           
  ├── jsonParser                                    *                                                           
  ├── router                                        /^\/api\/?(?=\/|$)/                                         
- │    ├── test                                     /test                                                       GET
+ │    ├── bound dispatch                           /test                                                       GET
+ │    │    └── test                                /                                                           GET
+ │    │   
  │    ├── router                                   /^\/pics\/?(?=\/|$)/                                        
- │    │    └── getPicUrls                          /get-pic-urls                                               POST
+ │    │    └── bound dispatch                      /get-pic-urls                                               POST
+ │    │         ├── validateKeysExact              /                                                           POST
+ │    │         └── getPicUrls                     /                                                           POST
+ │    │        
  │    │   
  │    ├── router                                   /^\/data\/?(?=\/|$)/                                        
  │    │    ├── translator                          *                                                           
- │    │    ├── countListings                       /listings/count/:type                                       POST
- │    │    ├── getListing                          /listings/:type/:id                                         GET
- │    │    ├── getListings                         /listings/:type                                             POST
- │    │    └── getIndividualLister                 /listers/:id                                                GET
+ │    │    ├── bound dispatch                      /listings/count/:type                                       POST
+ │    │    │    ├── validateKeys                   /                                                           POST
+ │    │    │    └── countListings                  /                                                           POST
+ │    │    │   
+ │    │    ├── bound dispatch                      /listings/:type/:id                                         GET
+ │    │    │    └── getListing                     /                                                           GET
+ │    │    │   
+ │    │    ├── bound dispatch                      /listings/:type                                             POST
+ │    │    │    ├── validateKeys                   /                                                           POST
+ │    │    │    └── getListings                    /                                                           POST
+ │    │    │   
+ │    │    └── bound dispatch                      /listers/:id                                                GET
+ │    │         └── getIndividualLister            /                                                           GET
+ │    │        
  │    │   
  │    └── router                                   /^\/users\/?(?=\/|$)/                                       
- │         ├── login                               /login                                                      POST
- │         └── signup                              /signup                                                     POST
+ │         ├── bound dispatch                      /login                                                      POST
+ │         │    ├── validateKeys                   /                                                           POST
+ │         │    └── login                          /                                                           POST
+ │         │   
+ │         └── bound dispatch                      /signup                                                     POST
+ │              ├── validateKeys                   /                                                           POST
+ │              └── signup                         /                                                           POST
+ │             
  │        
  │   
  ├── urlToLowerCase                                /^\/icons\/?(?=\/|$)/                                       

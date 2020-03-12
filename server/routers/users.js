@@ -1,11 +1,11 @@
 const usersRouter = require('express').Router();
+const { validateKeys } = require('../middleware/validateKeys');
 
-
-usersRouter.post('/login', function login (req, res) {
+usersRouter.post('/login', validateKeys, function login(req, res) {
     res.send("hello");
 });
 
-usersRouter.post('/signup', function signup (req, res) {
+usersRouter.post('/signup', validateKeys, function signup(req, res) {
     res.send(["hello"]);
 });
 
