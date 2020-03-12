@@ -1,4 +1,4 @@
-module.exports = (req, res, next) => {
+module.exports = function urlToLowerCase (req, res, next) {
     req.originalUrl = req.originalUrl.toLowerCase();
     next();
 }

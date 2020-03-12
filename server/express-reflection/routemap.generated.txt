@@ -1,0 +1,24 @@
+router                                                                                                         
+ ├── query                                         *                                                           
+ ├── expressInit                                   *                                                           
+ ├── logger                                        *                                                           
+ ├── jsonParser                                    *                                                           
+ ├── router                                        /^\/api\/?(?=\/|$)/                                         
+ │    ├── test                                     /test                                                       GET
+ │    ├── router                                   /^\/pics\/?(?=\/|$)/                                        
+ │    │    └── getPicUrls                          /get-pic-urls                                               POST
+ │    │   
+ │    ├── router                                   /^\/data\/?(?=\/|$)/                                        
+ │    │    ├── translator                          *                                                           
+ │    │    ├── countListings                       /listings/count/:type                                       POST
+ │    │    ├── getListing                          /listings/:type/:id                                         GET
+ │    │    ├── getListings                         /listings/:type                                             POST
+ │    │    └── getIndividualLister                 /listers/:id                                                GET
+ │    │   
+ │    └── router                                   /^\/users\/?(?=\/|$)/                                       
+ │         ├── login                               /login                                                      POST
+ │         └── signup                              /signup                                                     POST
+ │        
+ │   
+ ├── urlToLowerCase                                /^\/icons\/?(?=\/|$)/                                       
+ └── serveStatic                                   /^\/icons\/?(?=\/|$)/                                       

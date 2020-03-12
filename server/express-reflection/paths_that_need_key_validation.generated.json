@@ -1,0 +1,12 @@
+{
+    "/get-pic-urls": [
+        "gggg"
+    ],
+    "/listings/count/:type": [],
+    "/listings/:type/:id": [],
+    "/listings/:type": [],
+    "/listers/:id": [],
+    "/login": [],
+    "/signup": [],
+    "/test": []
+}

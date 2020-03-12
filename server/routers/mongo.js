@@ -17,7 +17,7 @@ mongoRouter.post('/listings/:type', async function getListings(req, res) {
     res.json(await getTopLevel(req.params.type, req.filters, req.sorts, req.skip, req.limit));
 })
 
-mongoRouter.get('/listers/:id', async function getLister(req, res) {
+mongoRouter.get('/listers/:id', async function getIndividualLister(req, res) {
     res.json(await getLister(req.params.id));
 })
 
