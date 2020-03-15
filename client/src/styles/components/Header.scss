@@ -1,8 +1,6 @@
 @import "../base/settings";
 @import "../base/utility-classes";
 
-
-
 .Header__container {
   @include basic-flex(space-between);
   flex-wrap: wrap;
@@ -18,7 +16,8 @@
   line-height: 100%;
   padding: $m-size;
   text-decoration: none;
-  &.active, &:hover {
+  &.active,
+  &:hover {
     color: $body-white;
     background-color: $yad2-orange;
   }
@@ -30,4 +29,8 @@
 
 .Header__right-Link {
   @include Link;
+}
+
+.Header__emoji {
+  filter: contrast(0%);
 }

@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react';
 import ItemContext from '../../../contexts/ItemContext';
-import { getLister } from '../../../fetch/data';
+import { getLister } from '../../../fetch/listers';
 import '../../../styles/components/Item/PhoneNumberExpansion.scss';
 import copyToClipBoard from '../../../utilities/copyToClipboard';
 import CustomLoader from './../../CustomLoader';

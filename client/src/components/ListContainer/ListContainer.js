@@ -1,6 +1,6 @@
 import React, { useReducer, useState } from 'react';
 import ItemListContext from '../../contexts/ItemListContext';
-import { countDocs, getListings } from '../../fetch/data';
+import { countDocs, getListings } from '../../fetch/listings';
 import useApiCallEffect from '../../hooks/useApiCallEffect';
 import '../../styles/components/ListContainer.scss';
 import skipReducer from './../../reducers/skipReducer';

@@ -1,7 +1,7 @@
 const fs = require('fs').promises;
 const path = require('path');
 const log = require('../utilities/log');
-const keyMapPath = path.join(__dirname, "..", "express-reflection", "paths_that_need_key_validation.generated.json");
+const keyMapPath = path.join(__dirname, "..", "validation", "paths_that_need_key_validation.generated.json");
 
 
 

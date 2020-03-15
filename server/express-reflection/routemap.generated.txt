@@ -13,7 +13,7 @@ router
  │    │         └── getPicUrls                     /                                                           POST
  │    │        
  │    │   
- │    ├── router                                   /^\/data\/?(?=\/|$)/                                        
+ │    ├── router                                   *                                                           
  │    │    ├── translator                          *                                                           
  │    │    ├── bound dispatch                      /listings/count/:type                                       POST
  │    │    │    ├── validateKeys                   /                                                           POST
@@ -22,15 +22,15 @@ router
  │    │    ├── bound dispatch                      /listings/:type/:id                                         GET
  │    │    │    └── getListing                     /                                                           GET
  │    │    │   
- │    │    ├── bound dispatch                      /listings/:type                                             POST
- │    │    │    ├── validateKeys                   /                                                           POST
- │    │    │    └── getListings                    /                                                           POST
- │    │    │   
- │    │    └── bound dispatch                      /listers/:id                                                GET
- │    │         └── getIndividualLister            /                                                           GET
+ │    │    └── bound dispatch                      /listings/:type                                             POST
+ │    │         ├── validateKeys                   /                                                           POST
+ │    │         └── getListings                    /                                                           POST
  │    │        
  │    │   
- │    └── router                                   /^\/users\/?(?=\/|$)/                                       
+ │    └── router                                   *                                                           
+ │         ├── bound dispatch                      /listers/:id                                                GET
+ │         │    └── getIndividualLister            /                                                           GET
+ │         │   
  │         ├── bound dispatch                      /login                                                      POST
  │         │    ├── validateKeys                   /                                                           POST
  │         │    └── login                          /                                                           POST

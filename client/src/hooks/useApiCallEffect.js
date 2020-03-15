@@ -40,6 +40,7 @@ export default (call, callback, toggleLoading, dependencies, bool = true) => {
                 if (!ac.signal.aborted) {
                     if (toastCounter === 0) {
                         toastCounter++;
+                        debugger;
                         toast.error(<div className="toast">{HEB_TOAST_ERROR}</div>, { position: "bottom-center" })
                             .then(() => { toastCounter-- })
                     }

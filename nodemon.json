@@ -1,5 +1,6 @@
 {
     "ignore": [
-        "server/express-reflection"
+        "server/express-reflection",
+        "server/validation"
     ]
 }

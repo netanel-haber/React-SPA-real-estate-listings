@@ -1,8 +1,8 @@
-const s3Router = require('express').Router();
+const picturesRouter = require('express').Router();
 const s3Get = require('../../db/s3/connection');
 const { validateKeysExact } = require('../middleware/validateKeys');
 
-s3Router.post('/get-pic-urls', validateKeysExact, function getPicUrls(req, res) {
+picturesRouter.post('/get-pic-urls', validateKeysExact, function getPicUrls(req, res) {
     const expiresInMinutes = 10;
     Promise.all(req.body.pictureKeys.map(Key =>
         s3Get.getSignedUrlPromise('getObject',
@@ -15,4 +15,4 @@ s3Router.post('/get-pic-urls', validateKeysExact, function getPicUrls(req, res) 
 
 
 
-module.exports = s3Router;
+module.exports = picturesRouter;

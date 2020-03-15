@@ -181,3 +181,208 @@ Thu Mar 12 2020 20:15:44 POST /api/pics/get-pic-urls
 Thu Mar 12 2020 20:15:44 POST /api/pics/get-pic-urls
 Fri Mar 13 2020 09:19:11 GET /api/test
 Fri Mar 13 2020 09:19:11 GET /favicon.ico
+Sun Mar 15 2020 09:33:35 GET /api/test
+Sun Mar 15 2020 09:33:35 GET /favicon.ico
+Sun Mar 15 2020 09:34:47 GET /api/test
+Sun Mar 15 2020 09:34:54 GET /api/test
+Sun Mar 15 2020 09:35:18 GET /api/test
+Sun Mar 15 2020 09:38:56 GET /api/test
+Sun Mar 15 2020 09:39:03 GET /api/test
+Sun Mar 15 2020 09:39:18 GET /api/test
+Sun Mar 15 2020 09:39:32 GET /api/test
+Sun Mar 15 2020 09:40:00 GET /api/test
+Sun Mar 15 2020 09:40:17 GET /api/test
+Sun Mar 15 2020 09:40:30 GET /api/test
+Sun Mar 15 2020 09:40:41 GET /api/test
+Sun Mar 15 2020 09:40:46 GET /api/test
+Sun Mar 15 2020 09:42:51 POST /api/data/listings/forsale
+Sun Mar 15 2020 09:42:51 POST /api/data/listings/forsale
+Sun Mar 15 2020 09:42:51 POST /api/data/listings/count/forsale
+Sun Mar 15 2020 09:42:51 POST /api/data/listings/forsale
+Sun Mar 15 2020 09:42:51 POST /api/data/listings/forsale
+Sun Mar 15 2020 09:42:51 POST /api/data/listings/count/forsale
+Sun Mar 15 2020 09:42:52 POST /api/pics/get-pic-urls
+Sun Mar 15 2020 09:42:52 POST /api/pics/get-pic-urls
+Sun Mar 15 2020 09:42:52 POST /api/pics/get-pic-urls
+Sun Mar 15 2020 09:42:52 POST /api/pics/get-pic-urls
+Sun Mar 15 2020 09:42:52 POST /api/pics/get-pic-urls
+Sun Mar 15 2020 09:42:52 POST /api/pics/get-pic-urls
+Sun Mar 15 2020 09:42:59 GET /api/data/listings/forsale/5e68bc8e75129e09e8914f8f
+Sun Mar 15 2020 09:42:59 GET /icons/phone.png
+Sun Mar 15 2020 09:42:59 GET /icons/level3/AC.png
+Sun Mar 15 2020 09:42:59 GET /icons/level3/grates.png
+Sun Mar 15 2020 09:42:59 GET /icons/level3/elevator.png
+Sun Mar 15 2020 09:43:24 POST /api/data/listings/forsale
+Sun Mar 15 2020 09:43:24 POST /api/data/listings/count/forsale
+Sun Mar 15 2020 09:43:24 POST /api/data/listings/forsale
+Sun Mar 15 2020 09:43:24 POST /api/data/listings/count/forsale
+Sun Mar 15 2020 09:43:24 POST /api/pics/get-pic-urls
+Sun Mar 15 2020 09:43:25 POST /api/pics/get-pic-urls
+Sun Mar 15 2020 09:43:25 POST /api/pics/get-pic-urls
+Sun Mar 15 2020 09:43:56 GET /api/test
+Sun Mar 15 2020 09:47:12 POST /api/users/signup
+Sun Mar 15 2020 09:47:12 inexact key check disparity. original url: /api/users/signup. current path: /signup. invalid keys: reEnterPassword
+Sun Mar 15 2020 09:48:44 GET /api/test
+Sun Mar 15 2020 09:49:02 GET /api/test
+Sun Mar 15 2020 09:49:08 POST /api/users/signup
+Sun Mar 15 2020 09:51:02 GET /api/test
+Sun Mar 15 2020 09:51:10 POST /api/users/signup
+Sun Mar 15 2020 10:10:21 POST /api/users/signup
+Sun Mar 15 2020 10:10:22 POST /api/users/signup
+Sun Mar 15 2020 10:15:21 GET /api/test
+Sun Mar 15 2020 10:15:49 POST /api/users/signup
+Sun Mar 15 2020 10:16:49 POST /api/users/signup
+Sun Mar 15 2020 10:17:39 POST /api/users/signup
+Sun Mar 15 2020 10:17:45 POST /api/users/signup
+Sun Mar 15 2020 10:18:36 POST /api/users/signup
+Sun Mar 15 2020 10:18:55 POST /api/users/signup
+Sun Mar 15 2020 10:19:09 POST /api/users/signup
+Sun Mar 15 2020 10:35:50 GET /api/test
+Sun Mar 15 2020 10:35:58 POST /api/listings/forsale
+Sun Mar 15 2020 10:35:59 POST /api/listings/forsale
+Sun Mar 15 2020 10:35:59 POST /api/listings/count/forsale
+Sun Mar 15 2020 10:35:59 POST /api/listings/forsale
+Sun Mar 15 2020 10:35:59 POST /api/listings/forsale
+Sun Mar 15 2020 10:35:59 POST /api/listings/count/forsale
+Sun Mar 15 2020 10:40:28 POST /api/listings/forsale
+Sun Mar 15 2020 10:40:28 POST /api/listings/forsale
+Sun Mar 15 2020 10:40:28 POST /api/listings/count/forsale
+Sun Mar 15 2020 10:40:28 POST /api/listings/forsale
+Sun Mar 15 2020 10:40:28 POST /api/listings/forsale
+Sun Mar 15 2020 10:40:28 POST /api/listings/count/forsale
+Sun Mar 15 2020 10:40:28 GET /api/test
+Sun Mar 15 2020 10:40:33 POST /api/listings/rent
+Sun Mar 15 2020 10:40:33 POST /api/listings/rent
+Sun Mar 15 2020 10:40:33 POST /api/listings/count/rent
+Sun Mar 15 2020 10:40:33 POST /api/listings/rent
+Sun Mar 15 2020 10:40:33 POST /api/listings/rent
+Sun Mar 15 2020 10:40:33 POST /api/listings/count/rent
+Sun Mar 15 2020 10:41:39 POST /api/listings/rent
+Sun Mar 15 2020 10:41:39 POST /api/listings/rent
+Sun Mar 15 2020 10:41:39 POST /api/listings/count/rent
+Sun Mar 15 2020 10:41:39 POST /api/listings/rent
+Sun Mar 15 2020 10:41:39 POST /api/listings/rent
+Sun Mar 15 2020 10:41:39 POST /api/listings/count/rent
+Sun Mar 15 2020 10:41:39 GET /api/test
+Sun Mar 15 2020 10:41:45 POST /api/listings/rent
+Sun Mar 15 2020 10:41:45 POST /api/listings/rent
+Sun Mar 15 2020 10:41:45 POST /api/listings/rent
+Sun Mar 15 2020 10:41:45 POST /api/listings/count/rent
+Sun Mar 15 2020 10:41:45 POST /api/listings/count/rent
+Sun Mar 15 2020 10:41:45 POST /api/listings/rent
+Sun Mar 15 2020 10:41:46 GET /api/test
+Sun Mar 15 2020 10:42:37 POST /api/listings/forsale
+Sun Mar 15 2020 10:42:37 POST /api/listings/forsale
+Sun Mar 15 2020 10:42:37 POST /api/listings/count/forsale
+Sun Mar 15 2020 10:42:37 POST /api/listings/forsale
+Sun Mar 15 2020 10:42:37 POST /api/listings/forsale
+Sun Mar 15 2020 10:42:37 POST /api/listings/count/forsale
+Sun Mar 15 2020 10:44:33 POST /api/listings/rent
+Sun Mar 15 2020 10:44:33 POST /api/listings/rent
+Sun Mar 15 2020 10:44:33 POST /api/listings/count/rent
+Sun Mar 15 2020 10:44:33 POST /api/listings/rent
+Sun Mar 15 2020 10:44:33 POST /api/listings/rent
+Sun Mar 15 2020 10:44:33 POST /api/listings/count/rent
+Sun Mar 15 2020 10:45:44 POST /api/listings/rent
+Sun Mar 15 2020 10:45:44 POST /api/listings/rent
+Sun Mar 15 2020 10:45:44 POST /api/listings/rent
+Sun Mar 15 2020 10:45:44 POST /api/listings/count/rent
+Sun Mar 15 2020 10:45:44 POST /api/listings/rent
+Sun Mar 15 2020 10:45:44 POST /api/listings/count/rent
+Sun Mar 15 2020 10:45:44 GET /api/test
+Sun Mar 15 2020 10:46:12 POST /api/listings/count/rent
+Sun Mar 15 2020 10:46:12 POST /api/listings/rent
+Sun Mar 15 2020 10:46:12 POST /api/listings/rent
+Sun Mar 15 2020 10:46:12 POST /api/listings/count/rent
+Sun Mar 15 2020 10:46:12 POST /api/listings/rent
+Sun Mar 15 2020 10:46:13 POST /api/listings/rent
+Sun Mar 15 2020 10:46:13 GET /api/test
+Sun Mar 15 2020 10:46:41 POST /api/listings/rent
+Sun Mar 15 2020 10:46:41 POST /api/listings/rent
+Sun Mar 15 2020 10:46:41 POST /api/listings/count/rent
+Sun Mar 15 2020 10:46:41 POST /api/listings/rent
+Sun Mar 15 2020 10:46:41 POST /api/listings/rent
+Sun Mar 15 2020 10:46:41 POST /api/listings/count/rent
+Sun Mar 15 2020 10:46:41 GET /api/test
+Sun Mar 15 2020 10:55:12 GET /api/test
+Sun Mar 15 2020 10:55:17 POST /api/listings/forsale
+Sun Mar 15 2020 10:55:17 POST /api/listings/forsale
+Sun Mar 15 2020 10:55:17 POST /api/listings/count/forsale
+Sun Mar 15 2020 10:55:17 POST /api/listings/forsale
+Sun Mar 15 2020 10:55:17 POST /api/listings/forsale
+Sun Mar 15 2020 10:55:17 POST /api/listings/count/forsale
+Sun Mar 15 2020 10:56:26 POST /api/listings/rent
+Sun Mar 15 2020 10:56:42 POST /api/listings/rent
+Sun Mar 15 2020 10:58:00 POST /api/listings/rent
+Sun Mar 15 2020 10:58:40 POST /api/listings/rent
+Sun Mar 15 2020 10:58:50 POST /api/listings/rent
+Sun Mar 15 2020 10:58:54 POST /api/listings/rent
+Sun Mar 15 2020 11:02:40 POST /api/listings/rent
+Sun Mar 15 2020 11:02:40 inexact key check disparity. original url: /api/listings/rent. current path: /:type. invalid keys: sorts,filters,limit
+Sun Mar 15 2020 11:03:43 POST /api/listings/rent
+Sun Mar 15 2020 11:03:43 inexact key check disparity. original url: /api/listings/rent. current path: /listings/:type. invalid keys: sorts,filters,limit
+Sun Mar 15 2020 11:03:44 POST /api/listings/rent
+Sun Mar 15 2020 11:03:44 inexact key check disparity. original url: /api/listings/rent. current path: /listings/:type. invalid keys: sorts,filters,limit
+Sun Mar 15 2020 11:05:05 POST /api/listings/rent
+Sun Mar 15 2020 11:05:38 POST /api/listings/forsale
+Sun Mar 15 2020 11:05:38 POST /api/listings/forsale
+Sun Mar 15 2020 11:05:38 inexact key check disparity. original url: /api/listings/forsale. current path: /listings/:type. invalid keys: skip
+Sun Mar 15 2020 11:05:38 inexact key check disparity. original url: /api/listings/forsale. current path: /listings/:type. invalid keys: skip
+Sun Mar 15 2020 11:05:38 POST /api/listings/count/forsale
+Sun Mar 15 2020 11:05:38 inexact key check disparity. original url: /api/listings/count/forsale. current path: /listings/count/:type. invalid keys: filters
+Sun Mar 15 2020 11:05:38 POST /api/listings/forsale
+Sun Mar 15 2020 11:05:38 POST /api/listings/forsale
+Sun Mar 15 2020 11:05:38 POST /api/listings/count/forsale
+Sun Mar 15 2020 11:05:38 inexact key check disparity. original url: /api/listings/forsale. current path: /listings/:type. invalid keys: skip
+Sun Mar 15 2020 11:05:38 inexact key check disparity. original url: /api/listings/forsale. current path: /listings/:type. invalid keys: skip
+Sun Mar 15 2020 11:05:38 inexact key check disparity. original url: /api/listings/count/forsale. current path: /listings/count/:type. invalid keys: filters
+Sun Mar 15 2020 11:05:38 GET /api/test
+Sun Mar 15 2020 11:05:40 POST /api/listings/rent
+Sun Mar 15 2020 11:05:40 POST /api/listings/count/rent
+Sun Mar 15 2020 11:05:40 POST /api/listings/rent
+Sun Mar 15 2020 11:05:40 POST /api/listings/rent
+Sun Mar 15 2020 11:05:40 POST /api/listings/rent
+Sun Mar 15 2020 11:05:40 POST /api/listings/count/rent
+Sun Mar 15 2020 11:05:40 inexact key check disparity. original url: /api/listings/rent. current path: /listings/:type. invalid keys: skip
+Sun Mar 15 2020 11:05:40 inexact key check disparity. original url: /api/listings/rent. current path: /listings/:type. invalid keys: skip
+Sun Mar 15 2020 11:05:40 inexact key check disparity. original url: /api/listings/rent. current path: /listings/:type. invalid keys: skip
+Sun Mar 15 2020 11:05:40 inexact key check disparity. original url: /api/listings/rent. current path: /listings/:type. invalid keys: skip
+Sun Mar 15 2020 11:05:40 inexact key check disparity. original url: /api/listings/count/rent. current path: /listings/count/:type. invalid keys: filters
+Sun Mar 15 2020 11:05:40 inexact key check disparity. original url: /api/listings/count/rent. current path: /listings/count/:type. invalid keys: filters
+Sun Mar 15 2020 11:05:41 POST /api/listings/forsale
+Sun Mar 15 2020 11:05:41 POST /api/listings/forsale
+Sun Mar 15 2020 11:05:41 inexact key check disparity. original url: /api/listings/forsale. current path: /listings/:type. invalid keys: skip
+Sun Mar 15 2020 11:05:41 inexact key check disparity. original url: /api/listings/forsale. current path: /listings/:type. invalid keys: skip
+Sun Mar 15 2020 11:05:41 POST /api/listings/count/forsale
+Sun Mar 15 2020 11:05:41 POST /api/listings/forsale
+Sun Mar 15 2020 11:05:41 POST /api/listings/forsale
+Sun Mar 15 2020 11:05:41 POST /api/listings/count/forsale
+Sun Mar 15 2020 11:05:41 inexact key check disparity. original url: /api/listings/count/forsale. current path: /listings/count/:type. invalid keys: filters
+Sun Mar 15 2020 11:05:41 inexact key check disparity. original url: /api/listings/forsale. current path: /listings/:type. invalid keys: skip
+Sun Mar 15 2020 11:05:41 inexact key check disparity. original url: /api/listings/count/forsale. current path: /listings/count/:type. invalid keys: filters
+Sun Mar 15 2020 11:05:41 inexact key check disparity. original url: /api/listings/forsale. current path: /listings/:type. invalid keys: skip
+Sun Mar 15 2020 11:06:03 POST /api/listings/forsale
+Sun Mar 15 2020 11:06:03 POST /api/listings/forsale
+Sun Mar 15 2020 11:06:03 POST /api/listings/count/forsale
+Sun Mar 15 2020 11:06:03 inexact key check disparity. original url: /api/listings/count/forsale. current path: /listings/count/:type. invalid keys: filters
+Sun Mar 15 2020 11:06:03 POST /api/listings/forsale
+Sun Mar 15 2020 11:06:03 POST /api/listings/forsale
+Sun Mar 15 2020 11:06:03 POST /api/listings/count/forsale
+Sun Mar 15 2020 11:06:03 inexact key check disparity. original url: /api/listings/count/forsale. current path: /listings/count/:type. invalid keys: filters
+Sun Mar 15 2020 11:06:03 GET /api/test
+Sun Mar 15 2020 11:06:03 POST /api/pics/get-pic-urls
+Sun Mar 15 2020 11:06:03 POST /api/pics/get-pic-urls
+Sun Mar 15 2020 11:06:04 POST /api/pics/get-pic-urls
+Sun Mar 15 2020 11:06:04 POST /api/pics/get-pic-urls
+Sun Mar 15 2020 11:06:04 POST /api/pics/get-pic-urls
+Sun Mar 15 2020 11:06:04 POST /api/pics/get-pic-urls
+Sun Mar 15 2020 11:06:15 POST /api/listings/rent
+Sun Mar 15 2020 11:06:15 POST /api/listings/count/rent
+Sun Mar 15 2020 11:06:15 POST /api/listings/count/rent
+Sun Mar 15 2020 11:06:15 POST /api/listings/rent
+Sun Mar 15 2020 11:06:15 POST /api/pics/get-pic-urls
+Sun Mar 15 2020 11:06:15 POST /api/pics/get-pic-urls
+Sun Mar 15 2020 11:06:15 POST /api/pics/get-pic-urls
+Sun Mar 15 2020 11:06:15 POST /api/pics/get-pic-urls
+Sun Mar 15 2020 11:06:15 POST /api/pics/get-pic-urls
+Sun Mar 15 2020 11:06:15 POST /api/pics/get-pic-urls

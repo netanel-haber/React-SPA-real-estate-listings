@@ -1,0 +1,25 @@
+{
+    "/get-pic-urls": [
+        "pictureKeys"
+    ],
+    "/login": [],
+    "/signup": [
+        "name",
+        "lastName",
+        "email",
+        "password",
+        "phoneNumber"
+    ],
+    "/listings/count/:type": [
+        "sorts",
+        "filters",
+        "limit",
+        "skip"
+    ],
+    "/listings/:type": [
+        "sorts",
+        "filters",
+        "limit",
+        "skip"
+    ]
+}

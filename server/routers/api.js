@@ -1,20 +1,15 @@
 const apiRouter = require('express').Router();
-const s3Router = require('./s3');
-const { mongoRouter } = require('./mongo');
-const usersRouter = require('./users');
-
+const pictureRouter = require('./s3');
+const listingsRouter = require('./listings');
+const listersRouter = require('./listers');
 
 
 apiRouter.get('/test', function test(req, res) {
     res.send("testing api complete");
 });
 
-apiRouter.use('/pics', s3Router);
-
-
-apiRouter.use('/data', mongoRouter);
-
-
-apiRouter.use('/users', usersRouter);
+apiRouter.use('/pics', pictureRouter);
+apiRouter.use(listingsRouter);
+apiRouter.use(listersRouter);
 
 module.exports = apiRouter;

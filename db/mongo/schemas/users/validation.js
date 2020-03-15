@@ -3,11 +3,13 @@ let { isEmail, isMobilePhone, isURL } = require('validator');
 const isMP = (pNumber) => isMobilePhone(pNumber, 'he-IL');
 const PNValidator = (arr) => arr.every(isMP);
 
+const unique = true, index = true;
+
 
 let exportFuncs = {
     email: {
         type: String,
-        validate: [isEmail, 'invalid email']
+        validate: [isEmail, 'invalid email'],
     },
     phoneNumber: {
         type: String,

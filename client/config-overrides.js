@@ -1,6 +1,5 @@
 const CompressionPlugin = require('compression-webpack-plugin');
 
-
 module.exports = (config) => {
     config.resolve.alias = {
         ...config.resolve.alias,

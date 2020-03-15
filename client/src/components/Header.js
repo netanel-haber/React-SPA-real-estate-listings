@@ -31,10 +31,9 @@ const Header = () => {
                 <NavLink to="/listings/commercial" className="Header__right-Link" activeClassName="active" >{commercial}</NavLink>
             </nav>
             <nav>
-                <LinkShorthand to="/personal" text={personal + " 👤"} className="Header__left-Link" />
+                <LinkShorthand to="/personal" text={<>{personal}<span className="Header__emoji"> 👤</span></>} className="Header__left-Link" />
                 <LinkShorthand to="/add-listing" text={addListing} className="Header__left-Link" />
             </nav>
-
         </div>
     );
 }
