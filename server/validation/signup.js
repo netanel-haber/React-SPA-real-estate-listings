@@ -9,7 +9,8 @@ const passwordMessages = {
     symbols: "must contain one of the following symbols: !@#$%^&*",
     digits: "One digit",
     spaces: "No spaces",
-    min: "at least 8 characters"
+    min: "at least 8 characters",
+    oneOf: "musn't be empty"
 }
 
 const isValidPassword = (pass) => combineMessages(valPass(pass), passwordMessages, "password must meet the following requirements:")

@@ -21,5 +21,9 @@
         "phoneNumber",
         "lastName"
     ],
-    "/listers/login": []
+    "/listers/login": [
+        "email",
+        "password"
+    ],
+    "/listers/logout": []
 }

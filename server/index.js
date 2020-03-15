@@ -15,7 +15,7 @@ if (process.env.NODE_ENV === "production")
 
 const PORT = process.env.PORT;
 app.listen(PORT, async () => {
-    if (process.env.NODE_ENV !== "production") require('./reflect')(app);
+    if (process.env.NODE_ENV !== "production") require('./express-reflection/reflect')(app);
     console.log(`The server is running on port ${PORT}`);
 });
 

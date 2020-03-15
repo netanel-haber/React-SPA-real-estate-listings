@@ -30,10 +30,10 @@ async function validateKeys(req, res, next) {
 
 async function validateKeysExact(req, res, next) {
     try {
-        const validKeysForPath = JSON.parse(await fs.readFile(keyMapPath))[req.route.path];
+        const validExactKeysForPath = JSON.parse(await fs.readFile(keyMapPath))[req.route.path];
         const currentKeys = Object.keys(req.body);
-        if (!areArraysExactlyEqual(validKeysForPath, currentKeys)) {
-            res.status(404).json({ validKeysForPath });
+        if (!areArraysExactlyEqual(validExactKeysForPath, currentKeys)) {
+            res.status(404).json({ validExactKeysForPath });
             return log(`exact key check disparity. original url: ${req.originalUrl}. current path: ${req.route.path}. current keys: ${currentKeys}`);
         }
         next();

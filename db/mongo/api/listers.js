@@ -1,8 +1,9 @@
 const { Lister } = require('../index');
 
 
-const getLister = async (id) =>
-    await Lister.findById(id);
+const getLister = (id) => Lister.findById(id);
+
+const getListerByEmail = (email) => Lister.findOne({ email })
 
 const createLister = async (data, options = {}) => {
     const lister = new Lister(data);
@@ -14,4 +15,4 @@ const validateLister = (data) => {
 }
 
 
-module.exports = { getLister, createLister, validateLister };
+module.exports = { getLister, getListerByEmail, createLister, validateLister };

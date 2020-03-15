@@ -5,7 +5,8 @@ const passSchema = new passwordValidator()
     .has().lowercase()
     .has().digits()
     .has().not().spaces()
-    .has().symbols();
+    .has().symbols()
+    .is().not().oneOf([""]);
 const valPass = (pass, list = true) => passSchema.validate(pass, { list });
 
 
