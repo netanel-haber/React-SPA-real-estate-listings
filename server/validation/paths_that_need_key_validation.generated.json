@@ -2,14 +2,6 @@
     "/get-pic-urls": [
         "pictureKeys"
     ],
-    "/login": [],
-    "/signup": [
-        "name",
-        "lastName",
-        "email",
-        "password",
-        "phoneNumber"
-    ],
     "/listings/count/:type": [
         "sorts",
         "filters",
@@ -21,5 +13,13 @@
         "filters",
         "limit",
         "skip"
-    ]
+    ],
+    "/listers/signup": [
+        "email",
+        "password",
+        "name",
+        "phoneNumber",
+        "lastName"
+    ],
+    "/listers/login": []
 }

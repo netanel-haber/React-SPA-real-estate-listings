@@ -1,6 +1,7 @@
 import React from 'react';
 import '../styles/components/Pill.scss';
 
+
 const multiplyREM = (remString, mul = 0.5) => ((remString.match(/\d*/)[0]) * mul) + "rem";
 
 

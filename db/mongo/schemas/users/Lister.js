@@ -1,21 +1,14 @@
 const { Schema } = require('mongoose');
-const { email, phoneNumber } = require('./validation');
+const { email, phoneNumber, hash, salt, name } = require('./validation');
 
-const unique = true;
 
 module.exports = new Schema({
+    hash,
+    salt,
     email,
-    name: String,
-    lastName: String,
     phoneNumber,
-    hash: {
-        type: String,
-        unique
-    },
-    salt: {
-        type: String,
-        unique
-    },
+    name,
+    lastName: name,
     tokens: [String],
     mitigatingCompanyId: Schema.Types.ObjectId
 }, { timestamps: true });

@@ -1,15 +1,14 @@
 import isEmail from 'validator/es/lib/isEmail';
 import isEmpty from 'validator/es/lib/isEmpty';
 import isMobilePhone from 'validator/es/lib/isMobilePhone';
-import combineValidation from '../../../utilities/combineValidators';
+import combineMessages from '../../../validation/combineMessages';
+import { valPass, nameValidator } from '../../../validation/signup';
 import { errHebrew } from './heb';
 
 
 const { HEB_INVALID_EMAIL, HEB_FIELD_IS_REQUIRED, HEB_PASS_DOESNT_MATCH, HEB_PHONE_ISNT_VALID, HEB_NAME_INVALID, passwordErrMessages } = errHebrew;
 
-const hebrewNameValidator = (val) => /^[\u0590-\u05fe]+'$/.test(val)
-const passwordValidators = [/[a-z]+/, /[A-Z]+/, /[0-9]+/, /[!@#$%^&*]+/, /.{8,}/, /^\S.*\S$/];
-
+const hebrewNameValidator = (val) => nameValidator.test(val)
 
 const validationConfig = {
     email: {
@@ -18,7 +17,7 @@ const validationConfig = {
     },
     password: {
         required: HEB_FIELD_IS_REQUIRED,
-        validate: (val) => combineValidation(val, passwordValidators, passwordErrMessages, "על הסיסמה: ")
+        validate: (val) => combineMessages(valPass(val), passwordErrMessages, "על הסיסמה: ")
     },
     reEnter: (ref) => ({
         required: HEB_FIELD_IS_REQUIRED,

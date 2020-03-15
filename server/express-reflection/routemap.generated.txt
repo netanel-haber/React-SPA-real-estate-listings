@@ -31,11 +31,11 @@ router
  │         ├── bound dispatch                      /listers/:id                                                GET
  │         │    └── getIndividualLister            /                                                           GET
  │         │   
- │         ├── bound dispatch                      /login                                                      POST
+ │         ├── bound dispatch                      /listers/login                                              POST
  │         │    ├── validateKeys                   /                                                           POST
  │         │    └── login                          /                                                           POST
  │         │   
- │         └── bound dispatch                      /signup                                                     POST
+ │         └── bound dispatch                      /listers/signup                                             POST
  │              ├── validateKeys                   /                                                           POST
  │              └── signup                         /                                                           POST
  │             
