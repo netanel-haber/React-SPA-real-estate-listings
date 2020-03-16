@@ -4,7 +4,7 @@ import '../styles/components/App.scss';
 import Header from './Header';
 import ListingTypeRouter from './ListingTypeRouter';
 import { AddListing, HomePage, Login, NotFound, Personal, Signup } from './pages/pageIndex';
-
+import { BreakpointsProvider } from 'react-with-breakpoints';
 
 const App = () => {
   useEffect(() => {
@@ -14,34 +14,37 @@ const App = () => {
       })
   }, [])
   return (
-    <div className="App">
-      <BrowserRouter>
-        <Header />
-        <Switch>
-          <Route exact path="/">
-            <Signup />
-          </Route>
-          <Route path="/listings/:type">
-            <ListingTypeRouter />
-          </Route>
-          <Route path="/personal">
-            <Personal />
-          </Route>
-          <Route path="/login">
-            <Login />
-          </Route>
-          <Route path="/signup">
-            <Signup />
-          </Route>
-          <Route path="/add-listing">
-            <AddListing />
-          </Route>
-          <Route path="*">
-            <NotFound />
-          </Route>
-        </Switch>
-      </BrowserRouter>
-    </div>
+    <BreakpointsProvider>
+      <div className="App">
+        <BrowserRouter>
+          <Header />
+          <Switch>
+            <Route exact path="/">
+              <Signup />
+            </Route>
+            <Route path="/listings/:type">
+              <ListingTypeRouter />
+            </Route>
+            <Route path="/personal">
+              <Personal />
+            </Route>
+            <Route path="/login">
+              <Login />
+            </Route>
+            <Route path="/signup">
+              <Signup />
+            </Route>
+            <Route path="/add-listing">
+              <AddListing />
+            </Route>
+            <Route path="*">
+              <NotFound />
+            </Route>
+          </Switch>
+        </BrowserRouter>
+      </div>
+    </BreakpointsProvider>
+
   )
 }
 

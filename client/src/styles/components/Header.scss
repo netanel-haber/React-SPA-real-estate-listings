@@ -1,36 +1,23 @@
 @import "../base/settings";
 @import "../base/utility-classes";
+@import "purecss-sass/vendor/assets/stylesheets/purecss/_menus.scss";
 
-.Header__container {
-  @include basic-flex(space-between);
-  flex-wrap: wrap;
-  overflow: hidden;
+.pure-menu-horizontal {
+  @include basic-flex;
   background-color: $whiter-than-body-white;
   box-shadow: 0 0 2px 0 rgba(0, 0, 0, 0.14), 0 2px 2px 0 rgba(0, 0, 0, 0.12), 0 1px 3px 0 rgba(0, 0, 0, 0.2);
-  height: $cont-height-m-size-padding;
 }
 
-@mixin Link($bgColor: $whiter-than-body-white, $fontColor: $def-color) {
-  color: $fontColor;
-  background-color: $bgColor;
-  line-height: 100%;
-  padding: $m-size;
-  text-decoration: none;
+.Header__link {
   &.active,
   &:hover {
-    color: $body-white;
     background-color: $yad2-orange;
+    color: white;
   }
-}
-
-.Header__left-Link {
-  @include Link;
-}
-
-.Header__right-Link {
-  @include Link;
-}
-
-.Header__emoji {
-  filter: contrast(0%);
+  line-height: 3rem;
+  height: 3rem;
+  vertical-align: middle;
+  img {
+    height: 100%;
+  }
 }
