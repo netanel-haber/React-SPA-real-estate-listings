@@ -8,9 +8,9 @@ module.exports = async (app) => {
     const { map, pathsWithKeyValidationFirewall: newValidationPaths } = require('express-print-clean-routes')(app);
     try {
         await fs.writeFile(mapPath, map);
-        console.log("updated express route map.", mapPath);
+        console.log("updated map.");
         await fs.writeFile(validationPath, JSON.stringify(mergePaths(JSON.parse(await fs.readFile(validationPath)), newValidationPaths), null, 4));
-        console.log("updated paths validation array.", validationPath)
+        console.log("updated paths.")
     }
     catch (ex) {
         console.log(ex);

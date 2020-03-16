@@ -8,16 +8,37 @@
   box-shadow: 0 0 2px 0 rgba(0, 0, 0, 0.14), 0 2px 2px 0 rgba(0, 0, 0, 0.12), 0 1px 3px 0 rgba(0, 0, 0, 0.2);
 }
 
+.pure-menu-children {
+  border-radius: 1px;
+  border: 1px solid $grayish;
+  box-shadow: rgba(0, 0, 0, 0.3) 0px 2px 4px 0px;
+}
+
+#menuLink1 {
+  @include basic-flex;
+  &:after {
+    content: none;
+  }
+  span {
+    @extend .chevron-down;
+    margin: 0 $s-size 0 0;
+  }
+}
+
 .Header__link {
   &.active,
   &:hover {
     background-color: $yad2-orange;
     color: white;
   }
-  line-height: 3rem;
-  height: 3rem;
+  line-height: 4rem;
+  height: 4rem;
   vertical-align: middle;
+}
+.brand {
+  display: inline-flex;
+  align-items: center;
   img {
-    height: 100%;
+    height: 50px;
   }
 }

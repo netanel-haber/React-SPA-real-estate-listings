@@ -1,47 +1,22 @@
-import React, { useState } from 'react';
-import { NavLink } from 'react-router-dom';
-import '../styles/components/Header.scss';
+import React from 'react';
+import { NavLink, useHistory } from 'react-router-dom';
 import { HideAt, ShowAt } from 'react-with-breakpoints';
-import Bullet from './Bullet';
+import '../styles/components/Header.scss';
+import classnames from 'classnames';
 
-const { forsale, rent, roommates, commercial, personal, addListing } = {
+const { forsale, rent, roommates, commercial, personal, addListing, apts } = {
     forsale: "מכירה",
     rent: "השכרה",
     roommates: "דירות שותפים",
     commercial: 'נדל"ן מסחרי',
     personal: 'אזור אישי',
-    addListing: 'פרסם מודעה'
+    addListing: 'פרסם מודעה',
+    apts: 'דירות'
 };
 
 
-
-
-
-const Dropdown = ({ options }) => {
-    const [isOpen, toggleOpen] = useState(true);
-    const [chosen, changeChosen] = useState(0);
-    return (
-        <div className="pure-menu-item pure-menu-has-children pure-menu-allow-hover">
-            {React.cloneElement(options[chosen],
-                {
-                    id: "menuLink1"
-                }
-            )}
-            <ul className="pure-menu-children">
-                {options.map((opt, index) => <li className="pure-menu-item" onClick={() => {
-                    toggleOpen(false);
-                    changeChosen(index);
-                }}>{opt}</li>)}
-            </ul>
-        </div>
-    )
-}
-
-
-const LinkShortHand = ({ to, content, exact = false }) => <NavLink exact={exact} to={to} className="Header__link pure-menu-link" activeClassName="active" >{content}</NavLink>
-
-
-const brand = <LinkShortHand exact to="/" content={<img height="20px" src="//assets.yad2.co.il/yad2site/y2assets/images/header/yad2Logo.png" />} />
+function LinkShortHand({ to, content, exact = false, className = "" }) { return <NavLink exact={exact} to={to} className={"Header__link pure-menu-link " + className} activeClassName="active">{content}</NavLink> }
+const brand = <LinkShortHand exact to="/" className="brand" content={<img src="//assets.yad2.co.il/yad2site/y2assets/images/header/yad2Logo.png" />} />
 const listingLinks = [
     <LinkShortHand to="/listings/forsale" content={forsale} />,
     <LinkShortHand to="/listings/rent" content={rent} />,
@@ -54,26 +29,39 @@ const userLinks = [
 ]
 
 
-
-
 const Header = () => {
     return (
         <div className="pure-menu pure-menu-horizontal">
-            <HideAt breakpoint="mediumAndBelow">
-                <nav>
-                    <div className="pure-menu-item">{brand}</div>
-                    {listingLinks.map(link => <div className="pure-menu-item">{link}</div>)}
-                </nav>
-            </HideAt>
-            <ShowAt breakpoint="mediumAndBelow">
-                <Dropdown options={listingLinks} />
-            </ShowAt>
             <nav>
-                {userLinks.map(link => <div className="pure-menu-item">{link}</div>)}
+                <div className="pure-menu-item">{brand}</div>
+            </nav>
+            <nav>
+                <HideAt breakpoint="mediumAndBelow">
+                    {listingLinks.map((link, index) => <div key={index} className="pure-menu-item">{link}</div>)}
+                </HideAt>
+                <ShowAt breakpoint="mediumAndBelow">
+                    <Dropdown options={listingLinks} />
+                </ShowAt>
+            </nav>
+            <nav>
+                {userLinks.map((link, index) => <div key={index} className="pure-menu-item">{link}</div>)}
             </nav>
         </div >
     );
 }
 
+function Dropdown({ options }) {
+    const { location: { pathname } } = useHistory();
+    return (
+        <div className="pure-menu-item pure-menu-has-children pure-menu-allow-hover">
+            <a id="menuLink1" style={{ cursor: "pointer" }} className={classnames("Header__link pure-menu-link pure-menu-item", {
+                active: options.some(opt => opt.props.to === pathname)
+            })}>{apts}<span /></a>
+            <ul className="pure-menu-children">
+                {options.map((opt, index) => <li key={index} className="pure-menu-item">{opt}</li>)}
+            </ul>
+        </div >
+    )
+}
 
 export default Header;
