@@ -2,68 +2,15 @@
 @import "~base/utility-classes";
 @import "purecss-sass/vendor/assets/stylesheets/purecss/_forms.scss";
 
-.gen-form {
-  width: 500px;
-  @extend .pure-form;
-  @extend .pure-form-aligned;
-  @include basic-flex(center, column);
-
-  padding: $s-size;
-  margin: $m-size;
-
-  .submit-container {
-    button {
-      border-radius: 15px;
-      border: none;
-      padding: $s-size/2;
-      display: block;
-      margin: $m-size auto;
-      background-color: $yad2-orange;
-      color: $whiter-than-body-white;
-      width: 100px;
-    }
-  }
-
-  .asterisk {
-    content: "* ";
-    color: red;
-  }
-
-  div.message {
-    width: 300px;
-    .pure-form-message-inline {
-      margin-right: 5px;
-      word-wrap: break-word;
-      &:before {
-        @extend .asterisk;
-      }
-    }
-  }
-
-  input {
-    border: none;
-    &.eng {
-      direction: ltr;
-    }
-  }
-
-  .required-fields label:after {
-    @extend .asterisk;
-  }
-
-  label {
-    width: 20px;
-  }
-}
-
-@media only screen and (max-width: 480px) {
-  .pure-form button[type="submit"] {
-    margin: $m-size auto;
-  }
+//override purecss mediarule
+@media only screen and (max-width: 500px) {
   .pure-form-aligned .pure-control-group label {
     margin: 3px;
     margin-right: 5px;
     text-align: right;
+  }
+  .submit-container {
+    justify-content: flex-start !important;
   }
 }
 .pure-form-aligned .pure-control-group label {
@@ -71,33 +18,52 @@
   margin-right: 2px;
 }
 
-.error-message-container {
-  position: relative;
-  display: inline-block;
-  .error-message {
-    &:hover {
-      visibility: hidden;
+.asterisk {
+  content: "* ";
+  color: red;
+}
+
+.gen-form {
+  @extend .pure-form;
+  @extend .pure-form-aligned;
+  @include basic-flex(center, column);
+  width: 500px;
+  padding: $s-size;
+  margin: $m-size;
+
+  .submit-container {
+    @include basic-flex(center);
+    button {
+      border-radius: 15px;
+      border: none;
+      padding: $s-size/2;
+      background-color: $yad2-orange;
+      color: $whiter-than-body-white;
+      width: 100px;
     }
-    background: adjust-color($color: #c51244, $alpha: -0.2);
-    color: $body-white;
-    padding: 5px;
-    border-radius: 3px;
-    position: absolute;
-    left: 0;
-    z-index: 2;
-    box-shadow: 1px 1px 1px #aaaaaa;
-    margin-top: 10px;
-    text-align: center;
-    font-size: $s-size;
-    &:before {
-      content: "";
-      width: 0;
-      height: 0;
-      border-left: 10px solid transparent;
-      border-right: 10px solid transparent;
-      border-bottom: 10px solid adjust-color($color: #c51244, $alpha: -0.2);
-      position: absolute;
-      top: -10px;
+    margin: $m-size 0;
+  }
+
+  // div.message {
+  //   width: 300px;
+  //   position: relative;
+  //   .pure-form-message-inline {
+  //     margin-right: 5px;
+  //     word-wrap: break-word;
+  //     &:before {
+  //       @extend .asterisk;
+  //     }
+  //   }
+  // }
+
+  input {
+    box-sizing: content-box !important;
+    width: 23rem;
+    &.eng {
+      direction: ltr;
     }
+  }
+  .required-fields label:after {
+    @extend .asterisk;
   }
 }
