@@ -7,6 +7,10 @@
   .ImageColumn {
     @extend .column;
     border: 0;
+    .thumbnail-container {
+      height: 50px;
+      width: 80px;
+    }
   }
   .PriceColumn {
     min-width: 21%;

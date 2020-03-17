@@ -7,9 +7,9 @@ import Stats from './Stats';
 import PhoneNumber from './PhoneNumber';
 
 
-const SpreadTopBar = ({display}) => (
+const SpreadTopBar = () => (
     <div className="SpreadItem"> 
-        <Image thumbHeight={10} />
+        <Image />
         <div className="container-of-all-columns-bar-image-column">
             <Address />
             <Price />

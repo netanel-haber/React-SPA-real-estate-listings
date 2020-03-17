@@ -5,14 +5,14 @@ import Thumbnail from '../../Thumbnail';
 import Modal from './Modal';
 
 
-const Image = ({ thumbHeight }) => {
+const Image = () => {
     const { urls, error } = useContext(ItemContext);
     const [isOpen, toggle] = useState(false);
     const openModal = (isOpen && urls.length > 0);
     return (
         <div className="ImageColumn" onClick={(e) => { e.stopPropagation(); toggle(!isOpen); }}>
             <div className="ColumnChild">
-                <Thumbnail height={thumbHeight} url={{ url: urls[0], error }}>
+                <Thumbnail url={{ url: urls[0], error }}>
                     <Pill rootWidth="4rem" fontSize="1rem" text={urls.length ? urls.length - 1 + "+" : "0"} />
                 </Thumbnail>
             </div>

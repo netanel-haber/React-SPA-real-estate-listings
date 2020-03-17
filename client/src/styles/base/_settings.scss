@@ -29,7 +29,10 @@ $cont-height-m-size-padding: $m-size * 2 + (9/8) * $body-font;
 $cont-height-l-size-padding: $l-size * 2 + (9/8) * $body-font;
 $cont-height-xl-size-padding: $xl-size * 2 + (9/8) * $body-font;
 
-
+body {
+  font-size: $m-size;
+  background-color: $body-white;
+}
 
 :export {
   yad2Orange: $yad2-orange;

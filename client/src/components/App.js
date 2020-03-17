@@ -5,6 +5,9 @@ import Header from './Header';
 import ListingTypeRouter from './ListingTypeRouter';
 import { AddListing, HomePage, Login, NotFound, Personal, Signup } from './pages/pageIndex';
 import { BreakpointsProvider } from 'react-with-breakpoints';
+import { small, medium, large, xlarge } from '../styles/base/_base.scss';
+
+
 
 const App = () => {
   useEffect(() => {
@@ -14,7 +17,7 @@ const App = () => {
       })
   }, [])
   return (
-    <BreakpointsProvider>
+    <BreakpointsProvider breakpoints={{ small, medium, large, xlarge }}>
       <div className="App">
         <BrowserRouter>
           <Header />
