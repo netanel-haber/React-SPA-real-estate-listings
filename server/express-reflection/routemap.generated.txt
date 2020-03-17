@@ -28,6 +28,10 @@ router
  │    │        
  │    │   
  │    └── router                                   *                                                           
+ │         ├── bound dispatch                      /listers/me                                                 GET
+ │         │    ├── auth                           /                                                           GET
+ │         │    └── getIndividualLister            /                                                           GET
+ │         │   
  │         ├── bound dispatch                      /listers/:id                                                GET
  │         │    └── getIndividualLister            /                                                           GET
  │         │   

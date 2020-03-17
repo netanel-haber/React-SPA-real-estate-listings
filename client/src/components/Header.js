@@ -4,7 +4,7 @@ import { HideAt, ShowAt } from 'react-with-breakpoints';
 import '../styles/components/Header.scss';
 import classnames from 'classnames';
 
-const { forsale, rent, roommates, commercial, personal, addListing, apts, signup, login } = {
+const { forsale, rent, roommates, commercial, personal, addListing, apts, signup, login, myListings } = {
     forsale: "מכירה",
     rent: "השכרה",
     roommates: "דירות שותפים",
@@ -13,7 +13,8 @@ const { forsale, rent, roommates, commercial, personal, addListing, apts, signup
     addListing: 'פרסם מודעה',
     apts: 'דירות',
     signup: 'הרשם',
-    login: 'התחבר'
+    login: 'התחבר',
+    myListings: "הנכסים שלי"
 };
 
 
@@ -28,7 +29,8 @@ const listingLinks = [
 const userLinks = [
     <LinkShortHand to="/signup" content={signup} />,
     <LinkShortHand to="/add-listing" content={addListing} />,
-    <LinkShortHand to="/login" content={login} />
+    <LinkShortHand to="/login" content={login} />,
+    <LinkShortHand to="/my-profile" content={myListings} />
 ]
 
 

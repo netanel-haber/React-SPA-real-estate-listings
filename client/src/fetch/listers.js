@@ -13,5 +13,9 @@ const getLister = (id) => {
     return fetchHandler(`/api/listers/${id}`);
 }
 
-export { signup, getLister, login }
+const getProfile = () => {
+    return fetchHandler(`/api/listers/me`,);
+}
+
+export { signup, getLister, login, getProfile }
 

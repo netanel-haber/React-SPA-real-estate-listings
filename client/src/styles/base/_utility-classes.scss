@@ -104,6 +104,8 @@
   display: block;
 }
 
+
+
 .gen-page {
   @extend .body__content;
   > div {
@@ -111,6 +113,8 @@
     max-width: 100%;
   }
 }
+
+
 
 .error-message-container {
   position: relative;

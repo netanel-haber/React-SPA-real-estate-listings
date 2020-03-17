@@ -10,9 +10,15 @@ const { Lister } = require('../../db/mongo/index');
 
 
 
-listersRouter.get('/listers/:id', async function getIndividualLister(req, res) {
-    res.json(await Lister.findById(req.params.id));
+listersRouter.get('/listers/me', auth, async function getIndividualLister(req, res) {
+    res.json(await Lister.findById(req.decoded.payload._id));
 })
+
+listersRouter.get('/listers/:id', async function getIndividualLister(req, res) {
+    res.json(await Lister.findById(req.params.id, 'name email phoneNumber'));
+})
+
+
 
 listersRouter.post('/listers/logout', auth, validateKeysExact, async function logout(req, res) {
     try {

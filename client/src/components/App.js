@@ -3,7 +3,7 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import '../styles/components/App.scss';
 import Header from './Header';
 import ListingTypeRouter from './ListingTypeRouter';
-import { AddListing, HomePage, Login, NotFound, Personal, Signup } from './pages/pageIndex';
+import { AddListing, HomePage, Login, NotFound, Personal, Signup, MyProfile } from './pages/pageIndex';
 import { BreakpointsProvider } from 'react-with-breakpoints';
 import { small, medium, large, xlarge } from '../styles/base/_base.scss';
 
@@ -33,6 +33,9 @@ const App = () => {
             </Route>
             <Route path="/login">
               <Login />
+            </Route>
+            <Route path="/my-profile">
+              <MyProfile />
             </Route>
             <Route path="/signup">
               <Signup />

@@ -4,6 +4,7 @@ import AddListing from './AddListing';
 import HomePage from './HomePage';
 import Personal from './Personal';
 import NotFound from './NotFound';
+import MyProfile from './MyProfile';
 
 
 export {
@@ -12,5 +13,6 @@ export {
     AddListing,
     HomePage,
     Personal,
-    NotFound
+    NotFound,
+    MyProfile
 };
