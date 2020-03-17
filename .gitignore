@@ -22,6 +22,9 @@
 .env.test.local
 .env.production.local
 *.vscode*
+*logs.txt*
+
+
 
 
 npm-debug.log*
