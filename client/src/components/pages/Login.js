@@ -1,8 +1,12 @@
 import React from 'react';
+import LoginForm from '../forms/login/Login';
+
 
 const Login = () => (
     <div>
-        Login
+        <div className="gen-page">
+            <LoginForm />
+        </div>
     </div>
 );
 

@@ -90,7 +90,6 @@
   }
 }
 
-
 @import "loaders.css/src/animations/ball-beat.scss";
 @import "loaders.css/src/animations/ball-spin-fade-loader.scss";
 .loader {
@@ -104,3 +103,12 @@
 .loader-active {
   display: block;
 }
+
+.gen-page {
+  @extend .body__content;
+  > div {
+    @include basic-flex(center);
+    max-width: 100%;
+  }
+}
+

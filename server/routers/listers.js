@@ -1,7 +1,7 @@
 const listersRouter = require('express').Router();
 const { validateKeys, validateKeysExact } = require('../middleware/validateKeys');
 const { genSalt, genHash } = require('../utilities/hash_salt');
-const { genToken, verifyToken } = require('../utilities/jwt');
+const { genToken } = require('../utilities/jwt');
 
 const { isValidPassword } = require('../validation/signup');
 const mongoose = require('mongoose');

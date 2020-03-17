@@ -26,7 +26,7 @@
 }
 
 .Header__link {
-  &.active,
+  &.active:not(.brand),
   &:hover {
     background-color: $yad2-orange;
     color: white;

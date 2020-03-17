@@ -1,4 +1,60 @@
+@import "~base/settings";
+@import "~base/utility-classes";
 @import "purecss-sass/vendor/assets/stylesheets/purecss/_forms.scss";
+
+.gen-form {
+  width: 500px;
+  @extend .pure-form;
+  @extend .pure-form-aligned;
+  @include basic-flex(center, column);
+
+  padding: $s-size;
+  margin: $m-size;
+
+  .submit-container {
+    button {
+      border-radius: 15px;
+      border: none;
+      padding: $s-size/2;
+      display: block;
+      margin: $m-size auto;
+      background-color: $yad2-orange;
+      color: $whiter-than-body-white;
+      width: 100px;
+    }
+  }
+
+  .asterisk {
+    content: "* ";
+    color: red;
+  }
+
+  div.message {
+    width: 300px;
+    .pure-form-message-inline {
+      margin-right: 5px;
+      word-wrap: break-word;
+      &:before {
+        @extend .asterisk;
+      }
+    }
+  }
+
+  input {
+    border: none;
+    &.eng {
+      direction: ltr;
+    }
+  }
+
+  .required-fields label:after {
+    @extend .asterisk;
+  }
+
+  label {
+    width: 20px;
+  }
+}
 
 @media only screen and (max-width: 480px) {
   .pure-form button[type="submit"] {
@@ -13,40 +69,6 @@
 .pure-form-aligned .pure-control-group label {
   width: 7em;
   margin-right: 2px;
-}
-
-.asterisk {
-  content: "* ";
-  color: red;
-}
-
-form {
-  @extend .pure-form;
-  @extend .pure-form-aligned;
-  padding: $s-size;
-  margin: $m-size;
-  div.message {
-    width: 100%;
-    .pure-form-message-inline {
-      margin-right: 5px;
-      word-wrap: break-word;
-      &:before {
-        @extend .asterisk;
-      }
-    }
-  }
-  input {
-    border: none;
-    &.eng {
-      direction: ltr;
-    }
-  }
-  .required-fields label:after {
-    @extend .asterisk;
-  }
-  label {
-    width: 20px;
-  }
 }
 
 .error-message-container {

@@ -4,9 +4,13 @@ const path = require('path');
 module.exports = (config) => {
     config.resolve.alias = {
         ...config.resolve.alias,
-        "react": "preact/compat",
-        "react-dom": "preact/compat",
-        "react-dom/test-utils": "preact/test-utils"
+        ...(process.env.NODE_ENV === "production" && {
+            "react": "preact/compat",
+            "react-dom": "preact/compat",
+            "react-dom/test-utils": "preact/test-utils",
+        }),
+        "base": path.join(__dirname, "src", "styles", "base"),
+        "#src#": path.join(__dirname, "src")
     }
     config.plugins = [
         ...config.plugins,

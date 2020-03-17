@@ -1,11 +1,10 @@
+import '#src#/styles/components/forms/form-utilities.scss';
 import React, { useRef } from 'react';
 import { FormContext, useForm } from 'react-hook-form';
-import '../../../styles/components/forms/Signup.scss';
-import { validationConfig } from './utilities';
-import onSubmit from './submit';
-
-import { formHebrew } from './heb';
 import WithDivAndLabel from '../WithDivAndLabel';
+import { formHebrew } from './heb';
+import onSubmit from './submit';
+import { validationConfig } from './utilities';
 
 
 const { HEB_EMAIL, HEB_SEND, HEB_PASSWORD, HEB_REENTER_PASSWORD, HEB_PHONE_NUMBER, HEB_NAME, HEB_LAST_NAME, HEB_EXPLANATION } = formHebrew;
@@ -19,7 +18,7 @@ const SignupForm = () => {
     return (
         <FormContext {...{ submitCount, errors }}>
             <div>
-                < form className="Signup__form" onSubmit={handleSubmit(onSubmit)} >
+                < form className="gen-form" onSubmit={handleSubmit(onSubmit)} >
                     <fieldset className="required-fields">
                         <WithDivAndLabel text={HEB_EMAIL}>
                             < input className="pure-input-rounded eng" name="email" autoComplete="on" ref={register(email)} />
@@ -43,7 +42,7 @@ const SignupForm = () => {
                         </WithDivAndLabel>
                     </fieldset>
                     <div className="message pure-control-group"><span className="pure-form-message-inline">{HEB_EXPLANATION}</span></div>
-                    <div className="Signup__submit pure-control-group">
+                    <div className="submit-container pure-control-group">
                         <button className="pure-button pure-button-primary" type="submit" ref={register}>{HEB_SEND}</button>
                     </div>
                 </form >
