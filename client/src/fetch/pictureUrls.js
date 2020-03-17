@@ -1,7 +1,7 @@
-import fetchPost from './fetchPost';
+import fetchHandler from './fetchHandler';
 
 function getPicUrls(pictureKeys, signal) {
-    return fetchPost('/api/pics/get-pic-urls', { pictureKeys }, signal).then(res => res.json());
+    return fetchHandler('/api/pics/get-pic-urls', "POST", { pictureKeys }, signal)
 }
 
 export { getPicUrls };

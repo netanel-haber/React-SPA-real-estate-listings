@@ -1,9 +1,10 @@
 import { signup } from '../../../fetch/listers';
+import sanitizer from '../sanitizeInput';
+
 
 export default (data) => {
     delete data.reEnterPassword;
-    const sanitized = Object.fromEntries(Object.entries(data).filter(([key, value]) => value !== "").map(([key, value]) => ([key, value.trim()])));
-    signup(sanitized)
+    signup(sanitizer(data))
         .then(({ token }) => { localStorage.setItem("token", token) })
         .catch(ex => { console.log(ex) })
 }

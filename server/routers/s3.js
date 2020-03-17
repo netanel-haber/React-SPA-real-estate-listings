@@ -9,7 +9,7 @@ picturesRouter.post('/get-pic-urls', validateKeysExact, function getPicUrls(req,
             { Key, Bucket: process.env.S3_USER_BUCKET, Expires: 60 * expiresInMinutes }
         )))
         .then(urls => { res.json(urls) })
-        .catch(ex => { res.status(500).send() })
+        .catch(ex => { res.status(500).end() })
 });
 
 

@@ -1,16 +1,17 @@
-import fetchPost from './fetchPost';
+import fetchHandler from './fetchHandler';
+
 
 const signup = (data) => {
-    return fetchPost('/api/listers/signup', data).then(res => res.json())
+    return fetchHandler('/api/listers/signup', "POST", data);
 }
 
 const login = (data) => {
-    return fetchPost('/api/listers/login', data).then(res => res.json())
+    return fetchHandler('/api/listers/login', "POST", data);
 }
 
-const getLister = (id) => fetch(`/api/listers/${id}`)
-    .then(res => res.json());
-
+const getLister = (id) => {
+    return fetchHandler(`/api/listers/${id}`);
+}
 
 export { signup, getLister, login }
 

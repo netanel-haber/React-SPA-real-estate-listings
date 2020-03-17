@@ -10,44 +10,42 @@ const { Lister } = require('../../db/mongo/index');
 
 
 
-
 listersRouter.get('/listers/:id', async function getIndividualLister(req, res) {
     res.json(await Lister.findById(req.params.id));
 })
-
 
 listersRouter.post('/listers/logout', auth, validateKeysExact, async function logout(req, res) {
     try {
         const user = await Lister.findById(req.decoded.payload._id);
         user.tokens = user.tokens.filter(token => token !== req.token);
         user.save();
-        res.send();
+        res.end();
     }
     catch (ex) {
         console.log(ex);
-        res.status(500).send();
+        res.status(500).end();
     }
 });
-
 
 listersRouter.post('/listers/login', validateKeysExact, async function login(req, res) {
     try {
         const { password, email } = req.body;
         const user = await Lister.findOne({ email });
+        if (!user)
+            return res.status(403).end();
         const { salt, hash, _id } = user;
-        if (!genHash(password + salt) === hash)
-            return res.status(404).send({ error: "could not authenticate." });
+        if (!(genHash(password + salt) === hash))
+            return res.status(404).end();
         const token = await genToken({ _id }, "15m");
         user.tokens = [...user.tokens, token];
         await user.save();
-        res.status(200).json({ token })
+        res.json({ token })
     }
     catch (ex) {
         console.log(ex);
-        res.status(500).send();
+        res.status(500).end();
     }
 });
-
 
 listersRouter.post('/listers/signup', validateKeys, async function signup(req, res) {
     try {
@@ -67,7 +65,7 @@ listersRouter.post('/listers/signup', validateKeys, async function signup(req, r
     catch (ex) {
         if (ex.errors)
             res.status(403).json(Object.fromEntries(Object.values(ex.errors).map(({ message, path }) => ([path, message]))))
-        return res.status(500).send();
+        return res.status(500).end();
     }
 });
 

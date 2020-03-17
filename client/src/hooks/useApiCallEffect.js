@@ -1,21 +1,14 @@
-import toast from 'cogo-toast';
-import React, { useEffect } from 'react';
-
+import { useEffect } from 'react';
+import toaster from '../utilities/toaster';
 import useDeepCompareEffect from 'use-deep-compare-effect';
 
-
-const { HEB_TOAST_ERROR } = {
-    HEB_TOAST_ERROR: "נראה שיש בעיית תקשורת. בדקו את החיבור לאינטרנט."
-}
-
-let toastCounter = 0;
 
 const useApiCallEffect = (apiCall, endCallbacks, dependencies = []) => {
     useEffect(() => {
         const abortController = new AbortController();
         apiCall(abortController.signal).then(endCallbacks).catch((ex) => {
             if (!abortController.signal.aborted && ex.toString() !== "-") {
-                toast.error(HEB_TOAST_ERROR);
+                toaster();
             }
         });
         return () => { abortController.abort() }
@@ -38,11 +31,7 @@ export default (call, callback, toggleLoading, dependencies, bool = true) => {
             })
             .catch(() => {
                 if (!ac.signal.aborted) {
-                    if (toastCounter === 0) {
-                        toastCounter++;
-                        toast.error(<div className="toast">{HEB_TOAST_ERROR}</div>, { position: "bottom-center" })
-                            .then(() => { toastCounter-- })
-                    }
+                    toaster();
                 }
                 toggleLoading(false)
             })
