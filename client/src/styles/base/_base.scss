@@ -31,6 +31,9 @@ $xl: 1200;
 @media (max-width: $md+"px") {
   .Item__container {
     font-size: $s-size;
+    .MiniItem {
+      padding: 6px 0 !important;
+    }
     .text-child {
       padding: 8px !important;
     }
@@ -51,6 +54,7 @@ $xl: 1200;
 // Large devices (desktops, 992px and up)
 @media (min-width: $lg+"px") {
   html {
+    font-size: 75%;
   }
 }
 
