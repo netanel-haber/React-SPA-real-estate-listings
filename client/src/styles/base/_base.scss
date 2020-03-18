@@ -45,9 +45,8 @@ $xl: 1200;
     margin-right: 3px;
   }
   .Item__container {
+    border: 1px solid $lightest-gray;
     border-radius: 2px;
-    margin-bottom: 1px;
-    margin-top: 1px;
     .MiniItem {
       border-radius: 2px;
     }
