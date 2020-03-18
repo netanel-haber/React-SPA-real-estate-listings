@@ -22,10 +22,37 @@ button:disabled {
   cursor: default;
 }
 
+h4 {
+  padding: 0 10px;
+  margin-bottom: 10px;
+}
+
 $sm: 576;
 $md: 768;
 $lg: 992;
 $xl: 1200;
+
+@media (max-width: $sm+"px") {
+  .ItemLists__lists {
+    padding-left: 0;
+    padding-right: 0;
+  }
+  .ListContainer {
+    border: none;
+    padding-left: 0;
+    padding-right: 0;
+    margin-left: 1px;
+    margin-right: 1px;
+  }
+  .Item__container {
+    border-radius: 2px;
+    margin-bottom: 1px;
+    margin-top: 1px;
+    .MiniItem {
+      border-radius: 2px;
+    }
+  }
+}
 
 // Small devices (landscape phones, 576px and up)
 @media (max-width: $md+"px") {

@@ -25,9 +25,9 @@ const ListsContainer = ({ type }) => {
                 <SortBy {...{ dispatchSorts, dispatchFilters, dispatchLimit }}></SortBy>
             </div>
             <div className="ItemLists__lists">
-                <h5>{HEB_NON_MITIGATED_LISTINGS}</h5>
+                <h4>{HEB_NON_MITIGATED_LISTINGS}</h4>
                 <ListContainer className="ItemList" {...{ type, options: nonMitOptions }} />
-                <h5>{HEB_MITIGATED_LISTINGS}</h5>
+                <h4>{HEB_MITIGATED_LISTINGS}</h4>
                 <ListContainer className="ItemList" {...{ type, options: mitOptions }} />
             </div>
         </div>
