@@ -8,6 +8,10 @@ const mongoose = require('mongoose');
 const auth = require('../middleware/auth');
 const { Lister } = require('../../db/mongo/index');
 
+listersRouter.post('/lister/me/update', auth, async function updateListerDetails(req, res) {
+    
+})
+
 
 
 listersRouter.get('/listers/me', auth, async function getIndividualLister(req, res) {
@@ -17,6 +21,8 @@ listersRouter.get('/listers/me', auth, async function getIndividualLister(req, r
 listersRouter.get('/listers/:id', async function getIndividualLister(req, res) {
     res.json(await Lister.findById(req.params.id, 'name email phoneNumber'));
 })
+
+
 
 
 

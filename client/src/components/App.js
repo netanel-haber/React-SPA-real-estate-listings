@@ -6,7 +6,7 @@ import ListingTypeRouter from './ListingTypeRouter';
 import { AddListing, HomePage, Login, NotFound, Personal, Signup, MyProfile } from './pages/pageIndex';
 import { BreakpointsProvider } from 'react-with-breakpoints';
 import { small, medium, large, xlarge } from '../styles/base/_base.scss';
-
+import { paths } from './pages/paths';
 
 
 const App = () => {
@@ -25,22 +25,22 @@ const App = () => {
             <Route exact path="/">
               <HomePage />
             </Route>
-            <Route path="/listings/:type">
+            <Route path={paths.listings}>
               <ListingTypeRouter />
             </Route>
-            <Route path="/personal">
+            <Route path={paths.personal}>
               <Personal />
             </Route>
-            <Route path="/login">
+            <Route path={paths.login}>
               <Login />
             </Route>
-            <Route path="/my-profile">
+            <Route path={paths.myProfile}>
               <MyProfile />
             </Route>
-            <Route path="/signup">
+            <Route path={paths.signup}>
               <Signup />
             </Route>
-            <Route path="/add-listing">
+            <Route path={paths.addListing}>
               <AddListing />
             </Route>
             <Route path="*">
@@ -53,7 +53,6 @@ const App = () => {
 
   )
 }
-
 
 
 export default App;

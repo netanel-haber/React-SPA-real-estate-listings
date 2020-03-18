@@ -8,6 +8,6 @@ module.exports = async function auth(req, res, next) {
         return next();
     }
     catch (ex) {
-        return res.status(403).json({ error: "could not verify token" });
+        return res.status(401).json({ error: "could not verify token" });
     }
 }

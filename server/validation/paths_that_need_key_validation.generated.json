@@ -25,5 +25,6 @@
         "email",
         "password"
     ],
-    "/listers/logout": []
+    "/listers/logout": [],
+    "/lister/me/update": []
 }

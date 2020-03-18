@@ -1,7 +1,6 @@
 import toaster from '../utilities/toaster';
 
-const { HEB_TOAST_CONNECTION_ERROR, HEB_TOAST_ERROR } = {
-    HEB_TOAST_CONNECTION_ERROR: "נראה שיש בעיית תקשורת. בדקו את החיבור לאינטרנט.",
+const { HEB_TOAST_ERROR } = {
     HEB_TOAST_ERROR: "חלה שגיאה"
 }
 
@@ -18,17 +17,12 @@ export default function fetchHandler(url, method = "GET", data, signal = undefin
             }
         })
             .then(result => {
-                if (String(result.status).charAt(0) !== "2") {
-                    if (result.status == 500)
-                        toaster(HEB_TOAST_ERROR)
-                    console.log(result);
+                if (String(result.status).charAt(0) !== "2")
                     rej(result)
-                }
                 res(result.status == 200 ? result.json() : result.status)
             })
             .catch(err => {
-                if (!signal.aborted)
-                    toaster(HEB_TOAST_CONNECTION_ERROR)
+                (!signal.aborted) && toaster(err.status === 500 && HEB_TOAST_ERROR)
                 rej(err);
             })
     })

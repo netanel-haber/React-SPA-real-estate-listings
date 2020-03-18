@@ -3,34 +3,37 @@ import { NavLink, useHistory } from 'react-router-dom';
 import { HideAt, ShowAt } from 'react-with-breakpoints';
 import '../styles/components/Header.scss';
 import classnames from 'classnames';
+import { paths } from './pages/paths';
+const { login, signup, myProfile, addListing, listingsPrefix } = paths;
 
-const { forsale, rent, roommates, commercial, personal, addListing, apts, signup, login, myListings } = {
-    forsale: "מכירה",
-    rent: "השכרה",
-    roommates: "דירות שותפים",
-    commercial: 'נדל"ן מסחרי',
-    personal: 'אזור אישי',
-    addListing: 'פרסם מודעה',
-    apts: 'דירות',
-    signup: 'הרשם',
-    login: 'התחבר',
-    myListings: "הנכסים שלי"
+const { HEB_FORSALE, HEB_RENT, HEB_ROOMMATES, HEB_COMMERCIAL, HEB_PERSONAL, HEB_ADD_LISTINGS, HEB_APTS, HEB_SIGNUP, HEB_LOGIN, HEB_MY_LISTINGS } = {
+    HEB_FORSALE: "מכירה",
+    HEB_RENT: "השכרה",
+    HEB_ROOMMATES: "דירות שותפים",
+    HEB_COMMERCIAL: 'נדל"ן מסחרי',
+    HEB_PERSONAL: 'אזור אישי',
+    HEB_ADD_LISTINGS: 'פרסם מודעה',
+    HEB_APTS: 'דירות',
+    HEB_SIGNUP: 'הרשם',
+    HEB_LOGIN: 'התחבר',
+    HEB_MY_LISTINGS: "הנכסים שלי"
 };
+
 
 
 function LinkShortHand({ to, content, exact = false, className = "" }) { return <NavLink exact={exact} to={to} className={"Header__link pure-menu-link " + className} activeClassName="active">{content}</NavLink> }
 const brand = <LinkShortHand exact to="/" className="brand" content={<img alt="דף הבית" src="//assets.yad2.co.il/yad2site/y2assets/images/header/yad2Logo.png" />} />
 const listingLinks = [
-    <LinkShortHand to="/listings/forsale" content={forsale} />,
-    <LinkShortHand to="/listings/rent" content={rent} />,
-    <LinkShortHand to="/listings/roommates" content={roommates} />,
-    <LinkShortHand to="/listings/commercial" content={commercial} />
+    <LinkShortHand to={`${listingsPrefix}/forsale`} content={HEB_FORSALE} />,
+    <LinkShortHand to={`${listingsPrefix}/rent`} content={HEB_RENT} />,
+    <LinkShortHand to={`${listingsPrefix}/roommates`} content={HEB_ROOMMATES} />,
+    <LinkShortHand to={`${listingsPrefix}/commercial`} content={HEB_COMMERCIAL} />
 ]
 const userLinks = [
-    <LinkShortHand to="/signup" content={signup} />,
-    <LinkShortHand to="/add-listing" content={addListing} />,
-    <LinkShortHand to="/login" content={login} />,
-    <LinkShortHand to="/my-profile" content={myListings} />
+    <LinkShortHand to={signup} content={HEB_SIGNUP} />,
+    <LinkShortHand to={addListing} content={HEB_ADD_LISTINGS} />,
+    <LinkShortHand to={login} content={HEB_LOGIN} />,
+    <LinkShortHand to={myProfile} content={HEB_MY_LISTINGS} />
 ]
 
 
@@ -45,11 +48,11 @@ const Header = () => {
                     {listingLinks.map((link, index) => <div key={index} className="pure-menu-item">{link}</div>)}
                 </HideAt>
                 <ShowAt breakpoint="mediumAndBelow">
-                    <Dropdown text={apts} options={listingLinks} />
+                    <Dropdown text={HEB_APTS} options={listingLinks} />
                 </ShowAt>
             </nav>
             <nav>
-                <Dropdown options={userLinks} text={personal} />
+                <Dropdown options={userLinks} text={HEB_PERSONAL} />
             </nav>
         </div >
     );
