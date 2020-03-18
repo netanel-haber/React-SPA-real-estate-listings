@@ -2,7 +2,9 @@
 @import "../../base/utility-classes";
 
 .SortBy {
-  @include basic-flex;
+  @include basic-flex(center);
+  overflow: hidden;
+  flex-wrap: wrap;
   > * {
     @include basic-flex;
     > * {
@@ -14,8 +16,8 @@
   height: fit-content;
 }
 
-.SortBy__limit{
- min-width: 45px; 
+.SortBy__limit {
+  min-width: 45px;
 }
 
 .SortBy__button {
@@ -50,7 +52,7 @@
   padding: $s-size/2 $s-size/4;
   width: $l-size;
   border: 1px solid $grayish;
-  form{
-    @include basic-flex(undefined,column)
+  form {
+    @include basic-flex(undefined, column);
   }
 }
