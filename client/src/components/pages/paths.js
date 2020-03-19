@@ -1,10 +1,13 @@
 const listingsPrefix = "/listings"
+const listersPrefix = "/listers"
+
 const paths = {
-    login: "/login",
-    signup: "/signup",
-    personal: "/personal",
-    addListing: "/add-listings",
-    myProfile: "/my-profile",
+    login: `${listersPrefix}/login`,
+    signup: `${listersPrefix}/signup`,
+    personal: `${listersPrefix}/personal`,
+    addListing: `${listersPrefix}/add-listing`,
+    myProfile: `${listersPrefix}/me`,
+    logout: `${listersPrefix}/logout`,
     listingsPrefix,
     listings: `${listingsPrefix}/:type`,
 };

@@ -1,11 +1,14 @@
+import refreshJwt from '../utilities/refreshJwt';
+import successStatus from '../utilities/successStatus';
 import toaster from '../utilities/toaster';
-
 const { HEB_TOAST_ERROR } = {
-    HEB_TOAST_ERROR: "חלה שגיאה"
+    HEB_TOAST_ERROR: "חלה שגיאת רשת."
 }
 
-export default function fetchHandler(url, method = "GET", data, signal = undefined) {
+
+function fetchHandler(url, method = "GET", data, signal) {
     const token = localStorage.getItem('token');
+    url.includes("listers") && refreshJwt(token);
     return new Promise((res, rej) => {
         fetch(url, {
             method,
@@ -17,13 +20,15 @@ export default function fetchHandler(url, method = "GET", data, signal = undefin
             }
         })
             .then(result => {
-                if (String(result.status).charAt(0) !== "2")
-                    rej(result)
-                res(result.status == 200 ? result.json() : result.status)
+                if (!successStatus(result.status))
+                    return rej(result);
+                res(result.json())
             })
             .catch(err => {
-                (!signal.aborted) && toaster(err.status === 500 && HEB_TOAST_ERROR)
+                (signal?.aborted === false) && toaster(err.status === 500 && HEB_TOAST_ERROR)
                 rej(err);
             })
     })
 }
+
+export { fetchHandler as default };

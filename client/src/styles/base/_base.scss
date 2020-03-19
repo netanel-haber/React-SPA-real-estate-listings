@@ -1,6 +1,11 @@
 @import "../fonts/rubik.scss";
 @import "./settings.scss";
 
+$sm: 576;
+$md: 768;
+$lg: 992;
+$xl: 1200;
+
 html {
   font-size: 62.5%;
   overflow: -moz-scrollbars-vertical;
@@ -26,11 +31,6 @@ h4 {
   padding: 0 10px;
   margin-bottom: 10px;
 }
-
-$sm: 576;
-$md: 768;
-$lg: 992;
-$xl: 1200;
 
 @media (max-width: $sm+"px") {
   .ItemLists__lists {

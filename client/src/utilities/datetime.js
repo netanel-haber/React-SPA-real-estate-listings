@@ -10,7 +10,14 @@ const isToday = (d) => {
     return format(d) === format(dayjs());
 }
 
-export { isToday, format };
+
+const timeIsLessThanOneMinuteAway = (epochSeconds) => {
+    const timeInSeconds = Date.now() / 1000;
+    return (epochSeconds > timeInSeconds) && ((epochSeconds - timeInSeconds) <= 60);
+}
+
+
+export { isToday, format, timeIsLessThanOneMinuteAway };
 
 
 

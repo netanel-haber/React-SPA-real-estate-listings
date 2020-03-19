@@ -1,11 +1,11 @@
 import React, { useEffect } from 'react';
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
+import { BreakpointsProvider } from 'react-with-breakpoints';
+import { large, medium, small, xlarge } from '../styles/base/_base.scss';
 import '../styles/components/App.scss';
 import Header from './Header';
 import ListingTypeRouter from './ListingTypeRouter';
-import { AddListing, HomePage, Login, NotFound, Personal, Signup, MyProfile } from './pages/pageIndex';
-import { BreakpointsProvider } from 'react-with-breakpoints';
-import { small, medium, large, xlarge } from '../styles/base/_base.scss';
+import { AddListing, HomePage, Login, MyProfile, NotFound, Personal, Signup } from './pages/pageIndex';
 import { paths } from './pages/paths';
 
 
@@ -34,6 +34,9 @@ const App = () => {
             <Route path={paths.login}>
               <Login />
             </Route>
+            <Route path={paths.logout}>
+              <Redirect to="/" />
+            </Route>
             <Route path={paths.myProfile}>
               <MyProfile />
             </Route>
@@ -50,7 +53,6 @@ const App = () => {
         </BrowserRouter>
       </div>
     </BreakpointsProvider>
-
   )
 }
 

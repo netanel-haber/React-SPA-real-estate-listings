@@ -26,5 +26,6 @@
         "password"
     ],
     "/listers/logout": [],
-    "/lister/me/update": []
+    "/listers/me/update": [],
+    "/listers/refresh-token": []
 }

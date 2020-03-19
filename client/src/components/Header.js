@@ -1,12 +1,13 @@
+import classnames from 'classnames';
 import React from 'react';
 import { NavLink, useHistory } from 'react-router-dom';
 import { HideAt, ShowAt } from 'react-with-breakpoints';
+import { logout } from '../fetch/listers';
 import '../styles/components/Header.scss';
-import classnames from 'classnames';
 import { paths } from './pages/paths';
-const { login, signup, myProfile, addListing, listingsPrefix } = paths;
+const { login, signup, myProfile, addListing, listingsPrefix, logout: logoutPath } = paths;
 
-const { HEB_FORSALE, HEB_RENT, HEB_ROOMMATES, HEB_COMMERCIAL, HEB_PERSONAL, HEB_ADD_LISTINGS, HEB_APTS, HEB_SIGNUP, HEB_LOGIN, HEB_MY_LISTINGS } = {
+const { HEB_LOGOUT, HEB_FORSALE, HEB_RENT, HEB_ROOMMATES, HEB_COMMERCIAL, HEB_PERSONAL, HEB_ADD_LISTINGS, HEB_APTS, HEB_SIGNUP, HEB_LOGIN, HEB_MY_LISTINGS } = {
     HEB_FORSALE: "מכירה",
     HEB_RENT: "השכרה",
     HEB_ROOMMATES: "דירות שותפים",
@@ -16,8 +17,20 @@ const { HEB_FORSALE, HEB_RENT, HEB_ROOMMATES, HEB_COMMERCIAL, HEB_PERSONAL, HEB_
     HEB_APTS: 'דירות',
     HEB_SIGNUP: 'הרשם',
     HEB_LOGIN: 'התחבר',
-    HEB_MY_LISTINGS: "הנכסים שלי"
+    HEB_MY_LISTINGS: "הנכסים שלי",
+    HEB_LOGOUT: 'התנתק'
 };
+
+
+const LogoutLink = () => {
+    const history = useHistory();
+    return (
+        <a className="Header__link pure-menu-link" onClick={() => {
+            logout().then(() => { history.push(logoutPath) })
+        }}>{HEB_LOGOUT}</a>
+    )
+};
+
 
 
 
@@ -33,7 +46,9 @@ const userLinks = [
     <LinkShortHand to={signup} content={HEB_SIGNUP} />,
     <LinkShortHand to={addListing} content={HEB_ADD_LISTINGS} />,
     <LinkShortHand to={login} content={HEB_LOGIN} />,
-    <LinkShortHand to={myProfile} content={HEB_MY_LISTINGS} />
+    <LogoutLink />,
+    // <LinkShortHand to={logout} content={HEB_LOGOUT} />,
+    < LinkShortHand to={myProfile} content={HEB_MY_LISTINGS} />,
 ]
 
 
@@ -57,6 +72,7 @@ const Header = () => {
         </div >
     );
 }
+
 
 
 

@@ -18,7 +18,7 @@ export default function useRedirect(failedAuth) {
     const history = useHistory();
     return (
         <SkyLightStateless onCloseClicked={() => { history.push('/') }} hideOnOverlayClicked className="f" isVisible={failedAuth} title={HEB_TITLE}>
-            {pathEntries.map(([path, text]) => <button onClick={() => { history.push(path) }}>{text}</button>)}
+            {pathEntries.map(([path, text], index) => <button key={index} onClick={() => { history.push(path) }}>{text}</button>)}
         </SkyLightStateless>
     )
 }

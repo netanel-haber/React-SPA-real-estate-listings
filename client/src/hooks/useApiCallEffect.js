@@ -11,12 +11,8 @@ const useApiCallEffect = (apiCall, endCallbacks, dependencies = []) => {
         apiCall(abortController.signal)
             .then(endCallbacks)
             .catch((ex) => {
-                if (!abortController.signal.aborted && ex.toString() !== "-") {
-                    if (ex?.status === 401)
-                        updateFailedAuth(true);
-                    else
-                        toaster();
-                }
+                if (!abortController.signal.aborted && ex.toString() !== "-")
+                    ex?.status === 401 && updateFailedAuth(true);
             });
         return () => { abortController.abort() }
     }, dependencies)
@@ -40,10 +36,7 @@ export default (call, callback, toggleLoading, dependencies, bool = true) => {
             })
             .catch((ex) => {
                 if (!ac.signal.aborted) {
-                    if (ex?.status === 401)
-                        updateFailedAuth(true);
-                    else
-                        toaster();
+                    ex?.status === 401 && updateFailedAuth(true);
                 }
                 toggleLoading(false)
             })

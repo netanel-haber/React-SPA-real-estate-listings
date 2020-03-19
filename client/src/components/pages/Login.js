@@ -6,6 +6,7 @@ const Login = () => (
     <div>
         <div className="gen-page">
             <LoginForm />
+            aA1$fkfkf
         </div>
     </div>
 );

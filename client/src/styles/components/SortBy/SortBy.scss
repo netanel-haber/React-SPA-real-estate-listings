@@ -3,7 +3,6 @@
 
 .SortBy {
   @include basic-flex(center);
-  overflow: hidden;
   flex-wrap: wrap;
   > * {
     @include basic-flex;

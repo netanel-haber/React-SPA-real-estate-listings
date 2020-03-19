@@ -9,8 +9,7 @@ const { HEB_WRONG_CREDS } = {
 
 export default (data) => {
     login(sanitizer(data))
-        .then(res => {
-            const { token } = res;
+        .then(({ token }) => {
             localStorage.setItem("token", token)
         })
         .catch(ex => {

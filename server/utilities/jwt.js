@@ -3,7 +3,7 @@ const jwt = require("jsonwebtoken");
 
 function genToken(payload, expiresIn) {
     return new Promise((res, rej) => {
-        jwt.sign({ payload }, process.env.SECRET, { expiresIn: expiresIn }, (err, token) => {
+        jwt.sign({ payload }, process.env.SECRET, { expiresIn }, (err, token) => {
             (err) ?
                 rej(err) :
                 res(token);
