@@ -1,12 +1,13 @@
 import React, { useEffect } from 'react';
-import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { BreakpointsProvider } from 'react-with-breakpoints';
 import { large, medium, small, xlarge } from '../styles/base/_base.scss';
 import '../styles/components/App.scss';
-import Header from './Header';
+import Header from './header/Header';
 import ListingTypeRouter from './ListingTypeRouter';
-import { AddListing, HomePage, Login, MyProfile, NotFound, Personal, Signup } from './pages/pageIndex';
+import { HomePage, NotFound } from './pages/pageIndex';
 import { paths } from './pages/paths';
+import ListersRouter from './pages/routers/ListersRouter';
 
 
 const App = () => {
@@ -28,24 +29,7 @@ const App = () => {
             <Route path={paths.listings}>
               <ListingTypeRouter />
             </Route>
-            <Route path={paths.personal}>
-              <Personal />
-            </Route>
-            <Route path={paths.login}>
-              <Login />
-            </Route>
-            <Route path={paths.logout}>
-              <Redirect to="/" />
-            </Route>
-            <Route path={paths.myProfile}>
-              <MyProfile />
-            </Route>
-            <Route path={paths.signup}>
-              <Signup />
-            </Route>
-            <Route path={paths.addListing}>
-              <AddListing />
-            </Route>
+            <ListersRouter />
             <Route path="*">
               <NotFound />
             </Route>

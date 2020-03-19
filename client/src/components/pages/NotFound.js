@@ -2,7 +2,11 @@ import React from 'react';
 
 const NotFound = () => (
     <div>
-        page not found!
+        <div className="gen-page">
+            <div style={{ padding: "10px" }}>
+                העמוד לא נמצא ):
+            </div>
+        </div>
     </div>
 )
 

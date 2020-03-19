@@ -33,9 +33,10 @@ router
  │         │    ├── validateKeysExact              /                                                           PATCH
  │         │    └── refreshToken                   /                                                           PATCH
  │         │   
- │         ├── bound dispatch                      /listers/me/update                                          POST
- │         │    ├── auth                           /                                                           POST
- │         │    └── updateListerDetails            /                                                           POST
+ │         ├── bound dispatch                      /listers/logout                                             PATCH
+ │         │    ├── auth                           /                                                           PATCH
+ │         │    ├── validateKeysExact              /                                                           PATCH
+ │         │    └── logout                         /                                                           PATCH
  │         │   
  │         ├── bound dispatch                      /listers/me                                                 GET
  │         │    ├── auth                           /                                                           GET
@@ -44,10 +45,9 @@ router
  │         ├── bound dispatch                      /listers/:id                                                GET
  │         │    └── getIndividualLister            /                                                           GET
  │         │   
- │         ├── bound dispatch                      /listers/logout                                             PATCH
- │         │    ├── auth                           /                                                           PATCH
- │         │    ├── validateKeysExact              /                                                           PATCH
- │         │    └── logout                         /                                                           PATCH
+ │         ├── bound dispatch                      /listers/me/update                                          POST
+ │         │    ├── auth                           /                                                           POST
+ │         │    └── updateListerDetails            /                                                           POST
  │         │   
  │         ├── bound dispatch                      /listers/login                                              POST
  │         │    ├── validateKeysExact              /                                                           POST
