@@ -1,0 +1,41 @@
+@import "../base/settings";
+@import "../base/utility-classes";
+@import "purecss-sass/vendor/assets/stylesheets/purecss/_grids-responsive.scss";
+@import "../components/Item/Modal.scss";
+
+.RedirectPrompt {
+  @extend .Modal;
+  background-color: rgba(37, 37, 37, 0.6);
+  .content-container {
+    display: block;
+    color: $text-for-beige;
+    font-size: $m-size;
+    max-width: 500px;
+    height: fit-content;
+    width: 50vw;
+    padding: 10px 10px;
+    background-color: $beige;
+    border-radius: 5px;
+    .title {
+      margin-bottom: 10px;
+    }
+  }
+}
+
+.RedirectPrompt__link-group {
+  border-radius: 5px;
+  overflow: hidden;
+  width: 60%;
+  margin: 0 auto;
+  .RedirectPrompt__link {
+    &:hover {
+      background-color: darken($yad2-orange, 5%);
+    }
+    cursor: pointer;
+    padding: 5px 0px;
+    text-align: center;
+    border: none;
+    color: $body-white;
+    background-color: $yad2-orange;
+  }
+}
