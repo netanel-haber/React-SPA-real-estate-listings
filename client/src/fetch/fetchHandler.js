@@ -22,7 +22,7 @@ function fetchHandler(url, method = "GET", data, signal) {
             .then(result => {
                 if (!successStatus(result.status))
                     return rej(result);
-                res(result.json())
+                res(result.headers.get("Content-Type")?.includes("json") && result.json())
             })
             .catch(err => {
                 (signal?.aborted === false) && toaster(err.status === 500 && HEB_TOAST_ERROR)

@@ -36,20 +36,12 @@ listersRouter
     })
 
 
-
-
-
     .get('/listers/me', auth, async function getIndividualLister(req, res) {
         res.json(await Lister.findById(req.decoded.payload._id));
     })
     .get('/listers/:id', async function getIndividualLister(req, res) {
         res.json(await Lister.findById(req.params.id, 'name email phoneNumber'));
     })
-
-
-
-
-
 
 
 
