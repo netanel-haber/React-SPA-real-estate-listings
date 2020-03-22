@@ -1,23 +1,21 @@
-import React, { useEffect, useState } from 'react';
-import { useApiCallEffect } from '../../hooks/useApiCallEffect';
-import { getProfile } from '../../fetch/listers';
-import useRedirect from './../../hooks/useRedirect';
+import React from 'react';
+import ListsContainer from './../ListsContainer';
+import getJwtBody from './../../utilities/getJwtBody';
 
-
+const hebTitleForType = {
+    forsale: "מכירה",
+    rent: "השכרה",
+    commercial: "דירות שותפים",
+    roommates: "נדל\"ן מסחרי"
+};
 
 
 const MyProfile = () => {
-    const [profile, updateProfile] = useState({})
-    let failedAuth = useApiCallEffect(getProfile, updateProfile, []);
-    const prompt = useRedirect(failedAuth);
+    const listerId = getJwtBody()?.payload?._id;
     return (
         <div>
-            <div className="gen-page">
-                <div>
-                    {Boolean(profile) && profile.toString()}
-                    {prompt}
-                </div>
-            </div>
+            <ListsContainer lists={Object.keys(hebTitleForType).map(type =>
+                [hebTitleForType[type], { listerId }, type])} />
         </div>
     );
 }

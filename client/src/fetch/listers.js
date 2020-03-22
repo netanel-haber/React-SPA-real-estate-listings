@@ -7,11 +7,10 @@ const signup = (data) => {
 
 const isLoggedIn = () => {
     return fetchHandler('/api/listers/logged-in');
-    // new Promise((res) => {
+}
 
-    // .then(() => { res(true) })
-    // .catch(() => { res(false) })
-    // })
+const getListingsForLister = () => {
+    return fetchHandler('/api/listers/me/listings')
 }
 
 const logout = () => {
@@ -30,5 +29,5 @@ const getProfile = () => {
     return fetchHandler(`/api/listers/me`);
 }
 
-export { signup, getLister, login, getProfile, logout, isLoggedIn }
+export { signup, getLister, login, getProfile, logout, isLoggedIn, getListingsForLister }
 

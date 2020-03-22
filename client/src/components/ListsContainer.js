@@ -5,30 +5,27 @@ import ListContainer from './ListContainer/ListContainer';
 import SortBy from './ListContainer/SortBy/SortBy';
 
 
-const { HEB_MITIGATED_LISTINGS, HEB_NON_MITIGATED_LISTINGS } = {
-    HEB_NON_MITIGATED_LISTINGS: "ללא תיווך:",
-    HEB_MITIGATED_LISTINGS: "דירות מתיווך:"
-}
-
-const ListsContainer = ({ type }) => {
+const ListsContainer = ({ lists = [] }) => {
     const [options, dispatch] = useReducer(optionsReducer, initialOptions);
-    const nonMitOptions = { ...options, filters: { ...options.filters, mitigatingCompany: "$null" } };
-    const mitOptions = { ...options, filters: { ...options.filters, mitigatingCompany: "$exists" } };
     const dispatchSorts = (sorts) => { dispatch({ type: "SORTS", payload: sorts }); };
     const dispatchFilters = (filters) => { dispatch({ type: "FILTERS", payload: filters }) }
     const dispatchLimit = (limit) => { dispatch({ type: "LIMIT", payload: limit }) }
-
-
     return (
         <div className="ItemLists body__content">
             <div className="ItemLists__sorts-and-filters">
                 <SortBy {...{ dispatchSorts, dispatchFilters, dispatchLimit }}></SortBy>
             </div>
             <div className="ItemLists__lists">
-                <h4>{HEB_NON_MITIGATED_LISTINGS}</h4>
-                <ListContainer className="ItemList" {...{ type, options: nonMitOptions }} />
-                <h4>{HEB_MITIGATED_LISTINGS}</h4>
-                <ListContainer className="ItemList" {...{ type, options: mitOptions }} />
+                {lists.map(([title, initialFilters, type], index) =>
+                    <React.Fragment key={index}>
+                        <h4>{title}</h4>
+                        <ListContainer
+                            className="ItemList"
+                            type={type}
+                            options={{ ...options, filters: { ...options.filters, ...initialFilters } }}
+                        />
+                    </React.Fragment>
+                )}
             </div>
         </div>
     )

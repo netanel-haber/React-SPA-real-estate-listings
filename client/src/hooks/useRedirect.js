@@ -17,7 +17,7 @@ const pathEntries = [[paths.login, HEB_LOGIN], [paths.signup, HEB_SIGNUP], ['/',
 
 function useStatefulRedirect() {
     const failedAuth = useApiCallEffect(isLoggedIn, undefined, [])
-    return useRedirect(failedAuth);
+    return [useRedirect(failedAuth), failedAuth];
 }
 
 function useRedirect(failedAuth) {

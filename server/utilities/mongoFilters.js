@@ -5,6 +5,7 @@ const transVal = {
 }
 
 const transKey = {
+    "listerId": 'listing.listerId',
     "updatedAt": 'listing.updatedAt',
     "price": 'level1.price',
     "mitigatingCompany": 'listing.mitigatingCompany',
@@ -15,7 +16,9 @@ const transKey = {
 module.exports = (userFilters) => {
     let filters = {};
     Object.entries(userFilters).forEach(([path, filter]) => {
-        filters[transKey[path]] = transVal[filter]
+        const key = transKey[path];
+        const value = transVal[filter] !== undefined ? transVal[filter] : filter;
+        filters[key] = value;
     })
     return filters;
 }
