@@ -79,17 +79,6 @@
   margin: 0 $s-size;
 }
 
-.body__content {
-  width: 85vw;
-  max-width: 900px;
-  margin: $l-size auto;
-  > * {
-    margin: $l-size 0;
-    background-color: lighten($body-white, 30%);
-    border: 1px solid $lightest-gray;
-  }
-}
-
 @import "loaders.css/src/animations/ball-beat.scss";
 @import "loaders.css/src/animations/ball-spin-fade-loader.scss";
 .loader {
@@ -104,7 +93,16 @@
   display: block;
 }
 
-
+.body__content {
+  width: 93vw;
+  max-width: 800px;
+  margin: $l-size auto;
+  > div {
+    margin: $l-size 0;
+    background-color: lighten($body-white, 30%);
+    border: 1px solid $lightest-gray;
+  }
+}
 
 .gen-page {
   @extend .body__content;
@@ -113,8 +111,6 @@
     max-width: 100%;
   }
 }
-
-
 
 .error-message-container {
   position: relative;

@@ -1,6 +1,7 @@
 @import "../../base/settings";
 
 .Item__container {
+  font-size: $s-size;
   margin: 3px 0;
   > div {
     border-radius: 5px;
@@ -28,6 +29,14 @@
       .overlay {
         visibility: visible;
       }
+    }
+  }
+  .Item__container {
+    .MiniItem {
+      padding: 6px;
+    }
+    .text-child {
+      padding: 8px;
     }
   }
 }

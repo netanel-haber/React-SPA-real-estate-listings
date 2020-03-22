@@ -10,7 +10,7 @@ import { HideAt } from 'react-with-breakpoints';
 const MiniTopBar = ({ display }) => {
     return (
         <div className="MiniItem" style={{ display }}>
-            <HideAt breakpoint="mediumAndBelow">
+            <HideAt breakpoint="small">
                 <Image />
             </HideAt>
             <Address />

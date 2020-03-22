@@ -3,6 +3,7 @@
 
 .ListingPaging {
   @include basic-flex(space-between, row-reverse, 2);
+  font-size: $s-size;
   position: relative;
   margin: $s-size auto;
   padding: $s-size/2;
@@ -45,5 +46,5 @@
   font-size: $s-size;
   margin: 0;
   padding: 0;
-  color: darken($grayish,20%);
+  color: darken($grayish, 20%);
 }

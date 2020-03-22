@@ -27,64 +27,58 @@ h4 {
   margin-bottom: 10px;
 }
 
-$sm: 576;
+$sm: 568;
 $md: 768;
-$lg: 992;
-$xl: 1200;
+$lg: 1024;
+$xl: 1280;
 
-@media (max-width: $sm+"px") {
-  .ItemLists__lists {
-    padding-left: 0;
-    padding-right: 0;
-  }
-  .ListContainer {
-    border: none;
-    padding-left: 0;
-    padding-right: 0;
-    margin-left: 3px;
-    margin-right: 3px;
-  }
-  .Item__container {
-    border: 1px solid $lightest-gray;
-    border-radius: 2px;
-    .MiniItem {
-      border-radius: 2px;
+@media (min-width: $sm+"px") {
+  body {
+    .body__content {
+      width: 85vw;
     }
   }
-}
-
-// Small devices (landscape phones, 576px and up)
-@media (max-width: $md+"px") {
-  .body__content {
-    font-size: $s-size;
-  }
-  .Item__container {
-    .MiniItem {
-      padding: 6px 0 !important;
-    }
-    .text-child {
-      padding: 8px !important;
-    }
-    .thumbnail-container {
-      height: 50px !important;
-      width: 80px !important;
-    }
-  }
-}
-
-// Medium devices (tablets, 768px and up)
-@media (min-width: $md+"px") {
-  html {
-    font-size: 62.5%;
-  }
-}
-
-// Large devices (desktops, 992px and up)
-@media (min-width: $lg+"px") {
   html {
     font-size: 75%;
   }
 }
+
+// Small devices (landscape phones, 576px and up)
+@media (min-width: $md+"px") {
+  body {
+    .ListingPaging {
+      font-size: $m-size;
+    }
+    .body__content {
+      .Item__container {
+        font-size: $m-size;
+        .SpreadItem {
+          .thumbnail-container {
+            height: 100px;
+            width: 160px;
+          }
+        }
+      }
+    }
+    .ItemLists__lists {
+      padding: 0 $l-size;
+    }
+  }
+}
+
+// // Medium devices (tablets, 768px and up)
+// @media (min-width: $md+"px") {
+//   html {
+//     font-size: 62.5%;
+//   }
+// }
+
+// // Large devices (desktops, 992px and up)
+// @media (min-width: $lg+"px") {
+//   html {
+//     font-size: 75%;
+//   }
+// }
 
 // Extra large devices (large desktops, 1200px and up)
 @media (min-width: $xl+"px") {

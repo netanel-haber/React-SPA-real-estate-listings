@@ -1,6 +1,5 @@
 @import "../base/settings";
 
-
 .ItemLists__sorts-and-filters {
   font-size: $s-size;
   border-radius: 5px;
@@ -8,5 +7,6 @@
 }
 
 .ItemLists__lists {
-  padding: 0 $l-size;
+  padding-left: 0;
+  padding-right: 0;
 }
