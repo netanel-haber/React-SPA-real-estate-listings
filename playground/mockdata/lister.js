@@ -16,7 +16,7 @@ module.exports = [
         _id: listerId,
         mitigatingCompanyId,
         name: 'יוסי',
-        lastName:"כהן",
+        lastName: "כהן",
         email: "a@g.com",
         hash: hash1,
         salt: sal1,
@@ -25,7 +25,7 @@ module.exports = [
     {
         _id: otherListerId,
         name: 'מלכי',
-        lastName:"כהנא",
+        lastName: "כהנא",
         email: "gloombi@glamba.co.il",
         hash: hash2,
         salt: sal2,

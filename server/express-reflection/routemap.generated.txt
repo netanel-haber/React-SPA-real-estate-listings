@@ -38,6 +38,10 @@ router
  │         │    ├── validateKeysExact              /                                                           PATCH
  │         │    └── logout                         /                                                           PATCH
  │         │   
+ │         ├── bound dispatch                      /listers/me/listings                                        GET
+ │         │    ├── auth                           /                                                           GET
+ │         │    └── getListingsById                /                                                           GET
+ │         │   
  │         ├── bound dispatch                      /listers/me                                                 GET
  │         │    ├── auth                           /                                                           GET
  │         │    └── getIndividualLister            /                                                           GET

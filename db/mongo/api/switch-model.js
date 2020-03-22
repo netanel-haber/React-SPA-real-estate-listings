@@ -5,18 +5,22 @@ const {
     RoommatesListing
 } = require('../index');
 
+const types = ["forsale", "rent", "commercial", "roommates"];
 
 
-module.exports = function modelOf(path) {
-    switch (path) {
-        case "forsale":
-            return ForsaleListing
-        case "rent":
-            return RentListing
-        case "commercial":
-            return CommercialListing
-        case "roommates":
-            return RoommatesListing
-    }
+module.exports = {
+    modelOf: function (path) {
+        switch (path) {
+            case types[0]:
+                return ForsaleListing
+            case types[1]:
+                return RentListing
+            case types[2]:
+                return CommercialListing
+            case types[3]:
+                return RoommatesListing
+        }
+    },
+    types
 }
 

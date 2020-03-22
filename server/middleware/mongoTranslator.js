@@ -11,7 +11,7 @@ const translator = (req, res, next) => {
     }
     catch (ex) {
         console.log(ex, "at error mongo middleware");
-        return res.status(500).send(ex.toString())
+        return res.status(500).end()
     }
 };
 

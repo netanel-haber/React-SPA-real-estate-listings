@@ -2,7 +2,7 @@ const listersRouter = require('express').Router();
 const { validateKeys, validateKeysExact } = require('../middleware/validateKeys');
 const { genSalt, genHash } = require('../utilities/hash_salt');
 const { genToken } = require('../utilities/jwt');
-
+const { getAllListingsForLister } = require('../../db/mongo/api/listings');
 const { isValidPassword } = require('../validation/signup');
 const mongoose = require('mongoose');
 const auth = require('../middleware/auth');
@@ -33,9 +33,18 @@ listersRouter
             console.log(ex);
             res.status(500).end();
         }
+    }).
+
+
+    get('/listers/me/listings', auth, async function getListingsById(req, res) {
+        try {
+            res.json(await getAllListingsForLister(req.decoded.payload._id));
+        }
+        catch (ex) {
+            console.log(ex);
+            res.status(500).end();
+        }
     })
-
-
     .get('/listers/me', auth, async function getIndividualLister(req, res) {
         res.json(await Lister.findById(req.decoded.payload._id));
     })
