@@ -42,6 +42,10 @@ router
  │         │    ├── auth                           /                                                           GET
  │         │    └── getIndividualLister            /                                                           GET
  │         │   
+ │         ├── bound dispatch                      /listers/logged-in                                          GET
+ │         │    ├── auth                           /                                                           GET
+ │         │    └── isLoggedIn                     /                                                           GET
+ │         │   
  │         ├── bound dispatch                      /listers/:id                                                GET
  │         │    └── getIndividualLister            /                                                           GET
  │         │   

@@ -1,14 +1,11 @@
 import React from 'react';
 import { Route, Redirect } from 'react-router-dom';
 import { paths } from '../paths';
-import { AddListing, Login, MyProfile, Personal, Signup } from '../pageIndex';
+import { AddListing, Login, MyProfile, Signup } from '../pageIndex';
 
 const ListersRouter = () => {
     return (
         <>
-            <Route path={paths.personal}>
-                <Personal />
-            </Route>
             <Route path={paths.login}>
                 <Login />
             </Route>

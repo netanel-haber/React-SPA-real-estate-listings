@@ -39,6 +39,9 @@ listersRouter
     .get('/listers/me', auth, async function getIndividualLister(req, res) {
         res.json(await Lister.findById(req.decoded.payload._id));
     })
+    .get('/listers/logged-in', auth, async function isLoggedIn(req, res) {
+        res.end();
+    })
     .get('/listers/:id', async function getIndividualLister(req, res) {
         res.json(await Lister.findById(req.params.id, 'name email phoneNumber'));
     })
@@ -53,10 +56,10 @@ listersRouter
             const { password, email } = req.body;
             const user = await Lister.findOne({ email });
             if (!user)
-                return res.status(403).end();
+                return res.status(400).end();
             const { salt, hash, _id } = user;
             if (!(genHash(password + salt) === hash))
-                return res.status(404).end();
+                return res.status(400).end();
             const token = await genToken({ _id }, sessionTime);
             user.tokens = [...user.tokens, token];
             await user.save();
@@ -71,10 +74,10 @@ listersRouter
         try {
             const { password, email } = req.body;
             if (!password || !email)
-                return res.status(403).json({ required: "password, email" })
+                return res.status(400).json({ required: "password, email" })
             const checkPass = isValidPassword(password);
             if (checkPass !== true)
-                return res.status(403).json({ password: checkPass })
+                return res.status(400).json({ password: checkPass })
             const salt = genSalt();
             const hash = genHash(password + salt);
             const _id = mongoose.Types.ObjectId();
@@ -84,7 +87,7 @@ listersRouter
         }
         catch (ex) {
             if (ex.errors)
-                res.status(403).json(Object.fromEntries(Object.values(ex.errors).map(({ message, path }) => ([path, message]))))
+                res.status(400).json(Object.fromEntries(Object.values(ex.errors).map(({ message, path }) => ([path, message]))))
             return res.status(500).end();
         }
     });

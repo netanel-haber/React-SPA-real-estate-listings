@@ -8,8 +8,8 @@ import useRedirect from './../../hooks/useRedirect';
 
 const MyProfile = () => {
     const [profile, updateProfile] = useState({})
-    let faildAuth = useApiCallEffect(getProfile, updateProfile, []);
-    const prompt = useRedirect(faildAuth);
+    let failedAuth = useApiCallEffect(getProfile, updateProfile, []);
+    const prompt = useRedirect(failedAuth);
     return (
         <div>
             <div className="gen-page">

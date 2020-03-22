@@ -1,21 +1,23 @@
 import '#src#/styles/components/forms/form-utilities.scss';
 import React from 'react';
 import { FormContext, useForm } from 'react-hook-form';
-import WithDivAndLabel from '../WithDivAndLabel';
-import onSubmit from './submit';
+import { useHistory } from 'react-router-dom';
 import { formHebrew } from '../heb';
 import { validationConfig } from '../utilities';
+import WithDivAndLabel from '../WithDivAndLabel';
+import onSubmit from './submit';
 
 const { HEB_EMAIL, HEB_PASSWORD, HEB_SEND } = formHebrew;
 const { email, password } = validationConfig;
 
 
 const Login = () => {
+    const history = useHistory();
     const { register, handleSubmit, errors, formState: { submitCount } } = useForm()
     return (
         <FormContext {...{ submitCount, errors }}>
             <div>
-                <form className="gen-form" onSubmit={handleSubmit(onSubmit)}>
+                <form className="gen-form" onSubmit={handleSubmit(data => onSubmit(data, history))}>
                     <fieldset>
                         <WithDivAndLabel text={HEB_EMAIL}>
                             < input type="email" className="pure-input-rounded eng" name="email" autoComplete="email" ref={register(email(true))} />

@@ -4,12 +4,12 @@ import useDeepCompareEffect from 'use-deep-compare-effect';
 
 
 
-const useApiCallEffect = (apiCall, endCallbacks, dependencies = []) => {
+const useApiCallEffect = (apiCall, endCallbacks = () => { }, dependencies = []) => {
     const [failedAuth, updateFailedAuth] = useState(false);
     useEffect(() => {
         const abortController = new AbortController();
         apiCall(abortController.signal)
-            .then(endCallbacks)
+            .then((res) => { endCallbacks(res); })
             .catch((ex) => {
                 if (!abortController.signal.aborted && ex.toString() !== "-")
                     ex?.status === 401 && updateFailedAuth(true);
@@ -22,7 +22,7 @@ const useApiCallEffect = (apiCall, endCallbacks, dependencies = []) => {
 export { useApiCallEffect };
 
 
-export default (call, callback, toggleLoading, dependencies, bool = true) => {
+export default (call, callback = () => { }, toggleLoading, dependencies, bool = true) => {
     const [failedAuth, updateFailedAuth] = useState(false);
     useDeepCompareEffect(() => {
         const ac = new AbortController();
