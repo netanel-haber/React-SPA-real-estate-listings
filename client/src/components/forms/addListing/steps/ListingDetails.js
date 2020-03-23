@@ -1,6 +1,7 @@
 import React from 'react'
-
-const ListingsDetails = () => {
+import { useFormContext } from 'react-hook-form';
+const ListingDetails = () => {
+    const { submitCount, errors, register } = useFormContext();
     return (
         <>
 
@@ -8,4 +9,4 @@ const ListingsDetails = () => {
     )
 }
 
-export default ListingsDetails;
+export default ListingDetails;

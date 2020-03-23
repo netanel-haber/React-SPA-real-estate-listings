@@ -1,22 +1,21 @@
 import '#src#/styles/components/forms/form-utilities.scss';
 import React from 'react';
 import { FormContext, useForm } from 'react-hook-form';
-import withDivAndLabel from '../withDivAndLabel';
 import { formHebrew } from '../heb';
+import { AddPics, Address, ContactDetails, Finalize, ListingDetails, PropertyDetails, Type } from './steps/stepIndex';
 import onSubmit from './submit';
-import { validationConfig } from '../utilities';
-import Type from './steps/Type';
 
-const { HEB_EMAIL, HEB_SEND, HEB_PASSWORD, HEB_REENTER_PASSWORD, HEB_PHONE_NUMBER, HEB_NAME, HEB_LAST_NAME, HEB_EXPLANATION } = formHebrew;
-const { email, name, password, phoneNumber, reEnter } = validationConfig;
+const { HEB_SEND } = formHebrew;
+
 
 const AddListing = () => {
     const { register, handleSubmit, errors, formState: { submitCount } } = useForm()
+    const steps = [<Type />, <Address />, <PropertyDetails />, <ListingDetails />, <AddPics />, <ContactDetails />, <Finalize />]
     return (
-        <FormContext {...{ errors, submitCount }}>
+        <FormContext {...{ errors, submitCount, register }}>
             <div>
-                <Type />
                 <form className="gen-form" onSubmit={handleSubmit(onSubmit)}>
+                    {steps.map(step => <section>{step}</section>)}
                     <div className="submit-container pure-control-group">
                         <button className="pure-button pure-button-primary" type="submit" ref={register}>{HEB_SEND}</button>
                     </div>
