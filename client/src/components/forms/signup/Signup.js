@@ -1,7 +1,7 @@
 import '#src#/styles/components/forms/form-utilities.scss';
 import React, { useRef } from 'react';
 import { FormContext, useForm } from 'react-hook-form';
-import withDivAndLabel from '../WithDivAndLabel';
+import withDivAndLabel from '../withContAndLabel';
 import { formHebrew } from '../heb';
 import onSubmit from './submit';
 import { validationConfig } from '../utilities';

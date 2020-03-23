@@ -1,6 +1,6 @@
 import React from 'react';
 import WithErrorMessageContainer from './WithErrorMessageContainer';
-const WithDivAndLabel = (el, text, required = false) => {
+const withDivAndLabel = (el, text, required = false) => {
     return (
         <div className="pure-control-group" required={required}>
             <label htmlFor={el.props.name}>{text}</label>
@@ -11,4 +11,4 @@ const WithDivAndLabel = (el, text, required = false) => {
     )
 };
 
-export default WithDivAndLabel;
+export default withDivAndLabel;
