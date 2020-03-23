@@ -4,7 +4,7 @@ import { FormContext, useForm } from 'react-hook-form';
 import { useHistory } from 'react-router-dom';
 import { formHebrew } from '../heb';
 import { validationConfig } from '../utilities';
-import withDivAndLabel from '../withContAndLabel';
+import withDivAndLabel from '../withDivAndLabel';
 import onSubmit from './submit';
 
 const { HEB_EMAIL, HEB_PASSWORD, HEB_SEND } = formHebrew;
