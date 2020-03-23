@@ -1,3 +1,8 @@
-@import "./base/settings";
-@import "./base/base";
-@import "./base/utility-classes";
+@import "~base/settings";
+@import "~base/base";
+@import "~base/utility-classes";
+@import "purecss-sass/vendor/assets/stylesheets/purecss/_menus.scss";
+@import "purecss-sass/vendor/assets/stylesheets/purecss/_grids-responsive.scss";
+@import "purecss-sass/vendor/assets/stylesheets/purecss/_forms.scss";
+@import "loaders.css/src/animations/ball-beat.scss";
+@import "loaders.css/src/animations/ball-spin-fade-loader.scss";

@@ -1,10 +1,12 @@
 import React from 'react';
-
+import AddListingForm from './../forms/addListing/AddListing';
 
 const AddListing = () => {
     return (
         <div>
-            AddListing
+            <div className="gen-page">
+                <AddListingForm />
+            </div>
         </div>
     )
 }

@@ -6,4 +6,6 @@
   font-size: $s-size * 0.9;
   padding: $s-size;
   border-top: 1px solid $lightest-gray;
+  border-bottom: 1px solid $lightest-gray;
+  background-color: darken($whiter-than-body-white, 2%);
 }

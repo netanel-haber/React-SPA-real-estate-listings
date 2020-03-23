@@ -5,6 +5,7 @@
   opacity: 0.5;
 }
 
+/////////////////////////////
 @mixin basic-flex($justify: space-between, $direction: row, $which-child-to-stretch: -1) {
   display: flex;
   align-items: center;
@@ -15,6 +16,7 @@
   }
 }
 
+/////////////////////////////
 .overlay {
   position: absolute;
   height: 100%;
@@ -35,6 +37,7 @@
   }
 }
 
+/////////////////////////////
 .chevron-down {
   border-style: solid;
   border-width: 0.1em 0.1em 0 0;
@@ -46,6 +49,7 @@
   transform: rotate(135deg);
 }
 
+/////////////////////////////
 .dropdown-container {
   position: relative;
   cursor: pointer;
@@ -73,14 +77,7 @@
   }
 }
 
-.toast {
-  direction: rtl !important;
-  text-align: right;
-  margin: 0 $s-size;
-}
-
-@import "loaders.css/src/animations/ball-beat.scss";
-@import "loaders.css/src/animations/ball-spin-fade-loader.scss";
+/////////////////////////////
 .loader {
   position: absolute;
   top: 50%;
@@ -92,7 +89,9 @@
 .loader-active {
   display: block;
 }
+////////////////////////////
 
+////////////////////////////
 .body__content {
   width: 93vw;
   max-width: 800px;
@@ -111,6 +110,7 @@
     max-width: 100%;
   }
 }
+////////////////////////////
 
 .error-message-container {
   position: relative;

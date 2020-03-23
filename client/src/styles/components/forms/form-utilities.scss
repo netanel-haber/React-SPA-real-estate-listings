@@ -1,5 +1,6 @@
 @import "~base/settings";
 @import "~base/utility-classes";
+//for variables
 @import "purecss-sass/vendor/assets/stylesheets/purecss/_forms.scss";
 
 //override purecss mediarule
@@ -44,18 +45,6 @@
     margin: $m-size 0;
   }
 
-  // div.message {
-  //   width: 300px;
-  //   position: relative;
-  //   .pure-form-message-inline {
-  //     margin-right: 5px;
-  //     word-wrap: break-word;
-  //     &:before {
-  //       @extend .asterisk;
-  //     }
-  //   }
-  // }
-
   input {
     box-sizing: content-box !important;
     width: 23rem;
@@ -63,7 +52,9 @@
       direction: ltr;
     }
   }
-  .required-fields label:after {
-    @extend .asterisk;
+  div[required] {
+    label:after {
+      @extend .asterisk;
+    }
   }
 }
