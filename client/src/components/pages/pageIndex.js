@@ -3,7 +3,7 @@ import Signup from './Signup';
 import AddListing from './AddListing';
 import HomePage from './HomePage';
 import NotFound from './NotFound';
-import MyProfile from './MyProfile';
+import MyListings from './MyListings';
 
 
 export {
@@ -12,5 +12,5 @@ export {
     AddListing,
     HomePage,
     NotFound,
-    MyProfile
+    MyListings
 };

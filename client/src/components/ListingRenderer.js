@@ -7,7 +7,7 @@ const { HEB_MITIGATED_LISTINGS, HEB_NON_MITIGATED_LISTINGS } = {
     HEB_MITIGATED_LISTINGS: "דירות מתיווך:"
 }
 
-const ListingTypeRouter = () => {
+const ListingRenderer = () => {
     let { type } = useParams();
     return <ListsContainer lists={[
         [HEB_NON_MITIGATED_LISTINGS, { mitigatingCompany: "$null" }, type],
@@ -16,4 +16,4 @@ const ListingTypeRouter = () => {
 }
 
 
-export default ListingTypeRouter;
+export default ListingRenderer;

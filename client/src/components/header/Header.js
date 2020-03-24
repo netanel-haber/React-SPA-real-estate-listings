@@ -6,7 +6,7 @@ import LinkShorthand from './LinkShorthand';
 import LogoutLink from './LogoutLink';
 import { HEB } from './heb';
 import { paths } from '../pages/paths';
-const { login, signup, myProfile, addListing, listingsPrefix } = paths;
+const { login, signup, myListings, addListing, listingsPrefix } = paths;
 const { HEB_FORSALE, HEB_RENT, HEB_ROOMMATES, HEB_COMMERCIAL, HEB_PERSONAL, HEB_ADD_LISTINGS, HEB_APTS, HEB_SIGNUP, HEB_LOGIN, HEB_MY_LISTINGS } = HEB;
 
 
@@ -23,8 +23,7 @@ const userLinks = [
     <LinkShorthand to={addListing} content={HEB_ADD_LISTINGS} />,
     <LinkShorthand to={login} content={HEB_LOGIN} />,
     <LogoutLink />,
-    // <LinkShortHand to={logout} content={HEB_LOGOUT} />,
-    < LinkShorthand to={myProfile} content={HEB_MY_LISTINGS} />,
+    <LinkShorthand to={myListings} content={HEB_MY_LISTINGS} />,
 ]
 
 

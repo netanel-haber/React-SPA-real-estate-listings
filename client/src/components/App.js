@@ -4,7 +4,7 @@ import { BreakpointsProvider } from 'react-with-breakpoints';
 import { large, medium, small, xlarge } from '../styles/base/_base.scss';
 import '../styles/components/App.scss';
 import Header from './header/Header';
-import ListingTypeRouter from './ListingTypeRouter';
+import ListingRenderer from './ListingRenderer';
 import { HomePage, NotFound } from './pages/pageIndex';
 import { paths } from './pages/paths';
 import ListersRouter from './pages/routers/ListersRouter';
@@ -27,9 +27,9 @@ const App = () => {
               <HomePage />
             </Route>
             <Route path={paths.listings}>
-              <ListingTypeRouter />
+              <ListingRenderer />
             </Route>
-            <ListersRouter />
+            {ListersRouter}
             <Route path="*">
               <NotFound />
             </Route>

@@ -6,7 +6,7 @@ const paths = {
     signup: `${listersPrefix}/signup`,
     personal: `${listersPrefix}/personal`,
     addListing: `${listersPrefix}/add-listing`,
-    myProfile: `${listersPrefix}/me`,
+    myListings: `${listersPrefix}/me/listings`,
     logout: `${listersPrefix}/logout`,
     listingsPrefix,
     listings: `${listingsPrefix}/:type`,

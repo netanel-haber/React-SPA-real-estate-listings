@@ -1,6 +1,6 @@
 import React from 'react';
-import ListsContainer from './../ListsContainer';
-import getJwtBody from './../../utilities/getJwtBody';
+import ListsContainer from '../ListsContainer';
+import getJwtBody from '../../utilities/getJwtBody';
 
 const hebTitleForType = {
     forsale: "מכירה",
@@ -10,14 +10,19 @@ const hebTitleForType = {
 };
 
 
-const MyProfile = () => {
+const MyListings = () => {
     const listerId = getJwtBody()?.payload?._id;
     return (
         <div>
+            <div className="gen-page" style={{ backgroundColor: "blue" }}>
+                <div>
+                    <p>הנכסים שלי</p>
+                </div>
+            </div>
             <ListsContainer lists={Object.keys(hebTitleForType).map(type =>
                 [hebTitleForType[type], { listerId }, type])} />
         </div>
     );
 }
 
-export default MyProfile;
+export default MyListings;
