@@ -14,7 +14,7 @@ const getListingsForLister = () => {
 }
 
 const logout = () => {
-    return fetchHandler('/api/listers/logout', "PATCH", undefined, undefined, true);
+    return fetchHandler('/api/listers/logout', "PATCH", ...[, ,], true);
 }
 
 const login = (data) => {
