@@ -1,0 +1,28 @@
+@import "~base/settings";
+@import "~base/utility-classes";
+@import "../form-utilities.scss";
+
+.AddListing__form {
+  .step:not(.AddListing__active) {
+    display: none;
+  }
+  .AddListing__active {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: $l-size;
+    margin: $s-size;
+    background-color: $body-white;
+    width: 90%;
+    border-radius: 10px;
+    min-height: 250px;
+  }
+  .AddListing__button {
+    user-select: none;
+    // display: inline-block;
+  }
+  h6 {
+    margin: 0;
+    color: lighten($def-color, 50%);
+  }
+}

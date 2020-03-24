@@ -6,4 +6,13 @@ import ListingDetails from './ListingDetails';
 import PropertyDetails from './PropertyDetails';
 import Type from './Type';
 
-export { AddPics, Address, ContactDetails, Finalize, ListingDetails, PropertyDetails, Type };
+const steps = [
+    [Type, ["type"]],
+    [Address, ["number"]],
+    [PropertyDetails, []],
+    [ListingDetails, []],
+    [AddPics, []],
+    [ContactDetails, []],
+    [Finalize, []]
+];
+export { steps };

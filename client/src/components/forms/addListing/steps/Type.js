@@ -4,7 +4,9 @@ const Type = () => {
     const { submitCount, errors, register } = useFormContext();
     return (
         <>
-
+            <div>
+                Type
+            </div>
         </>
     )
 }

@@ -1,27 +1,47 @@
-import '#src#/styles/components/forms/form-utilities.scss';
-import React from 'react';
+import '#src#/styles/components/forms/add-listing/AddListing.scss';
+import React, { useState } from 'react';
 import { FormContext, useForm } from 'react-hook-form';
 import { formHebrew } from '../heb';
-import { AddPics, Address, ContactDetails, Finalize, ListingDetails, PropertyDetails, Type } from './steps/stepIndex';
+import { steps } from './steps/stepIndex';
+import classnames from 'classnames';
 import onSubmit from './submit';
-
-const { HEB_SEND } = formHebrew;
+import { ButtonContainer, Button } from './buttons';
+const { HEB_SEND, HEB_STEP_FOOTER = (step, steps) => `שלב ${step} מתוך ${steps}` } = formHebrew;
 
 
 const AddListing = () => {
-    const { register, handleSubmit, errors, formState: { submitCount } } = useForm()
-    const steps = [Type, Address, PropertyDetails, ListingDetails, AddPics, ContactDetails, Finalize]
+    const { register, handleSubmit, errors, formState: { submitCount }, triggerValidation, clearError } = useForm()
+    const submittionMethod = handleSubmit(onSubmit);
+    const [activeStep, updateActiveStep] = useState(0);
+
     return (
         <FormContext {...{ errors, submitCount, register }}>
             <div>
-                <form className="gen-form" onSubmit={handleSubmit(onSubmit)}>
-                    {steps.map((Step, index) => <section key={index}><Step /></section>)}
-                    <div className="submit-container pure-control-group">
-                        <button className="pure-button pure-button-primary" type="submit" ref={register}>{HEB_SEND}</button>
-                    </div>
+                <form className="gen-form AddListing__form" onSubmit={submittionMethod}>
+                    {steps.map(([Step, associatedFieldNames], index) => (
+                        <div className={classnames({ AddListing__active: index === activeStep }, "step")} key={index}>
+                            <Step />
+                            <ButtonContainer>
+                                <Button text="הקודם" dispatch={() => { activeStep !== 0 && updateActiveStep(index - 1) }} />
+                                <Button
+                                    text={((index + 1) < steps.length) ? "הבא" : HEB_SEND}
+                                    dispatch={((index + 1) < steps.length)
+                                        ? (async () => {
+                                            await triggerValidation(associatedFieldNames);
+                                            if (associatedFieldNames.every(field => !errors.hasOwnProperty(field))) {
+                                                clearError(associatedFieldNames);
+                                                updateActiveStep(index + 1)
+                                            }
+                                        })
+                                        : () => submittionMethod()}
+                                />
+                            </ButtonContainer>
+                        </div>
+                    ))}
+                    <h6>{HEB_STEP_FOOTER(activeStep + 1, steps.length)}</h6>
                 </form>
             </div>
-        </FormContext>
+        </FormContext >
     )
 }
 

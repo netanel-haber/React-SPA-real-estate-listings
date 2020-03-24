@@ -4,7 +4,10 @@ const ListingDetails = () => {
     const { submitCount, errors, register } = useFormContext();
     return (
         <>
-
+        <div>
+                 ListingsDetails
+                </div>
+           
         </>
     )
 }

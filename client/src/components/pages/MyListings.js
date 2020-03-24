@@ -10,18 +10,20 @@ const hebTitleForType = {
     roommates: "נדל\"ן מסחרי"
 };
 
+const { HEB_MESSAGE = (name) => `שלום ${name}! להלן הנכסים שלך:` } = {};
+
 
 const MyListings = () => {
-    const listerId = getJwtBody()?.payload?._id;
+    const { _id, name } = getJwtBody();
     return (
         <div className="MyListings">
-            <div className="body__content">
+            <div className="body__content" >
                 <div className="MyListings__title">
-                    <h3>הנכסים שלי</h3>
+                    <h3>{HEB_MESSAGE(name)}</h3>
                 </div>
             </div>
             <ListsContainer lists={Object.keys(hebTitleForType).map(type =>
-                [hebTitleForType[type], { listerId }, type])} />
+                [hebTitleForType[type], { listerId: _id }, type])} />
         </div>
     );
 }

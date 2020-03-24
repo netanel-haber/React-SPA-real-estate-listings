@@ -10,7 +10,7 @@
     margin-right: 5px;
     text-align: right;
   }
-  .submit-container {
+  .submit-container:not(.AddListing__next-step) {
     justify-content: flex-start !important;
   }
 }
@@ -32,19 +32,6 @@
   padding: $s-size;
   margin: $m-size;
 
-  .submit-container {
-    @include basic-flex(center);
-    button {
-      border-radius: 15px;
-      border: none;
-      padding: $s-size/2;
-      background-color: $yad2-orange;
-      color: $whiter-than-body-white;
-      width: 100px;
-    }
-    margin: $m-size 0;
-  }
-
   input {
     box-sizing: content-box !important;
     width: 23rem;
@@ -58,3 +45,21 @@
     }
   }
 }
+
+.submit-container {
+  @include basic-flex(center);
+  button,
+  div {
+    cursor: pointer;
+    text-align: center;
+    border-radius: 15px;
+    border: none;
+    padding: $s-size/2;
+    background-color: $yad2-orange;
+    color: $whiter-than-body-white;
+    width: 100px;
+  }
+  margin: $m-size 0;
+}
+
+

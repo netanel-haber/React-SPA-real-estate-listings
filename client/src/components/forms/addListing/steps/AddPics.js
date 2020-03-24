@@ -4,7 +4,9 @@ const AddPics = () => {
     const { submitCount, errors, register } = useFormContext();
     return (
         <>
-
+            <div>
+                Addpics 
+            </div> 
         </>
     )
 }

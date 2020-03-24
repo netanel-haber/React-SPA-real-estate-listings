@@ -22,19 +22,8 @@
 }
 
 .RedirectPrompt__link-group {
-  border-radius: 5px;
-  overflow: hidden;
-  width: 60%;
-  margin: 0 auto;
+  @extend .link-group;
   .RedirectPrompt__link {
-    &:hover {
-      background-color: darken($yad2-orange, 5%);
-    }
-    cursor: pointer;
-    padding: 5px 0px;
-    text-align: center;
-    border: none;
-    color: $body-white;
-    background-color: $yad2-orange;
+    @extend .link;
   }
 }

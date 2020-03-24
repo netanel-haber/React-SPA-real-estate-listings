@@ -4,7 +4,10 @@ const Finalize = () => {
     const { submitCount, errors, register } = useFormContext();
     return (
         <>
-
+        <div>
+                Finalize
+                </div>
+            
         </>
     )
 }
