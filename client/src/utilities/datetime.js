@@ -11,13 +11,13 @@ const isToday = (d) => {
 }
 
 
-const timeIsLessThanOneMinuteAway = (epochSeconds) => {
+const timeIsLessThanXMinutesAway = (epochSeconds, minutes = 1) => {
     const timeInSeconds = Date.now() / 1000;
-    return (epochSeconds > timeInSeconds) && ((epochSeconds - timeInSeconds) <= 60);
+    return (epochSeconds > timeInSeconds) && ((epochSeconds - timeInSeconds) <= 60 * minutes);
 }
 
 
-export { isToday, format, timeIsLessThanOneMinuteAway };
+export { isToday, format, timeIsLessThanXMinutesAway };
 
 
 

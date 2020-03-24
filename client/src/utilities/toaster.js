@@ -6,10 +6,10 @@ const { HEB_TOAST_ERROR } = {
 let toastOn = false;
 
 
-export default (msg = HEB_TOAST_ERROR, whatKind = "error") => {
+export default (msg = HEB_TOAST_ERROR, whatKind = "error", hideAfter = 3) => {
     if (!toastOn) {
         toastOn = true;
-        toast[whatKind](<div className="toast">{msg}</div>, { position: "bottom-center" })
+        toast[whatKind](<div className="toast">{msg}</div>, { position: "bottom-center", hideAfter })
             .then(() => { toastOn = false })
     }
 }
