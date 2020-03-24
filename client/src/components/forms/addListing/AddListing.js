@@ -10,12 +10,12 @@ const { HEB_SEND } = formHebrew;
 
 const AddListing = () => {
     const { register, handleSubmit, errors, formState: { submitCount } } = useForm()
-    const steps = [<Type />, <Address />, <PropertyDetails />, <ListingDetails />, <AddPics />, <ContactDetails />, <Finalize />]
+    const steps = [Type, Address, PropertyDetails, ListingDetails, AddPics, ContactDetails, Finalize]
     return (
         <FormContext {...{ errors, submitCount, register }}>
             <div>
                 <form className="gen-form" onSubmit={handleSubmit(onSubmit)}>
-                    {steps.map(step => <section>{step}</section>)}
+                    {steps.map(Step => <section><Step /></section>)}
                     <div className="submit-container pure-control-group">
                         <button className="pure-button pure-button-primary" type="submit" ref={register}>{HEB_SEND}</button>
                     </div>

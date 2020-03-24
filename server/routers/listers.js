@@ -33,33 +33,30 @@ listersRouter
             console.log(ex);
             res.status(500).end();
         }
-    }).
+    })
 
 
-    get('/listers/me/listings', auth, async function getListingsById(req, res) {
-        try {
-            res.json(await getAllListingsForLister(req.decoded.payload._id));
-        }
-        catch (ex) {
-            console.log(ex);
-            res.status(500).end();
-        }
-    })
-    .get('/listers/me', auth, async function getIndividualLister(req, res) {
-        res.json(await Lister.findById(req.decoded.payload._id));
-    })
+    // get('/listers/me/listings', auth, async function getListingsById(req, res) {
+    //     try {
+    //         res.json(await getAllListingsForLister(req.decoded.payload._id));
+    //     }
+    //     catch (ex) {
+    //         console.log(ex);
+    //         res.status(500).end();
+    //     }
+    // })
+    // .get('/listers/me', auth, async function getIndividualLister(req, res) {
+    //     res.json(await Lister.findById(req.decoded.payload._id));
+    // })
     .get('/listers/logged-in', auth, async function isLoggedIn(req, res) {
         res.end();
     })
     .get('/listers/:id', async function getIndividualLister(req, res) {
-        res.json(await Lister.findById(req.params.id, 'name email phoneNumber'));
+        res.json(await Lister.findById(req.params.id, 'name lastName email phoneNumber'));
     })
+    // .post('/listers/me/update', auth, async function updateListerDetails(req, res) {
 
-
-
-    .post('/listers/me/update', auth, async function updateListerDetails(req, res) {
-
-    })
+    // })
     .post('/listers/login', validateKeysExact, async function login(req, res) {
         try {
             const { password, email } = req.body;

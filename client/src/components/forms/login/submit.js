@@ -16,7 +16,7 @@ export default (data, history) => {
         .then(({ token }) => {
             localStorage.setItem("token", token)
             toaster(HEB_LOGGED_IN_SUCCESSFULLY, "success")
-            history.push(paths.myProfile)
+            history.push(paths.myListings)
         })
         .catch(ex => {
             console.log(ex)

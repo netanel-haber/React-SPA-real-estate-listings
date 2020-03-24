@@ -23,8 +23,8 @@ const PhoneNumberExpansion = ({ isExpanded }) => {
 
     useEffect(() => {
         if (!mitigatingCompany)
-            getLister(listerId).then(({ name, phoneNumber, email }) => {
-                updateRegUserDetails({ name, phoneNumber, email })
+            getLister(listerId).then(({ name, lastName, phoneNumber, email }) => {
+                updateRegUserDetails({ name: name + " " + lastName, phoneNumber, email })
             })
     }, []);
 

@@ -38,24 +38,12 @@ router
  │         │    ├── validateKeysExact              /                                                           PATCH
  │         │    └── logout                         /                                                           PATCH
  │         │   
- │         ├── bound dispatch                      /listers/me/listings                                        GET
- │         │    ├── auth                           /                                                           GET
- │         │    └── getListingsById                /                                                           GET
- │         │   
- │         ├── bound dispatch                      /listers/me                                                 GET
- │         │    ├── auth                           /                                                           GET
- │         │    └── getIndividualLister            /                                                           GET
- │         │   
  │         ├── bound dispatch                      /listers/logged-in                                          GET
  │         │    ├── auth                           /                                                           GET
  │         │    └── isLoggedIn                     /                                                           GET
  │         │   
  │         ├── bound dispatch                      /listers/:id                                                GET
  │         │    └── getIndividualLister            /                                                           GET
- │         │   
- │         ├── bound dispatch                      /listers/me/update                                          POST
- │         │    ├── auth                           /                                                           POST
- │         │    └── updateListerDetails            /                                                           POST
  │         │   
  │         ├── bound dispatch                      /listers/login                                              POST
  │         │    ├── validateKeysExact              /                                                           POST

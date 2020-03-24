@@ -1,6 +1,7 @@
 import React from 'react';
 import ListsContainer from '../ListsContainer';
 import getJwtBody from '../../utilities/getJwtBody';
+import '../../styles/components/MyListings.scss'
 
 const hebTitleForType = {
     forsale: "מכירה",
@@ -13,9 +14,9 @@ const hebTitleForType = {
 const MyListings = () => {
     const listerId = getJwtBody()?.payload?._id;
     return (
-        <div>
-            <div className="gen-page" style={{ backgroundColor: "blue" }}>
-                <div>
+        <div className="MyListings">
+            <div className="body__content">
+                <div className="MyListings__title">
                     <p>הנכסים שלי</p>
                 </div>
             </div>
