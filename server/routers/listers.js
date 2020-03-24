@@ -11,12 +11,14 @@ const { Lister } = require('../../db/mongo/index');
 const sessionTime = "15m";
 
 
-
 listersRouter
     .patch('/listers/refresh-token', auth, validateKeysExact, async function refreshToken(req, res) {
+        const user = req.user;
+        const { _id, name, tokens } = user;
         try {
-            const newToken = await genToken({ _id: req.decoded.payload._id }, sessionTime);
-            await Lister.updateOne({ _id: req.decoded.payload._id }, { "$push": { "tokens": newToken } })
+            const newToken = await genToken({ _id, name }, sessionTime);
+            user.tokens = [...tokens, newToken];
+            await user.save();
             res.json({ newToken });
         }
         catch (ex) {
@@ -25,8 +27,12 @@ listersRouter
         }
     })
     .patch('/listers/logout', auth, validateKeysExact, async function logout(req, res) {
+        const user = req.user;
+        const { tokens } = user;
+        console.log(user)
         try {
-            await Lister.updateOne({ _id: req.decoded.payload._id }, { "$pull": { "tokens": req.token } })
+            user.tokens = tokens.filter(token => token !== req.token)
+            await user.save();
             res.end();
         }
         catch (ex) {
@@ -63,10 +69,10 @@ listersRouter
             const user = await Lister.findOne({ email });
             if (!user)
                 return res.status(400).end();
-            const { salt, hash, _id } = user;
+            const { salt, hash, _id, name } = user;
             if (!(genHash(password + salt) === hash))
                 return res.status(400).end();
-            const token = await genToken({ _id }, sessionTime);
+            const token = await genToken({ _id, name }, sessionTime);
             user.tokens = [...user.tokens, token];
             await user.save();
             res.json({ token })
@@ -78,7 +84,7 @@ listersRouter
     })
     .post('/listers/signup', validateKeys, async function signup(req, res) {
         try {
-            const { password, email } = req.body;
+            const { password, email, name } = req.body;
             if (!password || !email)
                 return res.status(400).json({ required: "password, email" })
             const checkPass = isValidPassword(password);
@@ -87,7 +93,7 @@ listersRouter
             const salt = genSalt();
             const hash = genHash(password + salt);
             const _id = mongoose.Types.ObjectId();
-            const token = await genToken({ _id }, sessionTime);
+            const token = await genToken({ _id, name }, sessionTime);
             await new Lister({ _id, salt, hash, ...req.body, tokens: [token] }).save();
             res.status(201).json({ token });
         }

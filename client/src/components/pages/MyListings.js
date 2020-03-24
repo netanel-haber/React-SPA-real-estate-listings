@@ -17,7 +17,7 @@ const MyListings = () => {
         <div className="MyListings">
             <div className="body__content">
                 <div className="MyListings__title">
-                    <p>הנכסים שלי</p>
+                    <h3>הנכסים שלי</h3>
                 </div>
             </div>
             <ListsContainer lists={Object.keys(hebTitleForType).map(type =>

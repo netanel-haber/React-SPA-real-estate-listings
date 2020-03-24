@@ -15,7 +15,7 @@ const AddListing = () => {
         <FormContext {...{ errors, submitCount, register }}>
             <div>
                 <form className="gen-form" onSubmit={handleSubmit(onSubmit)}>
-                    {steps.map(Step => <section><Step /></section>)}
+                    {steps.map((Step, index) => <section key={index}><Step /></section>)}
                     <div className="submit-container pure-control-group">
                         <button className="pure-button pure-button-primary" type="submit" ref={register}>{HEB_SEND}</button>
                     </div>
