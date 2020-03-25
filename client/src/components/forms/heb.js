@@ -26,6 +26,18 @@ const formHebrew = {
     HEB_EXPLANATION: "השדות המסומנים בכוכבית הינם שדות חובה. שאר השדות ישמשו בתור פרטי התקשרות בתיאור הנכס כברירת מחדל."
 }
 
+const typeStepHebrew = {
+    HEB_FORSALE: "מכירה",
+    HEB_RENT: "השכרה",
+    HEB_ROOMMATES: "דירות שותפים",
+    HEB_COMMERCIAL: "נדל\"ן מסחרי",
+    HEB_CHOOSE: "בחר סוג נכס:"
+}
 
 
-export { errHebrew, formHebrew }
+const addListingHebrew = {
+    HEB_STEP_FOOTER: (step, steps) => `שלב ${step} מתוך ${steps}`
+}
+
+
+export { errHebrew, formHebrew, typeStepHebrew, addListingHebrew }

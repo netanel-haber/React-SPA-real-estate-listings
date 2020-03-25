@@ -4,10 +4,10 @@ import ContactDetails from './ContactDetails';
 import Finalize from './Finalize';
 import ListingDetails from './ListingDetails';
 import PropertyDetails from './PropertyDetails';
-import Type from './Type';
+import { Type, fieldNames } from './Type';
 
 const steps = [
-    [Type, ["type"]],
+    [Type, fieldNames],
     [Address, ["number"]],
     [PropertyDetails, []],
     [ListingDetails, []],

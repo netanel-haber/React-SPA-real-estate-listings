@@ -1,10 +1,10 @@
 import React from 'react';
+import classnames from 'classnames';
 
-
-const Button = ({ text, dispatch }) => {
+const Button = ({ text, dispatch, disabled }) => {
     return (
         <div
-            className="AddListing__button link pure-u-sm-1-2"
+            className={classnames("AddListing__button link pure-u-sm-1-2", { disabled })}
             onClick={dispatch}>
             {text}
         </div>

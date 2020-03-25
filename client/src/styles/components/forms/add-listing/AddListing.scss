@@ -25,36 +25,14 @@
   }
   .AddListing__button {
     user-select: none;
+    &.disabled {
+      background-color: gray;
+      opacity: 0.6;
+      pointer-events: none;
+    }
   }
   h6 {
     margin: 0;
     color: lighten($def-color, 50%);
-  }
-}
-
-.Type__container {
-  @include basic-flex(undefined, column);
-  input[type="radio"] {
-    display: none;
-  }
-  .Type__container-radio-group {
-    margin-bottom: $m-size;
-    width: 95%;
-    label {
-      user-select: none;
-      margin: 1px 0;
-      text-align: center;
-      background-color: $whiter-than-body-white;
-      border: 1px solid $text-for-beige;
-      padding: $m-size $s-size;
-      box-sizing: border-box;
-      cursor: pointer;
-      border-radius: 3px;
-      &.active,
-      &:hover {
-        border-color: $yad2-orange;
-        color: $yad2-orange;
-      }
-    }
   }
 }

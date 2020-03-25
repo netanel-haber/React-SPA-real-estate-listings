@@ -1,19 +1,19 @@
 import '#src#/styles/components/forms/add-listing/AddListing.scss';
 import React, { useState } from 'react';
 import { FormContext, useForm } from 'react-hook-form';
-import { formHebrew } from '../heb';
+import { formHebrew, addListingHebrew } from '../heb';
 import { steps } from './steps/stepIndex';
 import classnames from 'classnames';
 import onSubmit from './submit';
 import { ButtonContainer, Button } from './buttons';
-const { HEB_SEND, HEB_STEP_FOOTER = (step, steps) => `שלב ${step} מתוך ${steps}` } = formHebrew;
+const { HEB_SEND } = formHebrew;
+const { HEB_STEP_FOOTER } = addListingHebrew;
 
 
 const AddListing = () => {
     const { register, handleSubmit, errors, formState: { submitCount }, triggerValidation, clearError } = useForm()
     const submittionMethod = handleSubmit(onSubmit);
     const [activeStep, updateActiveStep] = useState(0);
-
     return (
         <FormContext {...{ errors, submitCount, register }}>
             <div>
@@ -22,7 +22,7 @@ const AddListing = () => {
                         <div className={classnames({ AddListing__active: index === activeStep }, "step")} key={index}>
                             <Step />
                             <ButtonContainer>
-                                <Button text="הקודם" dispatch={() => { activeStep !== 0 && updateActiveStep(index - 1) }} />
+                                <Button disabled={index === 0} text="הקודם" dispatch={() => { activeStep !== 0 && updateActiveStep(index - 1) }} />
                                 <Button
                                     text={((index + 1) < steps.length) ? "הבא" : HEB_SEND}
                                     dispatch={((index + 1) < steps.length)
