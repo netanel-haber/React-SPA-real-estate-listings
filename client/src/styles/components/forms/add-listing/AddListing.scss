@@ -10,16 +10,21 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    padding: $l-size;
+    padding: $m-size;
     margin: $s-size;
-    background-color: $body-white;
+    background-color: $beige;
+    color: $text-for-beige;
     width: 90%;
     border-radius: 10px;
     min-height: 250px;
+    h5 {
+      text-align: center;
+      margin: 0;
+      margin-bottom: $s-size;
+    }
   }
   .AddListing__button {
     user-select: none;
-    // display: inline-block;
   }
   h6 {
     margin: 0;
@@ -28,5 +33,28 @@
 }
 
 .Type__container {
-  user-select: none;
+  @include basic-flex(undefined, column);
+  input[type="radio"] {
+    display: none;
+  }
+  .Type__container-radio-group {
+    margin-bottom: $m-size;
+    width: 95%;
+    label {
+      user-select: none;
+      margin: 1px 0;
+      text-align: center;
+      background-color: $whiter-than-body-white;
+      border: 1px solid $text-for-beige;
+      padding: $m-size $s-size;
+      box-sizing: border-box;
+      cursor: pointer;
+      border-radius: 3px;
+      &.active,
+      &:hover {
+        border-color: $yad2-orange;
+        color: $yad2-orange;
+      }
+    }
+  }
 }

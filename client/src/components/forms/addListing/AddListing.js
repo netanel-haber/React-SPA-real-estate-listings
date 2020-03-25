@@ -39,6 +39,7 @@ const AddListing = () => {
                         </div>
                     ))}
                     <h6>{HEB_STEP_FOOTER(activeStep + 1, steps.length)}</h6>
+                    <button>submit</button>
                 </form>
             </div>
         </FormContext >
