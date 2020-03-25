@@ -31,22 +31,6 @@
   }
 }
 
-.SortBy__select-sort-container {
-  @extend .dropdown-container;
-  flex-grow: 2;
-  .actual-select {
-    background-color: white;
-  }
-  .actual-dropdown {
-    > div {
-      @include basic-flex(flex-start);
-      > div {
-        padding: $s-size/3;
-      }
-    }
-  }
-}
-
 .SortBy__limit {
   padding: $s-size/2 $s-size/4;
   width: $l-size;

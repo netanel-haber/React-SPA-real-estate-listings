@@ -18,6 +18,10 @@ button {
   cursor: pointer;
 }
 
+input {
+  font-size: 80%;
+}
+
 button:disabled {
   cursor: default;
 }

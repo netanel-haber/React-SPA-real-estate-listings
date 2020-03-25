@@ -1,16 +1,17 @@
 import React, { useState } from 'react';
-import Bullet from './../../Bullet';
+import Bullet from '../../Bullet';
+import classnames from 'classnames';
 
-const Option = ({ onClick, text, selected }) => (
+const Option = ({ onClick, text, selected, bullet }) => (
     <div onClick={onClick}>
-        <Bullet {...{ selected }}></Bullet>
+        {bullet && <Bullet {...{ selected }}></Bullet>}
         <div>{text}</div>
     </div>
 );
 
 
-const SelectSort = ({ sortByOptions, dispatchSorts }) => {
-    const options = Object.entries(sortByOptions);
+const Select = ({ dropOptions, dispatch, bullet = true, className = "" }) => {
+    const options = Object.entries(dropOptions);
     const [[text, value], changeOption] = useState(options[0]);
     const [isOpen, toggleOpen] = useState(false);
     function onSelectClick(e) {
@@ -19,11 +20,11 @@ const SelectSort = ({ sortByOptions, dispatchSorts }) => {
     }
     function onOptionClick(e, index) {
         changeOption(options[index]);
-        dispatchSorts(options[index][1])
+        dispatch(options[index][1])
         toggleOpen(false);
     };
     return (
-        <div className="SortBy__select-sort-container">
+        <div className={classnames("enhanced-dropdown", className)}>
             <div className="actual-select" onClick={onSelectClick}>
                 <div>{text}</div>
                 <span />
@@ -31,10 +32,10 @@ const SelectSort = ({ sortByOptions, dispatchSorts }) => {
             {isOpen &&
                 <div className="actual-dropdown">
                     {options.map(([text, childValue], index) =>
-                        <Option key={text} text={text} onClick={(e) => onOptionClick(e, index)} selected={childValue === value} />)}
+                        <Option bullet={bullet} key={text} text={text} onClick={(e) => onOptionClick(e, index)} selected={childValue === value} />)}
                 </div>}
         </div>
     )
 }
 
-export default SelectSort;
+export default Select;

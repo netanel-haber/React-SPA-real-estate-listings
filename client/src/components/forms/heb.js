@@ -34,10 +34,23 @@ const typeStepHebrew = {
     HEB_CHOOSE: "בחר סוג נכס:"
 }
 
+const addressStepHebrew = {
+    HEB_TITLE: "מלא\\י כתובתך",
+    HEB_TYPE_OF_PROPERTY: "סוג הנכס",
+    HEB_UPKEEP: "מצב הנכס",
+    HEB_MUNICIPALITY: "ישוב",
+    HEB_STREET: "רחוב",
+    HEB_NUMBER: "מס' בית",
+    HEB_ENTRANCE: "כניסה",
+    HEB_FLOOR: "קומה",
+    HEB_TOTAL_BUILDING_FLOORS: "סה\"כ קומות בבניין",
+    HEB_TOTAL_PROPERTY_FLOORS: "סה\"כ קומות בנכס",
+    NEIGHBORHOOD: "שכונה",
+}
 
 const addListingHebrew = {
     HEB_STEP_FOOTER: (step, steps) => `שלב ${step} מתוך ${steps}`
 }
 
 
-export { errHebrew, formHebrew, typeStepHebrew, addListingHebrew }
+export { errHebrew, formHebrew, typeStepHebrew, addListingHebrew, addressStepHebrew }

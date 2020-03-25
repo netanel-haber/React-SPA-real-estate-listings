@@ -5,6 +5,10 @@
   opacity: 0.5;
 }
 
+.pure-menu-children {
+  z-index: 500;
+}
+
 /////////////////////////////
 @mixin basic-flex($justify: space-between, $direction: row, $which-child-to-stretch: -1) {
   display: flex;
@@ -54,7 +58,6 @@
   position: relative;
   cursor: pointer;
   > div:first-of-type {
-    width: 100%;
     @include basic-flex;
     padding: $s-size/2;
     border: 1px solid #dbdbdb;
@@ -73,6 +76,22 @@
     > div {
       border-bottom: 1px solid $lightest-gray;
       padding: $s-size/2;
+    }
+  }
+}
+
+.enhanced-dropdown {
+  @extend .dropdown-container;
+  flex-grow: 2;
+  .actual-select {
+    background-color: white;
+  }
+  .actual-dropdown {
+    > div {
+      @include basic-flex(flex-start);
+      > div {
+        padding: $s-size/3;
+      }
     }
   }
 }

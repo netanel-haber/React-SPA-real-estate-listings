@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import '../../../styles/components/SortBy/SortBy.scss';
 import NumberInput from './../../NumberInput';
 import heb from './hebrew';
-import SelectSort from './SelectSort';
+import SelectSort from './Select';
 
 const { HEB_BY_DATE, HEB_SORT_BY, HEB_CHEAP_FIRST, HEB_EXPENSIVE_FIRST, HEB_FILTER,
     HEB_ONLY_WITH_PRICE, HEB_ONLY_WITH_PIC } = heb;
@@ -42,7 +42,7 @@ const SortBy = ({ dispatchSorts, dispatchFilters, dispatchLimit }) => {
         <div className="SortBy">
             <div>
                 <div>{HEB_SORT_BY}</div>
-                <SelectSort {...{ dispatchSorts, sortByOptions }} />
+                <SelectSort {...{ dispatch: dispatchSorts, dropOptions: sortByOptions }} />
             </div>
             <div>
                 <div>{HEB_FILTER}</div>

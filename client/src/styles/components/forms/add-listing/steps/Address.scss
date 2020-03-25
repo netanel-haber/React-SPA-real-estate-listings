@@ -1,0 +1,16 @@
+@import "~base/utility-classes";
+@import "~base/settings";
+@import "../../form-utilities.scss";
+
+.Address-container {
+  @include basic-flex(center, column);
+  align-items: center;
+  .Address-select {
+    display: inline-block;
+    font-size: $s-size;
+    width: 75%;
+    .actual-select {
+      box-sizing: border-box;
+    }
+  }
+}
