@@ -26,3 +26,7 @@
     color: lighten($def-color, 50%);
   }
 }
+
+.Type__container {
+  user-select: none;
+}

@@ -4,8 +4,11 @@ const Type = () => {
     const { submitCount, errors, register } = useFormContext();
     return (
         <>
-            <div>
-                Type
+            <div className="Type__container">
+                <input ref={register} type="radio" name="type" id="" />
+                <input ref={register} type="radio" name="type" id="" />
+                <input ref={register} type="radio" name="type" id="" />
+                <input ref={register} type="radio" name="type" id="" />
             </div>
         </>
     )
