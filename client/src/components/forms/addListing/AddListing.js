@@ -16,8 +16,9 @@ const AddListing = () => {
     const { handleSubmit, errors, triggerValidation, clearError } = formMethods;
     const submittionMethod = handleSubmit(onSubmit);
     const [activeStep, updateActiveStep] = useState(0);
+    const [timesNextWasClicked, incrementNextCount] = useState(0);
     return (
-        <FormContext {...formMethods}>
+        <FormContext {...{ ...formMethods, formState: { submitCount: timesNextWasClicked } }}>
             <div>
                 <form className="gen-form AddListing__form" onSubmit={submittionMethod}>
                     {steps.map(([Step, associatedFieldNames], index) => (
@@ -29,6 +30,7 @@ const AddListing = () => {
                                     text={((index + 1) < steps.length) ? "הבא" : HEB_SEND}
                                     dispatch={((index + 1) < steps.length)
                                         ? (async () => {
+                                            incrementNextCount(timesNextWasClicked + 1);
                                             await triggerValidation(associatedFieldNames);
                                             if (associatedFieldNames.every(field => !errors.hasOwnProperty(field))) {
                                                 clearError(associatedFieldNames);

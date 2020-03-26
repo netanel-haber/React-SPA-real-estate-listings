@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect, useCallback } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import Bullet from '../../Bullet';
 import classnames from 'classnames';
 
@@ -41,5 +41,8 @@ const Select = ({ dropOptions, dispatch, bullet = true, className = "", valEqual
         </div>
     )
 }
+
+
+
 
 export default Select;

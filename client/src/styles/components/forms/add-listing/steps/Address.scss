@@ -2,22 +2,26 @@
 @import "~base/settings";
 @import "../../form-utilities.scss";
 
-.Address-container {
-  @include basic-flex(center, column);
-  align-items: center;
-  .pure-control-group {
-    font-size: $s-size;
-    .Address-select {
-      margin: 5px;
-      width: 150px;
-      font-size: $s-size;
-      .actual-select {
-        box-sizing: border-box;
+.gen-form {
+  .Address-container {
+    @include basic-flex(center, column);
+    align-items: center;
+    .pure-control-group {
+      .error-message-container {
+        width: 60%;
       }
-      .actual-dropdown {
-        > div {
-          padding: 1px;
-        }
+      font-size: $s-size;
+      margin: 5px 0;
+      width: 90%;
+    }
+  }
+  .Address-select {
+    .actual-select {
+      box-sizing: border-box;
+    }
+    .actual-dropdown {
+      > div {
+        padding: 1px;
       }
     }
   }

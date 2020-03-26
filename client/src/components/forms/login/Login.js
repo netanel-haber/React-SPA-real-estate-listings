@@ -13,9 +13,10 @@ const { email, password } = validationConfig;
 
 const Login = () => {
     const history = useHistory();
-    const { register, handleSubmit, errors, formState: { submitCount } } = useForm()
+    const formMethods = useForm()
+    const { register, handleSubmit } = formMethods;
     return (
-        <FormContext {...{ submitCount, errors }}>
+        <FormContext {...formMethods}>
             <div>
                 <form className="gen-form" onSubmit={handleSubmit(data => onSubmit(data, history))}>
                     {withDivAndLabel(< input type="email" className="pure-input-rounded eng" name="email" autoComplete="email" ref={register(email(true))} />,

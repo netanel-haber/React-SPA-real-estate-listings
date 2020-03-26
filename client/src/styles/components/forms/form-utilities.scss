@@ -15,8 +15,10 @@
   }
 }
 .pure-form-aligned .pure-control-group label {
+  flex-shrink: 2;
   width: 7em;
   margin-right: 2px;
+  margin-left: 2px;
 }
 
 .asterisk {
@@ -31,10 +33,9 @@
   width: 500px;
   padding: $s-size;
   margin: $m-size;
-
   input {
-    box-sizing: content-box !important;
-    width: 20rem;
+    font-size: $s-size;
+    box-sizing: border-box !important;
     &.eng {
       direction: ltr;
     }

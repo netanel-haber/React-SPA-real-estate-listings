@@ -15,6 +15,7 @@ function fetchHandler(url, method = "GET", data, signal, optOutOfRefreshingToken
             body: JSON.stringify(data),
             signal,
             headers: {
+                "Accept-Encoding": "*",
                 "Content-Type": "application/json; charset=utf-8",
                 ...(token && { "Authorization": `Bearer ${token}` })
             }

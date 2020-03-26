@@ -14,6 +14,7 @@ const sessionTime = "15m";
 listersRouter
     .patch('/listers/refresh-token', auth, validateKeysExact, async function refreshToken(req, res) {
         const user = req.user;
+        console.log(user);
         const { _id, name, tokens } = user;
         try {
             const newToken = await genToken({ _id, name }, sessionTime);
@@ -29,7 +30,6 @@ listersRouter
     .patch('/listers/logout', auth, validateKeysExact, async function logout(req, res) {
         const user = req.user;
         const { tokens } = user;
-        console.log(user)
         try {
             user.tokens = tokens.filter(token => token !== req.token)
             await user.save();

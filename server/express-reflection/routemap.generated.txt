@@ -56,4 +56,7 @@ router
  │        
  │   
  ├── urlToLowerCase                                /^\/icons\/?(?=\/|$)/                                       
- └── serveStatic                                   /^\/icons\/?(?=\/|$)/                                       
+ ├── serveStatic                                   /^\/icons\/?(?=\/|$)/                                       
+ ├── compression                                   /^\/json\/?(?=\/|$)/                                        
+ ├── urlToLowerCase                                /^\/json\/?(?=\/|$)/                                        
+ └── serveStatic                                   /^\/json\/?(?=\/|$)/                                        

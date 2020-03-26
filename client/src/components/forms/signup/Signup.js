@@ -12,11 +12,12 @@ const { email, name, password, phoneNumber, reEnter } = validationConfig;
 
 
 const SignupForm = () => {
-    const { register, handleSubmit, errors, watch, formState: { submitCount } } = useForm()
+    const formMethods = useForm();
+    const { register, handleSubmit, watch } = formMethods;
     const curPassRef = useRef({});
     curPassRef.current = watch("password", "");
     return (
-        <FormContext {...{ submitCount, errors }}>
+        <FormContext {...formMethods}>
             <div>
                 < form className="gen-form" onSubmit={handleSubmit(onSubmit)} >
                     {withDivAndLabel(< input type="email" className="pure-input-rounded eng" name="email" autoComplete="email" ref={register(email())} />,
