@@ -28,6 +28,12 @@ const validationConfig = {
     },
     name: {
         validate: val => (isEmpty(val) || hebrewNameValidator(val)) || HEB_NAME_INVALID
+    },
+    propertyType: {
+        required: HEB_FIELD_IS_REQUIRED
+    },
+    required: {
+        required: HEB_FIELD_IS_REQUIRED
     }
 }
 

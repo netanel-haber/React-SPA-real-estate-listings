@@ -22,6 +22,10 @@ input {
   font-size: 80%;
 }
 
+*:focus {
+  outline: none;
+}
+
 button:disabled {
   cursor: default;
 }

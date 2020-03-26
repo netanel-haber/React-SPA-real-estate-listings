@@ -4,10 +4,9 @@ import { useFormContext } from 'react-hook-form';
 
 const WithErrorMessageContainer = ({ children: el }) => {
     const [visibility, toggleVisi] = useState("visible");
-    const { submitCount, errors } = useFormContext();
+    const { formState: { submitCount }, errors } = useFormContext();
 
     const error = errors?.[el.props.name]?.message;
-
     useEffect(() => {
         toggleVisi("visible");
         const timeout = setTimeout(() => { toggleVisi("hidden") }, 2000);

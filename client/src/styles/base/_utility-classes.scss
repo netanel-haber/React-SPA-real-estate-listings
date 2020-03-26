@@ -54,11 +54,14 @@
 }
 
 /////////////////////////////
-.dropdown-container {
+
+.enhanced-dropdown {
   position: relative;
   cursor: pointer;
-  > div:first-of-type {
+  .actual-select {
     @include basic-flex;
+    background-color: white;
+    width: 100%;
     padding: $s-size/2;
     border: 1px solid #dbdbdb;
     span {
@@ -66,29 +69,22 @@
       margin: 0 $s-size 0 0;
     }
   }
-  > div + div {
-    position: absolute;
+  .actual-dropdown {
     width: 100%;
+    box-sizing: border-box;
+    position: absolute;
     overflow: hidden;
     box-shadow: rgba(0, 0, 0, 0.3) 0px 2px 4px 0px;
     background-color: $whiter-than-body-white;
     z-index: 3;
+    max-height: 50vh;
+    overflow-y: auto;
+    direction: ltr;
     > div {
+      direction: rtl;
+      @include basic-flex(flex-start);
       border-bottom: 1px solid $lightest-gray;
       padding: $s-size/2;
-    }
-  }
-}
-
-.enhanced-dropdown {
-  @extend .dropdown-container;
-  flex-grow: 2;
-  .actual-select {
-    background-color: white;
-  }
-  .actual-dropdown {
-    > div {
-      @include basic-flex(flex-start);
       > div {
         padding: $s-size/3;
       }
@@ -169,7 +165,9 @@
   border-radius: 5px;
   overflow: hidden;
   width: 60%;
-  margin: 0 auto;
+  margin: $s-size auto;
+  margin-bottom: 0;
+  height: fit-content;
   .link {
     &:hover {
       background-color: darken($yad2-orange, 5%);

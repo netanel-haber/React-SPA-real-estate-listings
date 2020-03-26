@@ -10,12 +10,14 @@ const { HEB_SEND } = formHebrew;
 const { HEB_STEP_FOOTER } = addListingHebrew;
 
 
+
 const AddListing = () => {
-    const { register, handleSubmit, errors, formState: { submitCount }, triggerValidation, clearError } = useForm()
+    const formMethods = useForm();
+    const { handleSubmit, errors, triggerValidation, clearError } = formMethods;
     const submittionMethod = handleSubmit(onSubmit);
     const [activeStep, updateActiveStep] = useState(0);
     return (
-        <FormContext {...{ errors, submitCount, register }}>
+        <FormContext {...formMethods}>
             <div>
                 <form className="gen-form AddListing__form" onSubmit={submittionMethod}>
                     {steps.map(([Step, associatedFieldNames], index) => (

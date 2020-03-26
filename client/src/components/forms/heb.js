@@ -31,7 +31,7 @@ const typeStepHebrew = {
     HEB_RENT: "השכרה",
     HEB_ROOMMATES: "דירות שותפים",
     HEB_COMMERCIAL: "נדל\"ן מסחרי",
-    HEB_CHOOSE: "בחר סוג נכס:"
+    HEB_CHOOSE: "בחר סוג מודעה:"
 }
 
 const addressStepHebrew = {
@@ -46,6 +46,8 @@ const addressStepHebrew = {
     HEB_TOTAL_BUILDING_FLOORS: "סה\"כ קומות בבניין",
     HEB_TOTAL_PROPERTY_FLOORS: "סה\"כ קומות בנכס",
     NEIGHBORHOOD: "שכונה",
+    HEB_CHOOSE_PROPERTY_TYPE: "בחר סוג נכס",
+    HEB_CHOOSE_UPKEEP: "בחר מצב נכס"
 }
 
 const addListingHebrew = {

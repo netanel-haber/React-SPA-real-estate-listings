@@ -5,12 +5,20 @@
 .Address-container {
   @include basic-flex(center, column);
   align-items: center;
-  .Address-select {
-    display: inline-block;
+  .pure-control-group {
     font-size: $s-size;
-    width: 75%;
-    .actual-select {
-      box-sizing: border-box;
+    .Address-select {
+      margin: 5px;
+      width: 150px;
+      font-size: $s-size;
+      .actual-select {
+        box-sizing: border-box;
+      }
+      .actual-dropdown {
+        > div {
+          padding: 1px;
+        }
+      }
     }
   }
 }
