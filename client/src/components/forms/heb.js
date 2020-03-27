@@ -46,9 +46,10 @@ const addressStepHebrew = {
     HEB_TOTAL_BUILDING_FLOORS: "סה\"כ קומות בבניין",
     HEB_TOTAL_PROPERTY_FLOORS: "סה\"כ קומות בנכס",
     NEIGHBORHOOD: "שכונה",
-    HEB_CHOOSE_PROPERTY_TYPE: "בחר סוג נכס",
-    HEB_CHOOSE_UPKEEP: "בחר מצב נכס",
-    HEB_SEARCH_CITY: "חפש את מקום מגוריך"
+    HEB_CHOOSE_PROPERTY_TYPE: "סוג נכס",
+    HEB_CHOOSE_UPKEEP: "מצב נכס",
+    HEB_SEARCH_CITY: "חפש את מקום מגוריך",
+    HEB_SEARCH_STREET:"חפש את רחובך"
 }
 
 const addListingHebrew = {

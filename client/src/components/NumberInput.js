@@ -1,21 +1,17 @@
 import React from 'react';
 
-const NumberInput = ({ max, min, className, callback = (() => { }) }) => (
-    <form onSubmit={function (e) {
-        e.preventDefault();
-        const input = e.target.elements.input;
-        callback(Number(input.value));
-        input.blur();
-    }}>
-        <input
-            className={className}
-            type="number"
-            min={min}
-            max={max}
-            name="input"
-            autoComplete="off"
-        />
-    </form>
+const NumberInput = ({ max, min, className, callback = (() => { }) }, disabled = false) => (
+    <input
+        {...{ max, min, className, disabled }}
+        type="number"
+        name="input"
+        onChange={(e) => {
+            e.preventDefault();
+            callback(Number(e.target.value));
+            e.target.blur();
+        }}
+        autoComplete="off"
+    />
 );
 
 

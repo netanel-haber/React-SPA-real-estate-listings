@@ -26,5 +26,8 @@
         "password"
     ],
     "/listers/logout": [],
-    "/listers/refresh-token": []
+    "/listers/refresh-token": [],
+    "/cities/streets": [
+        "city"
+    ]
 }

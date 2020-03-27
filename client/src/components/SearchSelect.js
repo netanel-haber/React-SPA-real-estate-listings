@@ -1,14 +1,14 @@
 import React, { useState } from 'react';
 import classnames from 'classnames';
 
-const lengthBreakpoint = 2;
+const lengthBreakpoint = 1;
 
-const SearchSelect = ({ optionsRef, dispatch, className = "", placeholder }) => {
+const SearchSelect = ({ optionsRef, dispatch, className = "", placeholder, disabled = false }) => {
     const [searchValue, updateSearch] = useState("");
     const [isOpen, toggleOpen] = useState(false);
     return (
         <div className={classnames("enhanced-dropdown", className)}>
-            <input value={searchValue} className="actual-select pure-rounded-input" placeholder={placeholder} onClick={() => { !isOpen && toggleOpen(true) }} onChange={(e) => {
+            <input disabled={disabled} value={searchValue} className="actual-select pure-rounded-input" placeholder={placeholder} onClick={() => { !isOpen && toggleOpen(true) }} onChange={(e) => {
                 const value = e.target.value;
                 updateSearch(value);
                 if (value.length < lengthBreakpoint && (isOpen))

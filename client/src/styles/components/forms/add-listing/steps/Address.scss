@@ -17,4 +17,13 @@
       }
     }
   }
+  .Address-floors {
+    @include basic-flex(flex-start);
+    .pure-control-group{
+      width: fit-content;
+      .error-message-container{
+        margin: 0;
+      }
+    }  
+  }
 }

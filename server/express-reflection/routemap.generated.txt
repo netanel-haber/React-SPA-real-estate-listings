@@ -13,6 +13,7 @@ router
  │    │         └── getPicUrls                     /                                                           POST
  │    │        
  │    │   
+ │    ├── compression                              *                                                           
  │    ├── router                                   *                                                           
  │    │    ├── translator                          *                                                           
  │    │    ├── bound dispatch                      /listings/count/:type                                       POST
@@ -27,36 +28,43 @@ router
  │    │         └── getListings                    /                                                           POST
  │    │        
  │    │   
+ │    ├── router                                   *                                                           
+ │    │    ├── bound dispatch                      /listers/refresh-token                                      PATCH
+ │    │    │    ├── auth                           /                                                           PATCH
+ │    │    │    ├── validateKeysExact              /                                                           PATCH
+ │    │    │    └── refreshToken                   /                                                           PATCH
+ │    │    │   
+ │    │    ├── bound dispatch                      /listers/logout                                             PATCH
+ │    │    │    ├── auth                           /                                                           PATCH
+ │    │    │    ├── validateKeysExact              /                                                           PATCH
+ │    │    │    └── logout                         /                                                           PATCH
+ │    │    │   
+ │    │    ├── bound dispatch                      /listers/logged-in                                          GET
+ │    │    │    ├── auth                           /                                                           GET
+ │    │    │    └── isLoggedIn                     /                                                           GET
+ │    │    │   
+ │    │    ├── bound dispatch                      /listers/:id                                                GET
+ │    │    │    └── getIndividualLister            /                                                           GET
+ │    │    │   
+ │    │    ├── bound dispatch                      /listers/login                                              POST
+ │    │    │    ├── validateKeysExact              /                                                           POST
+ │    │    │    └── login                          /                                                           POST
+ │    │    │   
+ │    │    └── bound dispatch                      /listers/signup                                             POST
+ │    │         ├── validateKeys                   /                                                           POST
+ │    │         └── signup                         /                                                           POST
+ │    │        
+ │    │   
+ │    ├── compression                              *                                                           
  │    └── router                                   *                                                           
- │         ├── bound dispatch                      /listers/refresh-token                                      PATCH
- │         │    ├── auth                           /                                                           PATCH
- │         │    ├── validateKeysExact              /                                                           PATCH
- │         │    └── refreshToken                   /                                                           PATCH
- │         │   
- │         ├── bound dispatch                      /listers/logout                                             PATCH
- │         │    ├── auth                           /                                                           PATCH
- │         │    ├── validateKeysExact              /                                                           PATCH
- │         │    └── logout                         /                                                           PATCH
- │         │   
- │         ├── bound dispatch                      /listers/logged-in                                          GET
- │         │    ├── auth                           /                                                           GET
- │         │    └── isLoggedIn                     /                                                           GET
- │         │   
- │         ├── bound dispatch                      /listers/:id                                                GET
- │         │    └── getIndividualLister            /                                                           GET
- │         │   
- │         ├── bound dispatch                      /listers/login                                              POST
+ │         ├── bound dispatch                      /cities/streets                                             POST
  │         │    ├── validateKeysExact              /                                                           POST
- │         │    └── login                          /                                                           POST
+ │         │    └── <anonymous>                    /                                                           POST
  │         │   
- │         └── bound dispatch                      /listers/signup                                             POST
- │              ├── validateKeys                   /                                                           POST
- │              └── signup                         /                                                           POST
+ │         └── bound dispatch                      /cities                                                     GET
+ │              └── <anonymous>                    /                                                           GET
  │             
  │        
  │   
  ├── urlToLowerCase                                /^\/icons\/?(?=\/|$)/                                       
- ├── serveStatic                                   /^\/icons\/?(?=\/|$)/                                       
- ├── compression                                   /^\/json\/?(?=\/|$)/                                        
- ├── urlToLowerCase                                /^\/json\/?(?=\/|$)/                                        
- └── serveStatic                                   /^\/json\/?(?=\/|$)/                                        
+ └── serveStatic                                   /^\/icons\/?(?=\/|$)/                                       
