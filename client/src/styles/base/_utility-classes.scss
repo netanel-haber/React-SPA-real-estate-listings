@@ -167,9 +167,10 @@
   border-radius: 5px;
   overflow: hidden;
   width: 60%;
-  margin: $s-size auto;
+  margin: $m-size auto;
   margin-bottom: 0;
   height: fit-content;
+  max-width: 100px;
   .link {
     &:hover {
       background-color: darken($yad2-orange, 5%);

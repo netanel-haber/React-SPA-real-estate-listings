@@ -6,14 +6,6 @@
   .Address-container {
     @include basic-flex(center, column);
     align-items: center;
-    .pure-control-group {
-      .error-message-container {
-        width: 60%;
-      }
-      font-size: $s-size;
-      margin: 5px 0;
-      width: 90%;
-    }
   }
   .Address-select {
     .actual-select {

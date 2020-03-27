@@ -23,6 +23,7 @@
 
 .RedirectPrompt__link-group {
   @extend .link-group;
+  max-width: 150px;
   .RedirectPrompt__link {
     @extend .link;
   }

@@ -41,6 +41,21 @@ $xl: 1280;
     .body__content {
       width: 85vw;
     }
+    .link-group {
+      max-width: 200px;
+    }
+    .RedirectPrompt__link-group {
+      max-width: unset;
+    }
+    .Type__container {
+      .Type__container-radio-group {
+        display: flex;
+        flex-wrap: wrap;
+        label {
+          flex-basis: 50%;
+        }
+      }
+    }
   }
   html {
     font-size: 75%;

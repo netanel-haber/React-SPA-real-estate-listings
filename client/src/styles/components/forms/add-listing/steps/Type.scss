@@ -6,14 +6,16 @@
   @include basic-flex(undefined, column);
   .Type__container-radio-group {
     margin-bottom: $m-size;
-    width: 95%;
+    width: 60%;
+    max-width: 250px;
     label {
+      display: block;
       user-select: none;
       margin: 1px 0;
       text-align: center;
       background-color: $whiter-than-body-white;
       border: 1px solid $text-for-beige;
-      padding: $m-size $s-size;
+      padding: $s-size 3px;
       box-sizing: border-box;
       cursor: pointer;
       border-radius: 3px;

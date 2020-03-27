@@ -27,7 +27,7 @@ const Type = () => {
                     value={values[index]} />
             ))}
             {/* visible labels */}
-            <div className="Type__container-radio-group pure-g">
+            <div className="Type__container-radio-group">
                 {texts.map((text, index) => (
                     <RadioLabelWithDiv
                         active={selectedTypeIndex === index} key={index}
