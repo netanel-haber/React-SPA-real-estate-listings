@@ -1,6 +1,7 @@
 const { nadlan } = require('./connection');
 
 module.exports = {
+    Streets: nadlan.model('Street', require('./schemas/streets/streetsSchema')),
     Lister: nadlan.model('Lister', require('./schemas/users/Lister')),
     MitigatingCompany: nadlan.model('MitigatingCompany', require('./schemas/users/MitigatingCompany')),
     ForsaleListing: nadlan.model('ForsaleListing', require('./schemas/listings/ForsaleListing')),
