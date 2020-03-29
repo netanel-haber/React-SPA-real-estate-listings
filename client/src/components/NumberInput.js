@@ -1,18 +1,16 @@
 import React from 'react';
 
-const NumberInput = ({ max, min, className, callback = (() => { }), disabled = false}) => (
-    <input
-        {...{ max, min, className, disabled }}
-        type="number"
-        name="input"
-        onChange={(e) => {
-            e.preventDefault();
-            callback(Number(e.target.value));
-            e.target.blur();
-        }}
-        autoComplete="off"
-    />
-);
-
-
-export default NumberInput;
+export default React.forwardRef(function NumberInput({ max, min, name, className, callback = (() => { }), disabled = false }, ref) {
+    return (
+        <input
+            {...{ max, min, className, disabled, ref, name }}
+            type="number"
+            onChange={(e) => {
+                e.preventDefault();
+                callback(Number(e.target.value));
+                e.target.blur();
+            }}
+            autoComplete="off"
+        />
+    )
+})

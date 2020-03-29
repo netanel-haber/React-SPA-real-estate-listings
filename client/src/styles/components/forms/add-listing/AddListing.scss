@@ -7,28 +7,30 @@
     display: none;
   }
   .pure-control-group {
-    @include basic-flex(flex-start);
-    
     .error-message-container {
       width: 60%;
     }
     font-size: $s-size;
     margin: 5px 0;
-    width: 90%;
   }
   .AddListing__active {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    padding: $m-size;
+    justify-content: space-between; 
+    align-content: center;
+    .fields{
+      margin: 0 auto;
+      background-color: $body-white;    
+      padding: $m-size;
+      border-radius: 10px;
+      width: 80%;
+    }
     margin: $s-size;
-    width: 90%;
-    border-radius: 10px;
     min-height: 250px;
     h5 {
       text-align: center;
       margin: 0;
-      margin-bottom: $l-size;
+      margin-bottom: $m-size;
     }
   }
   .AddListing__button {

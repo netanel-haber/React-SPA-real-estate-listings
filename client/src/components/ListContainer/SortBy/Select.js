@@ -1,18 +1,19 @@
 import React, { useState, useRef, useEffect } from 'react';
 import Bullet from '../../Bullet';
 import classnames from 'classnames';
+import { useFormContext } from 'react-hook-form';
 
-const Option = ({ onClick, text, selected, bullet }) => (
+const Option = ({ onClick, text, selected, bullet = false }) => (
     <div onClick={onClick}>
         {bullet && <Bullet {...{ selected }}></Bullet>}
         <div>{text}</div>
     </div>
 );
 
-
-const Select = ({ dropOptions, dispatch, bullet = true, className = "", valEqualsText = false, defOption }) => {
-    const options = valEqualsText ? dropOptions.map(opt => [opt, opt]) : Object.entries(dropOptions);
-    const [[text, value], changeSelected] = useState(defOption || options[0]);
+const noop = function () { }
+const Select = ({ dropOptions, dispatch = noop, bullet = true, className = "" }) => {
+    const options = Object.entries(dropOptions);
+    const [[text, value], changeSelected] = useState(options[0]);
     const [isOpen, toggleOpen] = useState(false);
     const dropdownRef = useRef(null);
     useEffect(() => {
@@ -31,7 +32,7 @@ const Select = ({ dropOptions, dispatch, bullet = true, className = "", valEqual
     return (
         <div className={classnames("enhanced-dropdown", className)}>
             <div className="actual-select" onMouseDown={onSelectClick}>
-                <div>{text}</div>
+                {text}
                 <span />
             </div>
             <div ref={dropdownRef} style={{ display: isOpen ? "block" : "none" }} className="actual-dropdown" tabIndex="0" onBlur={() => { toggleOpen(false) }}>
@@ -42,7 +43,36 @@ const Select = ({ dropOptions, dispatch, bullet = true, className = "", valEqual
     )
 }
 
+const FormSelect = React.forwardRef(function FormSelect({ options, className = "", name }, ref) {
+    const { setValue } = useFormContext();
+    const [isOpen, toggleOpen] = useState(false);
+    const dropdownRef = useRef(null);
+    useEffect(() => {
+        if (dropdownRef.current && isOpen)
+            dropdownRef.current.focus();
+    });
+    function onSelectClick(e) {
+        e.preventDefault();
+        toggleOpen(!isOpen)
+    }
+    return (
+        <div className={classnames("enhanced-dropdown", className)}>
+            <div className="actual-select" onMouseDown={onSelectClick}>
+                <input className="disguised__input" readOnly ref={ref} name={name}></input>
+                <span />
+            </div>
+            <div ref={dropdownRef} style={{ display: isOpen ? "block" : "none" }} className="actual-dropdown" tabIndex="0" onBlur={() => { toggleOpen(false) }}>
+                {options.map((opt,index) =>
+                    <Option key={index} text={opt} onClick={() => {
+                        setValue(name, opt);
+                        toggleOpen(false)
+                    }} />)}
+            </div>
+        </div>
+    )
+})
 
+export { FormSelect }
 
 
 export default Select;

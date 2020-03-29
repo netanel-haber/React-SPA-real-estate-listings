@@ -4,8 +4,9 @@
 
 .gen-form {
   .Address-container {
-    @include basic-flex(center, column);
-    align-items: center;
+    .pure-control-group{
+      width: 35rem;
+    }
   }
   .Address-select {
     .actual-select {
@@ -19,11 +20,15 @@
   }
   .Address-floors {
     @include basic-flex(flex-start);
-    .pure-control-group{
+    flex-wrap: wrap;
+    .pure-control-group {
       width: fit-content;
-      .error-message-container{
+      @include basic-flex;
+      margin-left: 20px;
+      .error-message-container {
         margin: 0;
+        width: fit-content;
       }
-    }  
+    }
   }
 }

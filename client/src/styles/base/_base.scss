@@ -47,13 +47,11 @@ $xl: 1280;
     .RedirectPrompt__link-group {
       max-width: unset;
     }
-    .Type__container {
-      .Type__container-radio-group {
-        display: flex;
-        flex-wrap: wrap;
-        label {
-          flex-basis: 50%;
-        }
+    .Type__container-radio-group {
+      display: flex;
+      flex-wrap: wrap;
+      label {
+        flex-basis: 50%;
       }
     }
   }

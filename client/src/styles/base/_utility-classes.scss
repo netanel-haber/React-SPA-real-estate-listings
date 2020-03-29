@@ -183,3 +183,15 @@
     background-color: $yad2-orange;
   }
 }
+
+////////////////////////
+
+.disguised__input {
+  border: none !important;
+  background-color: inherit !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  color: $def-color !important;
+  cursor: inherit;
+}

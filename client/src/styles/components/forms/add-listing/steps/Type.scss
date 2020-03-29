@@ -2,28 +2,23 @@
 @import "~base/utility-classes";
 @import "../../form-utilities.scss";
 
-.Type__container {
-  @include basic-flex(undefined, column);
-  .Type__container-radio-group {
-    margin-bottom: $m-size;
-    width: 60%;
-    max-width: 250px;
-    label {
-      display: block;
-      user-select: none;
-      margin: 1px 0;
-      text-align: center;
-      background-color: $whiter-than-body-white;
-      border: 1px solid $text-for-beige;
-      padding: $s-size 3px;
-      box-sizing: border-box;
-      cursor: pointer;
-      border-radius: 3px;
-      &.active,
-      &:hover {
-        border-color: $yad2-orange;
-        color: $yad2-orange;
-      }
+.Type__container-radio-group {
+  max-width: 350px;
+  label {
+    display: block;
+    user-select: none;
+    margin: 1px 0;
+    padding: $s-size;
+    text-align: center;
+    background-color: $whiter-than-body-white;
+    border: 1px solid $text-for-beige;
+    box-sizing: border-box;
+    cursor: pointer;
+    border-radius: 3px;
+    &.active,
+    &:hover {
+      border-color: $yad2-orange;
+      color: $yad2-orange;
     }
   }
 }

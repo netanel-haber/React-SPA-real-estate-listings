@@ -15,8 +15,7 @@ const Type = () => {
     const { register, reset } = useFormContext();
     const [selectedTypeIndex, updateSelected] = useState(values.findIndex(val => val === defaultValue));
     return (
-        <div className="Type__container">
-            <h5>{HEB_CHOOSE}</h5>
+        <div>
             {/* invisible radios */}
             {ids.map((id, index) => (
                 <input
@@ -26,14 +25,17 @@ const Type = () => {
                     name={fieldNames[0]} id={id}
                     value={values[index]} />
             ))}
-            {/* visible labels */}
-            <div className="Type__container-radio-group">
-                {texts.map((text, index) => (
-                    <RadioLabelWithDiv
-                        active={selectedTypeIndex === index} key={index}
-                        text={text} htmlFor={ids[index]}
-                    />
-                ))}
+            <h5>{HEB_CHOOSE}</h5>
+            <div className="fields">
+                {/* visible labels */}
+                <div className="Type__container-radio-group">
+                    {texts.map((text, index) => (
+                        <RadioLabelWithDiv
+                            active={selectedTypeIndex === index} key={index}
+                            text={text} htmlFor={ids[index]}
+                        />
+                    ))}
+                </div>
             </div>
         </div>
     )
