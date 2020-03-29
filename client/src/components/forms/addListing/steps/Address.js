@@ -40,8 +40,8 @@ const Address = () => {
                 </WithDivsAndLabels>
                 <div className="pure-control-group Address-floors">
                     <WithDivsAndLabels texts={[HEB_FLOOR, HEB_TOTAL_PROPERTY_FLOORS]}>
-                        <NumberInput ref={register(validationConfig.required)} disabled={street === ""} max={50} min={0} name={fieldNames[4]} callback={(val) => { setValue(fieldNames[4], val) }} />
-                        <NumberInput ref={register(validationConfig.required)} disabled={street === ""} max={50} min={1} name={fieldNames[5]} callback={(val) => { setValue(fieldNames[5], val) }} />
+                        <NumberInput ref={register(validationConfig.required)} disabled={street === ""} max={50} min={0} name={fieldNames[4]} />
+                        <NumberInput ref={register(validationConfig.required)} disabled={street === ""} max={50} min={1} name={fieldNames[5]} />
                     </WithDivsAndLabels>
                 </div>
             </div>

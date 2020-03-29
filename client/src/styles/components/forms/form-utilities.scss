@@ -16,10 +16,10 @@
 }
 
 .pure-form-aligned .pure-control-group label {
+  font-size: $s-size*1.2;
   flex-shrink: 2;
-  width: 7rem;
+  width: 9rem;
   margin-right: 2px;
-  margin-left: 2px;
 }
 .asterisk {
   content: "* ";
@@ -30,7 +30,7 @@
   @extend .pure-form;
   @extend .pure-form-aligned;
   @include basic-flex(center, column);
-  width: 500px;
+  width: 90%;
   padding: $s-size;
   margin: $m-size;
   input {

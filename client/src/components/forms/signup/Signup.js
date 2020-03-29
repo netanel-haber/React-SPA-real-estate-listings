@@ -1,7 +1,7 @@
 import '#src#/styles/components/forms/form-utilities.scss';
 import React, { useRef } from 'react';
 import { FormContext, useForm } from 'react-hook-form';
-import withDivAndLabel from '../withDivAndLabel';
+import{ WithDivsAndLabels } from '../withDivAndLabel';
 import { formHebrew } from '../heb';
 import onSubmit from './submit';
 import { validationConfig } from '../utilities';
@@ -20,18 +20,14 @@ const SignupForm = () => {
         <FormContext {...formMethods}>
             <div>
                 < form className="gen-form" onSubmit={handleSubmit(onSubmit)} >
-                    {withDivAndLabel(< input type="email" className="pure-input-rounded eng" name="email" autoComplete="email" ref={register(email())} />,
-                        HEB_EMAIL, true)}
-                    {withDivAndLabel(< input type="password" className="pure-input-rounded eng" autoComplete="new-password" name="password" ref={register(password())} />,
-                        HEB_PASSWORD, true)}
-                    {withDivAndLabel(< input type="password" className="pure-input-rounded eng" autoComplete="off" name="reEnterPassword" ref={register(reEnter(curPassRef))} />,
-                        HEB_REENTER_PASSWORD, true)}
-                    {withDivAndLabel(< input className="pure-input-rounded eng" name="phoneNumber" ref={register(phoneNumber)} />,
-                        HEB_PHONE_NUMBER)}
-                    {withDivAndLabel(< input className="pure-input-rounded" name="name" ref={register(name)} />,
-                        HEB_NAME)}
-                    {withDivAndLabel(< input className="pure-input-rounded" name="lastName" ref={register(name)} />,
-                        HEB_LAST_NAME)}
+                    <WithDivsAndLabels requiredIndices={[0, 1, 2]} texts={[HEB_EMAIL, HEB_PASSWORD, HEB_REENTER_PASSWORD, HEB_PHONE_NUMBER, HEB_NAME, HEB_LAST_NAME]}>
+                        < input name="email" type="email" className="pure-input-rounded eng" autoComplete="email" ref={register(email())} />
+                        < input name="password" type="password" className="pure-input-rounded eng" autoComplete="new-password"  ref={register(password())} />
+                        < input name="reEnterPassword" type="password" className="pure-input-rounded eng" autoComplete="off"  ref={register(reEnter(curPassRef))} />
+                        < input name="phoneNumber" className="pure-input-rounded eng"  ref={register(phoneNumber)} />
+                        < input name="name" className="pure-input-rounded"  ref={register(name)} />
+                        < input name="lastName" className="pure-input-rounded"  ref={register(name)} />
+                    </WithDivsAndLabels>
                     <div className="submit-container pure-control-group">
                         <button className="pure-button pure-button-primary" type="submit" ref={register}>{HEB_SEND}</button>
                     </div>

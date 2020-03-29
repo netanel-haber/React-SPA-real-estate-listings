@@ -19,8 +19,8 @@
     }
   }
   .Address-floors {
-    @include basic-flex(flex-start);
-    flex-wrap: wrap;
+    // @include basic-flex(flex-start);
+    // flex-wrap: wrap;
     .pure-control-group {
       width: fit-content;
       @include basic-flex;

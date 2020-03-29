@@ -1,5 +1,6 @@
 @import "../fonts/rubik.scss";
 @import "./settings.scss";
+@import "./utility-classes.scss";
 
 html {
   font-size: 55%;
@@ -79,6 +80,10 @@ $xl: 1280;
     }
     .ItemLists__lists {
       padding: 0 $l-size;
+    }
+    .Address-floors {
+    @include basic-flex(flex-start);
+    flex-wrap: wrap;
     }
   }
 }
