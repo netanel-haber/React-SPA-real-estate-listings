@@ -1,6 +1,6 @@
 import React from 'react';
 
-const NumberInput = ({ max, min, className, callback = (() => { }) }, disabled = false) => (
+const NumberInput = ({ max, min, className, callback = (() => { }), disabled = false}) => (
     <input
         {...{ max, min, className, disabled }}
         type="number"

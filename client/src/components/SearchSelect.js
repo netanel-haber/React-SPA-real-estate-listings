@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import classnames from 'classnames';
+import '#src#/styles/components/SearchSelect.scss';
 
 const lengthBreakpoint = 1;
 
@@ -17,17 +18,13 @@ const SearchSelect = ({ optionsRef, dispatch, className = "", placeholder, disab
                     toggleOpen(true);
             }} />
             <div style={{ display: isOpen ? "block" : "none" }}
-                className="actual-dropdown"
+                className="actual-dropdown SearchSelect-dropdown"
                 tabIndex="0">
                 {(searchValue.length >= lengthBreakpoint) && optionsRef.current.filter(opt => opt.includes(searchValue)).map((city, index) =>
                     <div
                         key={index}
                         onClick={() => { dispatch(city); updateSearch(city); toggleOpen(false) }}>
-                        {city.split(new RegExp(`(${searchValue})`, "g")).map((sub, index) =>
-                            <span style={{ whiteSpace: "pre" }} key={index}>
-                                {(sub === searchValue) ? <strong>{sub}</strong> : sub}
-                            </span>
-                        )}
+                        {city.split(new RegExp(`(${searchValue})`, "g")).map((sub, index) => (sub === searchValue) ? <strong>{sub}</strong> : sub)}
                     </div>
                 )}
             </div>
