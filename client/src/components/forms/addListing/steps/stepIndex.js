@@ -8,7 +8,7 @@ import { Type, fieldNames as typeFieldNames } from './Type';
 
 const steps = [
     [Type, typeFieldNames],
-    [Address, addFieldNames],
+    // [Address, addFieldNames],
     [PropertyDetails, []],
     [ListingDetails, []],
     [AddPics, []],

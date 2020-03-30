@@ -4,8 +4,8 @@ const errHebrew = {
     HEB_PASS_DOESNT_MATCH: "הסיסמאות שהזנת אינן תואמות.",
     HEB_PHONE_ISNT_VALID: "מספר הטלפון איננו תקין!",
     HEB_NAME_INVALID: "השם שהזנת איננו תקין",
-    HEB_INVALID_CITY:"מקום המגורים איננו מוכר.",
-    HEB_INVALID_STREET:"הרחוב איננו מוכר במקום המגורים שבחרת",
+    HEB_INVALID_CITY: "מקום המגורים איננו מוכר.",
+    HEB_INVALID_STREET: "הרחוב איננו מוכר במקום המגורים שבחרת",
     passwordErrMessages: {
         min: "להיות לפחות באורך 8 תווים",
         uppercase: "להכיל אות אחת גדולה לפחות",
@@ -56,9 +56,17 @@ const addressStepHebrew = {
     HEB_SEARCH_STREET: "חפש את רחובך"
 }
 
+const propertyDetailsStepHebrew = {
+    HEB_TITLE:"פרטי הנכס",
+    HEB_NUM_BALCONIES_LABEL: "מרפסות",
+    HEB_NUM_PARKING_SPOTS: "חניות"
+}
+
+
+
 const addListingHebrew = {
     HEB_STEP_FOOTER: (step, steps) => `שלב ${step} מתוך ${steps}`
 }
 
 
-export { errHebrew, formHebrew, typeStepHebrew, addListingHebrew, addressStepHebrew }
+export { errHebrew, formHebrew, typeStepHebrew, addListingHebrew, addressStepHebrew, propertyDetailsStepHebrew }

@@ -1,0 +1,39 @@
+@import "~base/settings";
+@import "~base/utility-classes";
+
+.ThreewayToggle {
+    @include basic-flex(space-between, column);
+    margin: 7px;
+    color: $text-for-beige;
+    font-size: $s-size;
+    > div:first-of-type {
+        @include basic-flex(flex-end);
+        img{
+            width: 18px;
+            margin-left: 5px;
+        }
+    }
+    > div:nth-of-type(2) {
+        opacity: 0.25;
+        display: inline-block;
+        border-radius: 15px;
+        overflow: hidden;
+        border: 1px solid rgba(77, 77, 77, 0.2);
+        .options {
+            color: #ff1e56;
+            border: none;
+            background-color: #faf4ff;
+            padding: 3px 10px;
+            cursor: pointer;
+            &:hover,
+            &.active {
+                background-color: #cff1ef;
+            }
+        }
+        &.touched,
+        &:hover {
+            opacity: 1;
+            border-color: $button-green;
+        }
+    }
+}

@@ -2,16 +2,8 @@
 @import "~base/settings";
 @import "../../form-utilities.scss";
 
-.gen-form {
-  .Address-select {
-    .actual-select {
-      box-sizing: border-box;
-    }
-    .actual-dropdown {
-      > div {
-        padding: 1px;
-        font-size: $s-size;
-      }
-    }
+.Address-select {
+  .actual-select {
+    box-sizing: border-box;
   }
 }

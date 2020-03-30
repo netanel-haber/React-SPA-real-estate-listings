@@ -50,5 +50,40 @@ const validationConfig = {
 const mockNeighborhoods = ["אפקה", "גלילות, צוקי אביב ואזור שדה דב", "כוכב הצפון", "כלל רובע 1", "נוה אביבים", "נופי ים", "רמת אביב ג", "רמת-אביב", "תכנית ל", "גני צהלה ורמות צהלה", "הדר-יוסף", "המשתלה", "כלל רובע 2", "נאות אפקה א", "נאות אפקה ב", "נוה דן", "נוה שרת", "צהלה", "רביבים", "רמת החייל", "תל ברוך, תל ברוך צפון ומעוז אביב", "הצפון הישן - החלק הדרומי", "הצפון הישן - החלק הצפוני", "בבלי", "הצפון החדש - סביבת ככר המדינה", "הצפון החדש-החלק הדרומי", "כרם התימנים", "לב תל-אביב", "נוה צדק", "שם הקובץ", "גבעת הרצל, אזור המלאכה יפו", "יפו ג ונוה גולן", "יפו ד (גבעת התמרים)", "יפו העתיקה, נמל יפו", "כלל הרובע 7", "מכללת יפו-תא ודקר", "עגמי וגבעת עליה", "צהלון ושיכוני חסכון", "צפון יפו", "תל-כביר, נוה עופר,יפו ב", "נוה שאנן", "פלורנטין", "קרית שלום ופארק החורשות", "שפירא", "אורות", "ביצרון ורמת ישראל", "התקווה", "יד אליהו", "כפיר", "לבנה וידידיה", "נוה אליעזר וכפר שלם מזרח", "נוה ברבור , כפר שלם מערב", "נוה חן", "נחלת יצחק", "ניר אביב", "עזרא והארגזים", "רמת הטייסים", "תל-חיים"];
 
 
-export { validationConfig, mockNeighborhoods };
+const booleanAttributes = {
+    general: ["AC", "grates", "elevator", "handicappedAccesible", "mamad", "storage", "furniture"],
+    rent: ["taxesIncluded", "longTerm", "forPartners", "petsAllowed"],
+    commercial: ["divided", "meetingRoom", "bathrooms"],
+    roommates: ["taxesIncluded", "keepsKashrut", "petsAllowed"],
+    forsale: []
+}
+
+const attributes = {
+    general: [
+        ["sqMeters", "price"],
+        ["desc", "entryDate"],
+        ["furnitureDesc"]
+    ],
+    forsale: [
+        [],
+        ["sqMGarden", "sqMBuilt"],
+        []
+    ],
+    rent: [
+        [],
+        ["homeOwnerAssociationMonthly", "numChecks", "biMonthlyArnona"],
+    ],
+    commercial: [
+        [],
+        ["rentedUntil"],
+    ],
+    roommates: [
+        [],
+        ["numChecks"],
+    ]
+}
+
+
+
+export { validationConfig, mockNeighborhoods, booleanAttributes };
 

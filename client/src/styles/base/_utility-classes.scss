@@ -76,6 +76,7 @@
     box-sizing: border-box;
     position: absolute;
     overflow: hidden;
+    font-size: $s-size;
     box-shadow: rgba(0, 0, 0, 0.3) 0px 2px 4px 0px;
     background-color: $whiter-than-body-white;
     z-index: 3;

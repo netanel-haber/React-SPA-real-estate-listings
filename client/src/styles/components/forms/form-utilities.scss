@@ -14,7 +14,6 @@
 }
 
 .pure-form-aligned .pure-control-group label {
-  font-size: $s-size*1.2;
   margin-right: 2px;
 }
 .asterisk {
@@ -29,8 +28,11 @@
   width: 90%;
   padding: $s-size;
   margin: $m-size;
-  input {
+  font-size: $s-size*1.2;
+  h5,h6 {
     font-size: $s-size;
+  }
+  input {
     box-sizing: border-box !important;
     &.eng {
       direction: ltr;
@@ -62,7 +64,8 @@
 
 .fields {
   background-color: $body-white;
-  padding: $s-size;
+  padding: $m-size;
+  border-radius: 10px;
 }
 
 

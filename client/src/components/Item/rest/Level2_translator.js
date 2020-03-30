@@ -34,6 +34,7 @@ let map = {
     },
     numBalconies: {
         translation: "מרפסות",
+        get: (val) => val || "ללא"
     },
 
     //rent

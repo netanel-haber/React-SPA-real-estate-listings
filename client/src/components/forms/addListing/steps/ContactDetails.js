@@ -6,6 +6,7 @@ const ContactDetails = () => {
     return (
         <>
         <div>
+            
                 contactDetails
                 </div>
             
