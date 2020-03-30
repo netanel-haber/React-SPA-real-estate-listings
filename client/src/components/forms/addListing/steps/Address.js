@@ -44,14 +44,14 @@ const Address = () => {
                     <SearchSelect name={fieldNames[2]} validationFunc={validationConfig.municipality(municipalities)} placeholder={HEB_SEARCH_CITY} options={municipalities} />
                     <SearchSelect name={fieldNames[3]} disabled={streets.length === 0} validationFunc={validationConfig.streets(streets)} callback={(city) => { setValue(fieldNames[6], mockNeighborhoods[Math.ceil(Math.random() * (mockNeighborhoods.length - 1))]) }} placeholder={HEB_SEARCH_STREET} options={streets} />
                 </WithDivsAndLabels>
-                <div className="pure-control-group Address-floors">
+                <div className="pure-control-group Address-inline">
                     <WithDivsAndLabels texts={[HEB_NUMBER, HEB_APT]} requiredIndices={[0]}>
                         <NumberInput name={fieldNames[7]} ref={register(validationConfig.required)} max={50} min={0} />
                         <NumberInput name={fieldNames[8]} ref={register} max={50} min={0} />
                     </WithDivsAndLabels>
                 </div>
                 {withDivAndLabel(<input name={fieldNames[9]} ref={register} />, HEB_ENTRANCE)}
-                <div className="pure-control-group Address-floors">
+                <div className="pure-control-group Address-inline">
                     <WithDivsAndLabels texts={[HEB_FLOOR, HEB_TOTAL_PROPERTY_FLOORS]} requiredIndices={[]}>
                         <NumberInput name={fieldNames[4]} ref={register} max={50} min={0} />
                         <NumberInput name={fieldNames[5]} ref={register} max={50} min={1} />

@@ -6,8 +6,6 @@
 //override purecss mediarule
 @media only screen and (max-width: 500px) {
   .pure-form-aligned .pure-control-group label {
-    margin: 3px;
-    margin-right: 5px;
     text-align: right;
   }
   .submit-container:not(.AddListing__next-step) {
@@ -17,8 +15,6 @@
 
 .pure-form-aligned .pure-control-group label {
   font-size: $s-size*1.2;
-  flex-shrink: 2;
-  width: 9rem;
   margin-right: 2px;
 }
 .asterisk {
@@ -62,3 +58,12 @@
   }
   margin: $m-size 0;
 }
+
+
+.fields {
+  background-color: $body-white;
+  padding: $s-size;
+}
+
+
+

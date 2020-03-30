@@ -3,11 +3,6 @@
 @import "../../form-utilities.scss";
 
 .gen-form {
-  .Address-container {
-    .pure-control-group{
-      width: 35rem;
-    }
-  }
   .Address-select {
     .actual-select {
       box-sizing: border-box;
@@ -15,19 +10,7 @@
     .actual-dropdown {
       > div {
         padding: 1px;
-      }
-    }
-  }
-  .Address-floors {
-    // @include basic-flex(flex-start);
-    // flex-wrap: wrap;
-    .pure-control-group {
-      width: fit-content;
-      @include basic-flex;
-      margin-left: 20px;
-      .error-message-container {
-        margin: 0;
-        width: fit-content;
+        font-size: $s-size;
       }
     }
   }

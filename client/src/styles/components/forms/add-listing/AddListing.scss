@@ -6,26 +6,7 @@
   .step:not(.AddListing__active) {
     display: none;
   }
-  .pure-control-group {
-    .error-message-container {
-      width: 60%;
-    }
-    font-size: $s-size;
-    margin: 5px 0;
-  }
   .AddListing__active {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between; 
-    align-content: center;
-    .fields{
-      margin: 0 auto;
-      background-color: $body-white;    
-      padding: $m-size;
-      border-radius: 10px;
-      width: 80%;
-    }
-    margin: $s-size;
     min-height: 250px;
     h5 {
       text-align: center;

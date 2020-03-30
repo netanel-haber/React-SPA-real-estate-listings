@@ -37,6 +37,28 @@ $md: 768;
 $lg: 1024;
 $xl: 1280;
 
+@media (max-width: 400px) {
+  .fields {
+    .pure-control-group {
+      margin: 0 0 0 20px;
+      > * {
+        margin-bottom: 4px;
+        margin-top: 0;
+      }
+    }
+    .Address-inline {
+      display: flex;
+      label {
+        height: 15px;
+        @include basic-flex(flex-start);
+        margin: 0;
+        margin-bottom: 3px;
+      }
+      flex-wrap: wrap;
+    }
+  }
+}
+
 @media (min-width: $sm+"px") {
   body {
     .body__content {
@@ -80,10 +102,6 @@ $xl: 1280;
     }
     .ItemLists__lists {
       padding: 0 $l-size;
-    }
-    .Address-floors {
-    @include basic-flex(flex-start);
-    flex-wrap: wrap;
     }
   }
 }
