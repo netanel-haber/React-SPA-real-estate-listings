@@ -15,7 +15,7 @@ module.exports = (config) => {
     config.plugins = [
         ...config.plugins,
         new CompressionPlugin({
-            test: /\.js$/i,
+            test: /\.(js)|(css)$/i,
             cache: true
         })
     ];
