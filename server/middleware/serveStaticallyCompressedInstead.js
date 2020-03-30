@@ -6,9 +6,10 @@ module.exports = (req, res, next) => {
     if (/\.(js)|(css)$/i.test(req.originalUrl) && req.headers["accept-encoding"].includes("gzip")) {
         const gzippedPath = path.join(clientPath, req.originalUrl + '.gz');
         if (fs.existsSync(gzippedPath)) {
-            req.url = gzippedPath;
+            req.url = req.originalUrl + '.gz';
             res.set("Content-Encoding", "gzip");
-            // return res.sendFile(gzippedPath);
+            if(req.originalUrl.includes("css"))
+                res.set("Content-Type", "text/css")
         }
     }
     next();
