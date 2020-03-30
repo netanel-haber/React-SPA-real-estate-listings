@@ -4,9 +4,9 @@ import '#src#/styles/components/SearchSelect.scss';
 import { useFormContext } from 'react-hook-form';
 import { validationConfig } from './forms/utilities.js';
 
-const lengthBreakpoint = 1;
-
-const SearchSelect = ({ optionsRef, className = "", placeholder, disabled = false, name }) => {
+const lengthBreakpoint = 2;
+const noop = () => { };
+const SearchSelect = ({ options, className = "", placeholder, disabled = false, name, callback = noop, validationFunc = validationConfig.required }) => {
     const [isOpen, toggleOpen] = useState(false);
     const { register, watch, setValue } = useFormContext();
     const curValue = watch(name);
@@ -15,7 +15,7 @@ const SearchSelect = ({ optionsRef, className = "", placeholder, disabled = fals
             <input
                 {...{ name, disabled, placeholder }}
                 autoComplete="off"
-                ref={register(validationConfig.required)}
+                ref={register(validationFunc)}
                 className="actual-select pure-rounded-input"
                 onClick={() => { !isOpen && toggleOpen(true) }}
                 onChange={(e) => {
@@ -28,11 +28,11 @@ const SearchSelect = ({ optionsRef, className = "", placeholder, disabled = fals
             <div style={{ display: isOpen ? "block" : "none" }}
                 className="actual-dropdown SearchSelect-dropdown"
                 tabIndex="0">
-                {(curValue?.length >= lengthBreakpoint) && optionsRef.current.filter(opt => opt.includes(curValue))
+                {(curValue?.length >= lengthBreakpoint) && options.filter(opt => opt.includes(curValue))
                     .map((city, index) =>
                         <div
                             key={index}
-                            onClick={() => { setValue(name, city); toggleOpen(false) }}>
+                            onClick={() => { setValue(name, city); callback(city); toggleOpen(false) }}>
                             {city.split(new RegExp(`(${curValue})`, "g")).map((sub, index) =>
                                 <React.Fragment key={index}>{(sub === curValue) ? <strong>{sub}</strong> : sub}</React.Fragment>)}
                         </div>

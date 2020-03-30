@@ -4,6 +4,8 @@ const errHebrew = {
     HEB_PASS_DOESNT_MATCH: "הסיסמאות שהזנת אינן תואמות.",
     HEB_PHONE_ISNT_VALID: "מספר הטלפון איננו תקין!",
     HEB_NAME_INVALID: "השם שהזנת איננו תקין",
+    HEB_INVALID_CITY:"מקום המגורים איננו מוכר.",
+    HEB_INVALID_STREET:"הרחוב איננו מוכר במקום המגורים שבחרת",
     passwordErrMessages: {
         min: "להיות לפחות באורך 8 תווים",
         uppercase: "להכיל אות אחת גדולה לפחות",
@@ -41,15 +43,17 @@ const addressStepHebrew = {
     HEB_MUNICIPALITY: "ישוב",
     HEB_STREET: "רחוב",
     HEB_NUMBER: "מס' בית",
+    HEB_APT: "מס' דירה",
     HEB_ENTRANCE: "כניסה",
     HEB_FLOOR: "קומה",
     HEB_TOTAL_BUILDING_FLOORS: "סה\"כ קומות בבניין",
     HEB_TOTAL_PROPERTY_FLOORS: "סה\"כ קומות בנכס",
-    NEIGHBORHOOD: "שכונה",
+    HEB_NEIGHBORHOOD_LABEL: "שכונה",
+    HEB_NEIGHBORHOOD_PLACEHOLDER: "(יתמלא אוטומטית)",
     HEB_CHOOSE_PROPERTY_TYPE: "סוג נכס",
     HEB_CHOOSE_UPKEEP: "מצב נכס",
     HEB_SEARCH_CITY: "חפש את מקום מגוריך",
-    HEB_SEARCH_STREET:"חפש את רחובך"
+    HEB_SEARCH_STREET: "חפש את רחובך"
 }
 
 const addListingHebrew = {
