@@ -3,7 +3,7 @@
 @import "../form-utilities.scss";
 
 .AddListing__form {
-  .step:not(.AddListing__active) {
+  .step:not(.AddListing__active){
     display: none;
   }
   .AddListing__active {

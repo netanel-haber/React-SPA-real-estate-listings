@@ -1,6 +1,32 @@
+@import "~base/settings.scss";
 @import "~base/utility-classes";
-@import "~base/settings";
 
-.PropertyDetails-bool-attr { 
-    width: 100%;
+
+
+.PropertyDetails-bool-attr {
+    .disclaimer {
+        font-size: 1.2rem;
+        text-align: center;
+    }
+    button {
+        border-radius: 7px;
+        background-color: #faf4ff;
+        color: #ff1e56;
+        padding: 5px 10px;
+        border: none;
+    }
+}
+
+.description {
+    textarea {
+        display: block;
+        margin: 20px auto 10px auto;
+        width: 95%;
+        min-height: 150px;
+        resize: vertical;
+        font-size: $s-size;
+        + div {
+            font-size: $s-size;
+        }
+    }
 }

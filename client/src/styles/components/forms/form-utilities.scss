@@ -28,7 +28,7 @@
   width: 90%;
   padding: $s-size;
   margin: $m-size;
-  font-size: $s-size*1.2;
+  font-size: $s-size * 1.2;
   h5 {
     font-size: $m-size;
   }
@@ -64,7 +64,6 @@
   margin: $m-size 0;
 }
 
-
 .fields {
   background-color: $body-white;
   padding: $m-size;
@@ -72,8 +71,23 @@
   width: 95%;
   margin: auto;
   min-width: 150px;
-  max-width: 250px;
+  max-width: 500px;
 }
 
-
-
+.inner-focus-in-form {
+  background-color: $whiter-than-body-white;
+  padding: 20px;
+  @include basic-flex(center, column);
+  padding-bottom: 10px;
+  border-radius: 15px;
+  max-width: 450px;
+  min-width: 200px;
+  margin: 30px auto;
+  width: 80%;
+  margin-top: 30px;
+  box-sizing: border-box;
+  h6 {
+    color: $def-color;
+    font-size: $s-size * 1.15;
+  }
+}

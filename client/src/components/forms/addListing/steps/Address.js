@@ -1,15 +1,14 @@
 import { getCities, getStreets } from '#src#/fetch/cities';
 import '#src#/styles/components/forms/add-listing/steps/Address.scss';
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useFormContext } from 'react-hook-form';
 import { FormSelect } from '../../../ListContainer/SortBy/Select';
 import { addressStepHebrew } from '../../heb';
-import { validationConfig, mockNeighborhoods } from '../../utilities';
+import { mockNeighborhoods, validationConfig, AddressValidation } from '../../utilities';
 import NumberInput from './../../../NumberInput';
 import SearchSelect from './../../../SearchSelect';
 import withDivAndLabel, { WithDivsAndLabels } from './../../withDivAndLabel';
 import { defaultValue as defaultType } from './Type';
-import { Address as addValues } from './validation';
 const { HEB_TITLE, HEB_CHOOSE_PROPERTY_TYPE, HEB_CHOOSE_UPKEEP, HEB_TYPE_OF_PROPERTY, HEB_UPKEEP, HEB_MUNICIPALITY, HEB_STREET, HEB_NUMBER,
     HEB_ENTRANCE, HEB_SEARCH_STREET, HEB_SEARCH_CITY, HEB_APT, HEB_FLOOR, HEB_TOTAL_PROPERTY_FLOORS, HEB_NEIGHBORHOOD_LABEL, HEB_NEIGHBORHOOD_PLACEHOLDER } = addressStepHebrew;
 
@@ -39,8 +38,8 @@ const Address = () => {
             <h5>{HEB_TITLE}</h5>
             <div className="fields">
                 <WithDivsAndLabels requiredIndices={[0, 2, 3]} texts={[HEB_CHOOSE_PROPERTY_TYPE, HEB_CHOOSE_UPKEEP, HEB_MUNICIPALITY, HEB_STREET]}>
-                    <FormSelect name={fieldNames[0]} ref={register(validationConfig.required)} className="Address-select" options={addValues.propertyType[type]} />
-                    <FormSelect name={fieldNames[1]} ref={register} className="Address-select" options={addValues.upkeep} />
+                    <FormSelect name={fieldNames[0]} ref={register(validationConfig.required)} className="Address-select" options={AddressValidation.propertyType[type]} />
+                    <FormSelect name={fieldNames[1]} ref={register} className="Address-select" options={AddressValidation.upkeep} />
                     <SearchSelect name={fieldNames[2]} validationFunc={validationConfig.municipality(municipalities)} placeholder={HEB_SEARCH_CITY} options={municipalities} />
                     <SearchSelect name={fieldNames[3]} disabled={streets.length === 0} validationFunc={validationConfig.streets(streets)} callback={(city) => { setValue(fieldNames[6], mockNeighborhoods[Math.ceil(Math.random() * (mockNeighborhoods.length - 1))]) }} placeholder={HEB_SEARCH_STREET} options={streets} />
                 </WithDivsAndLabels>

@@ -84,6 +84,22 @@ const attributes = {
 }
 
 
+const commonDenom = ["דירה", "דירת גן", "פרטי/קוטג'", "גג/פנטהאוז", "דופלקס", "דו משפחתי", "מרתף/פרטר", "טריפלקס", "יחידת דיור", "משק חקלאי/נחלה", "משק עזר", "דיור מוגן", "בניין מגורים", "סטודיו/לופט", "מחסן", "קב' רכישה/ זכות לנכס", "חניה"];
+let forsale = ["מגרשים", "דירת נופש", "כללי", ...commonDenom];
+let rent = [...forsale, "החלפת דירות", "סאבלט"];
+let roommates = rent;
+let AddressValidation = {
+    propertyType: {
+        forsale,
+        rent,
+        roommates,
+        commercial: ["אולמות", "בניין משרדים", "חנויות/שטח מסחרי", "חלל עבודה משותף", "חניון", "כללי", "מבני תעשיה", "מגרשים", "מחסנים", "מרתף", "משרדים", "סטודיו", "עסקים למכירה", "קליניקות"]
+    },
+    upkeep: ["חדש מקבלן (לא גרו בנכס)", "חדש (גרו בנכס)", "משופץ", "במצב שמור", "דרוש שיפוץ"],
+    propertyTypesWithRooms: ["דירה", "דירת גן", "פרטי/קוטג'", "גג/פנטהאוז", "דופלקס", "דירת נופש", "דו משפחתי", "מרתף/פרטר", "יחידת דיור", "דיור מוגן", "סטודיו/לופט"]
+}
 
-export { validationConfig, mockNeighborhoods, booleanAttributes };
+
+
+export { validationConfig, mockNeighborhoods, booleanAttributes, AddressValidation };
 

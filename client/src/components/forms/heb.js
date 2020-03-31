@@ -57,9 +57,16 @@ const addressStepHebrew = {
 }
 
 const propertyDetailsStepHebrew = {
-    HEB_TITLE:"פרטי הנכס",
+    HEB_TITLE: "פרטי הנכס",
     HEB_NUM_BALCONIES_LABEL: "מס' מרפסות",
-    HEB_NUM_PARKING_SPOTS: "מס' חניות"
+    HEB_NUM_PARKING_SPOTS: "מס' חניות",
+    HEB_RESET: "אפס",
+    HEB_CHOOSE_ATTRIBUTES: "סמן מאפיינים אודות הנכס:",
+    HEB_DISCLAIMER: "(שדה זה איננו חובה ושדות שלא ימולאו לא יופיעו במודעה הסופית)",
+    HEB_WHATS_IMPORTANT: "מה חשוב לך שידעו על הנכס?",
+    HEB_TEXT_AREA_PLACEHOLDER: "זה המקום לתאר את הפרטים הבולטים, למשל, האם נערך שיפוץ במבנה, מה שופץ, כיווני אוויר, האווירה ברחוב וכו'",
+    HEB_ROOMS: "מס' חדרים",
+    HEB_CHAR_LIMIT: (charsLeft) => `נשארו לך ${charsLeft} תווים.`
 }
 
 

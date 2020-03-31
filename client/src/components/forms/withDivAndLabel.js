@@ -16,7 +16,7 @@ const WithDivsAndLabels = ({ children, texts, requiredIndices }) => {
     const allRequired = !Boolean(requiredIndices);
     return (
         <>
-            {children.map((field, index) => (
+            {children.filter(ch=>ch).map((field, index) => (
                 <React.Fragment key={index}>
                     {withDivAndLabel(field, texts[index], allRequired || requiredIndices.includes(index))}
                 </React.Fragment>

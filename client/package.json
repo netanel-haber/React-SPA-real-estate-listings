@@ -27,6 +27,7 @@
     "react-scripts": "3.3.0",
     "react-with-breakpoints": "^4.0.4",
     "use-deep-compare-effect": "^1.3.0",
+    "use-force-update": "^1.0.7",
     "validator": "^12.2.0"
   },
   "scripts": {
