@@ -12,7 +12,7 @@ const ThreewayToggle = ({ name, text, picUrl }) => {
     }, [register])
     return (
         <div className="ThreewayToggle">
-            <div>       
+            <div>
                 <img onLoad={() => { update("initial") }} style={{ display }} alt="" src={picUrl} />
                 <div>{text}</div>
             </div>
@@ -28,4 +28,11 @@ const ThreewayToggle = ({ name, text, picUrl }) => {
     )
 }
 
+const ThreewayToggleContainer = ({ toggleProps, className }) => (
+    <div className={classnames("ThreewayToggleContainer", className)}>
+        {toggleProps.map((toggleProps, index) => <ThreewayToggle key={index} {...toggleProps} />)}
+    </div>
+)
+
+export { ThreewayToggleContainer }
 export default ThreewayToggle;

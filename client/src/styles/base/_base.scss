@@ -2,6 +2,7 @@
 @import "./settings.scss";
 @import "./utility-classes.scss";
 
+
 html {
   font-size: 55%;
   overflow: -moz-scrollbars-vertical;
@@ -13,6 +14,8 @@ body {
   font-weight: 500;
   color: #363636;
   direction: rtl;
+  font-size: $m-size;
+  background-color: $body-white;
 }
 
 button {
@@ -46,7 +49,7 @@ $xl: 1280;
         margin-top: 0;
       }
     }
-    .Address-inline {
+    .form-inline {
       display: flex;
       label {
         height: 15px;

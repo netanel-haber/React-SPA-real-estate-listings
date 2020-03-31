@@ -4,7 +4,7 @@ import NumberInput from '../../../NumberInput';
 import { validationConfig, booleanAttributes } from '../../utilities';
 import { WithDivsAndLabels } from '../../withDivAndLabel';
 import { propertyDetailsStepHebrew } from '../../heb';
-import ThreewayToggle from '../../ThreewayToggle';
+import ThreewayToggle, { ThreewayToggleContainer } from '../../ThreewayToggle';
 import translator3 from '../../../Item/rest/Level3_translator';
 import translator2 from '../../../Item/rest/Level2_translator';
 import '#src#/styles/components/forms/add-listing/steps/PropertyDetails.scss';
@@ -26,15 +26,15 @@ const PropertyDetails = () => {
         <div>
             <h5>{HEB_TITLE}</h5>
             <div className="fields">
-                <WithDivsAndLabels texts={[HEB_NUM_BALCONIES_LABEL, HEB_NUM_PARKING_SPOTS]} requiredIndices={[]}>
-                    <NumberInput name={fields[0]} min={0} max={2} ref={register} />
-                    <NumberInput name={fields[1]} min={0} max={9} ref={register} />
-                </WithDivsAndLabels>
-                <div className="PropertyDetails-bool-attr">
-                    {[...booleanAttributes.general, ...(booleanAttributes[type] || [])].map((attr, index) => (
-                        <ThreewayToggle key={index} name={attr} {...translation(attr)} ></ThreewayToggle>
-                    ))}
+                <div className="pure-control-group form-inline">
+                    <WithDivsAndLabels texts={[HEB_NUM_BALCONIES_LABEL, HEB_NUM_PARKING_SPOTS]} requiredIndices={[]}>
+                        <NumberInput name={fields[0]} min={0} max={2} ref={register} />
+                        <NumberInput name={fields[1]} min={0} max={9} ref={register} />
+                    </WithDivsAndLabels>
                 </div>
+                <ThreewayToggleContainer className="pure-control-group PropertyDetails-bool-attr"
+                    toggleProps={[...booleanAttributes.general, ...(booleanAttributes[type] || [])].map(attr => ({ name: attr, ...translation(attr) }))} />
+
             </div>
         </div>
     )

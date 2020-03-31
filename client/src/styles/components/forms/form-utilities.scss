@@ -29,7 +29,10 @@
   padding: $s-size;
   margin: $m-size;
   font-size: $s-size*1.2;
-  h5,h6 {
+  h5 {
+    font-size: $m-size;
+  }
+  h6 {
     font-size: $s-size;
   }
   input {
@@ -66,6 +69,10 @@
   background-color: $body-white;
   padding: $m-size;
   border-radius: 10px;
+  width: 95%;
+  margin: auto;
+  min-width: 150px;
+  max-width: 250px;
 }
 
 

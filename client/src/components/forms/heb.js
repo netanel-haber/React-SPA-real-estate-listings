@@ -58,8 +58,8 @@ const addressStepHebrew = {
 
 const propertyDetailsStepHebrew = {
     HEB_TITLE:"פרטי הנכס",
-    HEB_NUM_BALCONIES_LABEL: "מרפסות",
-    HEB_NUM_PARKING_SPOTS: "חניות"
+    HEB_NUM_BALCONIES_LABEL: "מס' מרפסות",
+    HEB_NUM_PARKING_SPOTS: "מס' חניות"
 }
 
 

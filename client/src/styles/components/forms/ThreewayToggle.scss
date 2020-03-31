@@ -3,15 +3,16 @@
 
 .ThreewayToggle {
     @include basic-flex(space-between, column);
-    margin: 7px;
+    margin: 10px;
     color: $text-for-beige;
     font-size: $s-size;
     > div:first-of-type {
         @include basic-flex(flex-end);
-        img{
+        img {
             width: 18px;
             margin-left: 5px;
         }
+        margin-bottom: 4px;
     }
     > div:nth-of-type(2) {
         opacity: 0.25;
@@ -36,4 +37,10 @@
             border-color: $button-green;
         }
     }
+}
+
+.ThreewayToggleContainer {
+    @include basic-flex(center);
+    flex-wrap: wrap;
+    padding: 5px 0;
 }

@@ -2,9 +2,5 @@
 @import "~base/settings";
 
 .PropertyDetails-bool-attr { 
-    @include basic-flex(center);
-    flex-wrap: wrap;
-    padding: 5px 0;
-    margin-top: 10px;
-    width: 20rem;
+    width: 100%;
 }
