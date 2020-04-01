@@ -46,7 +46,7 @@ const PropertyDetails = () => {
                     <h6>{HEB_CHOOSE_ATTRIBUTES}</h6>
                     <div className="disclaimer">{HEB_DISCLAIMER}</div>
                     <ThreewayToggleContainer toggleProps={boolAttributeNames.map(attr => ({ name: attr, ...translation(attr) }))} />
-                    <button onClick={() => { setValue(boolAttributeNames.map((attr) => ({ [attr]: undefined }))) }}>{HEB_RESET}</button>
+                    <button className="reset" type="button" onClick={() => { setValue(boolAttributeNames.map((attr) => ({ [attr]: undefined }))) }}>{HEB_RESET}</button>
                 </div>
                 <div className="inner-focus-in-form description">
                     <h6>{HEB_WHATS_IMPORTANT}</h6>

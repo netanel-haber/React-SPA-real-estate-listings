@@ -1,17 +1,15 @@
 @import "~base/settings.scss";
 @import "~base/utility-classes";
 
-
-
 .PropertyDetails-bool-attr {
     .disclaimer {
         font-size: 1.2rem;
         text-align: center;
     }
-    button {
-        border-radius: 7px;
-        background-color: #faf4ff;
-        color: #ff1e56;
+    .reset {
+        border-radius: 15px;
+        background-color: $yad2-orange;
+        color: $body-white;
         padding: 5px 10px;
         border: none;
     }
