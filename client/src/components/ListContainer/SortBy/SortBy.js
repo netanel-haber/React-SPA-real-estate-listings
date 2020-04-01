@@ -37,14 +37,13 @@ const SortBy = ({ dispatchSorts, dispatchFilters, dispatchLimit }) => {
         }}
         className={classnames("SortBy__button", onlyWithPics && "active")}>{HEB_ONLY_WITH_PIC}</div>);
 
-
     return (
         <div className="SortBy">
             <div>
                 <div>{HEB_SORT_BY}</div>
                 <SelectSort {...{ dispatch: dispatchSorts, dropOptions: sortByOptions }} />
             </div>
-            <div>
+            <div>gg
                 <div>{HEB_FILTER}</div>
                 {priceFilterButton}
                 {picsFilterButton}

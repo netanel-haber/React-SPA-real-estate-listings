@@ -68,7 +68,6 @@
     border: 1px solid #dbdbdb;
     span {
       @extend .chevron-down;
-      margin: 0 $s-size 0 0;
     }
   }
   .actual-dropdown {
@@ -87,8 +86,9 @@
       direction: rtl;
       @include basic-flex(flex-start);
       border-bottom: 1px solid $lightest-gray;
-      padding: $s-size/2;
+      padding: 7px;
       > div {
+        margin-left: 2px;
         padding: $s-size/3;
       }
     }
@@ -192,6 +192,7 @@
   background-color: inherit !important;
   box-shadow: none !important;
   padding: 0 !important;
+  width: 100%;
   margin: 0 !important;
   color: $def-color !important;
   cursor: inherit;

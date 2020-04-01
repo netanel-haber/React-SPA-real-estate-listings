@@ -7,21 +7,25 @@ import { errHebrew } from './heb';
 
 
 
-const { HEB_INVALID_EMAIL, HEB_INVALID_CITY, HEB_INVALID_STREET, HEB_FIELD_IS_REQUIRED, HEB_PASS_DOESNT_MATCH, HEB_PHONE_ISNT_VALID, HEB_NAME_INVALID, passwordErrMessages } = errHebrew;
+const { HEB_INVALID_EMAIL, HEB_INVALID_PRICE, HEB_INVALID_CITY, HEB_INVALID_STREET, HEB_FIELD_IS_REQUIRED, HEB_PASS_DOESNT_MATCH, HEB_PHONE_ISNT_VALID, HEB_NAME_INVALID, passwordErrMessages } = errHebrew;
 
 const hebrewNameValidator = (val) => nameValidator.test(val)
 
+
+
+const required = { required: HEB_FIELD_IS_REQUIRED };
+const minPrice = 100000;
 const validationConfig = {
     email: (justRequired = false) => ({
-        required: HEB_FIELD_IS_REQUIRED,
+        ...required,
         ...justRequired || { validate: value => isEmail(value) || HEB_INVALID_EMAIL }
     }),
     password: (justRequired = false) => ({
-        required: HEB_FIELD_IS_REQUIRED,
+        ...required,
         ...justRequired || { validate: (val) => combineMessages(valPass(val), passwordErrMessages, "על הסיסמה: ") }
     }),
     reEnter: (ref) => ({
-        required: HEB_FIELD_IS_REQUIRED,
+        ...required,
         validate: (val) => (val === ref.current) || HEB_PASS_DOESNT_MATCH
     }),
     phoneNumber: {
@@ -31,19 +35,20 @@ const validationConfig = {
         validate: val => (isEmpty(val) || hebrewNameValidator(val)) || HEB_NAME_INVALID
     },
     propertyType: {
-        required: HEB_FIELD_IS_REQUIRED
+        ...required
     },
-    required: {
-        required: HEB_FIELD_IS_REQUIRED
-    },
+    required,
     municipality: (municipalities) => ({
-        required: HEB_FIELD_IS_REQUIRED,
+        ...required,
         validate: (val) => municipalities.includes(val) || HEB_INVALID_CITY
     }),
     streets: (streets) => ({
-        required: HEB_FIELD_IS_REQUIRED,
+        ...required,
         validate: (val) => streets.includes(val) || HEB_INVALID_STREET
-    })
+    }),
+    price: {
+        validate: (val) => (Number(val) > minPrice) || HEB_INVALID_PRICE(minPrice)
+    }
 }
 
 

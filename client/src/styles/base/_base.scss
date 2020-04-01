@@ -35,12 +35,14 @@ h4 {
   margin-bottom: 10px;
 }
 
+
+
 $sm: 568;
 $md: 768;
 $lg: 1024;
 $xl: 1280;
 
-@media (max-width: 400px) {
+@media (max-width: 500px) {
   .fields {
     .pure-control-group {
       margin: 0 0 0 20px;

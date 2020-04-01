@@ -13,9 +13,6 @@
   }
 }
 
-.pure-form-aligned .pure-control-group label {
-  margin-right: 2px;
-}
 .asterisk {
   content: "* ";
   color: red;
@@ -35,6 +32,9 @@
   h6 {
     font-size: $s-size;
   }
+  label {
+    margin-right: 2px !important;
+  }
   input {
     box-sizing: border-box !important;
     &.eng {
@@ -44,6 +44,16 @@
   div[required] {
     label:after {
       @extend .asterisk;
+    }
+  }
+  .actual-select {
+    box-sizing: border-box;
+  }
+  .pure-control-group.NumberInput {
+    .error-message-container {
+      > input {
+        width: 100%;
+      }
     }
   }
 }
@@ -89,5 +99,11 @@
   h6 {
     color: $def-color;
     font-size: $s-size * 1.15;
+  }
+  .error-message-container {
+    input {
+      width: 100%;
+    }
+    width: 40%;
   }
 }

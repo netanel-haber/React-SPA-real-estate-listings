@@ -18,11 +18,12 @@ const SearchSelect = ({ options, className = "", placeholder, disabled = false, 
                 ref={register(validationFunc)}
                 className="actual-select pure-rounded-input"
                 onClick={() => { !isOpen && toggleOpen(true) }}
+                onBlur={(e) => { e.stopPropagation(); toggleOpen(false) }}
                 onChange={(e) => {
-                    const value = e.target.value;
-                    if (value.length < lengthBreakpoint && (isOpen))
+                    const {length} = e.target.value;
+                    if (length < lengthBreakpoint && (isOpen))
                         toggleOpen(false);
-                    if (value.length >= lengthBreakpoint && (!isOpen))
+                    if (length >= lengthBreakpoint && (!isOpen))
                         toggleOpen(true);
                 }} />
             <div style={{ display: isOpen ? "block" : "none" }}
@@ -32,7 +33,7 @@ const SearchSelect = ({ options, className = "", placeholder, disabled = false, 
                     .map((city, index) =>
                         <div
                             key={index}
-                            onClick={() => { setValue(name, city); callback(city); toggleOpen(false) }}>
+                            onMouseDown={() => { setValue(name, city); callback(city); toggleOpen(false) }}>
                             {city.split(new RegExp(`(${curValue})`, "g")).map((sub, index) =>
                                 <React.Fragment key={index}>{(sub === curValue) ? <strong>{sub}</strong> : sub}</React.Fragment>)}
                         </div>

@@ -1,4 +1,3 @@
-import '#src#/styles/components/forms/form-utilities.scss';
 import React from 'react';
 import { FormContext, useForm } from 'react-hook-form';
 import { useHistory } from 'react-router-dom';

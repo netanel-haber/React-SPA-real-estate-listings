@@ -6,6 +6,7 @@ const errHebrew = {
     HEB_NAME_INVALID: "השם שהזנת איננו תקין",
     HEB_INVALID_CITY: "מקום המגורים איננו מוכר.",
     HEB_INVALID_STREET: "הרחוב איננו מוכר במקום המגורים שבחרת",
+    HEB_INVALID_PRICE:(minPrice)=>`המחיר המינימלי הינו ${minPrice}‎₪`,
     passwordErrMessages: {
         min: "להיות לפחות באורך 8 תווים",
         uppercase: "להכיל אות אחת גדולה לפחות",
@@ -69,6 +70,16 @@ const propertyDetailsStepHebrew = {
     HEB_CHAR_LIMIT: (charsLeft) => `נשארו לך ${charsLeft} תווים.`
 }
 
+const listingDetailsStepHebrew = {
+    HEB_TITLE: "פרטי המכירה",
+    HEB_PRICE: "מחיר",
+    HEB_PRICE_PLACEHOLDER: "סכום מינימלי 100000₪",
+    HEB_SQ_M: "מ\"ר רבוע נטו",
+    HEB_SQ_M_PLACEHOLDER: "כמה מ\"ר רבוע יש בנכס",
+    HEB_ENTRY_DATE: "תאריך כניסה",
+    HEB_IMMEDIATELY: ""
+}
+
 
 
 const addListingHebrew = {
@@ -76,4 +87,4 @@ const addListingHebrew = {
 }
 
 
-export { errHebrew, formHebrew, typeStepHebrew, addListingHebrew, addressStepHebrew, propertyDetailsStepHebrew }
+export { errHebrew, formHebrew, typeStepHebrew, listingDetailsStepHebrew, addListingHebrew, addressStepHebrew, propertyDetailsStepHebrew }
