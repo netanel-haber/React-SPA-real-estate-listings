@@ -7,6 +7,7 @@ const errHebrew = {
     HEB_INVALID_CITY: "מקום המגורים איננו מוכר.",
     HEB_INVALID_STREET: "הרחוב איננו מוכר במקום המגורים שבחרת",
     HEB_INVALID_PRICE:(minPrice)=>`המחיר המינימלי הינו ${minPrice}‎₪`,
+    HEB_INVALID_DATE:"נדרש תאריך חוקי ועתידי.",
     passwordErrMessages: {
         min: "להיות לפחות באורך 8 תווים",
         uppercase: "להכיל אות אחת גדולה לפחות",

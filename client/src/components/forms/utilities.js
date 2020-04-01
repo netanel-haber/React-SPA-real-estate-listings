@@ -4,10 +4,10 @@ import isMobilePhone from 'validator/es/lib/isMobilePhone';
 import combineMessages from '../../validation/combineMessages';
 import { valPass, nameValidator } from '../../validation/signup';
 import { errHebrew } from './heb';
+import { isValidDate, isFutureDate } from '../../utilities/datetime';
 
 
-
-const { HEB_INVALID_EMAIL, HEB_INVALID_PRICE, HEB_INVALID_CITY, HEB_INVALID_STREET, HEB_FIELD_IS_REQUIRED, HEB_PASS_DOESNT_MATCH, HEB_PHONE_ISNT_VALID, HEB_NAME_INVALID, passwordErrMessages } = errHebrew;
+const { HEB_INVALID_EMAIL, HEB_INVALID_DATE, HEB_INVALID_PRICE, HEB_INVALID_CITY, HEB_INVALID_STREET, HEB_FIELD_IS_REQUIRED, HEB_PASS_DOESNT_MATCH, HEB_PHONE_ISNT_VALID, HEB_NAME_INVALID, passwordErrMessages } = errHebrew;
 
 const hebrewNameValidator = (val) => nameValidator.test(val)
 
@@ -47,8 +47,14 @@ const validationConfig = {
         validate: (val) => streets.includes(val) || HEB_INVALID_STREET
     }),
     price: {
-        validate: (val) => (Number(val) > minPrice) || HEB_INVALID_PRICE(minPrice)
+        validate: (val) => isEmpty(val) || (Number(val) > minPrice) || HEB_INVALID_PRICE(minPrice)
+    },
+    date: {
+        validate: (val="") => {    
+            return isEmpty(val) || ((isValidDate(val) && isFutureDate(val)) || HEB_INVALID_DATE)
+        }
     }
+
 }
 
 

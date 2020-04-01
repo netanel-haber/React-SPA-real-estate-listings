@@ -11,7 +11,7 @@ const WithErrorMessageContainer = ({ children: el }) => {
         toggleVisi("visible");
         const timeout = setTimeout(() => { toggleVisi("hidden") }, 2000);
         return () => { clearTimeout(timeout) }
-    }, [error, submitCount])
+    }, [error, submitCount, errors])
     return (
         <div className="error-message-container">
             {el}
