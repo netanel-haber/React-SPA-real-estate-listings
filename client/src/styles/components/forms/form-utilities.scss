@@ -86,9 +86,9 @@
 }
 
 .inner-focus-in-form {
-  background-color: $whiter-than-body-white;
+  border: 1px solid $grayish;
   padding: 20px;
-  @include basic-flex(center, column);
+  // @include basic-flex(center, column);
   padding-bottom: 10px;
   border-radius: 15px;
   max-width: 450px;

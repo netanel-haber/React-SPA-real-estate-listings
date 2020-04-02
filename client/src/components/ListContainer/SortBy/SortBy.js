@@ -43,7 +43,7 @@ const SortBy = ({ dispatchSorts, dispatchFilters, dispatchLimit }) => {
                 <div>{HEB_SORT_BY}</div>
                 <SelectSort {...{ dispatch: dispatchSorts, dropOptions: sortByOptions }} />
             </div>
-            <div>gg
+            <div>
                 <div>{HEB_FILTER}</div>
                 {priceFilterButton}
                 {picsFilterButton}

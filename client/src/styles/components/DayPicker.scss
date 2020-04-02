@@ -1,0 +1,24 @@
+@import "react-day-picker/lib/style";
+@import "~base/settings";
+
+.DayPicker {
+    .DayPicker-Weekday{
+        font-size: 13px;
+    }
+    .DayPicker-Day--today{
+        color: $yad2-orange;
+    }
+    .DayPicker-Footer {
+        display: flex;
+        justify-content: center;
+        .DayPicker-TodayButton {
+            background-color: $body-white;
+            border: 1px solid $grayish;
+            border-radius: 10px;
+            font-size: 16px;
+            &:hover{
+                border-color: $button-green;
+            }
+        }
+    }
+}

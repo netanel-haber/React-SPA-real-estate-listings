@@ -50,7 +50,7 @@ const validationConfig = {
         validate: (val) => isEmpty(val) || (Number(val) > minPrice) || HEB_INVALID_PRICE(minPrice)
     },
     date: {
-        validate: (val="") => {    
+        validate: (val = "") => {
             return isEmpty(val) || ((isValidDate(val) && isFutureDate(val)) || HEB_INVALID_DATE)
         }
     }
@@ -71,14 +71,10 @@ const booleanAttributes = {
 
 const attributes = {
     general: [
-        ["sqMeters", "price"],
-        ["desc", "entryDate"],
         ["furnitureDesc"]
     ],
     forsale: [
-        [],
         ["sqMGarden", "sqMBuilt"],
-        []
     ],
     rent: [
         [],
@@ -112,5 +108,14 @@ let AddressValidation = {
 
 
 
-export { validationConfig, mockNeighborhoods, booleanAttributes, AddressValidation };
+const hookformWatchMultiple = (watch, fields, defaults={}) => {
+    const watches = {};
+    fields.forEach((field,index) => {
+        watches[field] = watch(field, defaults[field]);
+    })
+    return watches;
+}
+
+
+export { validationConfig, mockNeighborhoods, booleanAttributes, AddressValidation, hookformWatchMultiple };
 

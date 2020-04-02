@@ -4,10 +4,12 @@
 .PropertyDetails-bool-attr {
     .disclaimer {
         font-size: 1.2rem;
-        text-align: center;
+        text-align: right;
     }
     .reset {
         border-radius: 15px;
+        display: block;
+        margin: 0 auto;
         background-color: $yad2-orange;
         color: $body-white;
         padding: 5px 10px;

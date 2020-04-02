@@ -1,15 +1,19 @@
 import '#src#/styles/components/forms/add-listing/steps/PropertyDetails.scss';
 import React from 'react';
 import { useFormContext } from 'react-hook-form';
+import { DevTool } from 'react-hook-form-devtools';
 import translator2 from '../../../Item/rest/Level2_translator';
 import translator3 from '../../../Item/rest/Level3_translator';
 import { FormSelect } from '../../../ListContainer/SortBy/Select';
 import NumberInput from '../../../NumberInput';
 import { propertyDetailsStepHebrew } from '../../heb';
 import { ThreewayToggleContainer } from '../../ThreewayToggle';
-import { AddressValidation, booleanAttributes, validationConfig } from '../../utilities';
+import { AddressValidation, booleanAttributes, validationConfig, hookformWatchMultiple } from '../../utilities';
+
+
 import { WithDivsAndLabels } from '../../withDivAndLabel';
 import genSuccessiveArr from './../../../../utilities/generateArrOfSuccessiveNums';
+import TextareaContainer from '../../TextareaContainer';
 
 const translation = (key) => {
     let { translation, picUrl } = translator3([key]);
@@ -18,18 +22,19 @@ const translation = (key) => {
     return { text: translation, picUrl }
 }
 
-const { HEB_NUM_BALCONIES_LABEL, HEB_NUM_PARKING_SPOTS, HEB_TITLE, HEB_CHOOSE_ATTRIBUTES,
+const { HEB_FURNITURE_DESCRIPTION, HEB_FURNITURE_DESCRIPTION_PLACEHOLDER, HEB_NUM_BALCONIES_LABEL, HEB_NUM_PARKING_SPOTS, HEB_TITLE, HEB_CHOOSE_ATTRIBUTES,
     HEB_DISCLAIMER, HEB_RESET, HEB_TEXT_AREA_PLACEHOLDER, HEB_WHATS_IMPORTANT, HEB_CHAR_LIMIT, HEB_ROOMS } = propertyDetailsStepHebrew;
 const maxDescChars = 200;
+const maxFurnitureDescChars = 100;
 
-const fieldNames = ["numBalconies", "parkingSpots", "desc", "rooms", ...Object.values(booleanAttributes).flat()]
+
+const fieldNames = ["numBalconies", "parkingSpots", "desc", "rooms", "furnitureDesc", ...Object.values(booleanAttributes).flat()]
 const PropertyDetails = () => {
-    const { register, watch, setValue } = useFormContext();
-    const type = watch("type");
-    const desc = watch("desc");
-    const propertyType = watch("propertyType", "");
+    const { register, watch, setValue, control } = useFormContext();
+    const { type, desc, propertyType, furniture, furnitureDesc } =
+        hookformWatchMultiple(watch, ["type", "desc", "propertyType", "furniture", "furnitureDesc"]);
     const boolAttributeNames = [...booleanAttributes.general, ...(booleanAttributes[type] || [])];
-    const shouldShowRooms = AddressValidation.propertyTypesWithRooms.includes(propertyType);
+    const shouldShowRooms = AddressValidation.propertyTypesWithRooms.includes(propertyType || "");
     return (
         <div>
             <h5>{HEB_TITLE}</h5>
@@ -39,8 +44,8 @@ const PropertyDetails = () => {
                         <NumberInput name={fieldNames[0]} min={0} max={2} ref={register} />
                         <NumberInput name={fieldNames[1]} min={0} max={9} ref={register} />
                         {shouldShowRooms &&
-                            <FormSelect options={genSuccessiveArr(12, 0, 0.5).filter(el => !((el > 6) && !Number.isInteger(el)))}
-                                name={fieldNames[3]} ref={register(validationConfig.required)} />}
+                            <FormSelect name={fieldNames[3]}
+                                options={genSuccessiveArr(12, 0, 0.5).filter(el => !((el > 6) && !Number.isInteger(el)))} ref={register(validationConfig.required)} />}
                     </WithDivsAndLabels>
                 </div>
                 <div className="inner-focus-in-form PropertyDetails-bool-attr">
@@ -49,15 +54,18 @@ const PropertyDetails = () => {
                     <ThreewayToggleContainer toggleProps={boolAttributeNames.map(attr => ({ name: attr, ...translation(attr) }))} />
                     <button className="reset" type="button" onClick={() => { setValue(boolAttributeNames.map((attr) => ({ [attr]: undefined }))) }}>{HEB_RESET}</button>
                 </div>
-                <div className="inner-focus-in-form description">
-                    <h6>{HEB_WHATS_IMPORTANT}</h6>
-                    <textarea maxLength={maxDescChars} name={fieldNames[2]} placeholder={HEB_TEXT_AREA_PLACEHOLDER} ref={register} />
-                    <div>{HEB_CHAR_LIMIT(maxDescChars - (desc?.length || 0))}</div>
+                <div className="devtool">
+                    <DevTool control={control} />
                 </div>
+
+                {furniture &&
+                    <TextareaContainer name={fieldNames[4]} title={HEB_FURNITURE_DESCRIPTION} charsWritten={furnitureDesc?.length || 0} maxLength={maxFurnitureDescChars} placeholder={HEB_FURNITURE_DESCRIPTION_PLACEHOLDER} register={register} />}
+                <TextareaContainer name={fieldNames[2]} title={HEB_WHATS_IMPORTANT} maxLength={maxDescChars} placeholder={HEB_TEXT_AREA_PLACEHOLDER} register={register} charsWritten={desc?.length || 0} />
             </div>
         </div >
     )
 }
+
 
 export { PropertyDetails, fieldNames };
 

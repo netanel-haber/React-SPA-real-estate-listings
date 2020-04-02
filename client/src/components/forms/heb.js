@@ -68,6 +68,8 @@ const propertyDetailsStepHebrew = {
     HEB_WHATS_IMPORTANT: "מה חשוב לך שידעו על הנכס?",
     HEB_TEXT_AREA_PLACEHOLDER: "זה המקום לתאר את הפרטים הבולטים, למשל, האם נערך שיפוץ במבנה, מה שופץ, כיווני אוויר, האווירה ברחוב וכו'",
     HEB_ROOMS: "מס' חדרים",
+    HEB_FURNITURE_DESCRIPTION:"תיאור הריהוט",
+    HEB_FURNITURE_DESCRIPTION_PLACEHOLDER:"כמות, סוג, מצב הריהוט וכו'",
     HEB_CHAR_LIMIT: (charsLeft) => `נשארו לך ${charsLeft} תווים.`
 }
 
