@@ -7,11 +7,15 @@
   }
   .AddListing__active {
     min-height: 250px;
-      h5 {
-        text-align: center;
-        margin: 0;
-        margin-bottom: $m-size;
-      } 
+    h5 {
+      text-align: center;
+      margin: 0;
+      margin-bottom: $m-size;
+    }
+    h6 {
+      margin: 0;
+      color: lighten($def-color, 50%);
+    }
   }
   .AddListing__button {
     user-select: none;
@@ -20,9 +24,5 @@
       opacity: 0.6;
       pointer-events: none;
     }
-  }
-  h6 {
-    margin: 0;
-    color: lighten($def-color, 50%);
   }
 }

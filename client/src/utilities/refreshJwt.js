@@ -12,7 +12,6 @@ function refreshJwt(jwt) {
         .then(res => res.json())
         .then(({ newToken }) => {
             if (newToken) {
-                toaster("token refreshed", "success");
                 console.log({ newToken });
                 return localStorage.setItem("token", newToken)
             }

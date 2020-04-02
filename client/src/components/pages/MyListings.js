@@ -10,7 +10,8 @@ const hebTitleForType = {
     roommates: "נדל\"ן מסחרי"
 };
 
-const { HEB_MESSAGE = (name) => `שלום ${name}! להלן הנכסים שלך:` } = {};
+const ifDef = (name) => (name) ? " " + name : "";
+const { HEB_MESSAGE = (name) => `שלום${ifDef(name)}! להלן הנכסים שלך:` } = {};
 
 
 const MyListings = () => {

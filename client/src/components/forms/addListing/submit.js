@@ -5,10 +5,10 @@ import { addListing } from '../../../fetch/listings';
 import { mapDataToListing } from './submitKeyMap';
 import { paths } from '../../pages/paths';
 
-const { HEB_PROBLEM, HEB_UPLOAD_PROBLEM } = {
+const { HEB_PROBLEM, HEB_UPLOAD_PROBLEM, HEB_UPLOAD_SUCCESS } = {
     HEB_PROBLEM: "אירעה בעיה.",
     HEB_UPLOAD_PROBLEM: "אירעה תקלה בהעלאת הקבצים - נסה שוב או בחר קבצים שוב.",
-    HEB_UPLOAD_SUCCESS:"המודעה נוצרה בהצלחה!"
+    HEB_UPLOAD_SUCCESS: "המודעה נוצרה בהצלחה!"
 }
 
 
@@ -28,14 +28,15 @@ export default async (unfilteredData, history) => {
         }
     }
     const { type } = data;
-    const { floor, floorsInBuilding, sqMeters, price, propertyType } = data;
+    const { floor, floorsInBuilding, sqMeters, price, propertyType, rooms } = data;
     const { entrance, desc, entryDate, parkingSpots, upkeep,
         numBalconies, sqMGarden, sqMBuilt, homeOwnerAssociationMonthly,
         biMonthlyArnona, divided, rentedUntil, meetingRoom,
-        bathrooms, numChecks, taxesIncluded, rooms, furnitureDesc } = data;
-    const { longTerm, forPartners, cameras, ITRoom,
-        highCeiling, loadingRamp, underGround, kitchenette, alarm,
-        keepsKashrut, petsAllowed } = data;
+        bathrooms, numChecks, taxesIncluded } = data;
+    const { AC, grates, elevator, handicappedAccessible, mamad,
+        storage, furniture, furnitureDesc, longTerm, forPartners,
+        cameras, ITRoom, highCeiling, loadingRamp, underGround,
+        kitchenette, alarm, keepsKashrut, petsAllowed } = data;
     const finalResult = {
         type,
         listing: {
@@ -43,23 +44,24 @@ export default async (unfilteredData, history) => {
                 pictureKeys,
                 contact
             },
-            level1: { address, floorsInBuilding, floor, sqMeters, price, type: propertyType },
+            level1: { address, rooms, floorsInBuilding, floor, sqMeters, price, type: propertyType },
             level2: {
                 entrance, desc, entryDate, parkingSpots, upkeep,
                 numBalconies, sqMGarden, sqMBuilt, homeOwnerAssociationMonthly,
                 biMonthlyArnona, divided, rentedUntil, meetingRoom,
-                bathrooms, numChecks, taxesIncluded, rooms, furnitureDesc
+                bathrooms, numChecks, taxesIncluded
             },
             level3: {
-                longTerm, forPartners, cameras, ITRoom,
-                highCeiling, loadingRamp, underGround, kitchenette, alarm,
-                keepsKashrut, petsAllowed
+                AC, grates, elevator, handicappedAccessible, mamad,
+                storage, furniture, furnitureDesc, longTerm, forPartners,
+                cameras, ITRoom, highCeiling, loadingRamp, underGround,
+                kitchenette, alarm, keepsKashrut, petsAllowed
             }
         }
     }
     try {
         await addListing(finalResult);
-        toaster(HEB_UPLOAD_SUCCESS,"success");
+        toaster(HEB_UPLOAD_SUCCESS, "success");
         history.push(paths.myListings);
     }
     catch (ex) {

@@ -6,6 +6,7 @@ import { steps } from './steps/stepIndex';
 import classnames from 'classnames';
 import onSubmit from './submit';
 import { ButtonContainer, Button } from './buttons';
+import { useHistory } from 'react-router-dom';
 const { HEB_SEND } = formHebrew;
 const { HEB_STEP_FOOTER } = addListingHebrew;
 
@@ -13,14 +14,15 @@ const { HEB_STEP_FOOTER } = addListingHebrew;
 
 const AddListing = () => {
     const formMethods = useForm();
+    const history = useHistory();
     const { handleSubmit, errors, triggerValidation, clearError } = formMethods;
-    const submittionMethod = handleSubmit(onSubmit);
+    const submittionMethod = handleSubmit(data => onSubmit(data, history));
     const [activeStep, updateActiveStep] = useState(0);
     const [timesNextWasClicked, incrementNextCount] = useState(0);
     return (
         <FormContext {...{ ...formMethods, formState: { submitCount: timesNextWasClicked } }}>
             <div>
-                <form className="gen-form AddListing__form" onSubmit={submittionMethod}>
+                <form className="gen-form AddListing__form" onSubmit={submittionMethod, history}>
                     {steps.map(([Step, associatedFieldNames], index) => (
                         <div className={classnames({ AddListing__active: index === activeStep }, "step")} key={index}>
                             <Step />
@@ -43,7 +45,6 @@ const AddListing = () => {
                         </div>
                     ))}
                     <h6>{HEB_STEP_FOOTER(activeStep + 1, steps.length)}</h6>
-                    <button>submit</button>
                 </form>
             </div>
         </FormContext >

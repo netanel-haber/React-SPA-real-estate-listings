@@ -7,6 +7,7 @@ const level1SchemaFactory = (merge, types, isResidential = true) => {
         floor: Number,
         floorsInBuilding: Number,
         sqMeters: Number,
+        rooms: Number,
         price: {
             type: Number,
             default: null
