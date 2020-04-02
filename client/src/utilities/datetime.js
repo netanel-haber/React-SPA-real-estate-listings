@@ -28,7 +28,9 @@ const isValidDate = (d) => {
 }
 
 
-const isFutureDate = (d) => dayjs(d).isSameOrAfter(dayjs())
+const isFutureDate = (d) => { 
+    return dayjs(d).isSameOrAfter(dayjs()) 
+}
 
 
 const timeIsLessThanXMinutesAway = (epochSeconds, minutes = 1) => {

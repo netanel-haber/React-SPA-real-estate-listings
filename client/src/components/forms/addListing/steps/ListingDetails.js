@@ -25,7 +25,7 @@ const ListingDetails = () => {
                     <NumberInput name={fieldNames[0]} placeholder={HEB_SQ_M_PLACEHOLDER} ref={register(validationConfig.required)} />
                     <NumberInput name={fieldNames[1]} placeholder={HEB_PRICE_PLACEHOLDER} ref={register(validationConfig.price)} />
                     <DayPicker name={fieldNames[2]} onDayChange={(val, modifiers, { state: { value } }) => {
-                        setValue(fieldNames[2], value)
+                        setValue(fieldNames[2], String(val)||value)
                     }} />
                 </WithDivsAndLabels>
             </div>

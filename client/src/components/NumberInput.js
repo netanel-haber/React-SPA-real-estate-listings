@@ -4,8 +4,8 @@ export default React.forwardRef(function NumberInput({ max, min, name, className
     return (
         <input
             {...{ className, disabled, ref, name, placeholder }}
-            {...(max && { max })}
-            {...(min && { min })}
+            {...(max!==undefined && { max })}
+            {...(min!==undefined && { min })}
             type="number"
             onChange={(e) => {
                 e.preventDefault();

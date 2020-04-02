@@ -2,7 +2,6 @@
 @import "./settings.scss";
 @import "./utility-classes.scss";
 
-
 html {
   font-size: 55%;
   overflow: -moz-scrollbars-vertical;
@@ -35,8 +34,6 @@ h4 {
   margin-bottom: 10px;
 }
 
-
-
 $sm: 568;
 $md: 768;
 $lg: 1024;
@@ -53,13 +50,16 @@ $xl: 1280;
     }
     .form-inline {
       display: flex;
-      label {
-        height: 15px;
-        @include basic-flex(flex-start);
-        margin: 0;
-        margin-bottom: 3px;
-      }
       flex-wrap: wrap;
+      width: 75%;
+      justify-content: flex-start;
+      .pure-control-group{
+        flex-basis: 35%;
+        @include basic-flex;
+        label {
+          margin: 0 0 3px 5px;
+        }
+      }   
     }
   }
 }
@@ -79,7 +79,7 @@ $xl: 1280;
       display: flex;
       flex-wrap: wrap;
       label {
-        flex-basis: 50%;
+        flex-basis: 49%;
       }
     }
   }

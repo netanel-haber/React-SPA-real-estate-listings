@@ -7,9 +7,9 @@ import { PropertyDetails, fieldNames as propFieldNames } from './PropertyDetails
 import { Type, fieldNames as typeFieldNames } from './Type';
 
 const steps = [
-    // [Type, typeFieldNames],
-    // [Address, addFieldNames],
-    // [PropertyDetails, propFieldNames],
+    [Type, typeFieldNames],
+    [Address, addFieldNames],
+    [PropertyDetails, propFieldNames],
     [ListingDetails, listingFieldNames],
     [AddPics, []],
     [ContactDetails, []],

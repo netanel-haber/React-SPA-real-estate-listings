@@ -4,9 +4,9 @@
 @import "purecss-sass/vendor/assets/stylesheets/purecss/_forms.scss";
 
 //override purecss mediarule
-@media only screen and (max-width: 500px) {
+@media only screen and (max-width: 480px) {
   .pure-form-aligned .pure-control-group label {
-    text-align: right;
+    text-align: right !important;
   }
   .submit-container:not(.AddListing__next-step) {
     justify-content: flex-start !important;
@@ -34,6 +34,7 @@
   }
   label {
     margin-right: 2px !important;
+    text-align: right;
   }
   input {
     box-sizing: border-box !important;
@@ -75,7 +76,7 @@
 }
 
 .fields {
-  background-color: $body-white;
+  // background-color: $body-white;
   padding: $m-size;
   border-radius: 10px;
   width: 95%;
