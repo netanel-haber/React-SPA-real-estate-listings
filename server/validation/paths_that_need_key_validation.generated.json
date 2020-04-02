@@ -29,5 +29,9 @@
     "/listers/refresh-token": [],
     "/cities/streets": [
         "city"
+    ],
+    "/listings/add-listing": [
+        "type",
+        "listing"
     ]
 }

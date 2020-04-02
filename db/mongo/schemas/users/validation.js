@@ -1,9 +1,9 @@
 let { isEmail, isMobilePhone, isURL } = require('validator');
 const isMP = (pNumber) => isMobilePhone(pNumber, 'he-IL');
 const PNValidator = (arr) => arr.every(isMP);
-const { hebrewNameValidator } = require('../../../../client/src/validation/signup');
-
-const unique = true, required = true;
+const isHebrewName = (name) => /^[\u0590-\u05fe']+$/.test(name);
+const unique = true;
+const required = true;
 
 module.exports = {
     email: {
@@ -20,7 +20,7 @@ module.exports = {
     },
     name: {
         type: String,
-        validate: [(v) => hebrewNameValidator.test(v), "not a valid Hebrew name!"]
+        validate: [isHebrewName, "not a valid Hebrew name!"]
     },
     phoneNumber: {
         type: String,

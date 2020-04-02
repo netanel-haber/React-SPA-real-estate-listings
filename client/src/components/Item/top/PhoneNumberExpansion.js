@@ -18,14 +18,19 @@ const extractRegListerDetails = ({ name, phoneNumber, email }) =>
 
 
 const PhoneNumberExpansion = ({ isExpanded }) => {
-    const { listing: { mitigatingCompany, listerId } } = useContext(ItemContext);
+    const { listing: { mitigatingCompany, listerId, contact } } = useContext(ItemContext);
     const [regListerDetails, updateRegUserDetails] = useState([]);
 
     useEffect(() => {
-        if (!mitigatingCompany)
+        if (contact) {
+            const { name, lastName, phoneNumber, email } = contact;
+            updateRegUserDetails({ name: name + " " + lastName, phoneNumber, email })
+        }
+        else if (!mitigatingCompany) {
             getLister(listerId).then(({ name, lastName, phoneNumber, email }) => {
                 updateRegUserDetails({ name: name + " " + lastName, phoneNumber, email })
             })
+        }
     }, []);
 
     return (

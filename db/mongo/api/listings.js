@@ -1,6 +1,10 @@
 const { modelOf, types } = require('./switch-model');
 
 
+const addListing = async (data, type) => await modelOf(type).create(data)
+
+
+
 const getTopLevel = async (type, filters = {}, sort = {}, skip, limit) =>
     await modelOf(type).find(filters, '_id listing level1', { sort, skip, limit }).lean();
 
@@ -20,5 +24,5 @@ const getAllListingsForLister = async (id) => {
 
 
 
-module.exports = { getBottomLevel, getTopLevel, countDocs, getAllListingsForLister }
+module.exports = { getBottomLevel, getTopLevel, countDocs, getAllListingsForLister, addListing }
 

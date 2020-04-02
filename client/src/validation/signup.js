@@ -10,6 +10,6 @@ const passSchema = new passwordValidator()
 const valPass = (pass, list = true) => passSchema.validate(pass, { list });
 
 
-const hebrewNameValidator = /^[\u0590-\u05fe']+$/
+const isHebrewName = /^[\u0590-\u05fe']+$/
 
-module.exports = { valPass, hebrewNameValidator }
+module.exports = { valPass, isHebrewName }

@@ -10,5 +10,7 @@ const countDocs = (type, filters = {}, signal) => {
 
 const getRest = (type, id) => fetchHandler(`/api/listings/${type}/${id}`)
 
+const addListing = (data) => fetchHandler('/api/listings/add-listing', "POST", data)
 
-export { getListings, getRest, countDocs };
+
+export { getListings, getRest, countDocs, addListing };

@@ -8,6 +8,7 @@ const listingMetadataSchema = new Schema({
         type: mitigatingCompany,
         default: null
     },
+    contact,
     listerId: {
         type: Schema.Types.ObjectId,
         validate: [(val) => nadlan.models.Lister.findById(val),

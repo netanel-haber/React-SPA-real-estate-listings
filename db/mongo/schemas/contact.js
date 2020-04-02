@@ -1,8 +1,9 @@
 const { Schema } = require('mongoose');
-const { phoneNumber, email } = require('./users/validation');
+const { phoneNumber, email, name } = require('./users/validation');
 
 module.exports = new Schema({
-    name: String,
+    name,
+    lastName: name,
     phoneNumber,
     email
-})
+});

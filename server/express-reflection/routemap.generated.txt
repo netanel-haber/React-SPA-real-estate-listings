@@ -20,6 +20,11 @@ router
  │    ├── compression                              *                                                           
  │    ├── router                                   *                                                           
  │    │    ├── translator                          *                                                           
+ │    │    ├── bound dispatch                      /listings/add-listing                                       POST
+ │    │    │    ├── validateKeys                   /                                                           POST
+ │    │    │    ├── auth                           /                                                           POST
+ │    │    │    └── addListing                     /                                                           POST
+ │    │    │   
  │    │    ├── bound dispatch                      /listings/count/:type                                       POST
  │    │    │    ├── validateKeys                   /                                                           POST
  │    │    │    └── countListings                  /                                                           POST

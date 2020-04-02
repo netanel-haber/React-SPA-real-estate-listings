@@ -15,7 +15,7 @@ const { HEB_TITLE, HEB_CHOOSE_PROPERTY_TYPE, HEB_CHOOSE_UPKEEP, HEB_TYPE_OF_PROP
 
 const fieldNames = [
     "propertyType", "upkeep", "municipality", "street", "floor",
-    "floorsInBuilding", "neighborhood", "number", "apt", "entrance"
+    "floorsInBuilding", "area", "number", "apt", "entrance"
 ];
 const Address = () => {
     const { register, watch, setValue, control } = useFormContext();
