@@ -1,18 +1,17 @@
 @import "~base/settings";
 @import "~base/utility-classes";
 
-
 .AddListing__form {
-  .step:not(.AddListing__active){
+  .step:not(.AddListing__active) {
     display: none;
   }
   .AddListing__active {
     min-height: 250px;
-    h5 {
-      text-align: center;
-      margin: 0;
-      margin-bottom: $m-size;
-    }
+      h5 {
+        text-align: center;
+        margin: 0;
+        margin-bottom: $m-size;
+      } 
   }
   .AddListing__button {
     user-select: none;

@@ -8,9 +8,13 @@ router
  │    │    └── test                                /                                                           GET
  │    │   
  │    ├── router                                   /^\/pics\/?(?=\/|$)/                                        
- │    │    └── bound dispatch                      /get-pic-urls                                               POST
- │    │         ├── validateKeysExact              /                                                           POST
- │    │         └── getPicUrls                     /                                                           POST
+ │    │    ├── bound dispatch                      /get-pic-urls                                               POST
+ │    │    │    ├── validateKeysExact              /                                                           POST
+ │    │    │    └── getPicUrls                     /                                                           POST
+ │    │    │   
+ │    │    └── bound dispatch                      /upload-data/:howmany                                       GET
+ │    │         ├── auth                           /                                                           GET
+ │    │         └── getS3UploadUrls                /                                                           GET
  │    │        
  │    │   
  │    ├── compression                              *                                                           

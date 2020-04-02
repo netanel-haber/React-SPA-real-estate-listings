@@ -1,5 +1,4 @@
 import React from 'react';
-// import 'react-day-picker/lib/style.css';
 import { dayPickerProps, format, israeliDateFormat } from '../utilities/datetime';
 import DayPickerInput from 'react-day-picker/DayPickerInput';
 import '#src#/styles/components/DayPicker.scss';

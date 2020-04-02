@@ -1,0 +1,40 @@
+@import "~base/settings";
+
+.pics {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    #file-input {
+        width: 0.1px;
+        height: 0.1px;
+        opacity: 0;
+        overflow: hidden;
+        position: absolute;
+        z-index: -1;
+    }
+
+    #actual-input {
+        display: block;
+        margin: 0;
+        text-align: center;
+        background-color: transparent;
+        color: $yad2-orange;
+        border: 1px solid $yad2-orange;
+        border-radius: 8px;
+        padding: 20px;
+        cursor: pointer;
+        box-sizing: border-box;
+        box-shadow:  inset -9px 2px 110px -54px rgba(0,0,0,0.11);
+        &:hover{
+            opacity: 0.6;
+        }
+    }
+
+    .filenames {
+        font-size: $s-size;
+        ol {
+            direction: ltr;
+        }
+    }
+}

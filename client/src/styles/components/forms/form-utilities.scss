@@ -54,6 +54,7 @@
     .error-message-container {
       > input {
         width: 100%;
+        min-width: 50px;
       }
     }
   }
@@ -77,12 +78,12 @@
 
 .fields {
   // background-color: $body-white;
+  box-sizing: border-box;
   padding: $m-size;
   border-radius: 10px;
-  width: 95%;
   margin: auto;
   min-width: 150px;
-  max-width: 500px;
+  max-width: 750px;
 }
 
 .inner-focus-in-form {

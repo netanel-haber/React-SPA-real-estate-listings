@@ -6,8 +6,11 @@ const errHebrew = {
     HEB_NAME_INVALID: "השם שהזנת איננו תקין",
     HEB_INVALID_CITY: "מקום המגורים איננו מוכר.",
     HEB_INVALID_STREET: "הרחוב איננו מוכר במקום המגורים שבחרת",
-    HEB_INVALID_PRICE:(minPrice)=>`המחיר המינימלי הינו ${minPrice}‎₪`,
-    HEB_INVALID_DATE:"נדרש תאריך חוקי ועתידי.",
+    HEB_INVALID_PRICE: (minPrice) => `המחיר המינימלי הינו ${minPrice}‎₪`,
+    HEB_INVALID_DATE: "נדרש תאריך חוקי ועתידי.",
+    HEB_INVALID_TOTAL_SIZE: size => `סך הגודל הקבצים איננו יכול לעלות על ${size}Mb`,
+    HEB_INVALID_SINGLE_SIZE: size => `כל קובץ לבדו איננו יכול לעלות על ${size}Mb`,
+    HEB_INVALID_MIME_TYPE: "על הקבצים להיות מסוג תמונה.",
     passwordErrMessages: {
         min: "להיות לפחות באורך 8 תווים",
         uppercase: "להכיל אות אחת גדולה לפחות",
@@ -68,8 +71,8 @@ const propertyDetailsStepHebrew = {
     HEB_WHATS_IMPORTANT: "מה חשוב לך שידעו על הנכס?",
     HEB_TEXT_AREA_PLACEHOLDER: "זה המקום לתאר את הפרטים הבולטים, למשל, האם נערך שיפוץ במבנה, מה שופץ, כיווני אוויר, האווירה ברחוב וכו'",
     HEB_ROOMS: "מס' חדרים",
-    HEB_FURNITURE_DESCRIPTION:"תיאור הריהוט",
-    HEB_FURNITURE_DESCRIPTION_PLACEHOLDER:"כמות, סוג, מצב הריהוט וכו'",
+    HEB_FURNITURE_DESCRIPTION: "תיאור הריהוט",
+    HEB_FURNITURE_DESCRIPTION_PLACEHOLDER: "כמות, סוג, מצב הריהוט וכו'",
     HEB_CHAR_LIMIT: (charsLeft) => `נשארו לך ${charsLeft} תווים.`
 }
 
@@ -83,11 +86,19 @@ const listingDetailsStepHebrew = {
     HEB_IMMEDIATELY: ""
 }
 
-
+const addPicsStepHebrew = {
+    HEB_TITLE: "העלאת תמונות",
+    HEB_CHOOSE_PICS: "בחר קבצים",
+    HEB_CHOSEN_PICS_TITLE: "הקבצים שבחרת להעלות:",
+    HEB_DISCLAIMER: (singleSizeLimit, totalSizeLimit) =>
+        errHebrew.HEB_INVALID_TOTAL_SIZE(totalSizeLimit) + ".\n" +
+        errHebrew.HEB_INVALID_SINGLE_SIZE(singleSizeLimit) + ".\n" +
+        "הקובץ הראשון ברשימה תוצג בתור התמונה הראשונה."
+}
 
 const addListingHebrew = {
     HEB_STEP_FOOTER: (step, steps) => `שלב ${step} מתוך ${steps}`
 }
 
 
-export { errHebrew, formHebrew, typeStepHebrew, listingDetailsStepHebrew, addListingHebrew, addressStepHebrew, propertyDetailsStepHebrew }
+export { errHebrew, formHebrew, typeStepHebrew, addPicsStepHebrew, listingDetailsStepHebrew, addListingHebrew, addressStepHebrew, propertyDetailsStepHebrew }

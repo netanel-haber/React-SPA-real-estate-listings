@@ -1,4 +1,4 @@
-import AddPics from './AddPics';
+import { AddPics, fieldNames as addPicsFieldNames } from './AddPics';
 import { Address, fieldNames as addFieldNames } from './Address';
 import ContactDetails from './ContactDetails';
 import Finalize from './Finalize';
@@ -10,8 +10,8 @@ const steps = [
     // [Type, typeFieldNames],
     // [Address, addFieldNames],
     // [PropertyDetails, propFieldNames],
-    [ListingDetails, listingFieldNames],
-    [AddPics, []],
+    // [ListingDetails, listingFieldNames],
+    [AddPics, addPicsFieldNames],
     [ContactDetails, []],
     [Finalize, []]
 ];

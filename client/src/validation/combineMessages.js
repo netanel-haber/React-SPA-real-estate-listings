@@ -7,6 +7,4 @@ const combineMessages = (validationArr, messages, prefix) => {
 }
 
 
-
-
 module.exports = combineMessages;

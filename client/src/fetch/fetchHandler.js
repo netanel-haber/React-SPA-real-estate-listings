@@ -6,9 +6,9 @@ const { HEB_TOAST_ERROR } = {
 }
 
 
-function fetchHandler(url, method = "GET", data, signal, optOutOfRefreshingToken = false) {
+function fetchHandler(url, method = "GET", data, signal, refreshToken = true) {
     const token = localStorage.getItem('token');
-    (!optOutOfRefreshingToken && url.includes("listers")) && refreshJwt(token);
+    (refreshToken && url.includes("listers")) && refreshJwt(token);
     return new Promise((res, rej) => {
         fetch(url, {
             method,
