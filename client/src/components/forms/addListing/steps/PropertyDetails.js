@@ -1,7 +1,6 @@
 import '#src#/styles/components/forms/add-listing/steps/PropertyDetails.scss';
 import React from 'react';
 import { useFormContext } from 'react-hook-form';
-import { DevTool } from 'react-hook-form-devtools';
 import translator2 from '../../../Item/rest/Level2_translator';
 import translator3 from '../../../Item/rest/Level3_translator';
 import { FormSelect } from '../../../ListContainer/SortBy/Select';
@@ -54,10 +53,6 @@ const PropertyDetails = () => {
                     <ThreewayToggleContainer toggleProps={boolAttributeNames.map(attr => ({ name: attr, ...translation(attr) }))} />
                     <button className="reset" type="button" onClick={() => { setValue(boolAttributeNames.map((attr) => ({ [attr]: undefined }))) }}>{HEB_RESET}</button>
                 </div>
-                <div className="devtool">
-                    <DevTool control={control} />
-                </div>
-
                 {furniture &&
                     <TextareaContainer name={fieldNames[4]} title={HEB_FURNITURE_DESCRIPTION} charsWritten={furnitureDesc?.length || 0} maxLength={maxFurnitureDescChars} placeholder={HEB_FURNITURE_DESCRIPTION_PLACEHOLDER} register={register} />}
                 <TextareaContainer name={fieldNames[2]} title={HEB_WHATS_IMPORTANT} maxLength={maxDescChars} placeholder={HEB_TEXT_AREA_PLACEHOLDER} register={register} charsWritten={desc?.length || 0} />

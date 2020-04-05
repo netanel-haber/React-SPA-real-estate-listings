@@ -10,10 +10,9 @@ const Option = ({ onClick, text, selected, bullet = false }) => (
     </div>
 );
 
-const noop = function () { }
-const Select = ({ dropOptions, dispatch = noop, bullet = true, className = "" }) => {
-    const options = Object.entries(dropOptions);
-    const [[text, value], changeSelected] = useState(options[0]);
+const Select = ({ options, dispatch, bullet = true, className = "", selectedOption }) => {
+    const [text, value] = selectedOption;
+
     const [isOpen, toggleOpen] = useState(false);
     const dropdownRef = useRef(null);
     useEffect(() => {
@@ -25,7 +24,6 @@ const Select = ({ dropOptions, dispatch = noop, bullet = true, className = "" })
         toggleOpen(!isOpen)
     }
     function onOptionClick(index) {
-        changeSelected(options[index]);
         dispatch(options[index][1])
         toggleOpen(false);
     };
@@ -37,7 +35,7 @@ const Select = ({ dropOptions, dispatch = noop, bullet = true, className = "" })
             </div>
             <div ref={dropdownRef} style={{ display: isOpen ? "block" : "none" }} className="actual-dropdown" tabIndex="0" onBlur={() => { toggleOpen(false) }}>
                 {options.map(([text, childValue], index) =>
-                    <Option bullet={bullet} key={text} text={text} onClick={(e) => onOptionClick(index)} selected={childValue === value} />)}
+                    <Option bullet={bullet} key={text} text={text} onClick={() => onOptionClick(index)} selected={childValue === value} />)}
             </div>
         </div>
     )
@@ -62,7 +60,7 @@ const FormSelect = React.forwardRef(function FormSelect({ options, className = "
                 <span />
             </div>
             <div ref={dropdownRef} style={{ display: isOpen ? "block" : "none" }} className="actual-dropdown" tabIndex="0" onBlur={() => { toggleOpen(false) }}>
-                {options.map((opt,index) =>
+                {options.map((opt, index) =>
                     <Option key={index} text={opt} onClick={() => {
                         setValue(name, opt);
                         toggleOpen(false)

@@ -5,21 +5,26 @@ const initialOptions = {
 };
 
 
+const staticToggleFilters = {
+    price: "$exists",
+    pictureKeys: "$isntEmptyArray"
+};
+
+
 const optionsReducer = (state, { type, payload }) => {
+    const { filters, sorts, limit } = state;
     switch (type) {
         case "SORTS":
             return { ...state, sorts: payload }
-        case "FILTERS":
-            let filters = { ...state.filters };
-            Object.entries(payload).forEach(([key, value]) => {
-                if (value === false)
-                    delete filters[key];
-                else
-                    filters[key] = value;
-            })
-            return { ...state, filters };
         case "LIMIT":
             return { ...state, limit: payload }
+        case "TOGGLE_FILTER":
+            const { [payload]: filterIsOn, ...rest } = filters;
+            return {
+                sorts,
+                limit,
+                filters: filterIsOn ? rest : { ...filters, [payload]: staticToggleFilters[payload] }
+            }
         default:
             return state;
     }

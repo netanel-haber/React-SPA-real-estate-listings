@@ -1,22 +1,15 @@
 @import "../../base/settings";
 @import "../../base/utility-classes";
 
-.SortBy {
-  @include basic-flex(center);
-  flex-wrap: wrap;
-  > * {
-    @include basic-flex;
-    > * {
-      padding: $s-size/2;
-      margin: $s-size/2;
-    }
-  }
-  margin: $s-size 0;
-  height: fit-content;
-}
 
 .SortBy__limit {
-  min-width: 20px;
+  min-width: 50px;
+  padding: $s-size/2 $s-size/4;
+  width: $l-size;
+  border: 1px solid $grayish;
+  form {
+    @include basic-flex(undefined, column);
+  }
 }
 
 .SortBy__button {
@@ -31,11 +24,3 @@
   }
 }
 
-.SortBy__limit {
-  padding: $s-size/2 $s-size/4;
-  width: $l-size;
-  border: 1px solid $grayish;
-  form {
-    @include basic-flex(undefined, column);
-  }
-}

@@ -1,7 +1,6 @@
 import { getCities, getStreets } from '#src#/fetch/cities';
 import React, { useEffect, useState } from 'react';
 import { useFormContext } from 'react-hook-form';
-import { DevTool } from 'react-hook-form-devtools';
 import { FormSelect } from '../../../ListContainer/SortBy/Select';
 import { addressStepHebrew } from '../../heb';
 import { mockNeighborhoods, validationConfig as vc, AddressValidation } from '../../utilities';
@@ -58,9 +57,6 @@ const Address = () => {
                     <input name={fieldNames[9]} ref={register} />
                     <input name={fieldNames[6]} ref={register} readOnly placeholder={HEB_NEIGHBORHOOD_PLACEHOLDER} />
                 </WithDivsAndLabels>
-                <div className="devtool">
-                    <DevTool control={control} />
-                </div>
             </div>
         </div>
     )

@@ -1,0 +1,18 @@
+@import "~base/settings";
+@import "~base/utility-classes";
+
+.Filter {
+    input[type="number"]::-webkit-inner-spin-button,
+    input[type="number"]::-webkit-outer-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+    }
+}
+
+
+.PriceFilter {
+    input {
+        margin: 0;
+        width: 100px;
+    }
+}

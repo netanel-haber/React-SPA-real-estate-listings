@@ -3,7 +3,7 @@ import { initialOptions, optionsReducer } from '../reducers/optionsReducer';
 import '../styles/components/ListsContainer.scss';
 import ListContainer from './ListContainer/ListContainer';
 import SortBy from './ListContainer/SortBy/SortBy';
-
+import Filter from '../components/forms/Filter/Filter';
 
 const ListsContainer = ({ lists = [] }) => {
     const [options, dispatch] = useReducer(optionsReducer, initialOptions);
@@ -12,9 +12,8 @@ const ListsContainer = ({ lists = [] }) => {
     const dispatchLimit = (limit) => { dispatch({ type: "LIMIT", payload: limit }) }
     return (
         <div className="ItemLists body__content">
-            <div className="ItemLists__sorts-and-filters">
-                <SortBy {...{ dispatchSorts, dispatchFilters, dispatchLimit }}></SortBy>
-            </div>
+            <Filter {...{ dispatchFilters }} />
+            <SortBy {...{ options, dispatch }}></SortBy>
             <div className="ItemLists__lists">
                 {lists.map(([title, initialFilters, type], index) =>
                     <React.Fragment key={index}>
