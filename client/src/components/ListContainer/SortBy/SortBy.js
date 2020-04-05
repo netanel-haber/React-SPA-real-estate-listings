@@ -5,6 +5,9 @@ import NumberInput from './../../NumberInput';
 import heb from './hebrew';
 import Select from './Select';
 import equal from 'fast-deep-equal';
+import filterShortCuts from '../../../utilities/dbFilterShortcuts';
+
+const { $exists, $isntEmptyArray } = filterShortCuts;
 
 const { HEB_BY_DATE, HEB_SORT_BY, HEB_CHEAP_FIRST, HEB_EXPENSIVE_FIRST, HEB_FILTER,
     HEB_ONLY_WITH_PRICE, HEB_ONLY_WITH_PIC } = heb;
@@ -29,15 +32,15 @@ const SortBy = ({ options, dispatch }) => {
 
     const priceFilterButton = (
         <div
-            onClick={() => dispatchToggle(dispatch, ["price", "$exists"])}
-            className={classnames("SortBy__button", { active: filters?.price?.includes("$exists") })}>
+            onClick={() => dispatchToggle(dispatch, ["price", $exists])}
+            className={classnames("SortBy__button", { active: filters?.price?.["$exists"] })}>
             {HEB_ONLY_WITH_PRICE}
         </div>);
 
     const picsFilterButton = (
         <div
-            onClick={() => dispatchToggle(dispatch, ["pictureKeys", "$exists"])}
-            className={classnames("SortBy__button", { active: filters?.pictureKeys?.includes("$exists") })}>
+            onClick={() => dispatchToggle(dispatch, ["pictureKeys", $isntEmptyArray])}
+            className={classnames("SortBy__button", { active: filters?.pictureKeys?.["$exists"] })}>
             {HEB_ONLY_WITH_PIC}
         </div>);
 

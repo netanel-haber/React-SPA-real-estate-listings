@@ -1,4 +1,4 @@
-import React, { useReducer } from 'react';
+import React, { useReducer, useEffect } from 'react';
 import { initialOptions, optionsReducer } from '../reducers/optionsReducer';
 import '../styles/components/ListsContainer.scss';
 import ListContainer from './ListContainer/ListContainer';
@@ -7,12 +7,9 @@ import Filter from '../components/forms/Filter/Filter';
 
 const ListsContainer = ({ lists = [] }) => {
     const [options, dispatch] = useReducer(optionsReducer, initialOptions);
-    const dispatchSorts = (sorts) => { dispatch({ type: "SORTS", payload: sorts }); };
-    const dispatchFilters = (filters) => { dispatch({ type: "FILTERS", payload: filters }) }
-    const dispatchLimit = (limit) => { dispatch({ type: "LIMIT", payload: limit }) }
     return (
         <div className="ItemLists body__content">
-            <Filter {...{ dispatchFilters }} />
+            <Filter {...{ options, dispatch }} />
             <SortBy {...{ options, dispatch }}></SortBy>
             <div className="ItemLists__lists">
                 {lists.map(([title, initialFilters, type], index) =>
