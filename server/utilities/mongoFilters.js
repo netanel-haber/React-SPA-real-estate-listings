@@ -1,7 +1,7 @@
 const transVal = {
-    $null: null,
+    $null: { $type: 10 },
     $exists: { $exists: true, $ne: null },
-    $isntEmptyArray: { $exists: true, $ne: [] }
+    $isntEmptyArray: { $exists: true, $ne: [] },
 }
 
 const transKey = {
@@ -14,11 +14,19 @@ const transKey = {
 
 
 module.exports = (userFilters) => {
-    let filters = {};
-    Object.entries(userFilters).forEach(([path, filter]) => {
-        const key = transKey[path];
-        const value = transVal[filter] !== undefined ? transVal[filter] : filter;
-        filters[key] = value;
-    })
-    return filters;
+    let finalFilters = {};
+    Object.entries(userFilters)
+        .forEach(([path, filters]) => {
+            const key = transKey[path];
+            const value = Object
+                .fromEntries(filters
+                    .map(filt => Object.entries(typeof filt === "string"
+                        ? transVal[filt]
+                        : filt))
+                    .flat());
+            if (Object.keys(value).length !== 0) {
+                finalFilters[key] = value;
+            }
+        })
+    return finalFilters;
 }

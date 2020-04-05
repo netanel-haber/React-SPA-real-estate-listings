@@ -1,10 +1,9 @@
 import classnames from 'classnames';
-import React, { useState } from 'react';
+import React from 'react';
 import '../../../styles/components/SortBy/SortBy.scss';
 import NumberInput from './../../NumberInput';
 import heb from './hebrew';
 import Select from './Select';
-import { useForm } from 'react-hook-form';
 import equal from 'fast-deep-equal';
 
 const { HEB_BY_DATE, HEB_SORT_BY, HEB_CHEAP_FIRST, HEB_EXPENSIVE_FIRST, HEB_FILTER,
@@ -24,20 +23,21 @@ function dispatchToggle(dispatch, payload) {
 }
 
 
+
 const SortBy = ({ options, dispatch }) => {
     const { sorts, filters, limit } = options;
 
     const priceFilterButton = (
         <div
-            onClick={() => dispatchToggle(dispatch, "price")}
-            className={classnames("SortBy__button", { active: filters?.price })}>
+            onClick={() => dispatchToggle(dispatch, ["price", "$exists"])}
+            className={classnames("SortBy__button", { active: filters?.price?.includes("$exists") })}>
             {HEB_ONLY_WITH_PRICE}
         </div>);
 
     const picsFilterButton = (
         <div
-            onClick={() => dispatchToggle(dispatch, "pictureKeys")}
-            className={classnames("SortBy__button", { active: filters?.pictureKeys })}>
+            onClick={() => dispatchToggle(dispatch, ["pictureKeys", "$exists"])}
+            className={classnames("SortBy__button", { active: filters?.pictureKeys?.includes("$exists") })}>
             {HEB_ONLY_WITH_PIC}
         </div>);
 

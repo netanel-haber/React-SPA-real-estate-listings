@@ -1,15 +1,11 @@
 const initialOptions = {
     sorts: { updatedAt: -1 },
-    filters: {},
+    filters: {
+        price: [],
+        pictureKeys: [],
+    },
     limit: 3
 };
-
-
-const staticToggleFilters = {
-    price: "$exists",
-    pictureKeys: "$isntEmptyArray"
-};
-
 
 const optionsReducer = (state, { type, payload }) => {
     const { filters, sorts, limit } = state;
@@ -19,11 +15,17 @@ const optionsReducer = (state, { type, payload }) => {
         case "LIMIT":
             return { ...state, limit: payload }
         case "TOGGLE_FILTER":
-            const { [payload]: filterIsOn, ...rest } = filters;
+            const [filter, toggleVal] = payload;
+            const curFilter = filters[filter];
             return {
                 sorts,
                 limit,
-                filters: filterIsOn ? rest : { ...filters, [payload]: staticToggleFilters[payload] }
+                filters: {
+                    ...filters,
+                    [filter]: curFilter.includes(toggleVal)
+                        ? curFilter.filter(el => el !== toggleVal)
+                        : [...curFilter, toggleVal]
+                }
             }
         default:
             return state;
