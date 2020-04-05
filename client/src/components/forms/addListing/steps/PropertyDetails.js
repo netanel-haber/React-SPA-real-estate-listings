@@ -41,8 +41,8 @@ const PropertyDetails = () => {
             <div className="fields">
                 <div className="inner-focus-in-form form-inline">
                     <WithDivsAndLabels texts={[HEB_NUM_BALCONIES_LABEL, HEB_NUM_PARKING_SPOTS, HEB_ROOMS]} requiredIndices={[2]} className="NumberInput">
-                        <NumberInput name={fieldNames[0]} min={0} max={2} ref={register} />
-                        <NumberInput name={fieldNames[1]} min={0} max={9} ref={register} />
+                        <NumberInput name={fieldNames[0]} max={2} />
+                        <NumberInput name={fieldNames[1]} max={9} />
                         {shouldShowRooms &&
                             <FormSelect name={fieldNames[3]}
                                 options={genSuccessiveArr(12, 0, 0.5).filter(el => !((el > 6) && !Number.isInteger(el)))} ref={register(validationConfig.required)} />}

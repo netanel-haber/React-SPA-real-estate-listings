@@ -1,11 +1,18 @@
 import React from 'react';
+import { useFormContext } from 'react-hook-form';
+import { validationConfig } from '../components/forms/utilities';
 
-export default React.forwardRef(function NumberInput({ max, min, name, className, placeholder, callback = (() => { }), disabled = false }, ref) {
+export default function NumberInput({ max, min = 0, required, altValidation, name, className, placeholder, callback = (() => { }), disabled = false }) {
+    const { register } = useFormContext() || {};
     return (
         <input
-            {...{ className, disabled, ref, name, placeholder }}
-            {...(max!==undefined && { max })}
-            {...(min!==undefined && { min })}
+            {...(register && {
+                ref: register(
+                    altValidation ||
+                    validationConfig.numberInput({ min, max }, required))
+            })}
+            {...{ className, disabled, name, placeholder, min }}
+            {...(max !== undefined && { max })}
             type="number"
             onChange={(e) => {
                 e.preventDefault();
@@ -14,4 +21,4 @@ export default React.forwardRef(function NumberInput({ max, min, name, className
             autoComplete="off"
         />
     )
-})
+}

@@ -4,7 +4,7 @@ import { useFormContext } from 'react-hook-form';
 import { DevTool } from 'react-hook-form-devtools';
 import { FormSelect } from '../../../ListContainer/SortBy/Select';
 import { addressStepHebrew } from '../../heb';
-import { mockNeighborhoods, validationConfig, AddressValidation } from '../../utilities';
+import { mockNeighborhoods, validationConfig as vc, AddressValidation } from '../../utilities';
 import NumberInput from './../../../NumberInput';
 import SearchSelect from './../../../SearchSelect';
 import { WithDivsAndLabels } from './../../withDivAndLabel';
@@ -41,17 +41,17 @@ const Address = () => {
             <h5>{HEB_TITLE}</h5>
             <div className="fields">
                 <WithDivsAndLabels requiredIndices={[0, 2, 3]} texts={[HEB_CHOOSE_PROPERTY_TYPE, HEB_CHOOSE_UPKEEP, HEB_MUNICIPALITY, HEB_STREET]}>
-                    <FormSelect name={fieldNames[0]} ref={register(validationConfig.required)} className="Address-select" options={AddressValidation.propertyType[type]} />
+                    <FormSelect name={fieldNames[0]} ref={register(vc.required)} className="Address-select" options={AddressValidation.propertyType[type]} />
                     <FormSelect name={fieldNames[1]} ref={register} className="Address-select" options={AddressValidation.upkeep} />
-                    <SearchSelect name={fieldNames[2]} validationFunc={validationConfig.municipality(municipalities)} placeholder={HEB_SEARCH_CITY} options={municipalities} />
-                    <SearchSelect name={fieldNames[3]} disabled={streets.length === 0} validationFunc={validationConfig.streets(streets)} callback={(city) => { setValue(fieldNames[6], mockNeighborhoods[Math.ceil(Math.random() * (mockNeighborhoods.length - 1))]) }} placeholder={HEB_SEARCH_STREET} options={streets} />
+                    <SearchSelect name={fieldNames[2]} validationFunc={vc.municipality(municipalities)} placeholder={HEB_SEARCH_CITY} options={municipalities} />
+                    <SearchSelect name={fieldNames[3]} validationFunc={vc.streets(streets)} disabled={streets.length === 0}  callback={(city) => { setValue(fieldNames[6], mockNeighborhoods[Math.ceil(Math.random() * (mockNeighborhoods.length - 1))]) }} placeholder={HEB_SEARCH_STREET} options={streets} />
                 </WithDivsAndLabels>
                 <div className="pure-control-group form-inline">
                     <WithDivsAndLabels texts={[HEB_NUMBER, HEB_APT, HEB_FLOOR, HEB_TOTAL_PROPERTY_FLOORS]} requiredIndices={[0]} className="NumberInput">
-                        <NumberInput name={fieldNames[7]} ref={register(validationConfig.required)} max={50} min={0} />
-                        <NumberInput name={fieldNames[8]} ref={register} max={50} min={0} />
-                        <NumberInput name={fieldNames[4]} ref={register} max={50} min={0} />
-                        <NumberInput name={fieldNames[5]} ref={register} max={50} min={1} />
+                        <NumberInput name={fieldNames[7]} min={1} max={50} />
+                        <NumberInput name={fieldNames[8]} min={1} max={50} />
+                        <NumberInput name={fieldNames[4]} max={50} />
+                        <NumberInput name={fieldNames[5]} min={1} max={50} />
                     </WithDivsAndLabels>
                 </div>
                 <WithDivsAndLabels texts={[HEB_ENTRANCE, HEB_NEIGHBORHOOD_LABEL]} requiredIndices={[]}>

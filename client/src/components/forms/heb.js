@@ -10,6 +10,8 @@ const errHebrew = {
     HEB_INVALID_DATE: "נדרש תאריך חוקי ועתידי.",
     HEB_INVALID_TOTAL_SIZE: size => `סך הגודל הקבצים איננו יכול לעלות על ${size}Mb`,
     HEB_INVALID_SINGLE_SIZE: size => `כל קובץ לבדו איננו יכול לעלות על ${size}Mb`,
+    HEB_MINIMUM: (min) => `המספר המינימלי הינו ${min}`,
+    HEB_MAXIMUM: (max) => `המספר המקסימלי הינו ${max}`,
     HEB_INVALID_MIME_TYPE: "על הקבצים להיות מסוג תמונה.",
     passwordErrMessages: {
         min: "להיות לפחות באורך 8 תווים",
