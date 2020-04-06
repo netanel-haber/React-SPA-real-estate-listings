@@ -1,19 +1,17 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import { useFormContext } from 'react-hook-form';
-import { addPicsStepHebrew, errHebrew } from '../../heb';
+import { addPicsStepHebrew } from '../../heb';
 import { validationConfig } from '../../utilities';
 import '#src#/styles/components/forms/add-listing/steps/AddPics.scss';
-import withDivAndLabel from './../../withDivAndLabel';
 import WithErrorMessageContainer from './../../WithErrorMessageContainer';
 
 const { HEB_TITLE, HEB_CHOOSE_PICS, HEB_CHOSEN_PICS_TITLE, HEB_DISCLAIMER } = addPicsStepHebrew;
-const { HEB_INVALID_MIME_TYPE, HEB_INVALID_SINGLE_SIZE, HEB_INVALID_TOTAL_SIZE } = errHebrew;
 const singleSizeLimitMb = 2;
 const totalSizeLimitMb = 10;
 
 const fieldNames = ["pictures"]
 const AddPics = () => {
-    const { submitCount, errors, register, watch } = useFormContext();
+    const { register, watch } = useFormContext();
     const pictures = watch("pictures", []);
     return (
         <div>

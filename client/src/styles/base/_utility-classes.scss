@@ -201,3 +201,28 @@
 .dev-tool {
   direction: ltr;
 }
+
+//////////////////////////
+
+.yad2-button {
+  cursor: pointer;
+  border-radius: 15px;
+  border: none;
+  padding: $s-size/2;
+  background-color: $yad2-orange;
+  color: $whiter-than-body-white;
+  width: 100px;
+}
+
+//////////////////////////
+
+.collapse-button {
+  @extend .yad2-button;
+  width: 50px;
+  margin: 0;
+  border-radius: 3px;
+  opacity: 0.5;
+  &:hover {
+    opacity: 1;
+  }
+}

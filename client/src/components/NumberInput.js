@@ -2,7 +2,8 @@ import React from 'react';
 import { useFormContext } from 'react-hook-form';
 import { validationConfig } from '../components/forms/utilities';
 
-export default function NumberInput({ value, max, min = 0, required, altValidation, name, className, placeholder, callback = (() => { }), disabled = false }) {
+export default function NumberInput({ value, max, min = 0, required = false,
+    altValidation, name, className, placeholder, callback = (() => { }), disabled = false }) {
     const { register } = useFormContext() || {};
     return (
         <input

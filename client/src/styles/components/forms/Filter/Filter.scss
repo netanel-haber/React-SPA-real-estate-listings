@@ -1,0 +1,52 @@
+@import "~base/settings";
+@import "~base/utility-classes";
+
+.Filter {
+    @include basic-flex;
+    h5 {
+        margin: 0;
+        font-size: $s-size*1.2;
+    }
+    .gen-form {   
+        @include basic-flex(center);
+        flex-wrap: wrap;
+        font-size: $s-size;
+        padding: 0;
+        margin: 0;
+        .submit-container {
+            margin: 10px;
+            button {
+                width: 60px;
+                margin: 0 auto;
+            }
+        }
+        .pure-control-group {
+            margin: 5px 10px;
+            input[type="number"] {
+                &::-webkit-inner-spin-button,
+                &::-webkit-outer-spin-button {
+                    -webkit-appearance: none;
+                    margin: 0;
+                }
+                width: 150px;
+            }
+            label {
+                width: fit-content;
+                margin-left: 15px;
+            }
+            .enhanced-dropdown {
+                margin: 0;
+                width: 150px;
+            }
+        }
+    }
+    &.collapsed {
+        .gen-form {
+            padding: 0;
+            margin: 0 auto;
+            button {
+                width: 200px;
+            }
+        }
+    }
+}

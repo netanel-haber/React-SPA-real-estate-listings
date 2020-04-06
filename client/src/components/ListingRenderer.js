@@ -15,7 +15,7 @@ const { HEB_MITIGATED_LISTINGS, HEB_NON_MITIGATED_LISTINGS } = {
 
 const ListingRenderer = () => {
     let { type } = useParams();
-    return <ListsContainer lists={[
+    return <ListsContainer type={type} lists={[
         [HEB_NON_MITIGATED_LISTINGS, { mitigatingCompany: $null }, type],
         [HEB_MITIGATED_LISTINGS, { mitigatingCompany: $exists }, type]
     ]} />

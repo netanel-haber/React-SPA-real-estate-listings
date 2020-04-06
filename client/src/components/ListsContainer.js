@@ -5,11 +5,11 @@ import ListContainer from './ListContainer/ListContainer';
 import SortBy from './ListContainer/SortBy/SortBy';
 import Filter from '../components/forms/Filter/Filter';
 
-const ListsContainer = ({ lists = [] }) => {
+const ListsContainer = ({ lists = [], type }) => {
     const [options, dispatch] = useReducer(optionsReducer, initialOptions);
     return (
         <div className="ItemLists body__content">
-            <Filter {...{ options, dispatch }} />
+            <Filter {...{ options, dispatch, type }} />
             <SortBy {...{ options, dispatch }}></SortBy>
             <div className="ItemLists__lists">
                 {lists.map(([title, initialFilters, type], index) =>

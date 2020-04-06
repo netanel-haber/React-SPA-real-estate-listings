@@ -22,7 +22,7 @@ const AddListing = () => {
     return (
         <FormContext {...{ ...formMethods, formState: { submitCount: timesNextWasClicked } }}>
             <div>
-                <form className="gen-form AddListing__form" onSubmit={submittionMethod, history}>
+                <form className="gen-form AddListing__form" onSubmit={submittionMethod}>
                     {steps.map(([Step, associatedFieldNames], index) => (
                         <div className={classnames({ AddListing__active: index === activeStep }, "step")} key={index}>
                             <Step />
