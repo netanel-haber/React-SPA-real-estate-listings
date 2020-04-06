@@ -3,20 +3,40 @@ const { validateKeysExact } = require('../middleware/validateKeys');
 const { Cities } = require('../../db/mongo/index');
 
 
-let cachedStreets = {};
-citiesRouter.post('/cities/streets', validateKeysExact, async (req, res) => {
-    const { city } = req.body;
-    if (cachedStreets[city])
-        return res.json(cachedStreets[city])
+
+let cachedAllStreets;
+citiesRouter.get('/cities/streets/all', async (req, res) => {
+    if (cachedAllStreets)
+        return res.json(cachedAllStreets)
     else {
-        let result = (await Cities.findOne({ city }, 'streets').lean());
+        let result = (await Cities.find({}, 'streets').lean());
         if (result) {
-            res.json(result.streets);
-            return cachedStreets[city] = result.streets;
+            res.json(result);
+            return cachedAllStreets = result;
         }
     }
     res.send([]);
 })
+
+
+
+
+let cachedStreetsForCity = {};
+citiesRouter.post('/cities/streets', validateKeysExact, async (req, res) => {
+    const { city } = req.body;
+    if (cachedStreetsForCity[city])
+        return res.json(cachedStreetsForCity[city])
+    else {
+        let result = (await Cities.findOne({ city }, 'streets').lean());
+        if (result) {
+            res.json(result.streets);
+            return cachedStreetsForCity[city] = result.streets;
+        }
+    }
+    res.send([]);
+})
+
+
 
 let cachedCities;
 citiesRouter.get('/cities', async (req, res) => {

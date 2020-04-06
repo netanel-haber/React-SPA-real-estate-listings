@@ -6,6 +6,9 @@ const initialOptions = {
             $gte: undefined
         },
         pictureKeys: {},
+        type: {
+            $eq: undefined
+        }
     },
     limit: 3
 };
@@ -55,6 +58,8 @@ const optionsReducer = (state, { type, payload }) => {
                 limit,
                 filters: { ...filters, [field]: retFilters }
             }
+        case "RESET_FILTERS":
+            return { ...state, filters: initialOptions.filters }
         default:
             return state;
     }

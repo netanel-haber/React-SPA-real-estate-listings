@@ -22,6 +22,8 @@ for similar deployment pattern.
 
 #mongo
 1. you must configure network availability to any ip under 'network' in website if production.
+2. JSON.stringify removes all object props that are equal to undefined - filters for fields included.
+this is a 'happy accident', as filter=undefined is treated by mongodb as you would expect.
 
 
 #node&express

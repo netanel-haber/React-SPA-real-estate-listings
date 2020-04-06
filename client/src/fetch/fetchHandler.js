@@ -12,7 +12,8 @@ function fetchHandler(url, method = "GET", data, signal, refreshToken = true) {
     return new Promise((res, rej) => {
         fetch(url, {
             method,
-            body: JSON.stringify(data),
+            body: JSON.stringify(data), //vitally important for db filters - props equal to undefined are filtered out
+            //automatically by JSON.stringify 
             signal,
             headers: {
                 "Accept-Encoding": "*",

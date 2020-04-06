@@ -17,7 +17,7 @@ const fieldNames = [
     "floorsInBuilding", "area", "number", "apt", "entrance"
 ];
 const Address = () => {
-    const { register, watch, setValue, control } = useFormContext();
+    const { register, watch, setValue } = useFormContext();
     const [municipalities, updateMunicipalities] = useState([]);
     const [streets, updateStreets] = useState([]);
     const type = watch("type", defaultType);

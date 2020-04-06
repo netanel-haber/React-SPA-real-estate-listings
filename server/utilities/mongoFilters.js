@@ -1,9 +1,11 @@
 const transKey = {
+    "price": 'level1.price',
+    "type":"level1.type",
+
     "listerId": 'listing.listerId',
     "updatedAt": 'listing.updatedAt',
-    "price": 'level1.price',
     "mitigatingCompany": 'listing.mitigatingCompany',
-    "pictureKeys": 'listing.pictureKeys'
+    "pictureKeys": 'listing.pictureKeys'  
 }
 
 
