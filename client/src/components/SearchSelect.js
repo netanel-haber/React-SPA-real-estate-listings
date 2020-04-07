@@ -6,7 +6,8 @@ import { useFormContext } from 'react-hook-form';
 
 const lengthBreakpoint = 2;
 const noop = () => { };
-const SearchSelect = ({ options, className = "", placeholder, disabled = false, name, callback = noop, validationConfig = {}, prefiltered = false }) => {
+const SearchSelect = ({ options, className = "", placeholder, disabled = false, 
+name, callback = noop, validationConfig = {}, prefiltered = false }) => {
     const [isOpen, toggleOpen] = useState(false);
     const { register, watch, setValue } = useFormContext();
     const curValue = watch(name);
@@ -17,12 +18,7 @@ const SearchSelect = ({ options, className = "", placeholder, disabled = false, 
                 {...{ name, disabled, placeholder }}
                 autoComplete="off"
                 ref={register(validationConfig)}
-                onBlur={(e) => {
-                    if (e.relatedTarget?.id !== "dropdown") {
-                        toggleOpen(false)
-                        !options.includes(e.target.value) && setValue(name, "")
-                    }
-                }}
+                onBlur={(e) => e.relatedTarget?.id !== "dropdown" && toggleOpen(false)}
                 className="actual-select pure-rounded-input"
                 onClick={() => { (!isOpen && options.length) && toggleOpen(true) }}
                 onChange={(e) => {
@@ -37,7 +33,7 @@ const SearchSelect = ({ options, className = "", placeholder, disabled = false, 
                     id="dropdown"
                     className="actual-dropdown SearchSelect-dropdown"
                     tabIndex="0"
-                    onBlur={() => { toggleOpen(false); !options.includes(curValue) && setValue(name, "") }}>
+                    onBlur={() => toggleOpen(false)}>
                     {shouldSearch && (prefiltered ? options : options.filter(opt => opt.includes(curValue)))
                         .map((opt, index) =>
                             <div

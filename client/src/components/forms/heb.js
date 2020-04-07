@@ -13,6 +13,7 @@ const errHebrew = {
     HEB_MINIMUM: (min) => `המספר המינימלי הינו ${min}`,
     HEB_MAXIMUM: (max) => `המספר המקסימלי הינו ${max}`,
     HEB_INVALID_MIME_TYPE: "על הקבצים להיות מסוג תמונה.",
+    HEB_INVALID_PLACE:"מקום זה איננו חוקי.",
     passwordErrMessages: {
         min: "להיות לפחות באורך 8 תווים",
         uppercase: "להכיל אות אחת גדולה לפחות",

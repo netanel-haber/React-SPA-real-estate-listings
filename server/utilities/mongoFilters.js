@@ -1,11 +1,16 @@
 const transKey = {
     "price": 'level1.price',
     "type":"level1.type",
+    "municipality": 'level1.address.municipality',
+    "street": 'level1.address.street',
+    "area": 'level1.address.area',
 
     "listerId": 'listing.listerId',
     "updatedAt": 'listing.updatedAt',
     "mitigatingCompany": 'listing.mitigatingCompany',
-    "pictureKeys": 'listing.pictureKeys'  
+    "pictureKeys": 'listing.pictureKeys',
+
+   
 }
 
 

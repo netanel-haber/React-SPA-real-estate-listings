@@ -4,7 +4,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import { FormContext, useForm } from 'react-hook-form';
 import { BreakpointContext, ShowAt } from 'react-with-breakpoints';
 import { FormSelect } from '../../ListContainer/SortBy/Select';
-import { AddressValidation, mockNeighborhoods } from '../utilities';
+import { AddressValidation, mockNeighborhoods, validationConfig } from '../utilities';
 import { WithDivsAndLabels } from '../withDivAndLabel';
 import SearchSelect from './../../SearchSelect';
 import PriceRange from './PriceRange';
@@ -19,9 +19,14 @@ const Filter = ({ dispatch, options, type }) => {
     const formMethods = useForm();
     const { handleSubmit, register, reset, watch } = formMethods;
     const term = watch("place", "");
+
     const [open, toggleOpen] = useState(true);
+    const [searchOptions, updateSearchOptions] = useState([[], [], []]);
+    const [streets, cities, area] = searchOptions;
+
+
     const { currentBreakpoint } = useContext(BreakpointContext);
-    const [[streets, cities, neighborhoods], updateSearchOptions] = useState([[], [], []]);
+
     useEffect(() => {
         (!open && (currentBreakpoint === "large" || currentBreakpoint === "xlarge")) && toggleOpen(true)
     }, [currentBreakpoint])
@@ -32,14 +37,16 @@ const Filter = ({ dispatch, options, type }) => {
     useEffect(() => {
         if (term.length > lengthBreakPoint)
             Promise.all([searchStreets(term), searchCities(term), mockNeighborhoods]).then(updateSearchOptions);
-        else if (streets.length || cities.length || neighborhoods.length)
+        else if (streets.length || cities.length || area.length)
             updateSearchOptions([[], [], []])
     }, [term])
 
-    const searchOptions = [,
+
+    const finalSearchOptions = [
         ...cities,
-        ...neighborhoods.filter(n => n.includes(term)).map(n => `${n} (שכונה)`),
-        ...Object.entries(streets).map(([city, streets]) => streets.map(street => `רח' ${street} (${city})`)).flat()];
+        ...area.filter(n => n.includes(term)).map(n => `${n} (שכונה)`),
+        ...Object.entries(streets).map(([city, streets]) => streets.map(street => `${street} (רח', ${city})`)).flat()];
+
     return (
         <div className="ListsContainer__component Filter">
             <FormContext {...formMethods} {...{ dispatch, options }}>
@@ -49,11 +56,11 @@ const Filter = ({ dispatch, options, type }) => {
                     </button>
                 </ShowAt>
                 {open && (
-                    <form className="gen-form" onSubmit={handleSubmit((data) => submit(data, dispatch))}>
+                    <form className="gen-form" onSubmit={handleSubmit((data) => submit(data, dispatch, searchOptions))}>
                         <div className="Filters__fields">
                             <WithDivsAndLabels texts={[HEB_PRICE_RANGE, HEB_SEARCH_PLACE, HEB_PROPERTY_TYPE]} requiredIndices={[]}>
                                 <PriceRange names={["from", "to"]} />
-                                <SearchSelect prefiltered={true} name="place" options={searchOptions} />
+                                <SearchSelect prefiltered={true} name="place" options={finalSearchOptions} />
                                 {type && <FormSelect name="type" ref={register} options={AddressValidation.propertyType[type]} />}
                             </WithDivsAndLabels>
                         </div>
