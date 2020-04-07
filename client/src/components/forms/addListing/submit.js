@@ -27,6 +27,7 @@ export default async (unfilteredData, history) => {
             return toaster(HEB_UPLOAD_PROBLEM);
         }
     }
+    
     const { type } = data;
     const { floor, floorsInBuilding, sqMeters, price, propertyType, rooms } = data;
     const { entrance, desc, entryDate, parkingSpots, upkeep,
