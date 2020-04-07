@@ -20,10 +20,7 @@ const SearchSelect = ({ options, className = "", placeholder, disabled = false, 
                 onBlur={(e) => {
                     if (e.relatedTarget?.id !== "dropdown") {
                         toggleOpen(false)
-                        // if(!options.includes(e.target.value)){
-                        //     debugger;
-                        //     setValue(name,"")
-                        // }
+                        !options.includes(e.target.value) && setValue(name, "")
                     }
                 }}
                 className="actual-select pure-rounded-input"

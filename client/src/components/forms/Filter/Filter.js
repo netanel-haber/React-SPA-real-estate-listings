@@ -1,12 +1,11 @@
 import { searchCities, searchStreets } from '#src#/fetch/cities';
 import "#src#/styles/components/forms/Filter/Filter.scss";
-import React, { useContext, useEffect, useReducer, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { FormContext, useForm } from 'react-hook-form';
 import { BreakpointContext, ShowAt } from 'react-with-breakpoints';
 import { FormSelect } from '../../ListContainer/SortBy/Select';
 import { AddressValidation, mockNeighborhoods } from '../utilities';
 import { WithDivsAndLabels } from '../withDivAndLabel';
-import searchOptionsReducer, { updateAction } from './../../../reducers/searchOptionsReducer';
 import SearchSelect from './../../SearchSelect';
 import PriceRange from './PriceRange';
 import submit from './submit';
@@ -22,7 +21,7 @@ const Filter = ({ dispatch, options, type }) => {
     const term = watch("place", "");
     const [open, toggleOpen] = useState(true);
     const { currentBreakpoint } = useContext(BreakpointContext);
-    const [{ options: searchOptions }, dispatchSearch] = useReducer(searchOptionsReducer, { term, options: [] });
+    const [[streets, cities, neighborhoods], updateSearchOptions] = useState([[], [], []]);
     useEffect(() => {
         (!open && (currentBreakpoint === "large" || currentBreakpoint === "xlarge")) && toggleOpen(true)
     }, [currentBreakpoint])
@@ -31,12 +30,16 @@ const Filter = ({ dispatch, options, type }) => {
         dispatch({ type: "RESET_FILTERS" })
     }, [type, dispatch])
     useEffect(() => {
-        if (term.length > lengthBreakPoint) {
-            searchStreets(term).then(res => { dispatchSearch(updateAction(term, Object.entries(res).map(([city, streets]) => streets.map(street => `רח' ${street} (${city})`)).flat())) })
-            searchCities(term).then(cities => { dispatchSearch(updateAction(term, cities)) })
-            dispatchSearch(updateAction(term, mockNeighborhoods.filter(n => n.includes(term)).map(n => `${n} (שכונה)`)));
-        }
+        if (term.length > lengthBreakPoint)
+            Promise.all([searchStreets(term), searchCities(term), mockNeighborhoods]).then(updateSearchOptions);
+        else if (streets.length || cities.length || neighborhoods.length)
+            updateSearchOptions([[], [], []])
     }, [term])
+
+    const searchOptions = [,
+        ...cities,
+        ...neighborhoods.filter(n => n.includes(term)).map(n => `${n} (שכונה)`),
+        ...Object.entries(streets).map(([city, streets]) => streets.map(street => `רח' ${street} (${city})`)).flat()];
     return (
         <div className="ListsContainer__component Filter">
             <FormContext {...formMethods} {...{ dispatch, options }}>
