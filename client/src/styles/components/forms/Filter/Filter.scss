@@ -37,6 +37,9 @@
             .enhanced-dropdown {
                 margin: 0;
                 width: 150px;
+                .actual-dropdown {
+                    width: fit-content;
+                }
             }
         }
     }

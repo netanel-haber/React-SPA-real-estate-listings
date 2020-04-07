@@ -66,10 +66,15 @@ router
  │    │   
  │    ├── compression                              *                                                           
  │    └── router                                   *                                                           
- │         ├── bound dispatch                      /cities/streets/all                                         GET
- │         │    └── <anonymous>                    /                                                           GET
+ │         ├── bound dispatch                      /cities/streets/search                                      POST
+ │         │    ├── validateKeysExact              /                                                           POST
+ │         │    └── <anonymous>                    /                                                           POST
  │         │   
  │         ├── bound dispatch                      /cities/streets                                             POST
+ │         │    ├── validateKeysExact              /                                                           POST
+ │         │    └── <anonymous>                    /                                                           POST
+ │         │   
+ │         ├── bound dispatch                      /cities/search                                              POST
  │         │    ├── validateKeysExact              /                                                           POST
  │         │    └── <anonymous>                    /                                                           POST
  │         │   

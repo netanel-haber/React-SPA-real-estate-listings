@@ -12,8 +12,10 @@ const getTopLevel = async (type, filters = {}, sort = {}, skip, limit) =>
 const getBottomLevel = async (type, id) =>
     await modelOf(type).findById(id, 'level2 level3').lean();
 
+    
 const countDocs = async (type, filters = {}) =>
     await modelOf(type).countDocuments(filters);
+
 
 const getAllListingsForLister = async (id) => {
     const results = await Promise.all(

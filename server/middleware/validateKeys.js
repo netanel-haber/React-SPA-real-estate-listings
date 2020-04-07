@@ -16,7 +16,7 @@ async function validateKeys(req, res, next) {
         const currentKeys = Object.keys(req.body);
         const invalidKeys = currentKeys.filter(key => !validKeysForPath.includes(key));
         if (invalidKeys.length !== 0) {
-            res.status(404).json({ invalidKeys });
+            res.status(403).json({ invalidKeys });
             return log(`inexact key check disparity. original url: ${req.originalUrl}. current path: ${req.route.path}. invalid keys: ${invalidKeys}`);
         }
         next();
@@ -33,7 +33,7 @@ async function validateKeysExact(req, res, next) {
         const validExactKeysForPath = JSON.parse(await fs.readFile(keyMapPath))[req.route.path];
         const currentKeys = Object.keys(req.body);
         if (!areArraysExactlyEqual(validExactKeysForPath, currentKeys)) {
-            res.status(404).json({ validExactKeysForPath });
+            res.status(403).json({ validExactKeysForPath });
             return log(`exact key check disparity. original url: ${req.originalUrl}. current path: ${req.route.path}. current keys: ${currentKeys}`);
         }
         next();

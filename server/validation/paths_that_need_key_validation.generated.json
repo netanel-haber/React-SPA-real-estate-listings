@@ -33,5 +33,11 @@
     "/listings/add-listing": [
         "type",
         "listing"
+    ],
+    "/cities/streets/search": [
+        "term"
+    ],
+    "/cities/search": [
+        "term"
     ]
 }

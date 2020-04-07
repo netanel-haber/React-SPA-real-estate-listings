@@ -42,8 +42,8 @@ const Address = () => {
                 <WithDivsAndLabels requiredIndices={[0, 2, 3]} texts={[HEB_CHOOSE_PROPERTY_TYPE, HEB_CHOOSE_UPKEEP, HEB_MUNICIPALITY, HEB_STREET]}>
                     <FormSelect name={fieldNames[0]} ref={register(vc.required)} className="Address-select" options={AddressValidation.propertyType[type]} />
                     <FormSelect name={fieldNames[1]} ref={register} className="Address-select" options={AddressValidation.upkeep} />
-                    <SearchSelect name={fieldNames[2]} validationFunc={vc.municipality(municipalities)} placeholder={HEB_SEARCH_CITY} options={municipalities} />
-                    <SearchSelect name={fieldNames[3]} validationFunc={vc.streets(streets)} disabled={streets.length === 0}  callback={(city) => { setValue(fieldNames[6], mockNeighborhoods[Math.ceil(Math.random() * (mockNeighborhoods.length - 1))]) }} placeholder={HEB_SEARCH_STREET} options={streets} />
+                    <SearchSelect name={fieldNames[2]} validationConfig={vc.municipality(municipalities)} placeholder={HEB_SEARCH_CITY} options={municipalities} />
+                    <SearchSelect name={fieldNames[3]} validationConfig={vc.streets(streets)} disabled={streets.length === 0}  callback={(city) => { setValue(fieldNames[6], mockNeighborhoods[Math.ceil(Math.random() * (mockNeighborhoods.length - 1))]) }} placeholder={HEB_SEARCH_STREET} options={streets} />
                 </WithDivsAndLabels>
                 <div className="pure-control-group form-inline">
                     <WithDivsAndLabels texts={[HEB_NUMBER, HEB_APT, HEB_FLOOR, HEB_TOTAL_PROPERTY_FLOORS]} requiredIndices={[0]} className="NumberInput">

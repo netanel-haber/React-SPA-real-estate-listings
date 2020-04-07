@@ -1,7 +1,6 @@
 import fetchHandler from './fetchHandler';
 
 const getListings = (type, options = {}, signal) => {
-    console.log(options);
     return fetchHandler(`/api/listings/${type}`, "POST", options, signal)
 }
 
