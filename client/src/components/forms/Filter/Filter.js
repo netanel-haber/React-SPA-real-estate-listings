@@ -27,6 +27,13 @@ const Filter = ({ dispatch, options, type }) => {
 
     const { currentBreakpoint } = useContext(BreakpointContext);
 
+
+    const finalSearchOptions = [
+        ...cities,
+        ...area.filter(n => n.includes(term)).map(n => `${n} (שכונה)`),
+        ...Object.entries(streets).map(([city, streets]) => streets.map(street => `${street} (רח', ${city})`)).flat()];
+
+
     useEffect(() => {
         (!open && (currentBreakpoint === "large" || currentBreakpoint === "xlarge")) && toggleOpen(true)
     }, [currentBreakpoint])
@@ -35,17 +42,13 @@ const Filter = ({ dispatch, options, type }) => {
         dispatch({ type: "RESET_FILTERS" })
     }, [type, dispatch])
     useEffect(() => {
-        if (term.length > lengthBreakPoint)
-            Promise.all([searchStreets(term), searchCities(term), mockNeighborhoods]).then(updateSearchOptions);
+        if (term.length > lengthBreakPoint) 
+           Promise.all([searchStreets(term), searchCities(term), mockNeighborhoods]).then(updateSearchOptions);
         else if (streets.length || cities.length || area.length)
             updateSearchOptions([[], [], []])
     }, [term])
 
 
-    const finalSearchOptions = [
-        ...cities,
-        ...area.filter(n => n.includes(term)).map(n => `${n} (שכונה)`),
-        ...Object.entries(streets).map(([city, streets]) => streets.map(street => `${street} (רח', ${city})`)).flat()];
 
     return (
         <div className="ListsContainer__component Filter">
@@ -65,7 +68,7 @@ const Filter = ({ dispatch, options, type }) => {
                             </WithDivsAndLabels>
                         </div>
                         <div className="submit-container">
-                            <button className="pure-button pure-button-primary" type="submit" ref={register}>{HEB_FILTER}</button>
+                            <button className="pure-button pure-button-primary" type="submit">{HEB_FILTER}</button>
                         </div>
                     </form>
                 )}

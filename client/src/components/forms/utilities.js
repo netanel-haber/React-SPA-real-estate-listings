@@ -58,6 +58,11 @@ const validationConfig = {
         ...required,
         validate: (val) => streets.includes(val) || HEB_INVALID_STREET
     }),
+    place: (places) => {
+        return ({
+            validate: (place) => (places.includes(place) || (place === "")) || HEB_INVALID_PLACE
+        })
+    },
     price: {
         validate: (val) => isEmpty(val) || (Number(val) > minPrice) || HEB_INVALID_PRICE(minPrice)
     },
