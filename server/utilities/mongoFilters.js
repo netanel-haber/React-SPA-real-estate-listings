@@ -1,5 +1,13 @@
 const ObjectId = require('mongoose').Types.ObjectId;
 
+const booleanAttributes = {
+    general: ["AC", "grates", "elevator", "handicappedAccesible", "mamad", "storage", "furniture"],
+    rent: ["taxesIncluded", "longTerm", "forPartners", "petsAllowed"],
+    commercial: ["divided", "meetingRoom", "bathrooms", "cameras", "ITRoom", "highCeiling", "loadingRamp", "underground", "kitchenette", "alarm"],
+    roommates: ["taxesIncluded", "keepsKashrut", "petsAllowed"],
+    forsale: []
+}
+
 const transKey = {
     "listerId": 'listing.listerId',
     "updatedAt": 'listing.updatedAt',
@@ -15,8 +23,19 @@ const transKey = {
     "roommates": 'level1.roommates',
     "sqMeters": 'level1.sqMeters',
 
-    "entryDate": 'level2.entryDate'
+    "entryDate": 'level2.entryDate',
+
+
+    ...Object.fromEntries(booleanAttributes.general.map(attr => [attr, `level3.${attr}`])),
+    ...Object.fromEntries(booleanAttributes.commercial.map((attr, index) => [attr, `level${index > 3 ? 3 : 2}.${attr}`])),
+    ...Object.fromEntries(booleanAttributes.rent.map(attr => [attr, `level3.${attr}`])),
+    ...Object.fromEntries(booleanAttributes.roommates.map(attr => [attr, `level3.${attr}`])),
+
+    "taxesIncluded": 'level2.taxesIncluded',
 }
+
+
+
 
 const transVal = {
     "listerId": ({ $eq }) => ({ $eq: ObjectId($eq) })
@@ -28,9 +47,12 @@ module.exports = (userFilters) => {
     Object.entries(userFilters)
         .filter(([, v]) => Boolean(Object.keys(v || {}).length))
         .forEach(([path, filters]) => {
-            const key = transKey[path];
-            const value = transVal[path] ? transVal[path](filters) : filters;
-            finalFilters[key] = value;
+            if (transKey[path]) {
+                const key = transKey[path];
+                const value = transVal[path] ? transVal[path](filters) : filters;
+                finalFilters[key] = value;
+            }
         })
+    console.log(finalFilters);
     return finalFilters;
 }

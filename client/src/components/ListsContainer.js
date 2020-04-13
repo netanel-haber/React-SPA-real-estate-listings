@@ -4,13 +4,16 @@ import '../styles/components/ListsContainer.scss';
 import ListContainer from './ListContainer/ListContainer';
 import SortBy from './ListContainer/SortBy/SortBy';
 import Filter from '../components/forms/Filter/Filter';
+import AdvancedSearch from './forms/AdvancedSearch/AdvancedSearch';
 
 const ListsContainer = ({ lists = [], type }) => {
     const [options, dispatch] = useReducer(optionsReducer, initialOptions);
     return (
-        <div className="ItemLists body__content">    
+        <div className="ItemLists body__content">
             <SortBy {...{ options, dispatch }}></SortBy>
             <Filter {...{ options, dispatch, type }} />
+            {type && <AdvancedSearch {...{ options, dispatch, type }} />}
+
             <div className="ItemLists__lists">
                 {lists.map(([title, initialFilters, type], index) =>
                     <React.Fragment key={index}>

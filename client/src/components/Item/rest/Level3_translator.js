@@ -13,10 +13,11 @@ const map = {
     forPartners: "לשותפים",
     petsAllowed: "חיות מחמד",
     keepsKashrut: "שומר כשרות",
-    mamad:"ממ\"ד",
-    storage:"מחסן",
-    furniture:"ריהוט",
-    taxesIncluded:"כולל חשבונות"
+    mamad: "ממ\"ד",
+    storage: "מחסן",
+    furniture: "ריהוט",
+    cameras: "מצלמות",
+    taxesIncluded: "כולל חשבונות"
 }
 
 

@@ -1,14 +1,12 @@
 import '#src#/styles/components/forms/add-listing/steps/PropertyDetails.scss';
 import React from 'react';
 import { useFormContext } from 'react-hook-form';
-import translator2 from '../../../Item/rest/Level2_translator';
-import translator3 from '../../../Item/rest/Level3_translator';
 import { FormSelect } from '../../../ListContainer/SortBy/Select';
 import NumberInput from '../../../NumberInput';
 import { propertyDetailsStepHebrew } from '../../heb';
 import TextareaContainer from '../../TextareaContainer';
 import { ThreewayToggleContainer } from '../../ThreewayToggle';
-import { AddressValidation, booleanAttributes, watchMultipleFields, possibleRoomValues, validationConfig } from '../../utilities';
+import { AddressValidation, booleanAttributes, watchMultipleFields, possibleRoomValues, validationConfig, translation } from '../../utilities';
 import { WithDivsAndLabels } from '../../withDivAndLabel';
 
 
@@ -49,13 +47,6 @@ const PropertyDetails = () => {
             </div>
         </div >
     )
-}
-
-function translation(key) {
-    let { translation, picUrl } = translator3([key]);
-    if (!translation)
-        translation = translator2([key]).name;
-    return { text: translation, picUrl }
 }
 
 

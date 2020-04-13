@@ -35,10 +35,10 @@ module.exports = (lis = listerId, price) => ({
         biMonthlyArnona: 2500
     },
     level3: {
-        AC: true,
-        grates: true,
-        elevator: true,
-        handicappedAccesible: true,
-        forPartners: false
+        AC:  Math.random() >= 0.5,
+        grates:  Math.random() >= 0.5,
+        elevator: Math.random() >= 0.5,
+        handicappedAccesible:  Math.random() >= 0.5,
+        forPartners:  Math.random() >= 0.5
     }
 })

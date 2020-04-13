@@ -37,10 +37,10 @@ module.exports = (lis = listerId, price) => ({
         upkeep: "חדש (גרו בנכס)"
     },
     level3: {
-        AC: true,
-        grates: true,
-        elevator: true,
-        handicappedAccesible: true,
-        petsAllowed: false
+        AC:  Math.random() >= 0.5,
+        grates:  Math.random() >= 0.5,
+        elevator: Math.random() >= 0.5,
+        handicappedAccesible:  Math.random() >= 0.5,
+        petsAllowed:  Math.random() >= 0.5
     }
 })

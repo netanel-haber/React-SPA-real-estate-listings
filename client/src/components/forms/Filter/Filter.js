@@ -10,11 +10,10 @@ import NumberInputRange from './NumberInputRange';
 import SelectRange from './SelectRange';
 import { possibleRoomValues } from '../utilities';
 import submit from './submit';
-import classnames from 'classnames';
 import DayPicker from '../../DayPicker';
+import { filterHebrew } from '../heb';
 
-const { HEB_FILTER = "סנן", HEB_PRICE_RANGE = "טווח המחירים", HEB_PROPERTY_TYPE = "סוג הנכס", HEB_ROOM_RANGE = "טווח חדרים",
-    HEB_COLLAPSE = "צמצם", HEB_ENTRY_DATE = "תאריך כניסה", HEB_SIZE = "גודל דירה (במ\"ר)", HEB_UNCOLLAPSE = "הראה פילטרים", HEB_SEARCH_PLACE = "חפשו אזור, עיר, שכונה או רחוב", HEB_ROOMMATES_RANGE = "טווח שותפים" } = {};
+const { HEB_FILTER, HEB_PRICE_RANGE, HEB_PROPERTY_TYPE, HEB_ROOM_RANGE, HEB_COLLAPSE, HEB_ENTRY_DATE, HEB_SIZE, HEB_UNCOLLAPSE, HEB_SEARCH_PLACE, HEB_ROOMMATES_RANGE } = filterHebrew;
 
 
 const lengthBreakPoint = 2;
@@ -62,11 +61,9 @@ const Filter = ({ dispatch, options, type }) => {
                                 <NumberInputRange name="price" />
                                 <NumberInputRange className="Filter__sqMeters" name="sqMeters" />
                                 <SearchSelect name="place" className="Filter_Search" prefiltered={true} options={finalSearchOptions} />
-                                <DayPicker
-                                    name="entryDate"
-                                    onDayChange={(val, m, { state: { value } }) => {
-                                        setValue("entryDate", String(val) || value)
-                                    }}/>
+                                <DayPicker name="entryDate" onDayChange={(val, m, { state: { value } }) => {
+                                    setValue("entryDate", String(val) || value)
+                                }} />
                             </WithDivsAndLabels>
                             {type && withDivAndLabel(
                                 <FormSelect name="type" ref={register} options={AddressValidation.propertyType[type]} />, HEB_PROPERTY_TYPE)}

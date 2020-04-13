@@ -37,11 +37,11 @@ module.exports = (lis = listerId, price) => {
             upkeep: "חדש (גרו בנכס)"
         },
         level3: {
-            AC: true,
-            grates: false,
-            elevator: true,
-            handicappedAccesible: false,
-            furnitureDesc: "אני לא חושב שהעיצוב הזה כזה מוצלח. יד2 די פישלו"
+            AC:  Math.random() >= 0.5,
+            grates:  Math.random() >= 0.5,
+            elevator:  Math.random() >= 0.5,
+            handicappedAccesible:  Math.random() >= 0.5,
+            furnitureDesc: "ריהוט קומפלט מעצמלא, 2 ארונות, 4 ספות, שידה, שולחן באורך 2 מטרים."
         }
     }
 };

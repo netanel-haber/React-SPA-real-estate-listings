@@ -3,6 +3,8 @@ import isEmpty from 'validator/es/lib/isEmpty';
 import isMobilePhone from 'validator/es/lib/isMobilePhone';
 import combineMessages from '../../validation/combineMessages';
 import { valPass, isHebrewName } from '../../validation/signup';
+import translator2 from '../Item/rest/Level2_translator';
+import translator3 from '../Item/rest/Level3_translator';
 import { errHebrew } from './heb';
 import { isValidDate, isFutureDate } from '../../utilities/datetime';
 import genSuccessiveArr from './../../utilities/genSuccesiveArr';
@@ -94,11 +96,10 @@ const mockNeighborhoods = ["אפקה", "גלילות, צוקי אביב ואזו
 const booleanAttributes = {
     general: ["AC", "grates", "elevator", "handicappedAccesible", "mamad", "storage", "furniture"],
     rent: ["taxesIncluded", "longTerm", "forPartners", "petsAllowed"],
-    commercial: ["divided", "meetingRoom", "bathrooms"],
+    commercial: ["divided", "meetingRoom", "bathrooms", "cameras", "ITRoom", "highCeiling", "loadingRamp", "underground", "kitchenette", "alarm"],
     roommates: ["taxesIncluded", "keepsKashrut", "petsAllowed"],
     forsale: []
 }
-
 
 
 
@@ -127,10 +128,17 @@ const watchMultipleFields = (watch, fields, defaults = {}) => {
     return watches;
 }
 
+function translation(key) {
+    let { translation, picUrl } = translator3([key]);
+    if (!translation)
+        translation = translator2([key]).name;
+    return { text: translation, picUrl }
+}
+
 
 const possibleRoomValues = genSuccessiveArr(12, 0.5, 0.5).filter(el => !((el > 6) && !Number.isInteger(el)));
 
 
 
-export { fieldValidationGenerators as validationConfig, mockNeighborhoods, booleanAttributes, AddressValidation, possibleRoomValues, watchMultipleFields };
+export { fieldValidationGenerators as validationConfig, translation, mockNeighborhoods, booleanAttributes, AddressValidation, possibleRoomValues, watchMultipleFields };
 

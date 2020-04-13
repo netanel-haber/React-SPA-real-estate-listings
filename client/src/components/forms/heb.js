@@ -13,7 +13,7 @@ const errHebrew = {
     HEB_MINIMUM: (min) => `המספר המינימלי הינו ${min}`,
     HEB_MAXIMUM: (max) => `המספר המקסימלי הינו ${max}`,
     HEB_INVALID_MIME_TYPE: "על הקבצים להיות מסוג תמונה.",
-    HEB_INVALID_PLACE:"מקום זה איננו חוקי.",
+    HEB_INVALID_PLACE: "מקום זה איננו חוקי.",
     passwordErrMessages: {
         min: "להיות לפחות באורך 8 תווים",
         uppercase: "להכיל אות אחת גדולה לפחות",
@@ -104,4 +104,26 @@ const addListingHebrew = {
 }
 
 
-export { errHebrew, formHebrew, typeStepHebrew, addPicsStepHebrew, listingDetailsStepHebrew, addListingHebrew, addressStepHebrew, propertyDetailsStepHebrew }
+const filterHebrew = {
+    HEB_FILTER: "סנן",
+    HEB_COLLAPSE: "צמצם",
+    HEB_UNCOLLAPSE: "הראה פילטרים",
+    HEB_PRICE_RANGE: "טווח המחירים",
+    HEB_PROPERTY_TYPE: "סוג הנכס",
+    HEB_ROOM_RANGE: "טווח חדרים",
+    HEB_ENTRY_DATE: "תאריך כניסה",
+    HEB_SIZE: "גודל דירה (במ\"ר)",
+    HEB_SEARCH_PLACE: "חפשו אזור, עיר, שכונה או רחוב",
+    HEB_ROOMMATES_RANGE: "טווח שותפים"
+};
+
+const advancedSearchHebrew = {
+    HEB_COLLAPSE: "צמצם",
+    HEB_ADVANCED_SEARCH: "חיפוש מתקדם",
+    HEB_RESET: "אתחל",
+    HEB_FILTER: "סנן",
+}
+
+
+
+export { errHebrew, filterHebrew, advancedSearchHebrew, formHebrew, typeStepHebrew, addPicsStepHebrew, listingDetailsStepHebrew, addListingHebrew, addressStepHebrew, propertyDetailsStepHebrew }
