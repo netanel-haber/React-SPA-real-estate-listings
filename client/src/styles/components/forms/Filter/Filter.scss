@@ -5,10 +5,10 @@
     @include basic-flex;
     h5 {
         margin: 0;
-        font-size: $s-size*1.2;
+        font-size: $s-size * 1.2;
     }
-    .gen-form {   
-        @include basic-flex(center);
+    .gen-form {
+        @include basic-flex(space-around);
         flex-wrap: wrap;
         font-size: $s-size;
         padding: 0;
@@ -37,19 +37,19 @@
             .enhanced-dropdown {
                 margin: 0;
                 width: 150px;
-                .actual-dropdown {
-                    width: fit-content;
-                }
+            }
+            .Filter_RoomRange {
+                display: inline-block;
+                width: 75px;
             }
         }
     }
-    &.collapsed {
-        .gen-form {
-            padding: 0;
-            margin: 0 auto;
-            button {
-                width: 200px;
-            }
+
+    &.collapsed .gen-form {
+        padding: 0;
+        margin: 0 auto;
+        button {
+            width: 200px;
         }
     }
 }

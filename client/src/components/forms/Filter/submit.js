@@ -1,36 +1,29 @@
-
-const mapValueToField = {
-    "שכונה": "area",
-    "רח'": "street",
-};
-const extractFieldAndValueForPlace = (place) => {
-    let field;
-    for (let key of Object.keys(mapValueToField)) {
-        if (place.includes(key)) {
-            field = mapValueToField[key];
-        }
-    }
-    return (!field) ? ["municipality", place] : [field, !place ? undefined : place.split(/ \(/)?.[0]];
-}
-
+import extractFieldAndValueForPlace from './extractFieldAndValueForPlace';
 
 const submit = (data, dispatch) => {
-    const { from, to, type, place } = data;
-    from && dispatch({ type: "UPDATE_FILTER_VALUE", payload: ["price", "$gte", from] });
-    to && dispatch({ type: "UPDATE_FILTER_VALUE", payload: ["price", "$lte", to] });
-    type && dispatch({ type: "UPDATE_FILTER_VALUE", payload: ["type", "$eq", type] });
+    const {
+        priceFrom, priceTo,
+        roomsFrom, roomsTo,
+        roommatesFrom, roommatesTo,
+        type, place,
+    } = data;
 
-    if (place) {
-        const [field, value] = extractFieldAndValueForPlace(place);
-        if (!field)
-            return;
-        dispatch({ type: "UPDATE_FILTER_VALUE", payload: [field, "$eq", value] })
-    }
-    else {
-        ["municipality", "area", "street"].forEach(field => {
-            dispatch({ type: "UPDATE_FILTER_VALUE", payload: [field, "$eq", undefined] })
-        })
-    }
+    const [field, value] = extractFieldAndValueForPlace(place);
+
+    dispatch({
+        type: "UPDATE_FILTERS_VALUES",
+        payload: [
+            ["price", "$gte", priceFrom],
+            ["price", "$lte", priceTo],
+            ["type", "$eq", type],
+            ["rooms", "$gte", roomsFrom],
+            ["rooms", "$lte", roomsTo],
+            ["roommates", "$gte", roommatesFrom],
+            ["roommates", "$lte", roommatesTo],
+            ...["municipality", "area", "street"].map(field => [field, "$eq", undefined]),
+            [field, "$eq", value]
+        ]
+    })
 }
 
 export default submit;

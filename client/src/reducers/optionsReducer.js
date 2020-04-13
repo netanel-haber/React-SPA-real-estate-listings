@@ -45,6 +45,20 @@ const optionsReducer = (state, { type, payload }) => {
                     }
                 }
             };
+        case "UPDATE_FILTERS_VALUES":
+            return {
+                limit, sorts, filters: {
+                    ...filters,
+                    ...payload.reduce((acc, [fieldToUpdate, filter, value]) => ({
+                        ...acc,
+                        [fieldToUpdate]: {
+                            ...filters[fieldToUpdate],
+                            ...acc[fieldToUpdate],
+                            [filter]: value || undefined
+                        }
+                    }), {})
+                }
+            }
         case "TOGGLE_FILTER":
             const [field, filterToToggle] = payload;
             const curFilters = filters[field];

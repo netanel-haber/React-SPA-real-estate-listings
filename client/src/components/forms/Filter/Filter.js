@@ -4,14 +4,16 @@ import React, { useContext, useEffect, useState } from 'react';
 import { FormContext, useForm } from 'react-hook-form';
 import { BreakpointContext, ShowAt } from 'react-with-breakpoints';
 import { FormSelect } from '../../ListContainer/SortBy/Select';
-import { AddressValidation, mockNeighborhoods, validationConfig } from '../utilities';
-import { WithDivsAndLabels } from '../withDivAndLabel';
+import { AddressValidation, mockNeighborhoods } from '../utilities';
+import withDivAndLabel, { WithDivsAndLabels } from '../withDivAndLabel';
 import SearchSelect from './../../SearchSelect';
-import PriceRange from './PriceRange';
+import NumberInputRange from './NumberInputRange';
+import SelectRange from './SelectRange';
+import { possibleRoomValues } from '../utilities';
 import submit from './submit';
 
-const { HEB_FILTER = "פלטר", HEB_PRICE_RANGE = "טווח המחירים", HEB_PROPERTY_TYPE = "סוג הנכס",
-    HEB_COLLAPSE = "צמצם", HEB_UNCOLLAPSE = "הראה פילטרים", HEB_SEARCH_PLACE = "חפשו אזור, עיר, שכונה או רחוב" } = {};
+const { HEB_FILTER = "פלטר", HEB_PRICE_RANGE = "טווח המחירים", HEB_PROPERTY_TYPE = "סוג הנכס", HEB_ROOM_RANGE = "טווח חדרים",
+    HEB_COLLAPSE = "צמצם", HEB_UNCOLLAPSE = "הראה פילטרים", HEB_SEARCH_PLACE = "חפשו אזור, עיר, שכונה או רחוב", HEB_ROOMMATES_RANGE = "טווח שותפים" } = {};
 
 
 const lengthBreakPoint = 2;
@@ -19,19 +21,19 @@ const Filter = ({ dispatch, options, type }) => {
     const formMethods = useForm();
     const { handleSubmit, register, reset, watch } = formMethods;
     const term = watch("place", "");
-
+    const propertyType = watch("type", "");
     const [open, toggleOpen] = useState(true);
+
+
     const [searchOptions, updateSearchOptions] = useState([[], [], []]);
     const [streets, cities, area] = searchOptions;
-
-
-    const { currentBreakpoint } = useContext(BreakpointContext);
-
-
     const finalSearchOptions = [
         ...cities,
         ...area.filter(n => n.includes(term)).map(n => `${n} (שכונה)`),
         ...Object.entries(streets).map(([city, streets]) => streets.map(street => `${street} (רח', ${city})`)).flat()];
+
+    const { currentBreakpoint } = useContext(BreakpointContext);
+
 
 
     useEffect(() => {
@@ -42,37 +44,41 @@ const Filter = ({ dispatch, options, type }) => {
         dispatch({ type: "RESET_FILTERS" })
     }, [type, dispatch])
     useEffect(() => {
-        if (term.length > lengthBreakPoint) 
-           Promise.all([searchStreets(term), searchCities(term), mockNeighborhoods]).then(updateSearchOptions);
+        if (term.length > lengthBreakPoint)
+            Promise.all([searchStreets(term), searchCities(term), mockNeighborhoods]).then(updateSearchOptions);
         else if (streets.length || cities.length || area.length)
             updateSearchOptions([[], [], []])
     }, [term])
 
 
-
     return (
         <div className="ListsContainer__component Filter">
-            <FormContext {...formMethods} {...{ dispatch, options }}>
-                <ShowAt breakpoint="mediumAndBelow">
-                    <button onClick={() => toggleOpen(!open)} className="collapse-button" type="button">
-                        {open ? HEB_COLLAPSE : HEB_UNCOLLAPSE}
-                    </button>
-                </ShowAt>
-                {open && (
-                    <form className="gen-form" onSubmit={handleSubmit((data) => submit(data, dispatch, searchOptions))}>
+            <ShowAt breakpoint="mediumAndBelow">
+                <button onClick={() => toggleOpen(!open)} className="collapse-button" type="button">
+                    {open ? HEB_COLLAPSE : HEB_UNCOLLAPSE}
+                </button>
+            </ShowAt>
+            {open && (
+                <form className="gen-form" onSubmit={handleSubmit((data) => submit(data, dispatch, searchOptions))}>
+                    <FormContext {...formMethods} {...{ dispatch, options }}>
                         <div className="Filters__fields">
-                            <WithDivsAndLabels texts={[HEB_PRICE_RANGE, HEB_SEARCH_PLACE, HEB_PROPERTY_TYPE]} requiredIndices={[]}>
-                                <PriceRange names={["from", "to"]} />
+                            <WithDivsAndLabels texts={[HEB_PRICE_RANGE, HEB_SEARCH_PLACE]} requiredIndices={[]}>
+                                <NumberInputRange name="price" />
                                 <SearchSelect prefiltered={true} name="place" options={finalSearchOptions} />
-                                {type && <FormSelect name="type" ref={register} options={AddressValidation.propertyType[type]} />}
                             </WithDivsAndLabels>
+                            {type && withDivAndLabel(
+                                <FormSelect name="type" ref={register} options={AddressValidation.propertyType[type]} />, HEB_PROPERTY_TYPE)}
+                            {AddressValidation.propertyTypesWithRooms.includes(propertyType) && withDivAndLabel(
+                                <SelectRange name="rooms" options={possibleRoomValues} />, HEB_ROOM_RANGE)}
+                            {type === "roommates" && withDivAndLabel(
+                                <SelectRange name="roommates" options={[2, 3, 4, 5]} />, HEB_ROOMMATES_RANGE)}
                         </div>
-                        <div className="submit-container">
-                            <button className="pure-button pure-button-primary" type="submit">{HEB_FILTER}</button>
-                        </div>
-                    </form>
-                )}
-            </FormContext>
+                    </FormContext>
+                    <div className="submit-container">
+                        <button className="pure-button pure-button-primary" type="submit">{HEB_FILTER}</button>
+                    </div>
+                </form>
+            )}
         </div >
     )
 }

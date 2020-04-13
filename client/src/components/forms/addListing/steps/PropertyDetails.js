@@ -6,20 +6,11 @@ import translator3 from '../../../Item/rest/Level3_translator';
 import { FormSelect } from '../../../ListContainer/SortBy/Select';
 import NumberInput from '../../../NumberInput';
 import { propertyDetailsStepHebrew } from '../../heb';
-import { ThreewayToggleContainer } from '../../ThreewayToggle';
-import { AddressValidation, booleanAttributes, validationConfig, hookformWatchMultiple } from '../../utilities';
-
-
-import { WithDivsAndLabels } from '../../withDivAndLabel';
-import genSuccessiveArr from './../../../../utilities/generateArrOfSuccessiveNums';
 import TextareaContainer from '../../TextareaContainer';
+import { ThreewayToggleContainer } from '../../ThreewayToggle';
+import { AddressValidation, booleanAttributes, watchMultipleFields, possibleRoomValues, validationConfig } from '../../utilities';
+import { WithDivsAndLabels } from '../../withDivAndLabel';
 
-const translation = (key) => {
-    let { translation, picUrl } = translator3([key]);
-    if (!translation)
-        translation = translator2([key]).name;
-    return { text: translation, picUrl }
-}
 
 const { HEB_FURNITURE_DESCRIPTION, HEB_FURNITURE_DESCRIPTION_PLACEHOLDER, HEB_NUM_BALCONIES_LABEL, HEB_NUM_PARKING_SPOTS, HEB_TITLE, HEB_CHOOSE_ATTRIBUTES,
     HEB_DISCLAIMER, HEB_RESET, HEB_TEXT_AREA_PLACEHOLDER, HEB_WHATS_IMPORTANT, HEB_CHAR_LIMIT, HEB_ROOMS } = propertyDetailsStepHebrew;
@@ -29,9 +20,9 @@ const maxFurnitureDescChars = 100;
 
 const fieldNames = ["numBalconies", "parkingSpots", "desc", "rooms", "furnitureDesc", ...Object.values(booleanAttributes).flat()]
 const PropertyDetails = () => {
-    const { register, watch, setValue, control } = useFormContext();
+    const { register, watch, setValue } = useFormContext();
     const { type, desc, propertyType, furniture, furnitureDesc } =
-        hookformWatchMultiple(watch, ["type", "desc", "propertyType", "furniture", "furnitureDesc"]);
+        watchMultipleFields(watch, ["type", "desc", "propertyType", "furniture", "furnitureDesc"]);
     const boolAttributeNames = [...booleanAttributes.general, ...(booleanAttributes[type] || [])];
     const shouldShowRooms = AddressValidation.propertyTypesWithRooms.includes(propertyType || "");
     return (
@@ -43,8 +34,7 @@ const PropertyDetails = () => {
                         <NumberInput name={fieldNames[0]} max={2} />
                         <NumberInput name={fieldNames[1]} max={9} />
                         {shouldShowRooms &&
-                            <FormSelect name={fieldNames[3]}
-                                options={genSuccessiveArr(12, 0, 0.5).filter(el => !((el > 6) && !Number.isInteger(el)))} ref={register(validationConfig.required)} />}
+                            <FormSelect name={fieldNames[3]} options={possibleRoomValues} ref={register(validationConfig.required)} />}
                     </WithDivsAndLabels>
                 </div>
                 <div className="inner-focus-in-form PropertyDetails-bool-attr">
@@ -59,6 +49,13 @@ const PropertyDetails = () => {
             </div>
         </div >
     )
+}
+
+function translation(key) {
+    let { translation, picUrl } = translator3([key]);
+    if (!translation)
+        translation = translator2([key]).name;
+    return { text: translation, picUrl }
 }
 
 

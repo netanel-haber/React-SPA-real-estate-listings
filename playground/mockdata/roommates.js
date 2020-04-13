@@ -1,4 +1,11 @@
 const { listerId } = require('../ids');
+const { municipalities, possibleRooms } = require('./store');
+
+
+const randomFromArr = (arr) => arr[Math.floor(Math.random() * arr.length)];
+
+
+
 module.exports = (lis = listerId, price) => ({
     listing: {
         listerId: lis,
@@ -11,13 +18,13 @@ module.exports = (lis = listerId, price) => ({
         floor: 3,
         floorsInBuilding: 5,
         sqMeters: 100,
-        roommates: 4,
+        roommates: Math.floor(Math.random() * 6) + 1,
         price: price ? price : null,
-        rooms: 34,
+        rooms: randomFromArr(possibleRooms),
         address: {
-            municipality: "נשר",
+            municipality: randomFromArr(municipalities),
             area: "רמות יצחק",
-            street: "רחובות הנהר",
+            street: randomFromArr(["ז'בוטינסקי", "הרצל", "קדושי השואה", "הלח\"י"]),
             number: 13,
             apt: 8
         },

@@ -5,7 +5,7 @@ import combineMessages from '../../validation/combineMessages';
 import { valPass, isHebrewName } from '../../validation/signup';
 import { errHebrew } from './heb';
 import { isValidDate, isFutureDate } from '../../utilities/datetime';
-
+import genSuccessiveArr from './../../utilities/genSuccesiveArr';
 
 const { HEB_INVALID_MIME_TYPE, HEB_INVALID_PLACE, HEB_MAXIMUM, HEB_MINIMUM, HEB_INVALID_SINGLE_SIZE, HEB_INVALID_TOTAL_SIZE, HEB_INVALID_EMAIL, HEB_INVALID_DATE, HEB_INVALID_PRICE, HEB_INVALID_CITY, HEB_INVALID_STREET, HEB_FIELD_IS_REQUIRED, HEB_PASS_DOESNT_MATCH, HEB_PHONE_ISNT_VALID, HEB_NAME_INVALID, passwordErrMessages } = errHebrew;
 
@@ -14,7 +14,7 @@ const minPrice = 100000;
 const singleSizeLimitMb = 2;
 const totalSizeLimitMb = 10;
 
-const validationConfig = {
+const fieldValidationGenerators = {
     required,
     email: (justRequired = false) => ({
         ...required,
@@ -101,27 +101,9 @@ const booleanAttributes = {
 
 
 
-// const attributes = {
-//     forsale: [
-//         ["sqMGarden", "sqMBuilt"],
-//     ],
-//     rent: [
-//         [],
-//         ["homeOwnerAssociationMonthly", "numChecks", "biMonthlyArnona"],
-//     ],
-//     commercial: [
-//         [],
-//         ["rentedUntil"],
-//     ],
-//     roommates: [
-//         [],
-//         ["numChecks"],
-//     ]
-// }
 
-
-const commonDenom = ["דירה", "דירת גן", "פרטי/קוטג'", "גג/פנטהאוז", "דופלקס", "דו משפחתי", "מרתף/פרטר", "טריפלקס", "יחידת דיור", "משק חקלאי/נחלה", "משק עזר", "דיור מוגן", "בניין מגורים", "סטודיו/לופט", "מחסן", "קב' רכישה/ זכות לנכס", "חניה"];
-let forsale = ["מגרשים", "דירת נופש", "כללי", ...commonDenom];
+const propertyTypeCommonDenominator = ["דירה", "דירת גן", "פרטי/קוטג'", "גג/פנטהאוז", "דופלקס", "דו משפחתי", "מרתף/פרטר", "טריפלקס", "יחידת דיור", "משק חקלאי/נחלה", "משק עזר", "דיור מוגן", "בניין מגורים", "סטודיו/לופט", "מחסן", "קב' רכישה/ זכות לנכס", "חניה"];
+let forsale = ["מגרשים", "דירת נופש", "כללי", ...propertyTypeCommonDenominator];
 let rent = [...forsale, "החלפת דירות", "סאבלט"];
 let roommates = rent;
 let AddressValidation = {
@@ -137,7 +119,7 @@ let AddressValidation = {
 
 
 
-const hookformWatchMultiple = (watch, fields, defaults = {}) => {
+const watchMultipleFields = (watch, fields, defaults = {}) => {
     const watches = {};
     fields.forEach((field) => {
         watches[field] = watch(field, defaults[field]);
@@ -146,5 +128,9 @@ const hookformWatchMultiple = (watch, fields, defaults = {}) => {
 }
 
 
-export { validationConfig, mockNeighborhoods, booleanAttributes, AddressValidation, hookformWatchMultiple };
+const possibleRoomValues = genSuccessiveArr(12, 0.5, 0.5).filter(el => !((el > 6) && !Number.isInteger(el)));
+
+
+
+export { fieldValidationGenerators as validationConfig, mockNeighborhoods, booleanAttributes, AddressValidation, possibleRoomValues, watchMultipleFields };
 
