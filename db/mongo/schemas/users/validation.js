@@ -3,13 +3,11 @@ const isMP = (pNumber) => isMobilePhone(pNumber, 'he-IL');
 const PNValidator = (arr) => arr.every(isMP);
 const isHebrewName = (name) => /^[\u0590-\u05fe']+$/.test(name);
 const unique = true;
-const required = true;
 
 module.exports = {
     email: {
         type: String,
         validate: [isEmail, 'invalid email'],
-        required
     },
     hash: {
         type: String,

@@ -3,7 +3,7 @@ const { hash, salt } = require('./validation');
 const contact = require('../contact');
 
 module.exports = new Schema({
-    contact,
+    ...contact,
     hash,
     salt,  
     tokens: [String],

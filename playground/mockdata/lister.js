@@ -18,17 +18,17 @@ module.exports = [
         name: 'יוסי',
         lastName: "כהן",
         email: "a@g.com",
+        phoneNumber: "0547869543",
         hash: hash1,
         salt: sal1,
-        phoneNumber: "0547869543"
     },
     {
         _id: otherListerId,
         name: 'מלכי',
         lastName: "כהנא",
         email: "gloombi@glamba.co.il",
+        phoneNumber: "0547769643",
         hash: hash2,
         salt: sal2,
-        phoneNumber: "0547769643"
     }
 ];

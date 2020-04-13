@@ -12,7 +12,7 @@ import SelectRange from './SelectRange';
 import { possibleRoomValues } from '../utilities';
 import submit from './submit';
 
-const { HEB_FILTER = "פלטר", HEB_PRICE_RANGE = "טווח המחירים", HEB_PROPERTY_TYPE = "סוג הנכס", HEB_ROOM_RANGE = "טווח חדרים",
+const { HEB_FILTER = "סנן", HEB_PRICE_RANGE = "טווח המחירים", HEB_PROPERTY_TYPE = "סוג הנכס", HEB_ROOM_RANGE = "טווח חדרים",
     HEB_COLLAPSE = "צמצם", HEB_UNCOLLAPSE = "הראה פילטרים", HEB_SEARCH_PLACE = "חפשו אזור, עיר, שכונה או רחוב", HEB_ROOMMATES_RANGE = "טווח שותפים" } = {};
 
 

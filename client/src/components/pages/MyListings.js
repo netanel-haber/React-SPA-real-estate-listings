@@ -24,7 +24,7 @@ const MyListings = () => {
                 </div>
             </div>
             <ListsContainer lists={Object.keys(hebTitleForType).map(type =>
-                [hebTitleForType[type], { listerId: _id }, type])} />
+                [hebTitleForType[type], { listerId: { $eq: _id } }, type])} />
         </div>
     );
 }

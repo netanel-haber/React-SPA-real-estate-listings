@@ -12,6 +12,7 @@ const { HEB_WRONG_CREDS, HEB_LOGGED_IN_SUCCESSFULLY } = {
 
 
 export default (data, history) => {
+    console.log("here");
     login(sanitizer(data))
         .then(({ token }) => {
             localStorage.setItem("token", token)
