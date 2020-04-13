@@ -1,4 +1,4 @@
-import React, { useReducer, useState, useEffect } from 'react';
+import React, { useReducer, useState } from 'react';
 import ItemListContext from '../../contexts/ItemListContext';
 import { countDocs, getListings } from '../../fetch/listings';
 import useApiCallEffect from '../../hooks/useApiCallEffect';
@@ -6,11 +6,10 @@ import '../../styles/components/ListContainer.scss';
 import skipReducer from './../../reducers/skipReducer';
 import { ItemListWithLoader } from './ItemList';
 import Paging from './Paging';
-import { useDeepCompareEffect } from 'use-deep-compare-effect';
 
 
 const ListContainer = ({ options, type }) => {
-    const { limit, filters, sorts } = options;
+    const { limit, filters } = options;
     const [skipState, updateSkip] = useReducer(skipReducer, { value: 0 });
     const [count, updateCount] = useState(0);
     const [list, updateList] = useState([]);
