@@ -8,7 +8,8 @@ const initialOptions = {
         pictureKeys: {},
         type: {
             $eq: undefined
-        }
+        },
+        entryDate: {}
     },
     limit: 3
 };
@@ -34,7 +35,7 @@ const optionsReducer = (state, { type, payload }) => {
             return { ...state, sorts: payload }
         case "LIMIT":
             return { ...state, limit: payload }
-        case "UPDATE_FILTER_VALUE":
+        case "UPDATE_FILTER_VALUE": {
             const [fieldToUpdate, filter, value] = payload;
             return {
                 limit, sorts, filters: {
@@ -45,8 +46,9 @@ const optionsReducer = (state, { type, payload }) => {
                     }
                 }
             };
-        case "UPDATE_FILTERS_VALUES":
-            return {
+        }
+        case "UPDATE_FILTERS_VALUES": {
+            let result = {
                 limit, sorts, filters: {
                     ...filters,
                     ...payload.reduce((acc, [fieldToUpdate, filter, value]) => ({
@@ -59,8 +61,10 @@ const optionsReducer = (state, { type, payload }) => {
                     }), {})
                 }
             }
-        case "TOGGLE_FILTER":
-            const [field, filterToToggle] = payload;
+            return result;
+        }
+        case "TOGGLE_FILTER": {
+            let [field, filterToToggle] = payload;
             const curFilters = filters[field];
             const updateKeys = Object.keys(filterToToggle);
             const shouldRemoveProps = areKeysInObject(curFilters, updateKeys);
@@ -72,8 +76,20 @@ const optionsReducer = (state, { type, payload }) => {
                 limit,
                 filters: { ...filters, [field]: retFilters }
             }
-        case "RESET_FILTERS":
+        }
+        case "REMOVE_FILTER": {
+            let [field, filterToRemove] = payload;
+            return {
+                ...state,
+                filters: {
+                    ...filters,
+                    [field]: removeProps(filters[field], [filterToRemove])
+                }
+            }
+        }
+        case "RESET_FILTERS": {
             return { ...state, filters: initialOptions.filters }
+        }
         default:
             return state;
     }

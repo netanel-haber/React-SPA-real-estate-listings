@@ -7,7 +7,7 @@ dayjs.extend(isSameOrAfter)
 
 const dayPickerProps = {
     locale: "he-IL",
-    months: ["ינואר", "פברואר", "מרס", "אפריל", "מאי", "יוני", "יולי", "אוגוסט", "ספטמבר", "אוקטובר", "נובמבר", "דצמבר"],
+    months: ["ינואר", "פברואר", "מרץ", "אפריל", "מאי", "יוני", "יולי", "אוגוסט", "ספטמבר", "אוקטובר", "נובמבר", "דצמבר"],
     weekdaysLong: ["ראשון", "שני", "שלישי", "רביעי", "חמישי", "שישי", "שבת"],
     weekdaysShort: ["א", "ב", "ג", "ד", "ה", "ו", "ש"],
     firstDayOfWeek: 0
@@ -28,9 +28,10 @@ const isValidDate = (d) => {
 }
 
 
-const isFutureDate = (d) => { 
-    return dayjs(d).isSameOrAfter(dayjs()) 
+const isFutureDate = (d) => {
+    return dayjs(d).isAfter(dayjs())
 }
+
 
 
 const timeIsLessThanXMinutesAway = (epochSeconds, minutes = 1) => {

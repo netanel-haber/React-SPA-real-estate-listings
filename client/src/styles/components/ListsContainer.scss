@@ -10,6 +10,10 @@
 .ListsContainer__component {
   font-size: $s-size;
   padding: $s-size/2;
+  .collapse-button{
+    display: block;
+    margin: auto;
+  }
   > div {
     @include basic-flex(center);
     flex-wrap: wrap;

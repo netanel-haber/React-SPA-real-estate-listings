@@ -8,9 +8,9 @@ import Filter from '../components/forms/Filter/Filter';
 const ListsContainer = ({ lists = [], type }) => {
     const [options, dispatch] = useReducer(optionsReducer, initialOptions);
     return (
-        <div className="ItemLists body__content">
-            <Filter {...{ options, dispatch, type }} />
+        <div className="ItemLists body__content">    
             <SortBy {...{ options, dispatch }}></SortBy>
+            <Filter {...{ options, dispatch, type }} />
             <div className="ItemLists__lists">
                 {lists.map(([title, initialFilters, type], index) =>
                     <React.Fragment key={index}>

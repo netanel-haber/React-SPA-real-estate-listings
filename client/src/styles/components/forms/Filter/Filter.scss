@@ -38,18 +38,18 @@
                 margin: 0;
                 width: 150px;
             }
-            .Filter_RoomRange {
+            .Filter_SelectRange {
                 display: inline-block;
                 width: 75px;
             }
-        }
-    }
-
-    &.collapsed .gen-form {
-        padding: 0;
-        margin: 0 auto;
-        button {
-            width: 200px;
+            .Filter_Search.enhanced-dropdown {
+                .actual-dropdown {
+                    width: fit-content;
+                }
+            }
+            input[type="number"].Filter__sqMeters {
+                width: 100px;
+            }
         }
     }
 }

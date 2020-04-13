@@ -1,7 +1,7 @@
-import { format } from '../../../utilities/datetime';
+import { format, isFutureDate } from '../../../utilities/datetime';
 
 const hebBoolean = (val) => Boolean(val) ? "כן" : "לא";
-const isrDate = (utc) => format(utc);
+const isrDate = (utc) => isFutureDate(utc) ? format(utc) : "כניסה מיידית";
 
 
 let map = {

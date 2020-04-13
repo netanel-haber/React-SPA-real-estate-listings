@@ -32,13 +32,13 @@ new MitigatingCompany(mitigatingCompany).save()
                 Math.random() >= 0.5 && Math.floor(Math.random() * (200000 - 100000 + 1) + 100000)
             )).save(),
             new RentListing(rent(Math.round(Math.random()) ? otherListerId : listerId,
-            Math.random() >= 0.5 && Math.floor(Math.random() * (200000 - 100000 + 1) + 100000)
+            Math.random() >= 0.5 && Math.floor(Math.random() * (8000 - 2000 + 1) + 2000)
         )).save(),
             new CommercialListing(commercial(Math.round(Math.random()) ? otherListerId : listerId,
             Math.random() >= 0.5 && Math.floor(Math.random() * (200000 - 100000 + 1) + 100000)
         )).save(),
             new RoommatesListing(roommates(Math.round(Math.random()) ? otherListerId : listerId,
-            Math.random() >= 0.5 && Math.floor(Math.random() * (200000 - 100000 + 1) + 100000)
+            Math.random() >= 0.5 && Math.floor(Math.random() * (2000 - 800 + 1) + 800)
         )).save()];
         }
         return Promise.all(promises);
