@@ -8,7 +8,8 @@ module.exports = (req, res, next) => {
         if (fs.existsSync(gzippedPath)) {
             req.url = req.originalUrl + '.gz';
             res.set("Content-Encoding", "gzip");
-            if(req.originalUrl.includes("css"))
+            res.set("Content-Type", 'application/javascript');
+            if (req.originalUrl.includes("css"))
                 res.set("Content-Type", "text/css")
         }
     }
