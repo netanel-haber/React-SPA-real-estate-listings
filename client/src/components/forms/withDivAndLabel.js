@@ -18,10 +18,9 @@ const WithDivsAndLabels = ({ children, texts, requiredIndices, className }) => {
         <>
             {children.filter(ch => ch).map((field, index) => {
                 const required = requiredIndices.includes(index);
-                const clonedField = required ? React.cloneElement(field, { required }) : field;
                 return (
                     <React.Fragment key={index}>
-                        {withDivAndLabel(clonedField, texts[index], allRequired || required, className)}
+                        {withDivAndLabel(field, texts[index], allRequired || required, className)}
                     </React.Fragment>
                 );
             })}

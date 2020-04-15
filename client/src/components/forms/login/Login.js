@@ -18,7 +18,7 @@ const Login = () => {
         <FormContext {...formMethods}>
             <div>
                 <form className="gen-form" onSubmit={handleSubmit(data => onSubmit(data, history))}>
-                    <WithDivsAndLabels texts={[HEB_EMAIL,HEB_PASSWORD]} requiredIndices={[]}>
+                    <WithDivsAndLabels texts={[HEB_EMAIL,HEB_PASSWORD]} requiredIndices={[0,1]}>
                     < input type="email" className="pure-input-rounded eng" name="email" autoComplete="email" ref={register(email(true))} />
                     < input type="password" className="pure-input-rounded eng" autoComplete="current-password" name="password" ref={register(password(true))} />
                     </WithDivsAndLabels>

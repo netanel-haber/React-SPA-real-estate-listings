@@ -15,7 +15,7 @@ const Stats = (props) => {
     return (
         <div className="StatsColumn">
             {rooms && <ColumnInnerChild title={rooms} subtitle={HEB_ROOMS} />}
-            <ColumnInnerChild title={`${floor}/${floorsInBuilding}`} subtitle={HEB_FLOOR} />
+            {(floor && floorsInBuilding) && <ColumnInnerChild title={`${floor}/${floorsInBuilding}`} subtitle={HEB_FLOOR} />}
             {roommates ?
                 <ColumnInnerChild title={roommates} subtitle={HEB_ROOMMATES} /> :
                 <ColumnInnerChild title={sqMeters} subtitle={HEB_SQ_M} />

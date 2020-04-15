@@ -53,6 +53,5 @@ module.exports = (userFilters) => {
                 finalFilters[key] = value;
             }
         })
-    console.log(finalFilters);
     return finalFilters;
 }

@@ -46,10 +46,8 @@ listersRouter
         res.json(await Lister.findById(req.params.id, 'name lastName email phoneNumber'));
     })
     .post('/listers/login', validateKeysExact, async function login(req, res) {
-        try {
-            
+        try {         
             const { password, email } = req.body;
-            console.log(password,email);
             const user = await Lister.findOne({ email });
             if (!user)
                 return res.status(400).end();
