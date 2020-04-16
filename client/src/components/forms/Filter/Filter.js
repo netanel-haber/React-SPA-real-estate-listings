@@ -78,6 +78,7 @@ const Filter = ({ dispatch, options, type }) => {
                         </div>
                     </FormContext>
                     <div className="submit-container">
+                        <button className="pure-button pure-button-primary" type="button" onClick={() => { reset(); dispatch({ type: "RESET_FILTERS" }) }}>אתחל</button>
                         <button className="pure-button pure-button-primary" type="submit">{HEB_FILTER}</button>
                     </div>
                 </form>
