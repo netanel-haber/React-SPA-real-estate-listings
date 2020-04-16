@@ -6,6 +6,8 @@ import heb from './hebrew';
 import Select from './Select';
 import equal from 'fast-deep-equal';
 import filterShortCuts from '../../../utilities/dbFilterShortcuts';
+import { useForm, FormContext } from 'react-hook-form';
+import withDivAndLabel, { WithDivsAndLabels } from './../../forms/withDivAndLabel';
 
 const { $exists, $isntEmptyArray } = filterShortCuts;
 
@@ -28,46 +30,43 @@ function dispatchToggle(dispatch, payload) {
 
 
 const SortBy = ({ options, dispatch }) => {
-    const { sorts, filters, limit } = options;
-
-    const priceFilterButton = (
-        <div
-            onClick={() => dispatchToggle(dispatch, ["price", $exists])}
-            className={classnames("SortBy__button", { active: filters?.price?.["$exists"] })}>
-            {HEB_ONLY_WITH_PRICE}
-        </div>);
-
-    const picsFilterButton = (
-        <div
-            onClick={() => dispatchToggle(dispatch, ["pictureKeys", $isntEmptyArray])}
-            className={classnames("SortBy__button", { active: filters?.pictureKeys?.["$exists"] })}>
-            {HEB_ONLY_WITH_PIC}
-        </div>);
+    const { sorts, filters } = options;
+    const formMethods = useForm({ mode: "onChange" });
+    const { register, handleSubmit } = formMethods;
 
     const sortOptions = Object.entries(sortByOptions);
     return (
-        <div className="ListsContainer__component">
-            <div className="SortBy">
-                <div>
-                    <div>{HEB_SORT_BY}</div>
-                    <Select
-                        dispatch={(val) => dispatch({ type: "SORTS", payload: val })}
-                        options={sortOptions}
-                        selectedOption={sortOptions.find(([, opt]) => equal(opt, sorts))}
-                    />
+        <FormContext {...formMethods}>
+            <form onSubmit={handleSubmit(({ limit }) =>
+                (limit && !isNaN(Number(limit))) && dispatch({ type: "LIMIT", payload: Number(limit) }))}>
+                <div className="ListsContainer__component">
+                    <div className="SortBy">
+                        <div>
+                            <div>{HEB_SORT_BY}</div>
+                            <Select
+                                dispatch={(val) => dispatch({ type: "SORTS", payload: val })}
+                                options={sortOptions}
+                                selectedOption={sortOptions.find(([, opt]) => equal(opt, sorts))}
+                            />
+                        </div>
+                        <div>
+                            <div>{HEB_FILTER}</div>
+                            <div
+                                onClick={() => dispatchToggle(dispatch, ["price", $exists])}
+                                className={classnames("SortBy__button", { active: filters?.price?.["$exists"] })}>
+                                {HEB_ONLY_WITH_PRICE}
+                            </div>
+                            <div
+                                onClick={() => dispatchToggle(dispatch, ["pictureKeys", $isntEmptyArray])}
+                                className={classnames("SortBy__button", { active: filters?.pictureKeys?.["$exists"] })}>
+                                {HEB_ONLY_WITH_PIC}
+                            </div>
+                        </div>
+                        {withDivAndLabel(<NumberInput name="limit" min={1} max={15} className={"SortBy__limit"} />, HEB_LIMIT)}
+                    </div >
                 </div>
-                <div>
-                    <div>{HEB_FILTER}</div>
-                    {priceFilterButton}
-                    {picsFilterButton}
-                </div>
-                <div>
-                    <div>{HEB_LIMIT}</div>
-                    <NumberInput value={limit} min={1} max={15} className={"SortBy__limit"}
-                        callback={(val) => dispatch({ type: "LIMIT", payload: val })} />
-                </div>
-            </div >
-        </div>
+            </form>
+        </FormContext>
     )
 }
 
