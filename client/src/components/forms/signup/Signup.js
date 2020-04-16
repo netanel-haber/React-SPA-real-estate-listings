@@ -21,7 +21,7 @@ const SignupForm = () => {
             <div>
                 < form className="gen-form" onSubmit={handleSubmit(data=>onSubmit(data,history))} >
                     <WithDivsAndLabels requiredIndices={[0, 1, 2]} texts={[HEB_EMAIL, HEB_PASSWORD, HEB_REENTER_PASSWORD, HEB_PHONE_NUMBER, HEB_NAME, HEB_LAST_NAME]}>
-                        < input name="email" type="email" className="pure-input-rounded eng" autoComplete="email" ref={register(email())} />
+                        < input name="email" className="pure-input-rounded eng" autoComplete="email" ref={register(email())} />
                         < input name="password" type="password" className="pure-input-rounded eng" autoComplete="new-password"  ref={register(password())} />
                         < input name="reEnterPassword" type="password" className="pure-input-rounded eng" autoComplete="off"  ref={register(reEnter(curPassRef))} />
                         < input name="phoneNumber" className="pure-input-rounded eng"  ref={register(phoneNumber)} />

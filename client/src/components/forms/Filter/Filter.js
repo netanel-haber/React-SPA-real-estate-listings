@@ -3,12 +3,12 @@ import "#src#/styles/components/forms/Filter/Filter.scss";
 import React, { useEffect, useState } from 'react';
 import { FormContext, useForm } from 'react-hook-form';
 import { FormSelect } from '../../ListContainer/SortBy/Select';
-import { AddressValidation, mockNeighborhoods } from '../utilities';
+import { AddressValidation, mockNeighborhoods, watchMultipleFields } from '../utilities';
 import withDivAndLabel, { WithDivsAndLabels } from '../withDivAndLabel';
 import SearchSelect from './../../SearchSelect';
 import NumberInputRange from './NumberInputRange';
 import SelectRange from './SelectRange';
-import { possibleRoomValues } from '../utilities';
+import { possibleRoomValues, validationConfig } from '../utilities';
 import submit from './submit';
 import DayPicker from '../../DayPicker';
 import { filterHebrew } from '../heb';
@@ -16,12 +16,16 @@ import { filterHebrew } from '../heb';
 const { HEB_FILTER, HEB_PRICE_RANGE, HEB_PROPERTY_TYPE, HEB_ROOM_RANGE, HEB_COLLAPSE, HEB_ENTRY_DATE, HEB_SIZE, HEB_UNCOLLAPSE, HEB_SEARCH_PLACE, HEB_ROOMMATES_RANGE } = filterHebrew;
 
 
+
+
+
 const lengthBreakPoint = 2;
 const Filter = ({ dispatch, options, type }) => {
     const formMethods = useForm();
     const { handleSubmit, register, reset, watch, setValue } = formMethods;
-    const term = watch("place", "");
-    const propertyType = watch("type", "");
+    const { place: term, type: propertyType, priceTo, sqMetersTo } = watchMultipleFields(watch,
+        ["place", "type", "priceTo", "priceFrom", "sqMetersTo", "sqMetersFrom"], { place: "" });
+
     const [open, toggleOpen] = useState(false);
 
 
@@ -58,8 +62,8 @@ const Filter = ({ dispatch, options, type }) => {
                     <FormContext {...formMethods} {...{ dispatch, options }}>
                         <div className="Filters__fields">
                             <WithDivsAndLabels texts={[HEB_PRICE_RANGE, HEB_SIZE, HEB_SEARCH_PLACE, HEB_ENTRY_DATE]} requiredIndices={[]}>
-                                <NumberInputRange name="price" />
-                                <NumberInputRange className="Filter__sqMeters" name="sqMeters" />
+                                <NumberInputRange jointValidation={validationConfig.range(priceTo)} name="priceFrom priceTo" />
+                                <NumberInputRange jointValidation={validationConfig.range(sqMetersTo)} name="sqMetersFrom sqMetersTo" className="Filter__sqMeters" />
                                 <SearchSelect name="place" className="Filter_Search" prefiltered={true} options={finalSearchOptions} />
                                 <DayPicker name="entryDate" onDayChange={(val, m, { state: { value } }) => {
                                     setValue("entryDate", String(val) || value)
@@ -81,5 +85,6 @@ const Filter = ({ dispatch, options, type }) => {
         </div >
     )
 }
+
 
 export default Filter;

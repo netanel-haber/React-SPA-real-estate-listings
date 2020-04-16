@@ -17,10 +17,10 @@ const WithDivsAndLabels = ({ children, texts, requiredIndices, className }) => {
     return (
         <>
             {children.filter(ch => ch).map((field, index) => {
-                const required = requiredIndices.includes(index);
+                const req = requiredIndices?.includes(index);
                 return (
                     <React.Fragment key={index}>
-                        {withDivAndLabel(field, texts[index], allRequired || required, className)}
+                        {withDivAndLabel(field, texts[index], allRequired || req, className)}
                     </React.Fragment>
                 );
             })}

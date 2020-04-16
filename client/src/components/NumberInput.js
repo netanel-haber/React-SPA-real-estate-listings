@@ -2,20 +2,18 @@ import React from 'react';
 import { useFormContext } from 'react-hook-form';
 import { validationConfig } from '../components/forms/utilities';
 
-export default function NumberInput({ value, max, min = 0, required = false,
+export default function NumberInput({ value, max, min = 0, req = false,
     altValidation, name, className, placeholder, callback = (() => { }), disabled = false }) {
     const { register } = useFormContext() || {};
     return (
         <input
             {...(value && { value })}
-            {...{ className, disabled, name, min }}
+            {...{ className, disabled, name }}
             {...(register && {
                 ref: register(
                     altValidation ||
-                    validationConfig.numberInput({ min, max }, required))
+                    validationConfig.numberInput({ min, max }, req))
             })}
-            {...(max !== undefined && { max })}
-            type="number"
             onChange={(e) => {
                 e.preventDefault();
                 callback(Number(e.target.value));

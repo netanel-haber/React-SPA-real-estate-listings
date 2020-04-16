@@ -19,7 +19,7 @@ const Login = () => {
             <div>
                 <form className="gen-form" onSubmit={handleSubmit(data => onSubmit(data, history))}>
                     <WithDivsAndLabels texts={[HEB_EMAIL,HEB_PASSWORD]} requiredIndices={[0,1]}>
-                    < input type="email" className="pure-input-rounded eng" name="email" autoComplete="email" ref={register(email(true))} />
+                    < input  className="pure-input-rounded eng" name="email" autoComplete="email" ref={register(email(true))} />
                     < input type="password" className="pure-input-rounded eng" autoComplete="current-password" name="password" ref={register(password(true))} />
                     </WithDivsAndLabels>
                     <div className="submit-container pure-control-group">

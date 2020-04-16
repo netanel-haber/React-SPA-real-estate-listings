@@ -17,7 +17,7 @@ const ContactDetails = () => {
             <div className="disclaimer">{HEB_DISCLAIMER}</div>
             <div className="fields">
                 <WithDivsAndLabels requiredIndices={[]} texts={[HEB_EMAIL, HEB_PHONE_NUMBER, HEB_NAME, HEB_LAST_NAME]}>
-                    < input name={fieldNames[0]} type="email" className="pure-input-rounded eng" autoComplete="email" ref={register(emailNotRequired)} />
+                    < input name={fieldNames[0]}  className="pure-input-rounded eng" autoComplete="email" ref={register(emailNotRequired)} />
                     < input name={fieldNames[1]} className="pure-input-rounded eng" ref={register(phoneNumber)} />
                     < input name={fieldNames[2]} className="pure-input-rounded" ref={register(name)} />
                     < input name={fieldNames[3]} className="pure-input-rounded" ref={register(name)} />

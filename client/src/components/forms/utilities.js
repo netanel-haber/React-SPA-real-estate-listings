@@ -9,12 +9,28 @@ import { errHebrew } from './heb';
 import { isValidDate, isFutureDate } from '../../utilities/datetime';
 import genSuccessiveArr from './../../utilities/genSuccesiveArr';
 
-const { HEB_INVALID_MIME_TYPE, HEB_INVALID_PLACE, HEB_MAXIMUM, HEB_MINIMUM, HEB_INVALID_SINGLE_SIZE, HEB_INVALID_TOTAL_SIZE, HEB_INVALID_EMAIL, HEB_INVALID_DATE, HEB_INVALID_PRICE, HEB_INVALID_CITY, HEB_INVALID_STREET, HEB_FIELD_IS_REQUIRED, HEB_PASS_DOESNT_MATCH, HEB_PHONE_ISNT_VALID, HEB_NAME_INVALID, passwordErrMessages } = errHebrew;
+const { HEB_TO_CANNOT_BE_LARGER_THAN_FROM, HEB_ONLY_POSITIVE_INTEGERS, HEB_INVALID_MIME_TYPE, HEB_INVALID_PLACE, HEB_MAXIMUM, HEB_MINIMUM, HEB_INVALID_SINGLE_SIZE, HEB_INVALID_TOTAL_SIZE, HEB_INVALID_EMAIL, HEB_INVALID_DATE, HEB_INVALID_PRICE, HEB_INVALID_CITY, HEB_INVALID_STREET, HEB_FIELD_IS_REQUIRED, HEB_PASS_DOESNT_MATCH, HEB_PHONE_ISNT_VALID, HEB_NAME_INVALID, passwordErrMessages } = errHebrew;
 
 const required = { required: HEB_FIELD_IS_REQUIRED };
 const minPrice = 100000;
 const singleSizeLimitMb = 2;
 const totalSizeLimitMb = 10;
+const isNumber = val => val !== "" && !isNaN(Number(val));
+const numberValidation = ({ min = 0, max }, req = false) => ({
+    validate: (val) => {
+        if (isEmpty(val))
+            return !req || HEB_FIELD_IS_REQUIRED;
+        if (isNaN(Number(val)))
+            return HEB_ONLY_POSITIVE_INTEGERS;
+        if (val < min)
+            return HEB_MINIMUM(min);
+        if (val > max)
+            return HEB_MAXIMUM(max);
+        return true;
+    }
+});
+
+
 
 const fieldValidationGenerators = {
     required,
@@ -33,19 +49,19 @@ const fieldValidationGenerators = {
     emailNotRequired: {
         validate: val => isEmpty(val) || (isEmail(val) || HEB_INVALID_EMAIL)
     },
-    numberInput: ({ min = 0, max }, req = false) => ({
-        ...(req && required),
-        min: {
-            value: min,
-            message: HEB_MINIMUM(min)
-        },
-        ...(max !== undefined && {
-            max: {
-                value: max,
-                message: HEB_MAXIMUM(max)
+    numberInput: numberValidation,
+    range: (to, { min, max } = {}, req) => {
+        return {
+            validate: (from) => {
+                const isValidNumber = numberValidation({ min, max }, req).validate(from);
+                if (isValidNumber !== true)
+                    return isValidNumber;
+                if (isNumber(from) && isNumber(to) && Number(from) > Number(to)) 
+                    return HEB_TO_CANNOT_BE_LARGER_THAN_FROM;
+                return true;
             }
-        }),
-    }),
+        }
+    },
     phoneNumber: {
         validate: val => (isEmpty(val) || isMobilePhone(val, "he-IL")) || HEB_PHONE_ISNT_VALID
     },

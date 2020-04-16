@@ -12,6 +12,8 @@ const errHebrew = {
     HEB_INVALID_SINGLE_SIZE: size => `כל קובץ לבדו איננו יכול לעלות על ${size}Mb`,
     HEB_MINIMUM: (min) => `המספר המינימלי הינו ${min}`,
     HEB_MAXIMUM: (max) => `המספר המקסימלי הינו ${max}`,
+    HEB_ONLY_POSITIVE_INTEGERS:"ניתן להכניס רק מספרים שלמים וחיוביים.",
+    HEB_TO_CANNOT_BE_LARGER_THAN_FROM:"על הערך המינימלי לא לחרוג מהערך המקסימלי.",
     HEB_INVALID_MIME_TYPE: "על הקבצים להיות מסוג תמונה.",
     HEB_INVALID_PLACE: "מקום זה איננו חוקי.",
     passwordErrMessages: {

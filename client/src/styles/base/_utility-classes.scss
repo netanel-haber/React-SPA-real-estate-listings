@@ -132,18 +132,20 @@
 ////////////////////////////
 
 .error-message-container {
+  $error-red: adjust-color($color: #c51244, $alpha: -0.3);
   position: relative;
   display: inline-block;
   .error-message {
     &:hover {
       visibility: hidden;
     }
-    background: adjust-color($color: #c51244, $alpha: -0.2);
+    background: $error-red;
     color: $body-white;
     padding: 5px;
-    border-radius: 3px;
+    box-sizing: border-box;
+    border-radius: 7px;
     position: absolute;
-    left: 0;
+    width: 100%;
     z-index: 2;
     box-shadow: 1px 1px 1px #aaaaaa;
     margin-top: 10px;
@@ -155,9 +157,10 @@
       height: 0;
       border-left: 10px solid transparent;
       border-right: 10px solid transparent;
-      border-bottom: 10px solid adjust-color($color: #c51244, $alpha: -0.2);
+      border-bottom: 10px solid $error-red;
       position: absolute;
       top: -10px;
+      left: 50%;
     }
   }
 }

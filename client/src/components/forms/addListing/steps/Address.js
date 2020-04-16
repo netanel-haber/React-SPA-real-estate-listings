@@ -47,7 +47,7 @@ const Address = () => {
                 </WithDivsAndLabels>
                 <div className="pure-control-group form-inline">
                     <WithDivsAndLabels texts={[HEB_NUMBER, HEB_APT, HEB_FLOOR, HEB_TOTAL_PROPERTY_FLOORS]} requiredIndices={[0]} className="NumberInput">
-                        <NumberInput name={fieldNames[7]} min={1} max={50} />
+                        <NumberInput name={fieldNames[7]} req min={1} max={50} />
                         <NumberInput name={fieldNames[8]} min={1} max={50} />
                         <NumberInput name={fieldNames[4]} max={50} />
                         <NumberInput name={fieldNames[5]} min={1} max={50} />

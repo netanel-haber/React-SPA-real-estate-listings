@@ -6,18 +6,24 @@ const WithErrorMessageContainer = ({ children: el }) => {
     const [visibility, toggleVisi] = useState("visible");
     const { formState: { submitCount }, errors } = useFormContext();
 
-    const error = errors?.[el.props.name]?.message;
+    const errorMessage = el.props.name
+        .split(' ')
+        .map(name => errors?.[name]?.message)
+        .filter(message => Boolean(message))
+        .join('\n')
+
+
     useEffect(() => {
         toggleVisi("visible");
         const timeout = setTimeout(() => { toggleVisi("hidden") }, 2000);
         return () => { clearTimeout(timeout) }
-    }, [error, submitCount, errors])
+    }, [errorMessage, submitCount, errors])
     return (
         <div className="error-message-container">
             {el}
-            {error &&
+            {errorMessage &&
                 <div className="error-message" style={{ visibility }} >
-                    {error}
+                        {errorMessage}
                 </div>
             }
         </div>
