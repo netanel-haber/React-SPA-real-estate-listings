@@ -11,7 +11,7 @@
     "express": "^4.17.1",
     "express-winston": "^4.0.3",
     "jsonwebtoken": "^8.5.1",
-    "lodash": "^4.17.15",
+    "lodash": "^4.17.21",
     "mongodb": "^3.5.5",
     "mongoose": "^5.9.4",
     "mongoose-beautiful-unique-validation": "^7.1.1",
